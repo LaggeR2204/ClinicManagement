@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="Clinic.ucMedical"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Clinic"
+             mc:Ignorable="d" 
+              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="{DynamicResource MaterialDesignFont}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="55"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Height="55" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition  />
+                <ColumnDefinition  />
+                <ColumnDefinition  />
+                <ColumnDefinition  />
+            </Grid.ColumnDefinitions>
+            <!--<StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0">-->
+            <Button Command="{Binding MedicalListCommand}" CommandParameter="{Binding ElementName=grdUserControlMedical}" Name="btnMedicalList" Grid.Column="0" Content="Lập danh sách khám bệnh" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#0078D7"/>
+            <Button Command="{Binding MedicalResultCommand}" CommandParameter="{Binding ElementName=grdUserControlMedical}" Name="btnMedicalResult" Grid.Column="1" Content="Lập phiếu khám bệnh" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#0078D7"/>
+            <Button Command="{Binding PatientListCommand}" CommandParameter="{Binding ElementName=grdUserControlMedical}" Name="btnPatientList" Grid.Column="2" Content="Tra cứu bệnh nhân" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#0078D7"/>
+            <Button Command="{Binding BillCommand}" CommandParameter="{Binding ElementName=grdUserControlMedical}" Name="btnBill" Grid.Column="3" Content="Lập hóa đơn" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#0078D7"/>
+            <!--</StackPanel>-->
+            <Grid Name="GridCursor" Height="5" Background="#0078D7" VerticalAlignment="Bottom"/>
+        </Grid>
+
+        <Grid Grid.Row="1" x:Name="grdUserControlMedical">
+            
+        </Grid>
+        
+    </Grid>
+</UserControl>
