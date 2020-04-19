@@ -15,7 +15,6 @@ namespace Clinic.ViewModel
 
         public ICommand MedicalListCommand { get; set; }
         public ICommand MedicalResultCommand { get; set; }
-        public ICommand PatientListCommand { get; set; }
         public ICommand BillCommand { get; set; }
 
         public UcMedicalViewModel()
@@ -57,28 +56,10 @@ namespace Clinic.ViewModel
                     tempButton = 1;
                 }
             });
-            PatientListCommand = new RelayCommand<object>((p) => { return true; }, (p) =>
-            {
-                if (tempButton != 2)
-                {
-                    Grid grdUserControlMedical = p as Grid;
 
-                    grdUserControlMedical.Children.Clear();
-                    grdUserControlMedical.Children.Add(new ucPatientList());
-
-                    FrameworkElement grdCursorParent = grdUserControlMedical.Parent as FrameworkElement;
-                    var grid = grdCursorParent.FindName("GridCursor");
-                    Grid grdCursor = grid as Grid;
-
-                    Grid.SetColumn(grdCursor, 2);
-
-                    tempButton = 2;
-                }
-
-            });
             BillCommand = new RelayCommand<object>((p) => { return true; }, (p) =>
             {
-                if (tempButton != 3)
+                if (tempButton != 2)
                 {
                     Grid grdUserControlMedical = p as Grid;
 
@@ -91,7 +72,7 @@ namespace Clinic.ViewModel
 
                     Grid.SetColumn(grdCursor, 3);
 
-                    tempButton = 3;
+                    tempButton = 2;
                 }
 
             });

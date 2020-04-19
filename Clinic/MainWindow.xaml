@@ -27,13 +27,13 @@
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="grdMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="50"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="200"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="200"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="CloseMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="grdMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="200"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="50"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="50"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
@@ -60,6 +60,7 @@
             </Grid>
 
             <Grid x:Name="grdUserControl" Grid.Row="1">
+                <local:ucMedical></local:ucMedical>
             </Grid>
 
         </Grid>
@@ -89,9 +90,15 @@
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
                 <ListViewItem x:Name="itemMedical" Height="60" Uid="0">
-                    <StackPanel Orientation="Horizontal" RenderTransformOrigin="-0.061,0.455">
+                    <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Doctor"  Height="25" Width="25" Margin="5 10"/>
                         <TextBlock Text="Quản lí khám bệnh" VerticalAlignment="Center" Margin="20 10"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem x:Name="itemPatient" Height="60" Uid="0">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="HeartPulse"  Height="25" Width="25" Margin="5 10"/>
+                        <TextBlock Text="Quản lí bệnh nhân" VerticalAlignment="Center" Margin="20 10"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem x:Name="itemMedicine" Height="60" Uid="1">

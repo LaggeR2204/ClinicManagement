@@ -24,19 +24,17 @@
                 <ColumnDefinition  />
                 <ColumnDefinition  />
                 <ColumnDefinition  />
-                <ColumnDefinition  />
             </Grid.ColumnDefinitions>
             <!--<StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0">-->
             <Button Command="{Binding MedicalListCommand}" CommandParameter="{Binding ElementName=grdUserControlMedical}" Name="btnMedicalList" Grid.Column="0" Content="Lập danh sách khám bệnh" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#0078D7"/>
             <Button Command="{Binding MedicalResultCommand}" CommandParameter="{Binding ElementName=grdUserControlMedical}" Name="btnMedicalResult" Grid.Column="1" Content="Lập phiếu khám bệnh" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#0078D7"/>
-            <Button Command="{Binding PatientListCommand}" CommandParameter="{Binding ElementName=grdUserControlMedical}" Name="btnPatientList" Grid.Column="2" Content="Tra cứu bệnh nhân" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#0078D7"/>
-            <Button Command="{Binding BillCommand}" CommandParameter="{Binding ElementName=grdUserControlMedical}" Name="btnBill" Grid.Column="3" Content="Lập hóa đơn" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#0078D7"/>
+            <Button Command="{Binding BillCommand}" CommandParameter="{Binding ElementName=grdUserControlMedical}" Name="btnBill" Grid.Column="2" Content="Lập hóa đơn" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#0078D7"/>
             <!--</StackPanel>-->
             <Grid Name="GridCursor" Height="5" Background="#0078D7" VerticalAlignment="Bottom"/>
         </Grid>
 
         <Grid Grid.Row="1" x:Name="grdUserControlMedical">
-            
+            <local:ucMedicalList></local:ucMedicalList>
         </Grid>
         
     </Grid>
