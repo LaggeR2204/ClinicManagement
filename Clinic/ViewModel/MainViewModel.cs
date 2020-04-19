@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
+using System.Windows.Media.Effects;
 
 namespace Clinic.ViewModel
 {
@@ -14,6 +16,9 @@ namespace Clinic.ViewModel
         public bool IsLoaded = false;
         public ICommand LoadedWindowCommand { get; set; }
         public ICommand SelectionChangedListMenu { get; set; }
+        public ICommand ToggleButtonMenuChecked { get; set; }
+        public ICommand ToggleButtonMenuUnchecked { get; set; }
+        public ICommand GotFocusGridMain { get; set; }
         //Moi thu xu li se nam trong nay
         public MainViewModel()
         {
@@ -21,6 +26,21 @@ namespace Clinic.ViewModel
                 IsLoaded = true;
                 LoginWindow loginWindow = new LoginWindow();
                 loginWindow.ShowDialog();
+            });
+            ToggleButtonMenuChecked = new RelayCommand<object>((p) => { return true; }, (p) => {
+                Grid grdMain = p as Grid;
+                grdMain.Effect = new BlurEffect();
+            });
+            ToggleButtonMenuUnchecked = new RelayCommand<object>((p) => { return true; }, (p) => {
+                Grid grdMain = p as Grid;
+                grdMain.Effect = null;
+            });
+            GotFocusGridMain = new RelayCommand<object>((p) => { return true; }, (p) => {
+                ToggleButton toggleMenu = p as ToggleButton;
+                if (toggleMenu.IsChecked == true)
+                {
+                    toggleMenu.IsChecked = false;
+                }
             });
             SelectionChangedListMenu = new RelayCommand<object>((p) => { return true; }, (p) => {
                 ListView listView = p as ListView;

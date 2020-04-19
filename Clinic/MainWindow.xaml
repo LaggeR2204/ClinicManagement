@@ -50,6 +50,11 @@
         <!--Grid Main-->
         <Grid x:Name="grdMain" 
               Margin="50 0 0 0">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="GotFocus">
+                    <i:InvokeCommandAction Command="{Binding GotFocusGridMain}" CommandParameter="{Binding ElementName=toggleMenu}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
                 <RowDefinition/>
@@ -76,7 +81,17 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <ToggleButton VerticalAlignment="Center" HorizontalAlignment="Right" x:Name="toggleMenu"  Foreground="White" Grid.Row="0" Style="{DynamicResource MaterialDesignHamburgerToggleButton}" Margin="6"/>            
+            <ToggleButton VerticalAlignment="Center" HorizontalAlignment="Right" x:Name="toggleMenu"  Foreground="White" Grid.Row="0" Style="{DynamicResource MaterialDesignHamburgerToggleButton}" Margin="6">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Checked">
+                        <i:InvokeCommandAction Command="{Binding ToggleButtonMenuChecked}" CommandParameter="{Binding ElementName=grdUserControl}"/>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="Unchecked">
+                        <i:InvokeCommandAction Command="{Binding ToggleButtonMenuUnchecked}" CommandParameter="{Binding ElementName=grdUserControl}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                
+            </ToggleButton>
 
             <!--<Image x:Name="imgLogo" Grid.Row="1" Source="icons8_clinic_100px.png" Width="100" Height="100" Visibility="Hidden"/>-->
 
