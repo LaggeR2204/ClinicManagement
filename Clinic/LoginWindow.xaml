@@ -18,9 +18,66 @@
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
-        Title="LoginWindow" Height="300" Width="400">
+        Title="LoginWindow" Height="400" Width="600">
     <Grid>
-        <Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" Background="#0078D7">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <materialDesign:PackIcon Kind="LocalHospital" Width="170" Height="160" Foreground="White"/>
+                <TextBlock Text="Clinic Management" Foreground="White" FontSize="17" FontFamily="Century Gothic"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <local:ucControlBar Height="30" Grid.Row="0"/>
+
+            <Grid Grid.Row="1" Width="200" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <TextBlock Margin="0 0 0 20" Foreground="#0078D7" Text="Đăng nhập" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontFamily="Arial Rounded MT Bold"/>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <TextBox
+                        Margin="0 10"
+                        materialDesign:HintAssist.Hint="Tên đăng nhập"
+                        materialDesign:HintAssist.Foreground="#0078D7"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                </Grid>
+                <Grid Grid.Row="2">
+                    <PasswordBox
+                        Margin="0 10"
+                        materialDesign:HintAssist.Hint="Mật khẩu"
+                        materialDesign:HintAssist.Foreground="#0078D7"
+                        Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+                </Grid>
+                <Grid Grid.Row="3">
+                    <Button Margin="0 10"
+                            Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                            Width="110"
+                            Background="#0078D7"
+                            BorderBrush="#0078D7"
+                            Content="Đăng nhập">
+                    </Button>
+                </Grid>
+            </Grid>
+
+        </Grid>
+
+        <!--<Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
@@ -42,19 +99,23 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
+                    <TextBlock Foreground="#0078D7" Text="Đăng nhập" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontFamily="Arial Rounded MT Bold"/>
+                </Grid>
+                <Grid Grid.Row="1">
                     <TextBox
                         materialDesign:HintAssist.Hint="Tên đăng nhập"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 </Grid>
-                <Grid Grid.Row="1">
+                <Grid Grid.Row="2">
                     <PasswordBox
                         x:Name="FloatingPasswordBox"
                         materialDesign:HintAssist.Hint="Mật khẩu"
                         Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
                 </Grid>
-                <Grid Grid.Row="2">
+                <Grid Grid.Row="3">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
@@ -77,6 +138,6 @@
                     </Button>
                 </Grid>
             </Grid>
-        </materialDesign:Card>
+        </materialDesign:Card>-->
     </Grid>
 </Window>
