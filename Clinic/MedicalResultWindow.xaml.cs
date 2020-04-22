@@ -1,5 +1,4 @@
-﻿using Clinic.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,21 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Clinic
 {
     /// <summary>
-    /// Interaction logic for ucMedical.xaml
+    /// Interaction logic for MedicalResultWindow.xaml
     /// </summary>
-    public partial class ucMedical : UserControl
+    public partial class MedicalResultWindow : Window
     {
-        public UcMedicalViewModel Viewmodel { get; set; }
-        public ucMedical()
+        public MedicalResultWindow()
         {
             InitializeComponent();
-            this.DataContext = Viewmodel = new UcMedicalViewModel();
         }
     }
 }

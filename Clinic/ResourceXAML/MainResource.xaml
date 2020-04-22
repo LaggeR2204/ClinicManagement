@@ -3,4 +3,5 @@
                     xmlns:viewmodel="clr-namespace:Clinic.ViewModel"
                     xmlns:local="clr-namespace:Clinic.ResourceXAML">
     <viewmodel:MainViewModel x:Key="MainVM"/>
+    <viewmodel:BillViewModel x:Key="BillVM"/>
 </ResourceDictionary>

@@ -16,36 +16,62 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
+            <!--<RowDefinition Height="auto"/>-->
             <RowDefinition/>
         </Grid.RowDefinitions>
 
         <!--Cac element binding tu selected item-->
         <materialDesign:Card Grid.Row="0" Margin="5">
-            <WrapPanel Margin="0 0 0 10">
-                <TextBox Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Họ và Tên" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+            <Grid>
+                <StackPanel Margin="10 0 0 10" Orientation="Horizontal" >
+                    <!--<TextBox Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Họ và Tên" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 <ComboBox Margin="5 5 15 5" ItemsSource="{Binding Unit}" SelectedItem="{Binding SelectedUnit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Giới tính" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
                 <TextBox Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Năm sinh" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                <TextBox Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Địa chỉ" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                <DatePicker HorizontalAlignment="Right" VerticalAlignment="Center" SelectedDate="{Binding DateInput}" Width="100" Margin="5 5 15 2" materialDesign:HintAssist.Hint="Ngày khám" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-            </WrapPanel>
-        </materialDesign:Card>
+                <TextBox Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Địa chỉ" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />-->
 
-        <materialDesign:Card Grid.Row="1" Margin="5">
+                    <DatePicker HorizontalAlignment="Right" VerticalAlignment="Center" SelectedDate="{Binding DateInput}" Width="100" Margin="5 5 15 2" materialDesign:HintAssist.Hint="Ngày khám" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                    <Button Command="{Binding Command}" Background="#0078D7" BorderBrush="#0078D7" Content="Xem" Margin="5 5 5 -2" Width="100" VerticalAlignment="Center" HorizontalAlignment="Center"></Button>
+                    <Button Command="{Binding Command}" Background="#0078D7" BorderBrush="#0078D7" Content="Xuất file" Margin="5 5 5 -2" Width="100" VerticalAlignment="Center" HorizontalAlignment="Center"></Button>
+
+                </StackPanel>
+                <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                    ToolTip="Thêm bệnh nhân"
+                    Background="#0078D7"
+                    BorderBrush="#0078D7"
+                    HorizontalAlignment="Right"
+                    Width="40"
+                    Height="40"
+                    Margin="0 0 10 0">
+                    <materialDesign:PackIcon Kind="Plus" Height="24" Width="24" />
+                </Button>
+                <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                    ToolTip="Lập phiếu khám bệnh"
+                    Background="#0078D7"
+                    BorderBrush="#0078D7"
+                    HorizontalAlignment="Right"
+                    Width="40"
+                    Height="40"
+                    Margin="0 0 60 0">
+                    <materialDesign:PackIcon Kind="AccountCardDetails" Height="24" Width="24" />
+                </Button>
+            </Grid>
+        </materialDesign:Card>
+        
+
+        <!--<materialDesign:Card Grid.Row="1" Margin="5">
             <WrapPanel>
                 <Button Command="{Binding AddCommand}" Content="Thêm" Margin="5" Width="100"></Button>
                 <Button Command="{Binding EditCommand}" Content="Sửa" Margin="5" Width="100"></Button>
                 <Button Command="{Binding DeleteCommand}" Content="Xóa" Margin="5" Width="100"></Button>
             </WrapPanel>
-        </materialDesign:Card>
+        </materialDesign:Card>-->
 
-        <materialDesign:Card Grid.Row="2" Margin="5" VerticalAlignment="Stretch">
+        <materialDesign:Card Grid.Row="1" Margin="5" VerticalAlignment="Stretch">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <ListView ItemsSource="{Binding List}"
                           SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
                             <GridViewColumn Header="Họ và Tên" DisplayMemberBinding="{Binding DisplayName}"></GridViewColumn>
                             <GridViewColumn Header="Giới tính" DisplayMemberBinding="{Binding Unit.DisplayName}"></GridViewColumn>
                             <GridViewColumn Header="Năm sinh" DisplayMemberBinding="{Binding Price}"></GridViewColumn>

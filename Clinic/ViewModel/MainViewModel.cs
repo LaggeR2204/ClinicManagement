@@ -55,7 +55,7 @@ namespace Clinic.ViewModel
                 {
                     case 0:
                         grdUserControl.Children.Clear();
-                        grdUserControl.Children.Add(new ucMedical());
+                        grdUserControl.Children.Add(new ucMedicalList());
                         break;
                     case 1:
                         grdUserControl.Children.Clear();

@@ -56,16 +56,16 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
             <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Grid x:Name="grdControl" Height="50" Grid.Row="0">
+            <Grid x:Name="grdControl" Height="auto" Grid.Row="0">
                 <local:ucControlBar></local:ucControlBar>
             </Grid>
 
             <Grid x:Name="grdUserControl" Grid.Row="1">
-                <local:ucMedical></local:ucMedical>
+                <local:ucMedicalList></local:ucMedicalList>
             </Grid>
 
         </Grid>

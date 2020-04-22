@@ -69,23 +69,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BillWindow.xaml.cs">
+      <DependentUpon>BillWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ucBill.xaml.cs">
-      <DependentUpon>ucBill.xaml</DependentUpon>
+    <Compile Include="MedicalResultWindow.xaml.cs">
+      <DependentUpon>MedicalResultWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ucControlBar.xaml.cs">
       <DependentUpon>ucControlBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ucMedical.xaml.cs">
-      <DependentUpon>ucMedical.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ucMedicalList.xaml.cs">
       <DependentUpon>ucMedicalList.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ucMedicalResult.xaml.cs">
-      <DependentUpon>ucMedicalResult.xaml</DependentUpon>
     </Compile>
     <Compile Include="ucMedicine.xaml.cs">
       <DependentUpon>ucMedicine.xaml</DependentUpon>
@@ -94,9 +91,13 @@
       <DependentUpon>ucPatientList.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\BillViewModel.cs" />
     <Compile Include="ViewModel\ControlBarViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="ViewModel\UcMedicalViewModel.cs" />
+    <Page Include="BillWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -113,11 +114,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ResourceXAML\MainResource.xaml">
+    <Page Include="MedicalResultWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ucBill.xaml">
+    <Page Include="ResourceXAML\MainResource.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -125,15 +126,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ucMedical.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="ucMedicalList.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ucMedicalResult.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

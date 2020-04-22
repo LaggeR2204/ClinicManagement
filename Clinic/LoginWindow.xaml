@@ -38,7 +38,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <local:ucControlBar Height="30" Grid.Row="0"/>
+            <local:ucControlBar Grid.Row="0"/>
 
             <Grid Grid.Row="1" Width="200" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Grid.RowDefinitions>
