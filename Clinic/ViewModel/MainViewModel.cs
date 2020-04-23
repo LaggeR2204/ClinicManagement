@@ -50,20 +50,27 @@ namespace Clinic.ViewModel
                 var grid = w.FindName("grdUserControl");
                 Grid grdUserControl = grid as Grid;
 
+                var uc = w.FindName("ucControlBar");
+                ucControlBar ucControlBar = uc as ucControlBar;
+
+                //listView.SelectedItem = listView.Items.IndexOf(0);
                 int index = listView.SelectedIndex;
                 switch (index)
                 {
                     case 0:
                         grdUserControl.Children.Clear();
                         grdUserControl.Children.Add(new ucMedicalList());
+                        ucControlBar.Tag = "Lập danh sách khám bệnh";
                         break;
                     case 1:
                         grdUserControl.Children.Clear();
                         grdUserControl.Children.Add(new ucPatientList());
+                        ucControlBar.Tag = "Quản lí bệnh nhân";
                         break;
                     case 2:
                         grdUserControl.Children.Clear();
                         grdUserControl.Children.Add(new ucMedicine());
+                        ucControlBar.Tag = "Quản lí thuốc";
                         break;
                     case 3:
                         break;

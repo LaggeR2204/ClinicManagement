@@ -27,12 +27,12 @@
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="grdMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="50"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="200"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="250"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="CloseMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="grdMenu">
-                <EasingDoubleKeyFrame KeyTime="0" Value="200"/>
+                <EasingDoubleKeyFrame KeyTime="0" Value="250"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="50"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
@@ -61,7 +61,7 @@
             </Grid.RowDefinitions>
 
             <Grid x:Name="grdControl" Height="auto" Grid.Row="0">
-                <local:ucControlBar></local:ucControlBar>
+                <local:ucControlBar x:Name="ucControlBar" Tag="Lập danh sách khám bệnh"></local:ucControlBar>
             </Grid>
 
             <Grid x:Name="grdUserControl" Grid.Row="1">
@@ -96,7 +96,7 @@
             <!--<Image x:Name="imgLogo" Grid.Row="1" Source="icons8_clinic_100px.png" Width="100" Height="100" Visibility="Hidden"/>-->
 
             
-            <ListView x:Name="ListViewMenu" Grid.Row="2" Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView SelectedIndex="0" x:Name="ListViewMenu" Grid.Row="2" Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectionChanged">
                         <i:InvokeCommandAction Command="{Binding SelectionChangedListMenu}"
@@ -107,7 +107,7 @@
                 <ListViewItem x:Name="itemMedical" Height="60" Uid="0">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Doctor"  Height="25" Width="25" Margin="5 10"/>
-                        <TextBlock Text="Quản lí khám bệnh" VerticalAlignment="Center" Margin="20 10"/>
+                        <TextBlock Text="Lập danh sách khám bệnh" VerticalAlignment="Center" Margin="20 10"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem x:Name="itemPatient" Height="60" Uid="0">
