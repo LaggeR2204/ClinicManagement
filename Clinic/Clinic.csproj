@@ -90,6 +90,9 @@
     <Compile Include="ucMedicine.xaml.cs">
       <DependentUpon>ucMedicine.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ucMedicineReport.xaml.cs">
+      <DependentUpon>ucMedicineReport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ucPatientList.xaml.cs">
       <DependentUpon>ucPatientList.xaml</DependentUpon>
     </Compile>
@@ -141,6 +144,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ucMedicine.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ucMedicineReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

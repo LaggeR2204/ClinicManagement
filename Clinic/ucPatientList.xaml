@@ -16,27 +16,44 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
         <!--Cac element binding tu selected item-->
         <materialDesign:Card Grid.Row="0" Margin="5">
-            <WrapPanel Margin="0 0 0 10">
-                <TextBox Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Họ và Tên" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                <DatePicker VerticalAlignment="Center" SelectedDate="{Binding DateInput}" Width="100" Margin="5 5 15 2" materialDesign:HintAssist.Hint="Ngày khám" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-                <ComboBox Margin="5 5 15 5" ItemsSource="{Binding Unit}" SelectedItem="{Binding SelectedUnit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Loại bệnh" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
-                <TextBox Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Triệu chứng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-            </WrapPanel>
-        </materialDesign:Card>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
 
-        <materialDesign:Card Grid.Row="1" Margin="5">
-            <WrapPanel>
-                <Button Command="{Binding SearchCommand}" Content="Tìm kiếm" Margin="5" Width="100" Background="#0078D7" BorderBrush="#0078D7"></Button>
-                <Button Command="{Binding AddCommand}" Content="Thêm" Margin="5" Width="100" Background="#0078D7" BorderBrush="#0078D7"></Button>
-                <Button Command="{Binding EditCommand}" Content="Sửa" Margin="5" Width="100" Background="#0078D7" BorderBrush="#0078D7"></Button>
-                <Button Command="{Binding DeleteCommand}" Content="Xóa" Margin="5" Width="100" Background="#0078D7" BorderBrush="#0078D7"></Button>
-            </WrapPanel>
+                <TextBlock Grid.Row="0" Text="Tìm kiếm" FontWeight="Bold" FontSize="20" Margin="15 5 5 5"/>
+
+                <WrapPanel Grid.Row="1" Margin="0 0 0 10">
+                    <materialDesign:PackIcon Kind="FilterOutline" Height="24" Width="24" VerticalAlignment="Center" Margin="5 5 0 5" Foreground="Gray"/>
+                    <ComboBox Margin="5">
+                        <ComboBoxItem IsSelected="True">
+                            Họ và tên
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            Địa chỉ
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            Số điện thoại
+                        </ComboBoxItem>
+                    </ComboBox>
+                    <TextBox Margin="5 5 15 3" materialDesign:HintAssist.Hint="Nội dung tìm kiếm" VerticalAlignment="Center" MinWidth="100"/>
+                    <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                            ToolTip="Tìm kiếm"
+                            Background="#0078D7"
+                            BorderBrush="#0078D7"
+                            Width="40"
+                            Height="40"
+                            Margin="5 5 5 0">
+                        <materialDesign:PackIcon Kind="Search" Height="24" Width="24" />
+                    </Button>
+                </WrapPanel>
+            </Grid>
         </materialDesign:Card>
 
         <materialDesign:Card Grid.Row="2" Margin="5" VerticalAlignment="Stretch">
@@ -47,9 +64,10 @@
                         <GridView>
                             <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
                             <GridViewColumn Header="Họ và Tên" DisplayMemberBinding="{Binding DisplayName}"></GridViewColumn>
-                            <GridViewColumn Header="Ngày khám" DisplayMemberBinding="{Binding Unit.DisplayName}"></GridViewColumn>
-                            <GridViewColumn Header="Loại bệnh" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
-                            <GridViewColumn Header="Triệu chứng" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
+                            <GridViewColumn Header="Giới tính" DisplayMemberBinding="{Binding Unit.DisplayName}"></GridViewColumn>
+                            <GridViewColumn Header="Ngày sinh" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
+                            <GridViewColumn Header="Địa chỉ" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
+                            <GridViewColumn Header="Số điện thoại" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
                         </GridView>
                     </ListView.View>
                 </ListView>
