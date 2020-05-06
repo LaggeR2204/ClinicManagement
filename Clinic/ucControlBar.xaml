@@ -13,6 +13,10 @@
             <i:InvokeCommandAction Command="{Binding MouseLeftButtonDownWindowCommand}" 
                                    CommandParameter="{Binding ElementName=uc_ControlBar}"/>
         </i:EventTrigger>
+        <i:EventTrigger EventName="MouseDoubleClick">
+            <i:InvokeCommandAction Command="{Binding MaximizeWindowCommand}" 
+                                   CommandParameter="{Binding ElementName=uc_ControlBar}"/>
+        </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid Background="Transparent">
         <TextBlock Text="{Binding Tag,ElementName=uc_ControlBar}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" Foreground="#0078D7"/>

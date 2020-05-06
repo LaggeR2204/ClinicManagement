@@ -73,6 +73,9 @@ namespace Clinic.ViewModel
                         ucControlBar.Tag = "Quản lí thuốc";
                         break;
                     case 3:
+                        grdUserControl.Children.Clear();
+                        grdUserControl.Children.Add(new ucRevenueReport());
+                        ucControlBar.Tag = "Báo cáo doanh thu";
                         break;
                     case 4:
                         break;

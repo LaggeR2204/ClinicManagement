@@ -78,6 +78,9 @@
     <Compile Include="MedicalResultWindow.xaml.cs">
       <DependentUpon>MedicalResultWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MedicationEntryFormWindow.xaml.cs">
+      <DependentUpon>MedicationEntryFormWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ucControlBar.xaml.cs">
       <DependentUpon>ucControlBar.xaml</DependentUpon>
     </Compile>
@@ -89,6 +92,9 @@
     </Compile>
     <Compile Include="ucPatientList.xaml.cs">
       <DependentUpon>ucPatientList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ucRevenueReport.xaml.cs">
+      <DependentUpon>ucRevenueReport.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\BillViewModel.cs" />
@@ -118,6 +124,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MedicationEntryFormWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ResourceXAML\MainResource.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -135,6 +145,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ucPatientList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ucRevenueReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

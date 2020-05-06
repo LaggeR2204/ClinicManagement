@@ -124,8 +124,8 @@
                 </ListViewItem>
                 <ListViewItem x:Name="itemReport" Height="60" Uid="2">
                     <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Ticket" Height="25" Width="25" Margin="5 10"/>
-                        <TextBlock Text="Báo cáo" VerticalAlignment="Center"  Margin="20 10"/>
+                        <materialDesign:PackIcon Kind="MoneyUsd" Height="25" Width="25" Margin="5 10"/>
+                        <TextBlock Text="Doanh thu" VerticalAlignment="Center"  Margin="20 10"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem x:Name="itemAdmin" Height="60" Uid="3">

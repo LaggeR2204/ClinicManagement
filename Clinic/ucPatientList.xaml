@@ -26,16 +26,16 @@
                 <TextBox Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Họ và Tên" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 <DatePicker VerticalAlignment="Center" SelectedDate="{Binding DateInput}" Width="100" Margin="5 5 15 2" materialDesign:HintAssist.Hint="Ngày khám" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                 <ComboBox Margin="5 5 15 5" ItemsSource="{Binding Unit}" SelectedItem="{Binding SelectedUnit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Loại bệnh" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
-                <ComboBox Margin="5 5 15 5" ItemsSource="{Binding Suplier}" SelectedItem="{Binding SelectedSuplier, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Triệu chứng" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
+                <TextBox Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Triệu chứng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
             </WrapPanel>
         </materialDesign:Card>
 
         <materialDesign:Card Grid.Row="1" Margin="5">
             <WrapPanel>
-                <Button Command="{Binding SearchCommand}" Content="Tìm kiếm" Margin="5" Width="100"></Button>
-                <Button Command="{Binding AddCommand}" Content="Thêm" Margin="5" Width="100"></Button>
-                <Button Command="{Binding EditCommand}" Content="Sửa" Margin="5" Width="100"></Button>
-                <Button Command="{Binding DeleteCommand}" Content="Xóa" Margin="5" Width="100"></Button>
+                <Button Command="{Binding SearchCommand}" Content="Tìm kiếm" Margin="5" Width="100" Background="#0078D7" BorderBrush="#0078D7"></Button>
+                <Button Command="{Binding AddCommand}" Content="Thêm" Margin="5" Width="100" Background="#0078D7" BorderBrush="#0078D7"></Button>
+                <Button Command="{Binding EditCommand}" Content="Sửa" Margin="5" Width="100" Background="#0078D7" BorderBrush="#0078D7"></Button>
+                <Button Command="{Binding DeleteCommand}" Content="Xóa" Margin="5" Width="100" Background="#0078D7" BorderBrush="#0078D7"></Button>
             </WrapPanel>
         </materialDesign:Card>
 
