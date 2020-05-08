@@ -30,11 +30,44 @@
                 <TextBox Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Địa chỉ" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />-->
 
                     <DatePicker HorizontalAlignment="Right" VerticalAlignment="Center" SelectedDate="{Binding DateInput}" Width="100" Margin="5 5 15 2" materialDesign:HintAssist.Hint="Ngày khám" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-                    <Button Command="{Binding Command}" Background="#0078D7" BorderBrush="#0078D7" Content="Xem" Margin="5 5 5 -2" Width="100" VerticalAlignment="Center" HorizontalAlignment="Center"></Button>
-                    <Button Command="{Binding Command}" Background="#0078D7" BorderBrush="#0078D7" Content="Xuất file" Margin="5 5 5 -2" Width="100" VerticalAlignment="Center" HorizontalAlignment="Center"></Button>
+                    <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                    ToolTip="Xem"
+                    Background="#0078D7"
+                    BorderBrush="#0078D7"
+                    HorizontalAlignment="Right"
+                    Width="40"
+                    Height="40"
+                    Margin="5 5 5 -5">
+                        <materialDesign:PackIcon Kind="Search" Height="24" Width="24" />
+                    </Button>
+                    
+                    <!--<Button Command="{Binding Command}" Background="#0078D7" BorderBrush="#0078D7" Content="Xem" Margin="5 5 5 -2" Width="100" VerticalAlignment="Center" HorizontalAlignment="Center"></Button>
+                    <Button Command="{Binding Command}" Background="#0078D7" BorderBrush="#0078D7" Content="Xuất file" Margin="5 5 5 -2" Width="100" VerticalAlignment="Center" HorizontalAlignment="Center"></Button>-->
 
                 </StackPanel>
-                <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                <materialDesign:Chip HorizontalAlignment="Right"
+                                     Content="Thêm bệnh nhân"
+                                     Foreground="White"
+                                     IconBackground="{DynamicResource PrimaryHueDarkBrush}"
+                                     IconForeground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+                                     Background="Gray"
+                                     Margin="0 0 5 0">
+                    <materialDesign:Chip.Icon>
+                        <materialDesign:PackIcon Kind="Plus"></materialDesign:PackIcon>
+                    </materialDesign:Chip.Icon>
+                </materialDesign:Chip>
+                <materialDesign:Chip HorizontalAlignment="Right"
+                                     Content="Lập phiếu khám"
+                                     Foreground="White"
+                                     IconBackground="{DynamicResource PrimaryHueDarkBrush}"
+                                     IconForeground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+                                     Background="Gray"
+                                     Margin="0 0 160 0">
+                    <materialDesign:Chip.Icon>
+                        <materialDesign:PackIcon Kind="AccountCardDetails"></materialDesign:PackIcon>
+                    </materialDesign:Chip.Icon>
+                </materialDesign:Chip>
+                <!--<Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
                     ToolTip="Thêm bệnh nhân"
                     Background="#0078D7"
                     BorderBrush="#0078D7"
@@ -43,8 +76,8 @@
                     Height="40"
                     Margin="0 0 10 0">
                     <materialDesign:PackIcon Kind="Plus" Height="24" Width="24" />
-                </Button>
-                <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                </Button>-->
+                <!--<Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
                     ToolTip="Lập phiếu khám bệnh"
                     Background="#0078D7"
                     BorderBrush="#0078D7"
@@ -53,7 +86,7 @@
                     Height="40"
                     Margin="0 0 60 0">
                     <materialDesign:PackIcon Kind="AccountCardDetails" Height="24" Width="24" />
-                </Button>
+                </Button>-->
             </Grid>
         </materialDesign:Card>
         
