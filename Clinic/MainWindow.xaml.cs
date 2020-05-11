@@ -21,9 +21,11 @@ namespace Clinic
     /// </summary>
     public partial class MainWindow : Window
     {
+        BUS_Clinic.BUS_BenhNhan busBenhnhan = new BUS_Clinic.BUS_BenhNhan();
         public MainWindow()
         {
             InitializeComponent();
+            busBenhnhan.ThemBenhNhan(new DTO_Clinic.DTO_BenhNhan() {}); ;
         }
     }
 }

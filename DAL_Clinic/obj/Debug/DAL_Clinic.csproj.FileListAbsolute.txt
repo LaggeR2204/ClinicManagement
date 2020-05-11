@@ -1,0 +1,13 @@
+G:\Git\WPF\PhongMachTu\NMCNPM\DAL_Clinic\bin\Debug\DAL_Clinic.dll.config
+G:\Git\WPF\PhongMachTu\NMCNPM\DAL_Clinic\bin\Debug\DAL_Clinic.dll
+G:\Git\WPF\PhongMachTu\NMCNPM\DAL_Clinic\bin\Debug\DAL_Clinic.pdb
+G:\Git\WPF\PhongMachTu\NMCNPM\DAL_Clinic\bin\Debug\DTO_Clinic.dll
+G:\Git\WPF\PhongMachTu\NMCNPM\DAL_Clinic\bin\Debug\EntityFramework.dll
+G:\Git\WPF\PhongMachTu\NMCNPM\DAL_Clinic\bin\Debug\EntityFramework.SqlServer.dll
+G:\Git\WPF\PhongMachTu\NMCNPM\DAL_Clinic\bin\Debug\DTO_Clinic.pdb
+G:\Git\WPF\PhongMachTu\NMCNPM\DAL_Clinic\bin\Debug\EntityFramework.xml
+G:\Git\WPF\PhongMachTu\NMCNPM\DAL_Clinic\bin\Debug\EntityFramework.SqlServer.xml
+G:\Git\WPF\PhongMachTu\NMCNPM\DAL_Clinic\obj\Debug\DAL_Clinic.csprojAssemblyReference.cache
+G:\Git\WPF\PhongMachTu\NMCNPM\DAL_Clinic\obj\Debug\DAL_Clinic.csproj.CopyComplete
+G:\Git\WPF\PhongMachTu\NMCNPM\DAL_Clinic\obj\Debug\DAL_Clinic.dll
+G:\Git\WPF\PhongMachTu\NMCNPM\DAL_Clinic\obj\Debug\DAL_Clinic.pdb

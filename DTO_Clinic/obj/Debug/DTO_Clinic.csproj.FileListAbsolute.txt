@@ -1,0 +1,5 @@
+G:\Git\WPF\PhongMachTu\NMCNPM\DTO_Clinic\bin\Debug\DTO_Clinic.dll
+G:\Git\WPF\PhongMachTu\NMCNPM\DTO_Clinic\bin\Debug\DTO_Clinic.pdb
+G:\Git\WPF\PhongMachTu\NMCNPM\DTO_Clinic\obj\Debug\DTO_Clinic.csprojAssemblyReference.cache
+G:\Git\WPF\PhongMachTu\NMCNPM\DTO_Clinic\obj\Debug\DTO_Clinic.dll
+G:\Git\WPF\PhongMachTu\NMCNPM\DTO_Clinic\obj\Debug\DTO_Clinic.pdb
