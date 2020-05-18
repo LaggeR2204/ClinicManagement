@@ -8,7 +8,7 @@ namespace DTO_Clinic
 {
     public class DTO_BenhNhan : BaseModel
     {
-        public int DTO_BenhNhanId { get; set; }
+        public int Id { get; set; }
         public string TenBenhNhan
         {
             get => _tenBenhNhan;
@@ -54,10 +54,14 @@ namespace DTO_Clinic
                 OnPropertyChanged();
             }
         }
+        public virtual ICollection<DTO_PhieuKhamBenh> DSPhieuKhamBenh { get; set; }
+        public bool IsDeleted { get => _isDeleted; set { _isDeleted = value; OnPropertyChanged(); } }
+
         private string _tenBenhNhan;
         private DateTime _ngaySinh;
         private bool _gioiTinh;
         private string _diaChi;
         private string _SDT;
+        private bool _isDeleted;
     }
 }

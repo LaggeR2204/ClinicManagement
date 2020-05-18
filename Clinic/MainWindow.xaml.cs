@@ -1,4 +1,5 @@
-﻿using MaterialDesignThemes.Wpf;
+﻿using BUS_Clinic.BUS;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,19 +14,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
 namespace Clinic
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
-        BUS_Clinic.BUS_BenhNhan busBenhnhan = new BUS_Clinic.BUS_BenhNhan();
+    {     
+        
         public MainWindow()
         {
             InitializeComponent();
-            busBenhnhan.ThemBenhNhan(new DTO_Clinic.DTO_BenhNhan() {}); ;
+            BUSManager.BenhNhanBUS.AddBenhNhan(new DTO_Clinic.DTO_BenhNhan() { TenBenhNhan="minh duc", GioiTinh=true, SoDienThoai="09239010", NgaySinh=DateTime.Now});
         }
     }
 }

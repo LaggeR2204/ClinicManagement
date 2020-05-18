@@ -42,15 +42,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseModel.cs" />
+    <Compile Include="DTO_BCDoanhThu.cs" />
+    <Compile Include="DTO_BCSudungThuoc.cs" />
     <Compile Include="DTO_Benh.cs" />
     <Compile Include="DTO_BenhNhan.cs" />
     <Compile Include="DTO_CachDung.cs" />
+    <Compile Include="DTO_CTBaoCaoDoanhThu.cs" />
     <Compile Include="DTO_CTPhieuKhamBenh.cs" />
     <Compile Include="DTO_CTPhieuNhapThuoc.cs" />
     <Compile Include="DTO_DonVi.cs" />
     <Compile Include="DTO_HoaDon.cs" />
     <Compile Include="DTO_PhieuKhamBenh.cs" />
     <Compile Include="DTO_PhieuNhapThuoc.cs" />
+    <Compile Include="DTO_ThamSo.cs" />
     <Compile Include="DTO_Thuoc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
