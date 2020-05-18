@@ -11,12 +11,14 @@ namespace DAL_Clinic.DAL
     {
         public DAL_BenhNhan()
         {
-
         }
         public void AddBenhNhan(DTO_BenhNhan bn)
         {
-            SQLServerDBContext.Instant.BenhNhan.Add(bn);
-            SaveChanges();
+            using (var context = new SQLServerDBContext())
+            {
+                context.BenhNhan.Add(bn);
+                context.SaveChanges();
+            }
         }
     }
 }

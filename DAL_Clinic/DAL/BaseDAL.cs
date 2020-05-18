@@ -8,9 +8,6 @@ namespace DAL_Clinic.DAL
 {
     public abstract class BaseDAL
     {
-        protected virtual void SaveChanges()
-        {
-            SQLServerDBContext.Instant.SaveChanges();
-        }
+       
     }
 }

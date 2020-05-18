@@ -10,18 +10,7 @@ using System.Threading.Tasks;
 namespace DAL_Clinic
 {
     internal class SQLServerDBContext : DbContext
-    {
-        private static SQLServerDBContext _instant;
-        public static SQLServerDBContext Instant
-        {
-            get
-            {
-                if (_instant != null)
-                    return _instant;
-                return new SQLServerDBContext();
-            }
-            private set => _instant = value;
-        }
+    {       
         public SQLServerDBContext() : base("name=connectionStringPMT")
         {
             var initializer = new MigrateDatabaseToLatestVersion<SQLServerDBContext, Migrations.Configuration>();
