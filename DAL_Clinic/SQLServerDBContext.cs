@@ -24,7 +24,8 @@ namespace DAL_Clinic
         }
         public SQLServerDBContext() : base("name=connectionStringPMT")
         {
-
+            var initializer = new MigrateDatabaseToLatestVersion<SQLServerDBContext, Migrations.Configuration>();
+            Database.SetInitializer(initializer);
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

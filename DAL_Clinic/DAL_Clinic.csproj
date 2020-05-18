@@ -68,6 +68,7 @@
     <Compile Include="DAL\BaseDAL.cs" />
     <Compile Include="DAL\DALManager.cs" />
     <Compile Include="DAL\DAL_BenhNhan.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLServerDBContext.cs" />
   </ItemGroup>
@@ -81,7 +82,6 @@
       <Name>DTO_Clinic</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
