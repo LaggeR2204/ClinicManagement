@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace DAL_Clinic
 {
     internal class SQLServerDBContext : DbContext
-    {       
+    {
         public SQLServerDBContext() : base("name=connectionStringPMT")
         {
             var initializer = new MigrateDatabaseToLatestVersion<SQLServerDBContext, Migrations.Configuration>();
@@ -31,7 +31,7 @@ namespace DAL_Clinic
             modelBuilder.Configurations.Add(new BCDoanhThuMap());
             modelBuilder.Configurations.Add(new CT_BCDoanhThuMap());
             modelBuilder.Configurations.Add(new BCSuDungThuocMap());
-            modelBuilder.Configurations.Add(new ThamSoMap()); 
+            modelBuilder.Configurations.Add(new ThamSoMap());
             modelBuilder.Configurations.Add(new HoaDonMap());
         }
         public DbSet<DTO_BenhNhan> BenhNhan { get; set; }

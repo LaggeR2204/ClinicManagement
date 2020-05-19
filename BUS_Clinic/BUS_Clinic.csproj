@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8319B571-FDC8-45AD-8D01-BBF6FC85ADA1}</ProjectGuid>
+    <ProjectGuid>{54558EF9-F801-4E31-9492-92640A5B2523}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BUS_Clinic</RootNamespace>
@@ -48,11 +48,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL_Clinic\DAL_Clinic.csproj">
-      <Project>{f084402a-48b4-46de-96eb-1c0d0c369937}</Project>
+      <Project>{43de7b82-90a4-4255-8297-f0cf12aa7877}</Project>
       <Name>DAL_Clinic</Name>
     </ProjectReference>
     <ProjectReference Include="..\DTO_Clinic\DTO_Clinic.csproj">
-      <Project>{e94ab28e-7aa2-47af-be02-75077167ecf8}</Project>
+      <Project>{7f31ce30-d4e2-4edb-ad1c-783a41fbe80b}</Project>
       <Name>DTO_Clinic</Name>
     </ProjectReference>
   </ItemGroup>

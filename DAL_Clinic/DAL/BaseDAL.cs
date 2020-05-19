@@ -8,6 +8,6 @@ namespace DAL_Clinic.DAL
 {
     public abstract class BaseDAL
     {
-       
+
     }
 }
