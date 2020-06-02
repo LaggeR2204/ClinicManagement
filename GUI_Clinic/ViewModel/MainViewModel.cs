@@ -18,9 +18,9 @@ namespace GUI_Clinic.ViewModel
         public bool IsLoaded = false;
         public ICommand LoadedWindowCommand { get; set; }
         public ICommand SelectionChangedListMenu { get; set; }
-        public ICommand ToggleButtonMenuChecked { get; set; }
-        public ICommand ToggleButtonMenuUnchecked { get; set; }
-        public ICommand GotFocusGridMain { get; set; }
+        //public ICommand ToggleButtonMenuChecked { get; set; }
+        //public ICommand ToggleButtonMenuUnchecked { get; set; }
+        //public ICommand GotFocusGridMain { get; set; }
         //Moi thu xu li se nam trong nay
         public MainViewModel()
         {
@@ -29,21 +29,21 @@ namespace GUI_Clinic.ViewModel
                 //LoginWindow loginWindow = new LoginWindow();
                 //loginWindow.ShowDialog();
             });
-            ToggleButtonMenuChecked = new RelayCommand<object>((p) => { return true; }, (p) => {
-                Grid grdMain = p as Grid;
-                grdMain.Effect = new BlurEffect();
-            });
-            ToggleButtonMenuUnchecked = new RelayCommand<object>((p) => { return true; }, (p) => {
-                Grid grdMain = p as Grid;
-                grdMain.Effect = null;
-            });
-            GotFocusGridMain = new RelayCommand<object>((p) => { return true; }, (p) => {
-                ToggleButton toggleMenu = p as ToggleButton;
-                if (toggleMenu.IsChecked == true)
-                {
-                    toggleMenu.IsChecked = false;
-                }
-            });
+            //ToggleButtonMenuChecked = new RelayCommand<object>((p) => { return true; }, (p) => {
+            //    Grid grdMain = p as Grid;
+            //    grdMain.Effect = new BlurEffect();
+            //});
+            //ToggleButtonMenuUnchecked = new RelayCommand<object>((p) => { return true; }, (p) => {
+            //    Grid grdMain = p as Grid;
+            //    grdMain.Effect = null;
+            //});
+            //GotFocusGridMain = new RelayCommand<object>((p) => { return true; }, (p) => {
+            //    ToggleButton toggleMenu = p as ToggleButton;
+            //    if (toggleMenu.IsChecked == true)
+            //    {
+            //        toggleMenu.IsChecked = false;
+            //    }
+            //});
             SelectionChangedListMenu = new RelayCommand<object>((p) => { return true; }, (p) => {
                 ListView listView = p as ListView;
 
@@ -55,6 +55,9 @@ namespace GUI_Clinic.ViewModel
                 var uc = w.FindName("ucControlBar");
                 ucControlBar ucControlBar = uc as ucControlBar;
 
+                var grd = w.FindName("SelectedButton");
+                Grid grdSelectedButton = grd as Grid;
+
                 //listView.SelectedItem = listView.Items.IndexOf(0);
                 int index = listView.SelectedIndex;
                 switch (index)
@@ -63,21 +66,25 @@ namespace GUI_Clinic.ViewModel
                         grdUserControl.Children.Clear();
                         grdUserControl.Children.Add(new ucMedicalList());
                         ucControlBar.Tag = "Lập danh sách khám bệnh";
+                        grdSelectedButton.Margin = new Thickness(0, 0, 0, 0);
                         break;
                     case 1:
                         grdUserControl.Children.Clear();
                         grdUserControl.Children.Add(new ucPatientList());
                         ucControlBar.Tag = "Quản lí bệnh nhân";
+                        grdSelectedButton.Margin = new Thickness(0, 60, 0, 0);
                         break;
                     case 2:
                         grdUserControl.Children.Clear();
                         grdUserControl.Children.Add(new ucMedicine());
                         ucControlBar.Tag = "Quản lí thuốc";
+                        grdSelectedButton.Margin = new Thickness(0, 120, 0, 0);
                         break;
                     case 3:
                         grdUserControl.Children.Clear();
                         grdUserControl.Children.Add(new ucRevenueReport());
                         ucControlBar.Tag = "Báo cáo doanh thu";
+                        grdSelectedButton.Margin = new Thickness(0, 180, 0, 0);
                         break;
                     case 4:
                         break;

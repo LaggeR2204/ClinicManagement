@@ -11,6 +11,7 @@
              TextElement.FontSize="13"
              TextOptions.TextFormattingMode="Ideal"
              TextOptions.TextRenderingMode="Auto"
+             DataContext="{StaticResource MedicalListVM}"
              Background="{DynamicResource MaterialDesignPaper}"
              FontFamily="{DynamicResource MaterialDesignFont}">
     <Grid>
@@ -45,7 +46,8 @@
                     <Button Command="{Binding Command}" Background="#0078D7" BorderBrush="#0078D7" Content="Xuất file" Margin="5 5 5 -2" Width="100" VerticalAlignment="Center" HorizontalAlignment="Center"></Button>-->
 
                 </StackPanel>
-                <materialDesign:Chip HorizontalAlignment="Right"
+                <materialDesign:Chip Command="{Binding AddPatientCommand}"
+                                     HorizontalAlignment="Right"
                                      Content="Thêm bệnh nhân"
                                      Foreground="White"
                                      IconBackground="{DynamicResource PrimaryHueDarkBrush}"

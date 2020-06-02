@@ -27,35 +27,39 @@
     <Window.Resources>
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="grdMenu">
-                <EasingDoubleKeyFrame KeyTime="0" Value="50"/>
+                <EasingDoubleKeyFrame KeyTime="0" Value="53"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="250"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="CloseMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="grdMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="250"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="50"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="53"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
     <Window.Triggers>
-        <EventTrigger RoutedEvent="ToggleButton.Checked" SourceName="toggleMenu">
+        <EventTrigger RoutedEvent="ToggleButton.Checked" SourceName="ToggleButtonMenu">
             <BeginStoryboard Storyboard="{StaticResource OpenMenu}"/>
         </EventTrigger>
-        <EventTrigger RoutedEvent="ToggleButton.Unchecked" SourceName="toggleMenu">
+        <EventTrigger RoutedEvent="ToggleButton.Unchecked" SourceName="ToggleButtonMenu">
             <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
         </EventTrigger>
     </Window.Triggers>
 
     <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <!--Grid Main-->
-        <Grid x:Name="grdMain" 
-              Margin="50 0 0 0">
-            <i:Interaction.Triggers>
+        <Grid Grid.Column="1" x:Name="grdMain">
+            <!--<i:Interaction.Triggers>
                 <i:EventTrigger EventName="GotFocus">
                     <i:InvokeCommandAction Command="{Binding GotFocusGridMain}" CommandParameter="{Binding ElementName=toggleMenu}"/>
                 </i:EventTrigger>
-            </i:Interaction.Triggers>
+            </i:Interaction.Triggers>-->
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition/>
@@ -75,67 +79,67 @@
         <Grid x:Name="grdMenu"
               Background="#0078D7"
               HorizontalAlignment="Left"
-              Width="50">
+              Width="53"
+              Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="150"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <ToggleButton VerticalAlignment="Center" HorizontalAlignment="Right" x:Name="toggleMenu"  Foreground="White" Grid.Row="0" Style="{DynamicResource MaterialDesignHamburgerToggleButton}" Margin="6">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Checked">
-                        <i:InvokeCommandAction Command="{Binding ToggleButtonMenuChecked}" CommandParameter="{Binding ElementName=grdUserControl}"/>
-                    </i:EventTrigger>
-                    <i:EventTrigger EventName="Unchecked">
-                        <i:InvokeCommandAction Command="{Binding ToggleButtonMenuUnchecked}" CommandParameter="{Binding ElementName=grdUserControl}"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-
+            <ToggleButton Width="30" Height="30" Margin="12 10" VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="ToggleButtonMenu"  Foreground="White" Style="{DynamicResource MaterialDesignHamburgerToggleButton}" Grid.Row="0">
             </ToggleButton>
 
             <!--<Image x:Name="imgLogo" Grid.Row="1" Source="icons8_clinic_100px.png" Width="100" Height="100" Visibility="Hidden"/>-->
 
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
 
-            <ListView SelectedIndex="0" x:Name="ListViewMenu" Grid.Row="2" Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="SelectionChanged">
-                        <i:InvokeCommandAction Command="{Binding SelectionChangedListMenu}"
+                <Grid x:Name="SelectedButton" Grid.Column="0" Height="60" VerticalAlignment="Top" Background="White"/>
+
+                <ListView SelectedIndex="0" x:Name="ListViewMenu" Grid.Column="1" Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding SelectionChangedListMenu}"
                                                CommandParameter="{Binding ElementName=ListViewMenu}">
-                        </i:InvokeCommandAction>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-                <ListViewItem x:Name="itemMedical" Height="60" Uid="0">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Doctor"  Height="25" Width="25" Margin="5 10"/>
-                        <TextBlock Text="Lập danh sách khám bệnh" VerticalAlignment="Center" Margin="20 10"/>
-                    </StackPanel>
-                </ListViewItem>
-                <ListViewItem x:Name="itemPatient" Height="60" Uid="0">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="HeartPulse"  Height="25" Width="25" Margin="5 10"/>
-                        <TextBlock Text="Quản lí bệnh nhân" VerticalAlignment="Center" Margin="20 10"/>
-                    </StackPanel>
-                </ListViewItem>
-                <ListViewItem x:Name="itemMedicine" Height="60" Uid="1">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Medicine" Height="25" Width="25" Margin="5 10"/>
-                        <TextBlock Text="Quản lí thuốc" VerticalAlignment="Center" Margin="20 10"/>
-                    </StackPanel>
-                </ListViewItem>
-                <ListViewItem x:Name="itemReport" Height="60" Uid="2">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="MoneyUsd" Height="25" Width="25" Margin="5 10"/>
-                        <TextBlock Text="Doanh thu" VerticalAlignment="Center"  Margin="20 10"/>
-                    </StackPanel>
-                </ListViewItem>
-                <ListViewItem x:Name="itemAdmin" Height="60" Uid="3">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Person" Height="25" Width="25" Margin="5 10"/>
-                        <TextBlock Text="Admin" VerticalAlignment="Center"  Margin="20 10"/>
-                    </StackPanel>
-                </ListViewItem>
-            </ListView>
+                            </i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <ListViewItem x:Name="itemMedical" Height="60" Uid="0">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Doctor"  Height="25" Width="25" Margin="5 10"/>
+                            <TextBlock Text="Lập danh sách khám bệnh" VerticalAlignment="Center" Margin="7 10" FontFamily="Corbel" FontWeight="Bold" FontSize="16"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="itemPatient" Height="60" Uid="0">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="HeartPulse"  Height="25" Width="25" Margin="5 10"/>
+                            <TextBlock Text="Quản lí bệnh nhân" VerticalAlignment="Center" Margin="7 10" FontFamily="Corbel" FontWeight="Bold" FontSize="16"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="itemMedicine" Height="60" Uid="1">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Medicine" Height="25" Width="25" Margin="5 10"/>
+                            <TextBlock Text="Quản lí thuốc" VerticalAlignment="Center" Margin="7 10" FontFamily="Corbel" FontWeight="Bold" FontSize="16"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="itemReport" Height="60" Uid="2">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="MoneyUsd" Height="25" Width="25" Margin="5 10"/>
+                            <TextBlock Text="Doanh thu" VerticalAlignment="Center"  Margin="7 10" FontFamily="Corbel" FontWeight="Bold" FontSize="16"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="itemAdmin" Height="60" Uid="3">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Person" Height="25" Width="25" Margin="5 10"/>
+                            <TextBlock Text="Admin" VerticalAlignment="Center"  Margin="7 10" FontFamily="Corbel" FontWeight="Bold" FontSize="16"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+            </Grid>
 
             <Button x:Name="btnSetting" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="50" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" >
                 <materialDesign:PackIcon Kind="Settings"/>
