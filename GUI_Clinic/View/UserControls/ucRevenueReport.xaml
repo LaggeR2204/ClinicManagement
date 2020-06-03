@@ -26,10 +26,30 @@
                 <StackPanel Margin="5 0 0 5" Orientation="Horizontal" >
                     <ComboBox Margin="5 5 15 5" ItemsSource="{Binding Unit}" SelectedItem="{Binding SelectedUnit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Tháng" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
                     <ComboBox Margin="5 5 15 5" ItemsSource="{Binding Unit}" SelectedItem="{Binding SelectedUnit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Năm" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
-                    <Button Command="{Binding Command}" Background="#0078D7" BorderBrush="#0078D7" Content="Xem" Margin="5 5 5 -2" Width="100" VerticalAlignment="Center" HorizontalAlignment="Center"></Button>
-                    <Button Command="{Binding Command}" Background="#0078D7" BorderBrush="#0078D7" Content="In báo cáo" Margin="5 5 5 -2" Width="100" VerticalAlignment="Center" HorizontalAlignment="Center"></Button>
+                    <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                            ToolTip="Xem doanh thu"
+                            Background="#0078D7"
+                            BorderBrush="#0078D7"
+                            Width="40"
+                            Height="40"
+                            Margin="5 5 5 0">
+                        <materialDesign:PackIcon Kind="Filter" Height="24" Width="24" />
+                    </Button>
 
                 </StackPanel>
+
+                <materialDesign:Chip Command="{Binding Command}"
+                                     HorizontalAlignment="Right"
+                                     Content="In báo cáo"
+                                     Foreground="White"
+                                     IconBackground="{DynamicResource PrimaryHueDarkBrush}"
+                                     IconForeground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+                                     Background="Gray"
+                                     Margin="0 0 5 0">
+                    <materialDesign:Chip.Icon>
+                        <materialDesign:PackIcon Kind="Printer"></materialDesign:PackIcon>
+                    </materialDesign:Chip.Icon>
+                </materialDesign:Chip>
             </Grid>
         </materialDesign:Card>
 
