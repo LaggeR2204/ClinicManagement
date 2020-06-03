@@ -90,7 +90,7 @@
             <ToggleButton Width="30" Height="30" Margin="12 10" VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="ToggleButtonMenu"  Foreground="White" Style="{DynamicResource MaterialDesignHamburgerToggleButton}" Grid.Row="0">
             </ToggleButton>
 
-            <!--<Image x:Name="imgLogo" Grid.Row="1" Source="icons8_clinic_100px.png" Width="100" Height="100" Visibility="Hidden"/>-->
+            <Image Margin="10" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Source="/GUI_Clinic;component/Icons/clinic_logo.png"/>
 
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
@@ -111,37 +111,37 @@
                     <ListViewItem x:Name="itemMedical" Height="60" Uid="0">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Doctor"  Height="25" Width="25" Margin="5 10"/>
-                            <TextBlock Text="Lập danh sách khám bệnh" VerticalAlignment="Center" Margin="7 10" FontFamily="Corbel" FontWeight="Bold" FontSize="16"/>
+                            <TextBlock Text="Lập danh sách khám bệnh" VerticalAlignment="Center" Margin="7 10" FontFamily="Arial" FontWeight="Bold" FontSize="15"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem x:Name="itemPatient" Height="60" Uid="0">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="HeartPulse"  Height="25" Width="25" Margin="5 10"/>
-                            <TextBlock Text="Quản lí bệnh nhân" VerticalAlignment="Center" Margin="7 10" FontFamily="Corbel" FontWeight="Bold" FontSize="16"/>
+                            <TextBlock Text="Quản lí bệnh nhân" VerticalAlignment="Center" Margin="7 10" FontFamily="Arial" FontWeight="Bold" FontSize="15"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem x:Name="itemMedicine" Height="60" Uid="1">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Medicine" Height="25" Width="25" Margin="5 10"/>
-                            <TextBlock Text="Quản lí thuốc" VerticalAlignment="Center" Margin="7 10" FontFamily="Corbel" FontWeight="Bold" FontSize="16"/>
+                            <TextBlock Text="Quản lí thuốc" VerticalAlignment="Center" Margin="7 10" FontFamily="Arial" FontWeight="Bold" FontSize="15"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem x:Name="itemReport" Height="60" Uid="2">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="MoneyUsd" Height="25" Width="25" Margin="5 10"/>
-                            <TextBlock Text="Doanh thu" VerticalAlignment="Center"  Margin="7 10" FontFamily="Corbel" FontWeight="Bold" FontSize="16"/>
+                            <TextBlock Text="Doanh thu" VerticalAlignment="Center"  Margin="7 10" FontFamily="Arial" FontWeight="Bold" FontSize="15"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem x:Name="itemAdmin" Height="60" Uid="3">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Person" Height="25" Width="25" Margin="5 10"/>
-                            <TextBlock Text="Admin" VerticalAlignment="Center"  Margin="7 10" FontFamily="Corbel" FontWeight="Bold" FontSize="16"/>
+                            <TextBlock Text="Admin" VerticalAlignment="Center"  Margin="7 10" FontFamily="Arial" FontWeight="Bold" FontSize="15"/>
                         </StackPanel>
                     </ListViewItem>
                 </ListView>
             </Grid>
 
-            <Button x:Name="btnSetting" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="50" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" >
+            <Button x:Name="btnSetting" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="50" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" ToolTip="Cài đặt">
                 <materialDesign:PackIcon Kind="Settings"/>
             </Button>
 

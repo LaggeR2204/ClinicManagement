@@ -14,6 +14,81 @@
              Background="{DynamicResource MaterialDesignPaper}"
              FontFamily="{DynamicResource MaterialDesignFont}" >
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <materialDesign:Card Grid.Row="0" Margin="5">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="Tìm kiếm" FontWeight="Bold" FontSize="20" Margin="15 5 5 5"/>
+
+                    <WrapPanel Grid.Row="1" Margin="0 0 0 10">
+                        <TextBox Margin="15 5 15 3" materialDesign:HintAssist.Hint="Tên thuốc cần tìm" VerticalAlignment="Center" MinWidth="100"/>
+                        <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                            ToolTip="Tìm kiếm"
+                            Background="#0078D7"
+                            BorderBrush="#0078D7"
+                            Width="40"
+                            Height="40"
+                            Margin="5 5 5 0">
+                            <materialDesign:PackIcon Kind="Search" Height="24" Width="24" />
+                        </Button>
+                    </WrapPanel>
+
+                    <materialDesign:Chip Command="{Binding Command}"
+                                     Grid.Row="1"
+                                     HorizontalAlignment="Right"
+                                     Content="Nhập thuốc"
+                                     ToolTip="Lập phiếu nhập thuốc"
+                                     Foreground="White"
+                                     IconBackground="{DynamicResource PrimaryHueDarkBrush}"
+                                     IconForeground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+                                     Background="Gray"
+                                     Margin="0 0 5 0">
+                        <materialDesign:Chip.Icon>
+                            <materialDesign:PackIcon Kind="Plus"></materialDesign:PackIcon>
+                        </materialDesign:Chip.Icon>
+                    </materialDesign:Chip>
+
+                    <materialDesign:Chip Command="{Binding Command}"
+                                     Grid.Row="1"
+                                     HorizontalAlignment="Right"
+                                     Content="Lịch sử nhập"
+                                     ToolTip="Xem lịch sử nhâp thuốc"
+                                     Foreground="White"
+                                     IconBackground="{DynamicResource PrimaryHueDarkBrush}"
+                                     IconForeground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+                                     Background="Gray"
+                                     Margin="0 0 130 0">
+                        <materialDesign:Chip.Icon>
+                            <materialDesign:PackIcon Kind="History"></materialDesign:PackIcon>
+                        </materialDesign:Chip.Icon>
+                    </materialDesign:Chip>
+
+                    <materialDesign:Chip Command="{Binding Command}"
+                                     Grid.Row="1"
+                                     HorizontalAlignment="Right"
+                                     Content="Báo cáo"
+                                     ToolTip="Lập báo cáo sử dụng thuốc"
+                                     Foreground="White"
+                                     IconBackground="{DynamicResource PrimaryHueDarkBrush}"
+                                     IconForeground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+                                     Background="Gray"
+                                     Margin="0 0 262 0">
+                        <materialDesign:Chip.Icon>
+                            <materialDesign:PackIcon Kind="Note"></materialDesign:PackIcon>
+                        </materialDesign:Chip.Icon>
+                    </materialDesign:Chip>
+                </Grid>
+            </materialDesign:Card>
+        </Grid>
         <!--<Grid.RowDefinitions>
             -->
         <!--<RowDefinition Height="auto"/>-->
@@ -40,7 +115,7 @@
         <!--
             </WrapPanel>
         </materialDesign:Card>-->
-
+        <Grid Grid.Row="1">
         <materialDesign:Card Grid.Row="1" Margin="5" VerticalAlignment="Stretch">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <ListView ItemsSource="{Binding List}"
@@ -57,7 +132,7 @@
             </ScrollViewer>
         </materialDesign:Card>
 
-        <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+        <!--<Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
                 ToolTip="Nhập thuốc"
                 Background="#0078D7"
                 BorderBrush="#0078D7"
@@ -78,6 +153,7 @@
                 Height="40"
                 Margin="20 10 70 10">
             <materialDesign:PackIcon Kind="Note" Height="24" Width="24" />
-        </Button>
+        </Button>-->
+        </Grid>
     </Grid>
 </UserControl>
