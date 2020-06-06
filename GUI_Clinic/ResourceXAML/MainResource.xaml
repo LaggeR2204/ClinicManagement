@@ -5,4 +5,8 @@
     <viewmodel:MainViewModel x:Key="MainVM"/>
     <viewmodel:BillViewModel x:Key="BillVM"/>
     <viewmodel:MedicalListViewModel x:Key="MedicalListVM"/>
+    <viewmodel:AddPatientViewModel x:Key="AddPatientVM"/>
+    <viewmodel:MedicineViewModel x:Key="MedicineVM"/>
+    <viewmodel:MedicineReportViewModel x:Key="MedicineReportVM"/>
+    <viewmodel:MedicalResultViewModel x:Key="MedicalResultVM"/>
 </ResourceDictionary>

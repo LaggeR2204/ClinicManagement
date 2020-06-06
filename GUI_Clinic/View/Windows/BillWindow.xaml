@@ -20,7 +20,9 @@
         ResizeMode="NoResize"
         DataContext="{StaticResource BillVM}"
         Name="billWindow"
-        Title="BillWindow" Height="700" Width="550">
+        Title="BillWindow" Height="700" Width="550"
+        BorderBrush="#0078D7"
+        BorderThickness="2">
     <ScrollViewer>
         <Grid>
             <Button Command="{Binding CloseWindowCommand}" CommandParameter="{Binding ElementName=billWindow}" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Top">

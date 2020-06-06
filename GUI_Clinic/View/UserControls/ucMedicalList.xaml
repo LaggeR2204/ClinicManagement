@@ -58,7 +58,8 @@
                         <materialDesign:PackIcon Kind="Plus"></materialDesign:PackIcon>
                     </materialDesign:Chip.Icon>
                 </materialDesign:Chip>
-                <materialDesign:Chip HorizontalAlignment="Right"
+                <materialDesign:Chip Command="{Binding AddMedicalResultCommand}"
+                                     HorizontalAlignment="Right"
                                      Content="Lập phiếu khám"
                                      Foreground="White"
                                      IconBackground="{DynamicResource PrimaryHueDarkBrush}"

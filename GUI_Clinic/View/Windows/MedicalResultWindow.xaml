@@ -15,11 +15,12 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        WindowState="Normal"
+        WindowState="Maximized"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
-        Title="MedicalResultWindow" Height="700" Width="1080">
+        Title="MedicalResultWindow" Height="700" Width="1080"
+        DataContext="{StaticResource MedicalResultVM}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -38,7 +39,7 @@
 
             <Grid Grid.Row="0">
                 <TextBlock Margin="20 30" HorizontalAlignment="Left" Text="Phiếu khám bệnh" VerticalAlignment="Center" FontSize="35" FontWeight="Bold" Foreground="#0078D7"/>
-                <Button Command="{Binding AddCommand}" Content="Thanh Toán" Margin="5" Width="110" HorizontalAlignment="Right" VerticalAlignment="Center" Background="#0078D7" BorderBrush="#0078D7"></Button>
+                <Button Command="{Binding PayBillCommand}" Content="Thanh Toán" Margin="5" Width="110" HorizontalAlignment="Right" VerticalAlignment="Center" Background="#0078D7" BorderBrush="#0078D7"></Button>
                 <Button Command="{Binding AddCommand}" Content="In phiếu" Margin="5 5 120 5" Width="110" HorizontalAlignment="Right" VerticalAlignment="Center" Background="#0078D7" BorderBrush="#0078D7"></Button>
                 <Button Command="{Binding AddCommand}" Content="Lưu" Margin="5 5 235 5" Width="110" HorizontalAlignment="Right" VerticalAlignment="Center" Background="#0078D7" BorderBrush="#0078D7"></Button>
             </Grid>

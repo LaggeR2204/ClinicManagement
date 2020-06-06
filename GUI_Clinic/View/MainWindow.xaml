@@ -28,13 +28,13 @@
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="grdMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="53"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="250"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="250"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="CloseMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="grdMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="250"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="53"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="53"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>

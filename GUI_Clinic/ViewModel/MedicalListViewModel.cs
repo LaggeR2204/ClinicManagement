@@ -13,6 +13,7 @@ namespace GUI_Clinic.ViewModel
 {
     public class MedicalListViewModel: BaseViewModel
     {
+        public ICommand AddMedicalResultCommand { get; set; }
         public ICommand AddPatientCommand { get; set; }
         public ICommand CloseDialogCommand { get; set; }
 
@@ -21,6 +22,11 @@ namespace GUI_Clinic.ViewModel
             AddPatientCommand = new RelayCommand<object>((p) => { return true; }, (p) => {
                 AddPatientDialog addPatientDialog = new AddPatientDialog();
                 addPatientDialog.ShowDialog();
+            });
+
+            AddMedicalResultCommand = new RelayCommand<object>((p) => { return true; }, (p) => {
+                MedicalResultWindow medicalResultWindow = new MedicalResultWindow();
+                medicalResultWindow.ShowDialog();
             });
         }
     }

@@ -12,7 +12,9 @@
              TextOptions.TextFormattingMode="Ideal"
              TextOptions.TextRenderingMode="Auto"
              Background="{DynamicResource MaterialDesignPaper}"
-             FontFamily="{DynamicResource MaterialDesignFont}" >
+             FontFamily="{DynamicResource MaterialDesignFont}"
+             DataContext="{StaticResource MedicineVM}"
+             Name="uc_Medicine">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -42,7 +44,7 @@
                         </Button>
                     </WrapPanel>
 
-                    <materialDesign:Chip Command="{Binding Command}"
+                    <materialDesign:Chip Command="{Binding AddMedicineCommand}"
                                      Grid.Row="1"
                                      HorizontalAlignment="Right"
                                      Content="Nhập thuốc"
@@ -57,7 +59,7 @@
                         </materialDesign:Chip.Icon>
                     </materialDesign:Chip>
 
-                    <materialDesign:Chip Command="{Binding Command}"
+                    <materialDesign:Chip Command="{Binding MedicationEntryListCommand}"
                                      Grid.Row="1"
                                      HorizontalAlignment="Right"
                                      Content="Lịch sử nhập"
@@ -72,7 +74,8 @@
                         </materialDesign:Chip.Icon>
                     </materialDesign:Chip>
 
-                    <materialDesign:Chip Command="{Binding Command}"
+                    <materialDesign:Chip Command="{Binding MedicineReportCommand}"
+                                     CommandParameter="{Binding ElementName=uc_Medicine}"
                                      Grid.Row="1"
                                      HorizontalAlignment="Right"
                                      Content="Báo cáo"
