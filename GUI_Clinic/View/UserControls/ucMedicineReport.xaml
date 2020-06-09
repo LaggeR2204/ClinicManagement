@@ -25,12 +25,13 @@
         <materialDesign:Card Grid.Row="0" Margin="5">
             <Grid>
                 <StackPanel Margin="5 0 0 5" Orientation="Horizontal" >
-                    <Button Command="{Binding BackCommand}" CommandParameter="{Binding ElementName=uc_MedicineReport}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="5 5 5 -2" ToolTip="Quay lại">
+                    <Button x:Name="btnBack" Command="{Binding BackCommand}" CommandParameter="{Binding ElementName=uc_MedicineReport}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="5 5 5 -2" ToolTip="Quay lại">
                         <materialDesign:PackIcon Kind="ArrowBack" Foreground="{DynamicResource MaterialDesignBody}"/>
                     </Button>
-                    <ComboBox Margin="5 5 15 5" ItemsSource="{Binding Unit}" SelectedItem="{Binding SelectedUnit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Tháng" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
-                    <ComboBox Margin="5 5 15 5" ItemsSource="{Binding Unit}" SelectedItem="{Binding SelectedUnit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Năm" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
+                    <ComboBox x:Name="cbxMonth" Margin="5 5 15 5" ItemsSource="{Binding Unit}" SelectedItem="{Binding SelectedUnit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Tháng" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
+                    <ComboBox x:Name="cbxYear" Margin="5 5 15 5" ItemsSource="{Binding Unit}" SelectedItem="{Binding SelectedUnit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Năm" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
                     <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                            x:Name="btnMedicationReportShow"
                             ToolTip="Xem báo cáo"
                             Background="#0078D7"
                             BorderBrush="#0078D7"
@@ -44,6 +45,7 @@
                 </StackPanel>
 
                 <materialDesign:Chip Command="{Binding Command}"
+                                     x:Name="chpPrintMedicationReport"
                                      HorizontalAlignment="Right"
                                      Content="In báo cáo"
                                      Foreground="White"
@@ -70,7 +72,8 @@
         <materialDesign:Card Grid.Row="1" Margin="5" VerticalAlignment="Stretch">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <ListView ItemsSource="{Binding List}"
-                          SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}">
+                          SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}"
+                          x:Name="lstMedicationReport">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="STT" DisplayMemberBinding="{Binding DisplayName}"></GridViewColumn>

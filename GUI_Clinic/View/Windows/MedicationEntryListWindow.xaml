@@ -36,13 +36,13 @@
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
-                <TextBlock Margin="20 30" HorizontalAlignment="Left" Text="Danh sách phiếu nhập thuốc" VerticalAlignment="Center" FontSize="35" FontWeight="Bold" Foreground="#0078D7"/>
+                <TextBlock x:Name="tblMedicationEntryHistory" Margin="20 30" HorizontalAlignment="Left" Text="Lịch sử nhập thuốc" VerticalAlignment="Center" FontSize="35" FontWeight="Bold" Foreground="#0078D7"/>
             </Grid>
 
             <materialDesign:Card Grid.Row="1" Margin="5">
                 <StackPanel Orientation="Horizontal">
-                    <DatePicker HorizontalAlignment="Left" VerticalAlignment="Center" SelectedDate="{Binding DateInput}" Width="130" Margin="10" materialDesign:HintAssist.Hint="Ngày nhập thuốc" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-                    <Button Command="{Binding AddCommand}" Content="Xem" Margin="10" Width="110" HorizontalAlignment="Left" VerticalAlignment="Center" Background="#0078D7" BorderBrush="#0078D7"></Button>
+                    <DatePicker x:Name="dpkMedicationEntryListDate" HorizontalAlignment="Left" VerticalAlignment="Center" SelectedDate="{Binding DateInput}" Width="130" Margin="10" materialDesign:HintAssist.Hint="Ngày nhập thuốc" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                    <Button x:Name="btnMedicationEntryListShow" Command="{Binding AddCommand}" Content="Xem" Margin="10" Width="110" HorizontalAlignment="Left" VerticalAlignment="Center" Background="#0078D7" BorderBrush="#0078D7"></Button>
                 </StackPanel>
             </materialDesign:Card>
 
@@ -68,11 +68,12 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Grid.Row="0" Text="Phiếu nhập thuốc" Foreground="Gray" FontWeight="Bold" FontSize="20" Margin="10 0 10 0"/>
+                        <TextBlock x:Name="tblMedicationEntryList" Grid.Row="0" Text="Phiếu nhập thuốc" Foreground="Gray" FontWeight="Bold" FontSize="20" Margin="10 0 10 0"/>
 
                         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
                             <ListView ItemsSource="{Binding List}"
-                          SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}">
+                                      SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}"
+                                      x:Name="lstMedicationEntryList">
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn Header="STT" DisplayMemberBinding="{Binding DisplayName}"></GridViewColumn>
@@ -90,11 +91,12 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Grid.Row="0" Text="Thuốc đã nhập" Foreground="Gray" FontWeight="Bold" FontSize="20" Margin="10 0 10 0"/>
+                        <TextBlock x:Name="tblMedicationEntryDetail" Grid.Row="0" Text="Thuốc đã nhập" Foreground="Gray" FontWeight="Bold" FontSize="20" Margin="10 0 10 0"/>
 
                         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
                             <ListView ItemsSource="{Binding List}"
-                          SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}">
+                                      SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}"
+                                      x:Name="lstMedicationEntryDetail">
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn Header="STT" DisplayMemberBinding="{Binding DisplayName}"></GridViewColumn>
