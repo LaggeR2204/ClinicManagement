@@ -19,7 +19,7 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid Background="Transparent">
-        <TextBlock Text="{Binding Tag,ElementName=uc_ControlBar}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" Foreground="#0078D7"/>
+        <TextBlock x:Name="tblWindowName" Text="{Binding Tag,ElementName=uc_ControlBar}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" Foreground="#0078D7"/>
         <Button Command="{Binding CloseWindowCommand}"
                 CommandParameter="{Binding ElementName=uc_ControlBar}"
                 x:Name="btnShutdown" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" Width="50" Height="30" Background="{x:Null}" BorderBrush="{x:Null}">

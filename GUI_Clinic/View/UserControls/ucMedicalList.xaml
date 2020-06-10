@@ -30,8 +30,8 @@
                 <TextBox Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Năm sinh" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 <TextBox Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Địa chỉ" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />-->
 
-                    <DatePicker HorizontalAlignment="Right" VerticalAlignment="Center" SelectedDate="{Binding DateInput}" Width="100" Margin="5 5 15 2" materialDesign:HintAssist.Hint="Ngày khám" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-                    <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                    <DatePicker x:Name="dpkMedicalDay" HorizontalAlignment="Right" VerticalAlignment="Center" SelectedDate="{Binding DateInput}" Width="100" Margin="5 5 15 2" materialDesign:HintAssist.Hint="Ngày khám" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                    <Button x:Name="btnSearch" Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
                     ToolTip="Xem"
                     Background="#0078D7"
                     BorderBrush="#0078D7"
@@ -46,7 +46,8 @@
                     <Button Command="{Binding Command}" Background="#0078D7" BorderBrush="#0078D7" Content="Xuất file" Margin="5 5 5 -2" Width="100" VerticalAlignment="Center" HorizontalAlignment="Center"></Button>-->
 
                 </StackPanel>
-                <materialDesign:Chip Command="{Binding AddPatientCommand}"
+                <materialDesign:Chip x:Name="btnAddPatient"
+                                     Command="{Binding AddPatientCommand}"
                                      HorizontalAlignment="Right"
                                      Content="Thêm bệnh nhân"
                                      Foreground="White"
@@ -58,7 +59,8 @@
                         <materialDesign:PackIcon Kind="Plus"></materialDesign:PackIcon>
                     </materialDesign:Chip.Icon>
                 </materialDesign:Chip>
-                <materialDesign:Chip Command="{Binding AddMedicalResultCommand}"
+                <materialDesign:Chip x:Name="btnAddMedicalResult"
+                                     Command="{Binding AddMedicalResultCommand}"
                                      HorizontalAlignment="Right"
                                      Content="Lập phiếu khám"
                                      Foreground="White"
@@ -101,10 +103,10 @@
                 <Button Command="{Binding DeleteCommand}" Content="Xóa" Margin="5" Width="100"></Button>
             </WrapPanel>
         </materialDesign:Card>-->
-
-        <materialDesign:Card Grid.Row="1" Margin="5" VerticalAlignment="Stretch">
+        <materialDesign:Card Grid.Row="1" Margin="5">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
-                <ListView ItemsSource="{Binding List}"
+                <ListView x:Name="lvPatient"
+                          ItemsSource="{Binding List}"
                           SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}">
                     <ListView.View>
                         <GridView>
