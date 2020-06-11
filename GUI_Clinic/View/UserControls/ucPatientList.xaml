@@ -110,7 +110,6 @@
                     <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
                         <ListView x:Name="lvPatient"
                           ItemsSource="{Binding List}"
-                          x:Name="lvPatient"
                           SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}">
                             <ListView.View>
                                 <GridView>
