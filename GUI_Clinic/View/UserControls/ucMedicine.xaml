@@ -18,10 +18,15 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
+            <TextBlock x:Name="tblTitle" Margin="20 10" HorizontalAlignment="Left" Text="Quản lí thuốc" VerticalAlignment="Center" FontSize="35" FontWeight="Bold" Foreground="#0078D7"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
             <materialDesign:Card Grid.Row="0" Margin="5">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -29,7 +34,7 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
 
-                    <TextBlock x:Name="tblMedicationFind" Text="Tìm kiếm" FontWeight="Bold" FontSize="20" Margin="15 5 5 5"/>
+                    <TextBlock x:Name="tblMedicationFind" Text="Tìm kiếm" FontWeight="Bold" FontSize="20" Margin="15 5 5 5" Foreground="Gray"/>
 
                     <WrapPanel Grid.Row="1" Margin="0 0 0 10">
                         <TextBox x:Name="tbxMedicationFindContent" Margin="15 5 15 3" materialDesign:HintAssist.Hint="Tên thuốc cần tìm" VerticalAlignment="Center" MinWidth="100"/>
@@ -121,7 +126,7 @@
         <!--
             </WrapPanel>
         </materialDesign:Card>-->
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="2">
         <materialDesign:Card Grid.Row="1" Margin="5" VerticalAlignment="Stretch">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <ListView ItemsSource="{Binding List}"
@@ -132,6 +137,8 @@
                             <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
                             <GridViewColumn Header="Tên thuốc" DisplayMemberBinding="{Binding DisplayName}"></GridViewColumn>
                             <GridViewColumn Header="Đơn vị tính" DisplayMemberBinding="{Binding Unit.DisplayName}"></GridViewColumn>
+                            <GridViewColumn Header="Công dụng" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
+                            <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
                             <GridViewColumn Header="Giá" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
                         </GridView>
                     </ListView.View>
