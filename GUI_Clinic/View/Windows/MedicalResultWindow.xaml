@@ -38,10 +38,10 @@
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
-                <TextBlock Margin="20 30" HorizontalAlignment="Left" Text="Phiếu khám bệnh" VerticalAlignment="Center" FontSize="35" FontWeight="Bold" Foreground="#0078D7"/>
-                <Button Command="{Binding PayBillCommand}" Content="Thanh Toán" Margin="5" Width="110" HorizontalAlignment="Right" VerticalAlignment="Center" Background="#0078D7" BorderBrush="#0078D7"></Button>
-                <Button Command="{Binding AddCommand}" Content="In phiếu" Margin="5 5 120 5" Width="110" HorizontalAlignment="Right" VerticalAlignment="Center" Background="#0078D7" BorderBrush="#0078D7"></Button>
-                <Button Command="{Binding AddCommand}" Content="Lưu" Margin="5 5 235 5" Width="110" HorizontalAlignment="Right" VerticalAlignment="Center" Background="#0078D7" BorderBrush="#0078D7"></Button>
+                <TextBlock x:Name="tblTitle" Margin="20 30" HorizontalAlignment="Left" Text="Phiếu khám bệnh" VerticalAlignment="Center" FontSize="35" FontWeight="Bold" Foreground="#0078D7"/>
+                <Button x:Name="btnPay" Command="{Binding PayBillCommand}" Content="Thanh Toán" Margin="5" Width="110" HorizontalAlignment="Right" VerticalAlignment="Center" Background="#0078D7" BorderBrush="#0078D7"></Button>
+                <Button x:Name="btnPrint" Command="{Binding AddCommand}" Content="In phiếu" Margin="5 5 120 5" Width="110" HorizontalAlignment="Right" VerticalAlignment="Center" Background="#0078D7" BorderBrush="#0078D7"></Button>
+                <Button x:Name="btnSave" Command="{Binding AddCommand}" Content="Lưu" Margin="5 5 235 5" Width="110" HorizontalAlignment="Right" VerticalAlignment="Center" Background="#0078D7" BorderBrush="#0078D7"></Button>
             </Grid>
 
             <materialDesign:Card Grid.Row="1" Margin="5">
@@ -52,17 +52,17 @@
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Row="0" Text="Võ Thanh Bình" FontSize="20" Margin="15 5"/>
+                    <TextBlock x:Name="tblPatientName" Grid.Row="0" Text="Võ Thanh Bình" FontSize="20" Margin="15 5"/>
 
                     <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10 5">
                         <TextBlock Text="Ngày khám:" FontSize="12" Margin="5"/>
-                        <TextBlock Text="22/04/2020" FontSize="12" Margin="5" FontWeight="DemiBold"/>
+                        <TextBlock x:Name="tblMedicalDay" Text="22/04/2020" FontSize="12" Margin="5" FontWeight="DemiBold"/>
                     </StackPanel>
 
                     <Grid Grid.Row="2">
                         <StackPanel Margin="10 0 0 10" Orientation="Horizontal" >
-                            <TextBox Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Triệu chứng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                            <TextBox Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Dự đoán lại bệnh" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                            <TextBox x:Name="tbxSymptom" Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Triệu chứng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                            <TextBox x:Name="tbxDeseaseType" Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Dự đoán lại bệnh" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                         </StackPanel>
                     </Grid>
                 </Grid>
@@ -71,12 +71,12 @@
             <materialDesign:Card Grid.Row="2" Margin="5">
                 <Grid>
                     <StackPanel Margin="10 0 0 10" Orientation="Horizontal" >
-                        <ComboBox Margin="5 5 15 5" ItemsSource="{Binding Unit}" SelectedItem="{Binding SelectedUnit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Thuốc" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
-                        <TextBox Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Số lượng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                        <TextBox Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Cách dùng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        <ComboBox x:Name="cbxMedicine" Margin="5 5 15 5" ItemsSource="{Binding Unit}" SelectedItem="{Binding SelectedUnit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Thuốc" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
+                        <TextBox x:Name="tbxQuantity" Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Số lượng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        <TextBox x:Name="tbxUsage" Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Cách dùng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
 
                     </StackPanel>
-                    <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                    <Button x:Name="btnAdd" Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
                     ToolTip="Thêm bệnh nhân"
                     Background="#0078D7"
                     BorderBrush="#0078D7"
@@ -100,7 +100,7 @@
 
             <materialDesign:Card Grid.Row="3" Margin="5" VerticalAlignment="Stretch">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <ListView ItemsSource="{Binding List}"
+                    <ListView x:Name="lvMedicine" ItemsSource="{Binding List}"
                           SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}">
                         <ListView.View>
                             <GridView>

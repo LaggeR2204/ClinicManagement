@@ -15,25 +15,24 @@
              FontFamily="{DynamicResource MaterialDesignFont}">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition />
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
+        <Grid Grid.Row="0">
+            <TextBlock x:Name="tblTitle" Margin="20 10" HorizontalAlignment="Left" Text="Quản lí bệnh nhân" VerticalAlignment="Center" FontSize="35" FontWeight="Bold" Foreground="#0078D7"/>
+        </Grid>
+
         <!--Cac element binding tu selected item-->
-        <materialDesign:Card Grid.Row="0"
-                             Margin="5">
+        <materialDesign:Card Grid.Row="1" Margin="5">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
                     <RowDefinition />
                 </Grid.RowDefinitions>
 
-                <TextBlock x:Name="tblSearch"
-                           Grid.Row="0"
-                           Text="Tìm kiếm"
-                           FontWeight="Bold"
-                           FontSize="20"
-                           Margin="15 5 5 5" />
+                <TextBlock Grid.Row="0" Text="Tìm kiếm" FontWeight="Bold" FontSize="20" Margin="15 5 5 5" Foreground="Gray"/>
 
                 <WrapPanel Grid.Row="1"
                            Margin="0 0 0 10">
@@ -75,7 +74,7 @@
                     </Button>
                 </WrapPanel>
 
-                <materialDesign:Chip Command="{Binding Command}"
+                <!--<materialDesign:Chip Command="{Binding Command}"
                                      x:Name="btnMedHistory"
                                      Grid.Row="1"
                                      HorizontalAlignment="Right"
@@ -89,35 +88,69 @@
                     <materialDesign:Chip.Icon>
                         <materialDesign:PackIcon Kind="History"></materialDesign:PackIcon>
                     </materialDesign:Chip.Icon>
-                </materialDesign:Chip>
+                </materialDesign:Chip>-->
             </Grid>
         </materialDesign:Card>
 
-        <materialDesign:Card Grid.Row="2"
-                             Margin="5"
-                             VerticalAlignment="Stretch">
-            <ScrollViewer VerticalScrollBarVisibility="Auto">
-                <ListView ItemsSource="{Binding List}"
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <materialDesign:Card Grid.Column="0" Margin="5">
+                <Grid Margin="5 5 10 5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="Danh sách bệnh nhân" Foreground="Gray" FontWeight="Bold" FontSize="20" Margin="10 0 10 0"/>
+
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                        <ListView x:Name="lvPatient"
+                          ItemsSource="{Binding List}"
                           x:Name="lvPatient"
                           SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="ID"
-                                            DisplayMemberBinding="{Binding Id}"></GridViewColumn>
-                            <GridViewColumn Header="Họ và Tên"
-                                            DisplayMemberBinding="{Binding DisplayName}"></GridViewColumn>
-                            <GridViewColumn Header="Giới tính"
-                                            DisplayMemberBinding="{Binding Unit.DisplayName}"></GridViewColumn>
-                            <GridViewColumn Header="Ngày sinh"
-                                            DisplayMemberBinding="{Binding Price}"></GridViewColumn>
-                            <GridViewColumn Header="Địa chỉ"
-                                            DisplayMemberBinding="{Binding Price}"></GridViewColumn>
-                            <GridViewColumn Header="Số điện thoại"
-                                            DisplayMemberBinding="{Binding Price}"></GridViewColumn>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-            </ScrollViewer>
-        </materialDesign:Card>
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Họ và Tên" DisplayMemberBinding="{Binding DisplayName}"></GridViewColumn>
+                                    <GridViewColumn Header="Giới tính" DisplayMemberBinding="{Binding Unit.DisplayName}"></GridViewColumn>
+                                    <GridViewColumn Header="Năm sinh" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
+                                    <GridViewColumn Header="Địa chỉ" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </ScrollViewer>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Grid.Column="1" Margin="5">
+                <Grid Margin="10 5 5 5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="Lịch sử khám" Foreground="Gray" FontWeight="Bold" FontSize="20" Margin="10 0 10 0"/>
+
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                        <ListView ItemsSource="{Binding List}"
+                                      SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}"
+                                      x:Name="lstMedicationEntryDetail">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="STT" DisplayMemberBinding="{Binding DisplayName}"></GridViewColumn>
+                                    <GridViewColumn Header="Mã phiếu khám" DisplayMemberBinding="{Binding Unit.DisplayName}"></GridViewColumn>
+                                    <GridViewColumn Header="Ngày" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
+                                    <GridViewColumn Header="Loại bệnh" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </ScrollViewer>
+                </Grid>
+            </materialDesign:Card>
+
+        </Grid>
     </Grid>
 </UserControl>

@@ -66,7 +66,7 @@
             </Grid.RowDefinitions>
 
             <Grid x:Name="grdControl" Height="auto" Grid.Row="0">
-                <uc:ucControlBar x:Name="ucControlBar" Tag="Lập danh sách khám bệnh"></uc:ucControlBar>
+                <uc:ucControlBar x:Name="ucControlBar"></uc:ucControlBar>
             </Grid>
 
             <Grid x:Name="grdUserControl" Grid.Row="1">

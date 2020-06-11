@@ -65,25 +65,21 @@ namespace GUI_Clinic.ViewModel
                     case 0:
                         grdUserControl.Children.Clear();
                         grdUserControl.Children.Add(new ucMedicalList());
-                        ucControlBar.Tag = "Lập danh sách khám bệnh";
                         grdSelectedButton.Margin = new Thickness(0, 0, 0, 0);
                         break;
                     case 1:
                         grdUserControl.Children.Clear();
                         grdUserControl.Children.Add(new ucPatientList());
-                        ucControlBar.Tag = "Quản lí bệnh nhân";
                         grdSelectedButton.Margin = new Thickness(0, 60, 0, 0);
                         break;
                     case 2:
                         grdUserControl.Children.Clear();
                         grdUserControl.Children.Add(new ucMedicine());
-                        ucControlBar.Tag = "Quản lí thuốc";
                         grdSelectedButton.Margin = new Thickness(0, 120, 0, 0);
                         break;
                     case 3:
                         grdUserControl.Children.Clear();
                         grdUserControl.Children.Add(new ucRevenueReport());
-                        ucControlBar.Tag = "Báo cáo doanh thu";
                         grdSelectedButton.Margin = new Thickness(0, 180, 0, 0);
                         break;
                     case 4:

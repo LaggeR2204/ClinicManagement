@@ -31,12 +31,7 @@ namespace GUI_Clinic.ViewModel
                 Window w = window as Window;
                 var grid = w.FindName("grdUserControl");
                 Grid grdUserControl = grid as Grid;
-
-                var uc = w.FindName("ucControlBar");
-                ucControlBar ucControlBar = uc as ucControlBar;
-
                 grdUserControl.Children.Add(new ucMedicineReport());
-                ucControlBar.Tag = "Báo cáo sử dụng thuốc";
             });
 
             MedicationEntryListCommand = new RelayCommand<object>((p) => { return true; }, (p) => {
