@@ -114,6 +114,9 @@
     <Compile Include="View\Windows\BillWindow.xaml.cs">
       <DependentUpon>BillWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\MedicalReportWindow.xaml.cs">
+      <DependentUpon>MedicalReportWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\MedicalResultWindow.xaml.cs">
       <DependentUpon>MedicalResultWindow.xaml</DependentUpon>
     </Compile>
@@ -200,6 +203,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\BillWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\MedicalReportWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -25,13 +25,8 @@ namespace GUI_Clinic.ViewModel
             });
 
             MedicineReportCommand = new RelayCommand<object>((p) => { return true; }, (p) => {
-                UserControl userControl = p as UserControl;
-
-                FrameworkElement window = GetWindowParent(userControl);
-                Window w = window as Window;
-                var grid = w.FindName("grdUserControl");
-                Grid grdUserControl = grid as Grid;
-                grdUserControl.Children.Add(new ucMedicineReport());
+                MedicalReportWindow medicalReportWindow = new MedicalReportWindow();
+                medicalReportWindow.ShowDialog();
             });
 
             MedicationEntryListCommand = new RelayCommand<object>((p) => { return true; }, (p) => {
@@ -39,17 +34,17 @@ namespace GUI_Clinic.ViewModel
                 medicationEntryListWindow.ShowDialog();
             });
 
-            FrameworkElement GetWindowParent(UserControl p)
-            {
-                FrameworkElement parent = p;
+            //FrameworkElement GetWindowParent(UserControl p)
+            //{
+            //    FrameworkElement parent = p;
 
-                while (parent.Parent != null)
-                {
-                    parent = parent.Parent as FrameworkElement;
-                }
+            //    while (parent.Parent != null)
+            //    {
+            //        parent = parent.Parent as FrameworkElement;
+            //    }
 
-                return parent;
-            }
+            //    return parent;
+            //}
         }
     }
 }
