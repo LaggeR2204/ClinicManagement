@@ -1,0 +1,186 @@
+﻿<UserControl x:Class="GUI_Clinic.View.UserControls.ucCTPKB"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:GUI_Clinic.View.UserControls"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <GroupBox Header="Thông tin"
+                      Margin="10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <TextBlock x:Name="tblPatientName"
+                                   Grid.Row="0"
+                                   Text="Võ Thanh Bình"
+                                   Margin="5"
+                                   FontSize="20" />
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <TextBlock Text="Ngày khám:"
+                                       FontSize="15"
+                                       Margin="10" />
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <TextBlock x:Name="tblMedicalDay"
+                                       Text="22/04/2020"
+                                       FontSize="15"
+                                       Margin="10"
+                                       FontWeight="DemiBold" />
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <TextBox x:Name="tbxSymptom"
+                                     Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}"
+                                     Margin="10"
+                                     materialDesign:HintAssist.Hint="Triệu chứng"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <TextBox x:Name="tbxDeseaseType"
+                                     Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}"
+                                     Margin="10"
+                                     materialDesign:HintAssist.Hint="Chuẩn đoán"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </GroupBox>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <ComboBox x:Name="cbxMedicine"
+                          Margin="10"
+                          ItemsSource="{Binding Unit}"
+                          SelectedItem="{Binding SelectedUnit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                          materialDesign:HintAssist.Hint="Thuốc"
+                          IsEditable="True"
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+            </Grid>
+            <Grid Grid.Column="1">
+                <TextBox x:Name="tbxQuantity"
+                         Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}"
+                         Margin="10"
+                         materialDesign:HintAssist.Hint="Số lượng"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+            </Grid>
+            <Grid Grid.Column="2">
+                <TextBox x:Name="tbxUsage"
+                         Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}"
+                         Margin="10"
+                         materialDesign:HintAssist.Hint="Cách dùng"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+            </Grid>
+            <Grid Grid.Column="3">
+                <Button x:Name="btnAdd"
+                        Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                        ToolTip="Thêm bệnh nhân"
+                        Background="#0078D7"
+                        BorderBrush="#0078D7"
+                        HorizontalAlignment="Right"
+                        Margin="10"
+                        Height="30"
+                        Width="30">
+                    <materialDesign:PackIcon Kind="Plus"
+                                             Height="24"
+                                             Width="24" />
+                </Button>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2">
+            <GroupBox Header="Đơn thuốc"
+                      Margin="10">
+                <Grid>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <ListView x:Name="lvMedicine"
+                                  ItemsSource="{Binding List}"
+                                  SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="STT"
+                                                    DisplayMemberBinding="{Binding DisplayName}"></GridViewColumn>
+                                    <GridViewColumn Header="Tên thuốc"
+                                                    DisplayMemberBinding="{Binding Unit.DisplayName}"></GridViewColumn>
+                                    <GridViewColumn Header="Số lượng"
+                                                    DisplayMemberBinding="{Binding Price}"></GridViewColumn>
+                                    <GridViewColumn Header="Đơn vị"
+                                                    DisplayMemberBinding="{Binding Price}"></GridViewColumn>
+                                    <GridViewColumn Header="Cách dùng"
+                                                    DisplayMemberBinding="{Binding Price}"></GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </ScrollViewer>
+                </Grid>
+            </GroupBox>
+        </Grid>
+        <Grid Grid.Row="3" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Button x:Name="btnSave"
+                        Command="{Binding AddCommand}"
+                        Content="Lưu"
+                        Width="110"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Background="#0078D7"
+                        BorderBrush="#0078D7"></Button>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Button x:Name="btnPrint"
+                        Command="{Binding AddCommand}"
+                        Content="In phiếu"
+                        Width="110"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Background="#0078D7"
+                        BorderBrush="#0078D7"></Button>
+            </Grid>
+            <Grid Grid.Column="2">
+                <Button x:Name="btnPay"
+                        Command="{Binding PayBillCommand}"
+                        Content="Thanh Toán"
+                        Width="110"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Background="#0078D7"
+                        BorderBrush="#0078D7"></Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>
