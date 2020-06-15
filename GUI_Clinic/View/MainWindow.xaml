@@ -111,7 +111,7 @@
                     <ListViewItem x:Name="itemMedical" Height="60" Uid="0">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Doctor"  Height="25" Width="25" Margin="5 10"/>
-                            <TextBlock Text="Lập danh sách khám bệnh" VerticalAlignment="Center" Margin="7 10" FontFamily="Arial" FontWeight="Bold" FontSize="15"/>
+                            <TextBlock Text="Danh sách khám bệnh" VerticalAlignment="Center" Margin="7 10" FontFamily="Arial" FontWeight="Bold" FontSize="15"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem x:Name="itemPatient" Height="60" Uid="0">
@@ -125,11 +125,37 @@
                             <materialDesign:PackIcon Kind="Medicine" Height="25" Width="25" Margin="5 10"/>
                             <TextBlock Text="Quản lí thuốc" VerticalAlignment="Center" Margin="7 10" FontFamily="Arial" FontWeight="Bold" FontSize="15"/>
                         </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem x:Name="itemReport" Height="60" Uid="2">
+                    </ListViewItem>                    
+                    <ListViewItem x:Name="itemUnit"
+                                  Height="60"
+                                  Uid="3">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="MoneyUsd" Height="25" Width="25" Margin="5 10"/>
-                            <TextBlock Text="Doanh thu" VerticalAlignment="Center"  Margin="7 10" FontFamily="Arial" FontWeight="Bold" FontSize="15"/>
+                            <materialDesign:PackIcon Kind="Tools"
+                                                     Height="25"
+                                                     Width="25"
+                                                     Margin="5 10" />
+                            <TextBlock Text="Admin"
+                                       VerticalAlignment="Center"
+                                       Margin="7 10"
+                                       FontFamily="Arial"
+                                       FontWeight="Bold"
+                                       FontSize="15" />
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="itemReport"
+                                  Height="60"
+                                  Uid="2">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="MoneyUsd"
+                                                     Height="25"
+                                                     Width="25"
+                                                     Margin="5 10" />
+                            <TextBlock Text="Doanh thu"
+                                       VerticalAlignment="Center"
+                                       Margin="7 10"
+                                       FontFamily="Arial"
+                                       FontWeight="Bold"
+                                       FontSize="15" />
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem x:Name="itemAdmin" Height="60" Uid="3">

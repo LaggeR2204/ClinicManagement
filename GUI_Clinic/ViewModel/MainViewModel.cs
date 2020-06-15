@@ -76,13 +76,16 @@ namespace GUI_Clinic.ViewModel
                         grdUserControl.Children.Clear();
                         grdUserControl.Children.Add(new ucMedicine());
                         grdSelectedButton.Margin = new Thickness(0, 120, 0, 0);
-                        break;
+                        break;                    
                     case 3:
                         grdUserControl.Children.Clear();
-                        grdUserControl.Children.Add(new ucRevenueReport());
+                        grdUserControl.Children.Add(new ucUnit());
                         grdSelectedButton.Margin = new Thickness(0, 180, 0, 0);
                         break;
                     case 4:
+                        grdUserControl.Children.Clear();
+                        grdUserControl.Children.Add(new ucRevenueReport());
+                        grdSelectedButton.Margin = new Thickness(0, 240, 0, 0);
                         break;
                     default:
                         break;

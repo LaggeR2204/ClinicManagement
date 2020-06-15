@@ -114,6 +114,9 @@
     <Compile Include="View\UserControls\ucRevenueReport.xaml.cs">
       <DependentUpon>ucRevenueReport.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UserControls\ucUnit.xaml.cs">
+      <DependentUpon>ucUnit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\AddPatientDialog.xaml.cs">
       <DependentUpon>AddPatientDialog.xaml</DependentUpon>
     </Compile>
@@ -209,6 +212,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UserControls\ucRevenueReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\ucUnit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
