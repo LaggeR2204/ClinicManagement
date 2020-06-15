@@ -111,7 +111,7 @@
                     <ListViewItem x:Name="itemMedical" Height="60" Uid="0">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Doctor"  Height="25" Width="25" Margin="5 10"/>
-                            <TextBlock Text="Lập danh sách khám bệnh" VerticalAlignment="Center" Margin="7 10" FontFamily="Arial" FontWeight="Bold" FontSize="15"/>
+                            <TextBlock Text="Danh sách khám bệnh" VerticalAlignment="Center" Margin="7 10" FontFamily="Arial" FontWeight="Bold" FontSize="15"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem x:Name="itemPatient" Height="60" Uid="0">

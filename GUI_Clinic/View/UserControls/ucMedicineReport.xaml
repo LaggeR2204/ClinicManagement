@@ -30,9 +30,9 @@
         <materialDesign:Card Grid.Row="1" Margin="5">
             <Grid>
                 <StackPanel Margin="5 0 0 5" Orientation="Horizontal" >
-                    <Button x:Name="btnBack" Command="{Binding BackCommand}" CommandParameter="{Binding ElementName=uc_MedicineReport}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="5 5 5 -2" ToolTip="Quay lại">
+                    <!--<Button x:Name="btnBack" Command="{Binding BackCommand}" CommandParameter="{Binding ElementName=uc_MedicineReport}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="5 5 5 -2" ToolTip="Quay lại">
                         <materialDesign:PackIcon Kind="ArrowBack" Foreground="{DynamicResource MaterialDesignBody}"/>
-                    </Button>
+                    </Button>-->
                     <ComboBox x:Name="cbxMonth" Margin="5 5 15 5" ItemsSource="{Binding Unit}" SelectedItem="{Binding SelectedUnit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Tháng" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
                     <ComboBox x:Name="cbxYear" Margin="5 5 15 5" ItemsSource="{Binding Unit}" SelectedItem="{Binding SelectedUnit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Năm" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
                     <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
@@ -74,7 +74,7 @@
             </WrapPanel>
         </materialDesign:Card>-->
 
-        <materialDesign:Card Grid.Row="2" Margin="5" VerticalAlignment="Stretch">
+        <GroupBox Grid.Row="2" Margin="5" Style="{DynamicResource MaterialDesignCardGroupBox}" Header="Chi tiết sử dụng thuốc">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <ListView ItemsSource="{Binding List}"
                           SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}"
@@ -90,6 +90,6 @@
                     </ListView.View>
                 </ListView>
             </ScrollViewer>
-        </materialDesign:Card>
+        </GroupBox>
     </Grid>
 </UserControl>

@@ -64,8 +64,8 @@
                     </Grid>
                     <Grid Grid.Column="1">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto" />
                             <ColumnDefinition />
+                            <ColumnDefinition Width="auto" />
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0">
                             <TextBlock VerticalAlignment="Center"
@@ -199,7 +199,7 @@
                         </Grid>
                         <Grid Grid.Row="1">
                             <GroupBox Header="Danh sách đăng ký khám bệnh"
-                                      Margin="10 0 10 10">
+                                      Margin="0">
                                 <Grid>
                                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                                         <ListView ItemsSource="{Binding List}"
@@ -241,8 +241,8 @@
                                            Text="Phiếu khám bệnh"
                                            Foreground="Gray"
                                            FontWeight="Bold"
-                                           FontSize="20"
-                                           Margin="10"
+                                           FontSize="25"
+                                           Margin="10 12 10 8"
                                            HorizontalAlignment="Center"/>
                             </Grid>
                             <Grid Grid.Row="1">
@@ -250,8 +250,7 @@
                                     <ColumnDefinition Width="13*" />
                                     <ColumnDefinition Width="62*" />
                                 </Grid.ColumnDefinitions>
-                                <local:ucCTPKB Grid.ColumnSpan="2"
-                                               Margin="0,0,0.4,-0.4"></local:ucCTPKB>
+                                <local:ucCTPKB Grid.ColumnSpan="2"></local:ucCTPKB>
                             </Grid>
                         </Grid>
                     </materialDesign:Card>

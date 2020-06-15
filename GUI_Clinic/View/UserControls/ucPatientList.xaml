@@ -98,9 +98,11 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
 
-            <materialDesign:Card Grid.Column="0" Margin="5">
+            <!--<materialDesign:Card Grid.Column="0" Margin="5">-->
                 <GroupBox Header="Danh sách bệnh nhân" 
-                          Margin="10">
+                          Margin="5"
+                          Grid.Column="0"
+                          Style="{DynamicResource MaterialDesignCardGroupBox}">
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <ListView 
                             x:Name="lvPatient"
@@ -125,16 +127,16 @@
                         </ListView>
                     </ScrollViewer>
                 </GroupBox>
-            </materialDesign:Card>
+            <!--</materialDesign:Card>-->
 
-            <materialDesign:Card Grid.Column="1" Margin="5">
-                <Grid Margin="10 5 5 5">
-                    <Grid.RowDefinitions>
+            <!--<materialDesign:Card Grid.Column="1" Margin="5">-->
+            <Grid Grid.Column="1" Margin="5">
+                <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
                     <GroupBox Header="Lịch sử khám"
-                              Margin="10">
+                              Style="{DynamicResource MaterialDesignCardGroupBox}">
                         <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
                             <ListView ItemsSource="{Binding List}"
                                           SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}"
@@ -151,9 +153,9 @@
                         </ScrollViewer>
                     </GroupBox>
 
-                    <Button Grid.Row="1"  x:Name="btnPrint" Command="{Binding AddCommand}" Content="Khám mới" Margin="0 5 5 5" Width="110" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="#0078D7" BorderBrush="#0078D7"></Button>
+                    <Button Grid.Row="1"  x:Name="btnPrint" Command="{Binding AddCommand}" Content="Khám mới" Margin="5" Width="110" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="#0078D7" BorderBrush="#0078D7"></Button>
                 </Grid>
-            </materialDesign:Card>
+            <!--</materialDesign:Card>-->
 
         </Grid>
     </Grid>

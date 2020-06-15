@@ -67,7 +67,10 @@
             </WrapPanel>
         </materialDesign:Card>-->
 
-        <materialDesign:Card Grid.Row="2" Margin="5" VerticalAlignment="Stretch">
+        <GroupBox Grid.Row="2" 
+                  Margin="5" 
+                  Header="Chi tiết doanh thu"
+                  Style="{DynamicResource MaterialDesignCardGroupBox}">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <ListView ItemsSource="{Binding List}"
                           SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}">
@@ -82,7 +85,7 @@
                     </ListView.View>
                 </ListView>
             </ScrollViewer>
-        </materialDesign:Card>
+        </GroupBox>
 
         <materialDesign:Card Grid.Row="3" Margin="5" Height="50">
             <Grid>
