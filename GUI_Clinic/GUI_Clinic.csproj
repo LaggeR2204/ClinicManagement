@@ -96,6 +96,9 @@
     <Compile Include="View\UserControls\ucCTPKB.xaml.cs">
       <DependentUpon>ucCTPKB.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UserControls\ucLichSuNhapThuoc.xaml.cs">
+      <DependentUpon>ucLichSuNhapThuoc.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\UserControls\ucMedicalList.xaml.cs">
       <DependentUpon>ucMedicalList.xaml</DependentUpon>
     </Compile>
@@ -182,6 +185,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UserControls\ucCTPKB.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\ucLichSuNhapThuoc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
