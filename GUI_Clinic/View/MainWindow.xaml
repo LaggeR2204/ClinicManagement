@@ -123,11 +123,11 @@
                                   Height="60"
                                   Uid="0">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Notebook"
+                            <materialDesign:PackIcon Kind="FileDocumentOutline"
                                                      Height="25"
                                                      Width="25"
                                                      Margin="5 10" />
-                            <TextBlock Text="Danh sách phiếu khám bệnh"
+                            <TextBlock Text="Quản lý phiếu khám bệnh"
                                        VerticalAlignment="Center"
                                        Margin="7 10"
                                        FontFamily="Arial"
@@ -165,7 +165,7 @@
                     <ListViewItem x:Name="itemMedicineReport"
                                   Height="60">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="FileDocument"
+                            <materialDesign:PackIcon Kind="ChartBar"
                                                      Height="25"
                                                      Width="25"
                                                      Margin="5 10" />

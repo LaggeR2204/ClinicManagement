@@ -147,7 +147,7 @@ namespace GUI_Clinic.ViewModel
                         //grdUserControl.Children.Add(new ucRevenueReport());
                         grdSelectedButton.Margin = new Thickness(0, 300, 0, 0);
                         break;
-                    case 5:
+                    case 6:
                         uc_Unit.Visibility = Visibility.Hidden;
                         uc_PatientList.Visibility = Visibility.Hidden;
                         uc_Medicine.Visibility = Visibility.Hidden;
@@ -156,7 +156,7 @@ namespace GUI_Clinic.ViewModel
                         uc_MedicalList.Visibility = Visibility.Hidden;
                         //grdUserControl.Children.Clear();
                         //grdUserControl.Children.Add(new ucRevenueReport());
-                        grdSelectedButton.Margin = new Thickness(0, 300, 0, 0);
+                        grdSelectedButton.Margin = new Thickness(0, 360, 0, 0);
                         break;
                     default:
                         break;
