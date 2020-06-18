@@ -8,5 +8,6 @@ namespace BUS_Clinic.BUS
 {
     public abstract class BaseBUS
     {
+        public abstract void LoadLocalData();
     }
 }

@@ -87,6 +87,7 @@
     <Compile Include="ViewModel\MedicalResultViewModel.cs" />
     <Compile Include="ViewModel\MedicineReportViewModel.cs" />
     <Compile Include="ViewModel\MedicineViewModel.cs" />
+    <Compile Include="ViewModel\ucPatientListViewModel.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>

@@ -12,7 +12,8 @@
              TextOptions.TextFormattingMode="Ideal"
              TextOptions.TextRenderingMode="Auto"
              Background="{DynamicResource MaterialDesignPaper}"
-             FontFamily="{DynamicResource MaterialDesignFont}">
+             FontFamily="{DynamicResource MaterialDesignFont}"
+             DataContext="{StaticResource ucPatientVM}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -106,22 +107,26 @@
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <ListView 
                             x:Name="lvPatient"
-                            ItemsSource="{Binding List}"
-                            SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}">
+                            ItemsSource="{Binding ListBN}"
+                            SelectedItem="{Binding SlectedItem, Mode=TwoWay}">
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn 
+                                <GridViewColumn Header="Mã bệnh nhân"
+                                                DisplayMemberBinding="{Binding Id}" />
+                                <GridViewColumn 
                                         Header="Họ và Tên" 
-                                        DisplayMemberBinding="{Binding DisplayName}"/>
+                                        DisplayMemberBinding="{Binding TenBenhNhan}"/>
                                     <GridViewColumn 
                                         Header="Giới tính" 
-                                        DisplayMemberBinding="{Binding Unit.DisplayName}"/>
+                                        DisplayMemberBinding="{Binding GioiTinh}"/>
                                     <GridViewColumn 
-                                        Header="Năm sinh" 
-                                        DisplayMemberBinding="{Binding Price}"/>
-                                    <GridViewColumn 
+                                        Header="NgaySinh" 
+                                        DisplayMemberBinding="{Binding NgaySinh}"/>
+                                <GridViewColumn Header="Số điện thoại"
+                                                DisplayMemberBinding="{Binding SDT}" />
+                                <GridViewColumn 
                                         Header="Địa chỉ" 
-                                        DisplayMemberBinding="{Binding Price}"/>
+                                        DisplayMemberBinding="{Binding DiaChi}"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>
