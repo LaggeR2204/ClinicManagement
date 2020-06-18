@@ -28,13 +28,13 @@
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="grdMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="53"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="250"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="250"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="CloseMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="grdMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="250"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="53"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="53"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
@@ -70,7 +70,11 @@
             </Grid>
 
             <Grid x:Name="grdUserControl" Grid.Row="1">
-                <uc:ucMedicalList></uc:ucMedicalList>
+                <uc:ucRevenueReport x:Name="uc_RevenueReport"/>
+                <uc:ucUnit x:Name="uc_Unit"/>
+                <uc:ucMedicine x:Name="uc_Medicine"/>
+                <uc:ucPatientList x:Name="uc_PatientList"/>
+                <uc:ucMedicalList x:Name="uc_MedicalList"/>
             </Grid>
 
         </Grid>
@@ -134,7 +138,7 @@
                                                      Height="25"
                                                      Width="25"
                                                      Margin="5 10" />
-                            <TextBlock Text="Admin"
+                            <TextBlock Text="Đơn vị và Cách dùng"
                                        VerticalAlignment="Center"
                                        Margin="7 10"
                                        FontFamily="Arial"
