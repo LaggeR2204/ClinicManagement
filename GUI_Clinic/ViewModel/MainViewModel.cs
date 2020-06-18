@@ -9,6 +9,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Effects;
+using BUS_Clinic.BUS;
 using GUI_Clinic.View.UserControls;
 
 namespace GUI_Clinic.ViewModel
@@ -26,6 +27,7 @@ namespace GUI_Clinic.ViewModel
         {
             LoadedWindowCommand = new RelayCommand<object>((p) => { return true; }, (p) => {
                 IsLoaded = true;
+                LoadLocalData();
                 //LoginWindow loginWindow = new LoginWindow();
                 //loginWindow.ShowDialog();
             });
@@ -103,6 +105,10 @@ namespace GUI_Clinic.ViewModel
 
                 return parent;
             }
+        }
+        private void LoadLocalData()
+        {
+            BUSManager.BenhNhanBUS.LoadLocalData();
         }
     }
 }

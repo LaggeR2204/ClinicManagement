@@ -23,7 +23,7 @@ namespace GUI_Clinic.View
         public MainWindow()
         {
             InitializeComponent();
-            BUSManager.BenhNhanBUS.AddBenhNhan(new DTO_Clinic.DTO_BenhNhan() { TenBenhNhan = "minh duc", GioiTinh = true, SoDienThoai = "09239010", NgaySinh = DateTime.Now });
+            //BUSManager.BenhNhanBUS.AddBenhNhan(new DTO_Clinic.DTO_BenhNhan() { TenBenhNhan = "minh duc", GioiTinh = true, SoDienThoai = "09239010", NgaySinh = DateTime.Now });
         }
     }
 }

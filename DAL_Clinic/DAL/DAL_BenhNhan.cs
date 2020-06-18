@@ -1,6 +1,8 @@
 ﻿using DTO_Clinic;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +21,15 @@ namespace DAL_Clinic.DAL
                 context.BenhNhan.Add(bn);
                 context.SaveChanges();
             }
+        }
+
+        public override void LoadLocalData()
+        {
+            SQLServerDBContext.Instant.BenhNhan.Load();         
+        }
+        public ObservableCollection<DTO_BenhNhan> GetListBN()
+        {
+            return SQLServerDBContext.Instant.BenhNhan.Local;
         }
     }
 }

@@ -9,4 +9,5 @@
     <viewmodel:MedicineViewModel x:Key="MedicineVM"/>
     <viewmodel:MedicineReportViewModel x:Key="MedicineReportVM"/>
     <viewmodel:MedicalResultViewModel x:Key="MedicalResultVM"/>
+    <viewmodel:ucPatientListViewModel x:Key="ucPatientVM" />
 </ResourceDictionary>

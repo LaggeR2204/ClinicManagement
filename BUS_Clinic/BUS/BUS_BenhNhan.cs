@@ -2,6 +2,7 @@
 using DTO_Clinic;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,15 @@ namespace BUS_Clinic.BUS
         public void AddBenhNhan(DTO_BenhNhan bn)
         {
             DALManager.BenhNhanDAL.AddBenhNhan(bn);
+        }
+
+        public override void LoadLocalData()
+        {
+            DALManager.BenhNhanDAL.LoadLocalData();
+        }
+        public ObservableCollection<DTO_BenhNhan> GetListBN()
+        {
+            return DALManager.BenhNhanDAL.GetListBN();
         }
     }
 }

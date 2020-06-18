@@ -11,10 +11,22 @@ namespace DAL_Clinic
 {
     internal class SQLServerDBContext : DbContext
     {
+        private static SQLServerDBContext _instant;
+        public static SQLServerDBContext Instant
+        {
+            get
+            {
+                if (_instant == null)
+                    _instant = new SQLServerDBContext();
+                return _instant;
+            }
+            private set => _instant = value;
+        }
         public SQLServerDBContext() : base("name=connectionStringPMT")
         {
             var initializer = new MigrateDatabaseToLatestVersion<SQLServerDBContext, Migrations.Configuration>();
             Database.SetInitializer(initializer);
+            this.Configuration.LazyLoadingEnabled = false;
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
