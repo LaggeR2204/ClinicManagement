@@ -62,16 +62,16 @@
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
 
-                <materialDesign:Card Grid.Column="0" Margin="5">
-                    <Grid Margin="5 5 10 5">
+                <GroupBox Grid.Column="0" Margin="5" Style="{DynamicResource MaterialDesignCardGroupBox}" Header="Phiếu nhập thuốc">
+                    <!--<Grid Margin="5 5 10 5">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock x:Name="tblMedicationEntryList" Grid.Row="0" Text="Phiếu nhập thuốc" Foreground="Gray" FontWeight="Bold" FontSize="20" Margin="10 0 10 0"/>
+                        <TextBlock x:Name="tblMedicationEntryList" Grid.Row="0" Text="Phiếu nhập thuốc" Foreground="Gray" FontWeight="Bold" FontSize="20" Margin="10 0 10 0"/>-->
 
-                        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
                             <ListView ItemsSource="{Binding List}"
                                       SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}"
                                       x:Name="lstMedicationEntryList">
@@ -84,17 +84,17 @@
                                 </ListView.View>
                             </ListView>
                         </ScrollViewer>
-                    </Grid>
-                </materialDesign:Card>
+                    <!--</Grid>-->
+                </GroupBox>
 
-                <materialDesign:Card Grid.Column="1" Margin="5">
-                    <Grid Margin="10 5 5 5">
+                <GroupBox Grid.Column="1" Margin="5" Style="{DynamicResource MaterialDesignCardGroupBox}" Header="Thuốc đã nhập">
+                    <!--<Grid Margin="10 5 5 5">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock x:Name="tblMedicationEntryDetail" Grid.Row="0" Text="Thuốc đã nhập" Foreground="Gray" FontWeight="Bold" FontSize="20" Margin="10 0 10 0"/>
+                        <TextBlock x:Name="tblMedicationEntryDetail" Grid.Row="0" Text="Thuốc đã nhập" Foreground="Gray" FontWeight="Bold" FontSize="20" Margin="10 0 10 0"/>-->
 
                         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
                             <ListView ItemsSource="{Binding List}"
@@ -111,8 +111,8 @@
                                 </ListView.View>
                             </ListView>
                         </ScrollViewer>
-                    </Grid>
-                </materialDesign:Card>
+                    <!--</Grid>-->
+                </GroupBox>
                 
             </Grid>
 
