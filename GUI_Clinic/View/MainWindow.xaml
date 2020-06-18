@@ -74,9 +74,9 @@
                 <uc:ucUnit x:Name="uc_Unit"/>
                 <uc:ucMedicine x:Name="uc_Medicine"/>
                 <uc:ucPatientList x:Name="uc_PatientList"/>
+                <uc:ucDSachPKB x:Name="uc_PKBList" />
                 <uc:ucMedicalList x:Name="uc_MedicalList"/>
             </Grid>
-
         </Grid>
 
         <!--Grid Menu-->
@@ -116,6 +116,22 @@
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Doctor"  Height="25" Width="25" Margin="5 10"/>
                             <TextBlock Text="Danh sách khám bệnh" VerticalAlignment="Center" Margin="7 10" FontFamily="Arial" FontWeight="Bold" FontSize="15"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="itemPKB"
+                                  Height="60"
+                                  Uid="0">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Notebook"
+                                                     Height="25"
+                                                     Width="25"
+                                                     Margin="5 10" />
+                            <TextBlock Text="Danh sách phiếu khám bệnh"
+                                       VerticalAlignment="Center"
+                                       Margin="7 10"
+                                       FontFamily="Arial"
+                                       FontWeight="Bold"
+                                       FontSize="15" />
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem x:Name="itemPatient" Height="60" Uid="0">

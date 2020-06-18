@@ -16,16 +16,11 @@ namespace DAL_Clinic.DAL
         }
         public void AddBenhNhan(DTO_BenhNhan bn)
         {
-            using (var context = new SQLServerDBContext())
-            {
-                context.BenhNhan.Add(bn);
-                context.SaveChanges();
-            }
+            SQLServerDBContext.Instant.BenhNhan.Local.Add(bn);
         }
-
         public override void LoadLocalData()
         {
-            SQLServerDBContext.Instant.BenhNhan.Load();         
+            SQLServerDBContext.Instant.BenhNhan.Load();
         }
         public ObservableCollection<DTO_BenhNhan> GetListBN()
         {
