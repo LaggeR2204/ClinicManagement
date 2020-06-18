@@ -107,38 +107,33 @@
             </Grid.ColumnDefinitions>
 
             <!--<materialDesign:Card Grid.Column="0" Margin="5">-->
-                <GroupBox Header="Danh sách bệnh nhân" 
-                          Margin="5"
-                          Grid.Column="0"
-                          Style="{DynamicResource MaterialDesignCardGroupBox}">
-                    <ScrollViewer VerticalScrollBarVisibility="Auto">
-                        <ListView 
-                            x:Name="lvPatient"
-                            ItemsSource="{Binding ListBN}"
-                            SelectedItem="{Binding SlectedItem, Mode=TwoWay}">
-                            <ListView.View>
-                                <GridView>
-                                <GridViewColumn Header="Mã bệnh nhân"
-                                                DisplayMemberBinding="{Binding Id}" />
-                                <GridViewColumn 
-                                        Header="Họ và Tên" 
-                                        DisplayMemberBinding="{Binding TenBenhNhan}"/>
-                                    <GridViewColumn 
-                                        Header="Giới tính" 
-                                        DisplayMemberBinding="{Binding GioiTinh}"/>
-                                    <GridViewColumn 
-                                        Header="NgaySinh" 
-                                        DisplayMemberBinding="{Binding NgaySinh}"/>
-                                <GridViewColumn Header="Số điện thoại"
-                                                DisplayMemberBinding="{Binding SDT}" />
-                                <GridViewColumn 
-                                        Header="Địa chỉ" 
-                                        DisplayMemberBinding="{Binding DiaChi}"/>
-                                </GridView>
-                            </ListView.View>
-                        </ListView>
-                    </ScrollViewer>
-                </GroupBox>
+            <GroupBox Header="Danh sách bệnh nhân" 
+                      Margin="5"
+                      Grid.Column="0"
+                      Style="{DynamicResource MaterialDesignCardGroupBox}">
+                <ListView x:Name="lvPatient"
+                          ItemsSource="{Binding ListBN}"
+                          SelectedItem="{Binding SlectedItem, Mode=TwoWay}"
+                          ScrollViewer.CanContentScroll="True"
+                          ScrollViewer.VerticalScrollBarVisibility="Auto">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Mã bệnh nhân"
+                                            DisplayMemberBinding="{Binding Id}" />
+                            <GridViewColumn Header="Họ và Tên" 
+                                            DisplayMemberBinding="{Binding TenBenhNhan}"/>
+                            <GridViewColumn Header="Giới tính" 
+                                            DisplayMemberBinding="{Binding GioiTinh}"/>
+                            <GridViewColumn Header="Ngày Sinh" 
+                                            DisplayMemberBinding="{Binding NgaySinh}"/>
+                            <GridViewColumn Header="Số điện thoại"
+                                            DisplayMemberBinding="{Binding SDT}" />
+                            <GridViewColumn Header="Địa chỉ" 
+                                            DisplayMemberBinding="{Binding DiaChi}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </GroupBox>
             <!--</materialDesign:Card>-->
 
             <!--<materialDesign:Card Grid.Column="1" Margin="5">-->
