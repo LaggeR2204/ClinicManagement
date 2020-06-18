@@ -22,7 +22,14 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <TextBlock x:Name="tblTitle" Margin="20 10" HorizontalAlignment="Left" Text="Quản lí bệnh nhân" VerticalAlignment="Center" FontSize="35" FontWeight="Bold" Foreground="#0078D7"/>
+            <TextBlock x:Name="tblTitle"
+                       Margin="20 10" 
+                       HorizontalAlignment="Left" 
+                       Text="Quản lý bệnh nhân"
+                       VerticalAlignment="Center"
+                       FontSize="35" 
+                       FontWeight="Bold" 
+                       Foreground="#0078D7"/>
         </Grid>
 
         <!--Cac element binding tu selected item-->

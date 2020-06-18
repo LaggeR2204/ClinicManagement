@@ -18,38 +18,47 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
             <TextBlock x:Name="tblTitle" Margin="20 10" HorizontalAlignment="Left" Text="Quản lý thuốc" VerticalAlignment="Center" FontSize="35" FontWeight="Bold" Foreground="#0078D7"/>
         </Grid>
-
+        
         <Grid Grid.Row="1">
-            <materialDesign:Card Grid.Row="0" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            
+            <materialDesign:Card Grid.Column="0" Margin="5">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
 
-                    <TextBlock x:Name="tblMedicationFind" Text="Tìm kiếm" FontWeight="Bold" FontSize="20" Margin="15 5 5 5" Foreground="Gray"/>
-
-                    <WrapPanel Grid.Row="1" Margin="0 0 0 10">
-                        <TextBox x:Name="tbxMedicationFindContent" Margin="15 5 15 3" materialDesign:HintAssist.Hint="Tên thuốc cần tìm" VerticalAlignment="Center" MinWidth="100"/>
-                        <Button x:Name="btnMedicationFind" Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
-                                ToolTip="Tìm kiếm"
+                    <Grid Grid.Row="0">
+                        <TextBox x:Name="tbxMedicationFindContent" 
+                                 Margin="10 5 0 5" 
+                                 materialDesign:HintAssist.Hint="Tìm thuốc" 
+                                 HorizontalAlignment="Left"
+                                 VerticalAlignment="Center" 
+                                 Width="80"/>
+                        <Button x:Name="btnMedicationFind" 
+                                Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                                ToolTip="Tìm"
                                 Background="#0078D7"
                                 BorderBrush="#0078D7"
                                 Width="40"
                                 Height="40"
-                                Margin="5 5 5 0">
+                                HorizontalAlignment="Left"
+                                Margin="100 5 5 5">
                             <materialDesign:PackIcon Kind="Search" Height="24" Width="24" />
                         </Button>
-                    </WrapPanel>
+                    </Grid>
 
-                    <materialDesign:Chip Command="{Binding AddMedicineCommand}"
+                    <!--<materialDesign:Chip Command="{Binding AddMedicineCommand}"
                                      x:Name="chpMedicationEntry"
                                      Grid.Row="1"
                                      HorizontalAlignment="Right"
@@ -79,24 +88,125 @@
                         <materialDesign:Chip.Icon>
                             <materialDesign:PackIcon Kind="History"></materialDesign:PackIcon>
                         </materialDesign:Chip.Icon>
-                    </materialDesign:Chip>
-
-                    <!--<materialDesign:Chip Command="{Binding MedicineReportCommand}"
-                                     CommandParameter="{Binding ElementName=uc_Medicine}"
-                                     x:Name="chpMedicationReport"
-                                     Grid.Row="1"
-                                     HorizontalAlignment="Right"
-                                     Content="Báo cáo"
-                                     ToolTip="Lập báo cáo sử dụng thuốc"
-                                     Foreground="White"
-                                     IconBackground="{DynamicResource PrimaryHueDarkBrush}"
-                                     IconForeground="{DynamicResource PrimaryHueDarkForegroundBrush}"
-                                     Background="Gray"
-                                     Margin="0 0 269 0">
-                        <materialDesign:Chip.Icon>
-                            <materialDesign:PackIcon Kind="Note"></materialDesign:PackIcon>
-                        </materialDesign:Chip.Icon>
                     </materialDesign:Chip>-->
+
+                    <Grid Grid.Row="1">
+                        <GroupBox Header="Thuốc trong kho"
+                                  Style="{DynamicResource MaterialDesignCardGroupBox}">
+                            <ListView ItemsSource="{Binding List}"
+                                  SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}"
+                                  x:Name="lstMedicine"
+                                  ScrollViewer.CanContentScroll="True"
+                                  ScrollViewer.VerticalScrollBarVisibility="Auto">>
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
+                                        <GridViewColumn Header="Tên thuốc" DisplayMemberBinding="{Binding DisplayName}"></GridViewColumn>
+                                        <GridViewColumn Header="Đơn vị tính" DisplayMemberBinding="{Binding Unit.DisplayName}"></GridViewColumn>
+                                        <GridViewColumn Header="Công dụng" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
+                                        <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
+                                        <GridViewColumn Header="Giá" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </GroupBox>
+                    </Grid>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Grid.Column="1" Margin="5">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <TextBox Margin="10 5 0 5" 
+                                 materialDesign:HintAssist.Hint="Tìm phiếu nhập thuốc" 
+                                 HorizontalAlignment="Left"
+                                 VerticalAlignment="Center" 
+                                 Width="130"/>
+                        <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                                ToolTip="Tìm"
+                                Background="#0078D7"
+                                BorderBrush="#0078D7"
+                                Width="40"
+                                Height="40"
+                                HorizontalAlignment="Left"
+                                Margin="150 5 5 5">
+                            <materialDesign:PackIcon Kind="Search" Height="24" Width="24" />
+                        </Button>
+                    </Grid>
+
+                    <GroupBox Grid.Row="1"
+                              Header="Phiếu nhập thuốc" 
+                              Margin="0 0 0 5"
+                              Style="{DynamicResource MaterialDesignCardGroupBox}">
+                        <ListView ItemsSource="{Binding List}"
+                                  SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}"
+                                  x:Name="lstMedicationEntryList"
+                                  ScrollViewer.CanContentScroll="True"
+                                  ScrollViewer.VerticalScrollBarVisibility="Auto">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn 
+                                        Header="STT" 
+                                        DisplayMemberBinding="{Binding DisplayName}"/>
+                                    <GridViewColumn 
+                                        Header="Ngày" 
+                                        DisplayMemberBinding="{Binding Unit.DisplayName}"/>
+                                    <GridViewColumn 
+                                        Header="Tổng tiền" 
+                                        DisplayMemberBinding="{Binding Price}"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </GroupBox>
+
+                    <GroupBox Grid.Row="2"
+                              Header="Chi tiết phiếu nhập thuốc" 
+                              Margin="0 0 0 5"
+                              Style="{DynamicResource MaterialDesignCardGroupBox}">
+                        <ListView ItemsSource="{Binding List}"
+                                  SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}"
+                                  x:Name="lstMedicationEntryDetail"
+                                  ScrollViewer.CanContentScroll="True"
+                                  ScrollViewer.VerticalScrollBarVisibility="Auto">>
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn 
+                                        Header="STT" 
+                                        DisplayMemberBinding="{Binding DisplayName}"/>
+                                    <GridViewColumn
+                                        Header="Thuốc"
+                                        DisplayMemberBinding="{Binding Unit.DisplayName}"/>
+                                    <GridViewColumn 
+                                        Header="Đơn vị"
+                                        DisplayMemberBinding="{Binding Price}"/>
+                                    <GridViewColumn 
+                                        Header="Số lượng"
+                                        DisplayMemberBinding="{Binding Price}"/>
+                                    <GridViewColumn 
+                                        Header="Đơn giá" 
+                                        DisplayMemberBinding="{Binding Price}"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </GroupBox>
+
+                    <Button Grid.Row="3"
+                            x:Name="btnMedicationEntryListShow"
+                            Command="{Binding AddMedicineCommand}"
+                            Content="Nhập thuốc"
+                            Width="110"
+                            Margin="0 0 5 5"
+                            HorizontalAlignment="Right" 
+                            Background="#0078D7"
+                            BorderBrush="#0078D7">  
+                    </Button>
                 </Grid>
             </materialDesign:Card>
         </Grid>
@@ -126,27 +236,7 @@
         <!--
             </WrapPanel>
         </materialDesign:Card>-->
-        <Grid Grid.Row="2">
-            <GroupBox Header="Thuốc trong kho" Margin="5"
-                      Style="{DynamicResource MaterialDesignCardGroupBox}">
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <ListView ItemsSource="{Binding List}"
-                                  SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}"
-                                  x:Name="lstMedicine">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
-                                <GridViewColumn Header="Tên thuốc" DisplayMemberBinding="{Binding DisplayName}"></GridViewColumn>
-                                <GridViewColumn Header="Đơn vị tính" DisplayMemberBinding="{Binding Unit.DisplayName}"></GridViewColumn>
-                                <GridViewColumn Header="Công dụng" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
-                                <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
-                                <GridViewColumn Header="Giá" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                </ScrollViewer>
-            </GroupBox>
-        </Grid>
+        
     </Grid>
 </UserControl>
 
