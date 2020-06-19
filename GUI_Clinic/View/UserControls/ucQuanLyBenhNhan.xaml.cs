@@ -1,5 +1,8 @@
-﻿using System;
+﻿using BUS_Clinic.BUS;
+using DTO_Clinic;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,13 +19,17 @@ using System.Windows.Shapes;
 namespace GUI_Clinic.View.UserControls
 {
     /// <summary>
-    /// Interaction logic for ucMedicineReport.xaml
+    /// Interaction logic for ucQuanLyBenhNhan.xaml
     /// </summary>
-    public partial class ucMedicineReport : UserControl
+    public partial class ucQuanLyBenhNhan : UserControl
     {
-        public ucMedicineReport()
+        public ObservableCollection<DTO_BenhNhan> ListBN { get; set; }
+
+        public ucQuanLyBenhNhan()
         {
             InitializeComponent();
+            this.DataContext = this;
+            ListBN = BUSManager.BenhNhanBUS.GetListBN();
         }
     }
 }

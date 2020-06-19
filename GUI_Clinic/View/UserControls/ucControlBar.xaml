@@ -6,33 +6,43 @@
              xmlns:local="clr-namespace:GUI_Clinic.View.UserControls"
              mc:Ignorable="d" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-             x:Name="uc_ControlBar">
-    <i:Interaction.Triggers>
-        <i:EventTrigger EventName="MouseLeftButtonDown">
-            <i:InvokeCommandAction Command="{Binding MouseLeftButtonDownWindowCommand}" 
-                                   CommandParameter="{Binding ElementName=uc_ControlBar}"/>
-        </i:EventTrigger>
-        <i:EventTrigger EventName="MouseDoubleClick">
-            <i:InvokeCommandAction Command="{Binding MaximizeWindowCommand}" 
-                                   CommandParameter="{Binding ElementName=uc_ControlBar}"/>
-        </i:EventTrigger>
-    </i:Interaction.Triggers>
+             MouseLeftButtonDown="UserControl_MouseLeftButtonDown"
+             MouseDoubleClick="btnMaximize_Click">
     <Grid Background="Transparent">
         <TextBlock x:Name="tblWindowName" Text="Clinic Management" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" Foreground="#0078D7"/>
-        <Button Command="{Binding CloseWindowCommand}"
-                CommandParameter="{Binding ElementName=uc_ControlBar}"
-                x:Name="btnShutdown" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" Width="50" Height="30" Background="{x:Null}" BorderBrush="{x:Null}">
+        <Button x:Name="btnShutdown"
+                Grid.Row="0"
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Right" 
+                Width="50"
+                Height="30" 
+                Background="{x:Null}" 
+                BorderBrush="{x:Null}"
+                Click="btnShutdown_Click">
             <materialDesign:PackIcon Kind="Shutdown" Width="25" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#0078D7"/>
         </Button>
-        <Button Command="{Binding MaximizeWindowCommand}"
-                CommandParameter="{Binding ElementName=uc_ControlBar}"
-                x:Name="btnMaximize" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" Width="50" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Margin="0,0,50,0">
+        <Button x:Name="btnMaximize" 
+                Grid.Row="0"
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Right"
+                Width="50" 
+                Height="30" 
+                Background="{x:Null}"
+                BorderBrush="{x:Null}" 
+                Margin="0,0,50,0"
+                Click="btnMaximize_Click">
             <materialDesign:PackIcon Kind="SquareMedium" Width="35" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#0078D7"/>
         </Button>
-        <Button Command="{Binding MinimizeWindowCommand}"
-                CommandParameter="{Binding ElementName=uc_ControlBar}"
-                x:Name="btnMinimize" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" Width="50" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Margin="0,0,100,0">
+        <Button x:Name="btnMinimize" 
+                Grid.Row="0"
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Right"
+                Width="50" 
+                Height="30" 
+                Background="{x:Null}"
+                BorderBrush="{x:Null}" 
+                Margin="0,0,100,0"
+                Click="btnMinimize_Click">
             <materialDesign:PackIcon Kind="WindowMinimize" Width="25" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#0078D7"/>
         </Button>
     </Grid>

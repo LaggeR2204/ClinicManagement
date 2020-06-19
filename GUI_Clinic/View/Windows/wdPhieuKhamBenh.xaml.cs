@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace GUI_Clinic.View.Windows
 {
     /// <summary>
-    /// Interaction logic for AddPatientDialog.xaml
+    /// Interaction logic for wdPhieuKhamBenh.xaml
     /// </summary>
-    public partial class AddPatientDialog : Window
+    public partial class wdPhieuKhamBenh : Window
     {
-        public AddPatientDialog()
+        public wdPhieuKhamBenh()
         {
             InitializeComponent();
         }
