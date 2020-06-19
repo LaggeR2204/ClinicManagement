@@ -78,66 +78,44 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ViewModel\AddPatientViewModel.cs" />
-    <Compile Include="ViewModel\BaseViewModel.cs" />
-    <Compile Include="ViewModel\BillViewModel.cs" />
-    <Compile Include="ViewModel\ControlBarViewModel.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="ViewModel\MedicalListViewModel.cs" />
-    <Compile Include="ViewModel\MedicalResultViewModel.cs" />
-    <Compile Include="ViewModel\MedicineReportViewModel.cs" />
-    <Compile Include="ViewModel\MedicineViewModel.cs" />
-    <Compile Include="ViewModel\ucPatientListViewModel.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\ucBaoCaoDoanhThu.xaml.cs">
+      <DependentUpon>ucBaoCaoDoanhThu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\ucBaoCaoSuDungThuoc.xaml.cs">
+      <DependentUpon>ucBaoCaoSuDungThuoc.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserControls\ucControlBar.xaml.cs">
       <DependentUpon>ucControlBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControls\ucCTPKB.xaml.cs">
-      <DependentUpon>ucCTPKB.xaml</DependentUpon>
+    <Compile Include="View\UserControls\ucCTPhieuKhamBenh.xaml.cs">
+      <DependentUpon>ucCTPhieuKhamBenh.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControls\ucDSachPKB.xaml.cs">
-      <DependentUpon>ucDSachPKB.xaml</DependentUpon>
+    <Compile Include="View\UserControls\ucDanhSachKhamBenh.xaml.cs">
+      <DependentUpon>ucDanhSachKhamBenh.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControls\ucLichSuNhapThuoc.xaml.cs">
-      <DependentUpon>ucLichSuNhapThuoc.xaml</DependentUpon>
+    <Compile Include="View\UserControls\ucDanhSachPhieuKhamBenh.xaml.cs">
+      <DependentUpon>ucDanhSachPhieuKhamBenh.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControls\ucMedicalList.xaml.cs">
-      <DependentUpon>ucMedicalList.xaml</DependentUpon>
+    <Compile Include="View\UserControls\ucDonViCachDung.xaml.cs">
+      <DependentUpon>ucDonViCachDung.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControls\ucMedicine.xaml.cs">
-      <DependentUpon>ucMedicine.xaml</DependentUpon>
+    <Compile Include="View\UserControls\ucQuanLyBenhNhan.xaml.cs">
+      <DependentUpon>ucQuanLyBenhNhan.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControls\ucMedicineReport.xaml.cs">
-      <DependentUpon>ucMedicineReport.xaml</DependentUpon>
+    <Compile Include="View\UserControls\ucQuanLyThuoc.xaml.cs">
+      <DependentUpon>ucQuanLyThuoc.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControls\ucPatientList.xaml.cs">
-      <DependentUpon>ucPatientList.xaml</DependentUpon>
+    <Compile Include="View\Windows\wdHoaDon.xaml.cs">
+      <DependentUpon>wdHoaDon.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControls\ucRevenueReport.xaml.cs">
-      <DependentUpon>ucRevenueReport.xaml</DependentUpon>
+    <Compile Include="View\Windows\wdPhieuKhamBenh.xaml.cs">
+      <DependentUpon>wdPhieuKhamBenh.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControls\ucUnit.xaml.cs">
-      <DependentUpon>ucUnit.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Windows\AddPatientDialog.xaml.cs">
-      <DependentUpon>AddPatientDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Windows\BillWindow.xaml.cs">
-      <DependentUpon>BillWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Windows\MedicalReportWindow.xaml.cs">
-      <DependentUpon>MedicalReportWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Windows\MedicalResultWindow.xaml.cs">
-      <DependentUpon>MedicalResultWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Windows\MedicationEntryFormWindow.xaml.cs">
-      <DependentUpon>MedicationEntryFormWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Windows\MedicationEntryListWindow.xaml.cs">
-      <DependentUpon>MedicationEntryListWindow.xaml</DependentUpon>
+    <Compile Include="View\Windows\wdPhieuNhapThuoc.xaml.cs">
+      <DependentUpon>wdPhieuNhapThuoc.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -179,11 +157,15 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Page Include="ResourceXAML\MainResource.xaml">
+    <Page Include="View\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\MainWindow.xaml">
+    <Page Include="View\UserControls\ucBaoCaoDoanhThu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\ucBaoCaoSuDungThuoc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -191,63 +173,39 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControls\ucCTPKB.xaml">
+    <Page Include="View\UserControls\ucCTPhieuKhamBenh.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControls\ucDSachPKB.xaml">
+    <Page Include="View\UserControls\ucDanhSachKhamBenh.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControls\ucLichSuNhapThuoc.xaml">
+    <Page Include="View\UserControls\ucDanhSachPhieuKhamBenh.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControls\ucMedicalList.xaml">
+    <Page Include="View\UserControls\ucDonViCachDung.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControls\ucMedicine.xaml">
+    <Page Include="View\UserControls\ucQuanLyBenhNhan.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControls\ucMedicineReport.xaml">
+    <Page Include="View\UserControls\ucQuanLyThuoc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControls\ucPatientList.xaml">
+    <Page Include="View\Windows\wdHoaDon.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControls\ucRevenueReport.xaml">
+    <Page Include="View\Windows\wdPhieuKhamBenh.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControls\ucUnit.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Windows\AddPatientDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Windows\BillWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Windows\MedicalReportWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Windows\MedicalResultWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Windows\MedicationEntryFormWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Windows\MedicationEntryListWindow.xaml">
+    <Page Include="View\Windows\wdPhieuNhapThuoc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

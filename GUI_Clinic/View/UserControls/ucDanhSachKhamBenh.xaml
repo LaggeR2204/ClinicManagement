@@ -1,8 +1,8 @@
-﻿<UserControl x:Class="GUI_Clinic.View.UserControls.ucMedicalList"
+﻿<UserControl x:Class="GUI_Clinic.View.UserControls.ucDanhSachKhamBenh"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GUI_Clinic.View.UserControls"
              mc:Ignorable="d"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -11,7 +11,6 @@
              TextElement.FontSize="13"
              TextOptions.TextFormattingMode="Ideal"
              TextOptions.TextRenderingMode="Auto"
-             DataContext="{StaticResource MedicalListVM}"
              Background="{DynamicResource MaterialDesignPaper}"
              FontFamily="{DynamicResource MaterialDesignFont}">
     <Grid>
@@ -177,27 +176,27 @@
                             <GroupBox Header="Danh sách đăng ký khám bệnh"
                                       Margin="0">
                                 <Grid>
-                                    <ScrollViewer VerticalScrollBarVisibility="Auto">
-                                        <ListView ItemsSource="{Binding List}"
-                                                  SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}">
-                                            <ListView.View>
-                                                <GridView>
-                                                    <GridViewColumn Header="STT"
+                                    <ListView ItemsSource="{Binding List}"
+                                              SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}"
+                                              ScrollViewer.CanContentScroll="True"
+                                              ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                        <ListView.View>
+                                            <GridView>
+                                                <GridViewColumn Header="STT"
                                                                     DisplayMemberBinding="{Binding DisplayName}"></GridViewColumn>
-                                                    <GridViewColumn Header="Họ và Tên"
+                                                <GridViewColumn Header="Họ và Tên"
                                                                     DisplayMemberBinding="{Binding DisplayName}"></GridViewColumn>
-                                                    <GridViewColumn Header="Giới tính"
+                                                <GridViewColumn Header="Giới tính"
                                                                     DisplayMemberBinding="{Binding Unit.DisplayName}"></GridViewColumn>
-                                                    <GridViewColumn Header="Năm sinh"
+                                                <GridViewColumn Header="Năm sinh"
                                                                     DisplayMemberBinding="{Binding Price}"></GridViewColumn>
-                                                    <GridViewColumn Header="Địa chỉ"
+                                                <GridViewColumn Header="Địa chỉ"
                                                                     DisplayMemberBinding="{Binding Price}"></GridViewColumn>
-                                                    <GridViewColumn Header="Trạng thái"
+                                                <GridViewColumn Header="Trạng thái"
                                                                     DisplayMemberBinding="{Binding Price}"></GridViewColumn>
-                                                </GridView>
-                                            </ListView.View>
-                                        </ListView>
-                                    </ScrollViewer>
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
                                 </Grid>
                             </GroupBox>
                         </Grid>
@@ -240,7 +239,7 @@
                                                    HorizontalAlignment="Left"
                                                    FontSize="16">
                                         </TextBlock>
-                                        <Grid Grid.Column="1">                                            
+                                        <Grid Grid.Column="1">
                                             <ComboBox BorderBrush="#0078D7"
                                                       BorderThickness="2"
                                                       IsEditable="True"
@@ -345,7 +344,7 @@
                                                             RenderTransformOrigin="0.978,0.593" />
                                             </Border>
                                         </Grid>
-                                       
+
                                     </Grid>
                                     <Grid Grid.Row="3">
                                         <Grid.ColumnDefinitions>
@@ -430,7 +429,7 @@
                                                 VerticalAlignment="Center"
                                                 HorizontalAlignment="Center" />
                                     </Grid>
-                                    
+
                                 </Grid>
                             </materialDesign:Card>
                         </Grid>

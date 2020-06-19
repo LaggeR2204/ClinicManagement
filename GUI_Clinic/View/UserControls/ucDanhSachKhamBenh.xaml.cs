@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace GUI_Clinic.View.UserControls
 {
     /// <summary>
-    /// Interaction logic for ucPatientList.xaml
+    /// Interaction logic for ucDanhSachKhamBenh.xaml
     /// </summary>
-    public partial class ucPatientList : UserControl
+    public partial class ucDanhSachKhamBenh : UserControl
     {
-        public ucPatientList()
+        public ucDanhSachKhamBenh()
         {
             InitializeComponent();
         }

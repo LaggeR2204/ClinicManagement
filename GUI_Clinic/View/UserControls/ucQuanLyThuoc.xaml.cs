@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GUI_Clinic.View.Windows
+namespace GUI_Clinic.View.UserControls
 {
     /// <summary>
-    /// Interaction logic for MedicationEntryFormWindow.xaml
+    /// Interaction logic for ucQuanLyThuoc.xaml
     /// </summary>
-    public partial class MedicationEntryFormWindow : Window
+    public partial class ucQuanLyThuoc : UserControl
     {
-        public MedicationEntryFormWindow()
+        public ucQuanLyThuoc()
         {
             InitializeComponent();
         }

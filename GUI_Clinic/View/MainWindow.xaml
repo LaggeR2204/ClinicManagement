@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:GUI_Clinic.View"
         xmlns:uc="clr-namespace:GUI_Clinic.View.UserControls"
         mc:Ignorable="d"
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -15,15 +14,8 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        DataContext="{StaticResource MainVM}"
-        Title="Clinic Management" Height="700" Width="1080" WindowStartupLocation="CenterScreen" MinWidth="1080" MinHeight="600" WindowStyle="None" ResizeMode="NoResize" WindowState="Maximized">
-
-    <i:Interaction.Triggers>
-        <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding LoadedWindowCommand}"/>
-        </i:EventTrigger>
-    </i:Interaction.Triggers>
-
+        Title="Clinic Management" Height="700" Width="1080" WindowStartupLocation="CenterScreen" MinWidth="1080" MinHeight="600" WindowStyle="None" ResizeMode="NoResize" WindowState="Maximized"
+        Loaded="Window_Loaded">
     <Window.Resources>
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="grdMenu">
@@ -70,13 +62,13 @@
             </Grid>
 
             <Grid x:Name="grdUserControl" Grid.Row="1">
-                <uc:ucRevenueReport x:Name="uc_RevenueReport"/>
-                <uc:ucMedicineReport x:Name="uc_MedicineReport"/>
-                <uc:ucUnit x:Name="uc_Unit"/>
-                <uc:ucMedicine x:Name="uc_Medicine"/>
-                <uc:ucPatientList x:Name="uc_PatientList"/>
-                <uc:ucDSachPKB x:Name="uc_PKBList" />
-                <uc:ucMedicalList x:Name="uc_MedicalList"/>
+                <uc:ucBaoCaoDoanhThu x:Name="uc_BaoCaoDoanhThu" Visibility="Hidden"/>
+                <uc:ucBaoCaoSuDungThuoc x:Name="uc_BaoCaoSuDungThuoc" Visibility="Hidden"/>
+                <uc:ucDonViCachDung x:Name="uc_DonViCachDung" Visibility="Hidden"/>
+                <uc:ucQuanLyThuoc x:Name="uc_QuanLyThuoc" Visibility="Hidden"/>
+                <uc:ucQuanLyBenhNhan x:Name="uc_QuanLyBenhNhan" Visibility="Hidden"/>
+                <uc:ucDanhSachPhieuKhamBenh x:Name="uc_DanhSachPhieuKhamBenh" Visibility="Hidden"/>
+                <uc:ucDanhSachKhamBenh x:Name="uc_DanhSachKhamBenh"/>
             </Grid>
         </Grid>
 
@@ -103,16 +95,14 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <Grid x:Name="SelectedButton" Grid.Column="0" Height="60" VerticalAlignment="Top" Background="White"/>
+                <Grid x:Name="grdSelectedButton" Grid.Column="0" Height="60" VerticalAlignment="Top" Background="White"/>
 
-                <ListView SelectedIndex="0" x:Name="ListViewMenu" Grid.Column="1" Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="SelectionChanged">
-                            <i:InvokeCommandAction Command="{Binding SelectionChangedListMenu}"
-                                               CommandParameter="{Binding ElementName=ListViewMenu}">
-                            </i:InvokeCommandAction>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
+                <ListView SelectedIndex="0" 
+                          x:Name="ListViewMenu" 
+                          Grid.Column="1" 
+                          Foreground="White" 
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                          SelectionChanged="ListViewMenu_SelectionChanged">
                     <ListViewItem x:Name="itemMedical" Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Doctor"  Height="25" Width="25" Margin="5 10"/>
@@ -190,12 +180,6 @@
                                        FontFamily="Arial"
                                        FontWeight="Bold"
                                        FontSize="15" />
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem x:Name="itemAdmin" Height="60">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Person" Height="25" Width="25" Margin="5 10"/>
-                            <TextBlock Text="Admin" VerticalAlignment="Center"  Margin="7 10" FontFamily="Arial" FontWeight="Bold" FontSize="15"/>
                         </StackPanel>
                     </ListViewItem>
                 </ListView>
