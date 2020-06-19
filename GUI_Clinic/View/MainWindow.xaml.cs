@@ -114,5 +114,10 @@ namespace GUI_Clinic.View
                     break;
             }
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            BUSManager.BenhNhanBUS.SaveChange();
+        }
     }
 }

@@ -63,5 +63,19 @@ namespace DTO_Clinic
         private string _diaChi;
         private string _SDT;
         private bool _isDeleted;
+
+        public DTO_BenhNhan()
+        {
+            _isDeleted = false;
+        }
+        public DTO_BenhNhan(string name, bool gt, DateTime ngSinh, string diachi, string sdt)
+        {
+            TenBenhNhan = name;
+            GioiTinh = gt;
+            NgaySinh = ngSinh;
+            DiaChi = diachi;
+            SoDienThoai = sdt;
+            _isDeleted = false;
+        }
     }
 }
