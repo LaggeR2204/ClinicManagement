@@ -277,7 +277,7 @@
                                 </Style>
                             </Grid.Resources>
                             <materialDesign:Card Margin="5 5 10 5">
-                                <Grid Margin="5">
+                                <Grid x:Name="gridPatientInput" Margin="5">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="auto" />
                                         <RowDefinition />
@@ -308,10 +308,11 @@
                                         </TextBlock>
                                         <Grid Grid.Column="1">
                                             <TextBox BorderBrush="#0078D7"
-                                                      BorderThickness="2"
-                                                      Margin="0 5 20 5"
+                                                     x:Name="tbxName"
+                                                     BorderThickness="2"
+                                                     Margin="0 5 20 5"
                                                      FontSize="16"
-                                                      VerticalAlignment="Center">
+                                                     VerticalAlignment="Center">
                                             </TextBox>
                                         </Grid>
                                     </Grid>
@@ -335,6 +336,7 @@
                                                     Height="30"
                                                     HorizontalAlignment="Left">
                                                 <DatePicker Grid.Column="0"
+                                                            x:Name="dpkBirth"
                                                             HorizontalAlignment="Left"
                                                             VerticalContentAlignment="Center"
                                                             VerticalAlignment="Center"
@@ -363,6 +365,7 @@
                                         <Grid Grid.Column="1">
                                             <ComboBox BorderBrush="#0078D7"
                                                       BorderThickness="2"
+                                                      x:Name="cbxSex"
                                                       IsEditable="True"
                                                       Width="60"
                                                       Margin="0 5 10 5"
@@ -384,6 +387,7 @@
                                         </TextBlock>
                                         <Grid Grid.Column="1">
                                             <TextBox BorderBrush="#0078D7"
+                                                     x:Name="tbxAddress"
                                                      BorderThickness="2"
                                                      Margin="0 5 20 5"
                                                      FontSize="16"
@@ -402,6 +406,7 @@
                                         </TextBlock>
                                         <Grid Grid.Column="1">
                                             <TextBox BorderBrush="#0078D7"
+                                                     x:Name="tbxSDT"
                                                      BorderThickness="2"
                                                      Margin="0 5 20 5"
                                                      FontSize="16"
@@ -412,6 +417,7 @@
 
                                     <Grid Grid.Row="6">
                                         <CheckBox Content="Đăng ký khám bệnh"
+                                                  x:Name="ckbSign"
                                                   IsChecked="True"
                                                   Margin="20 5 20 5"
                                                   FontSize="16">
@@ -419,7 +425,8 @@
                                     </Grid>
 
                                     <Grid Grid.Row="7">
-                                        <Button Command="{Binding Command}"
+                                        <Button Command="{Binding AddPatientCommand}"
+                                                CommandParameter="{Binding ElementName=gridPatientInput}"
                                                 Background="#0078D7"
                                                 BorderBrush="#0078D7"
                                                 Content="Thêm bệnh nhân"

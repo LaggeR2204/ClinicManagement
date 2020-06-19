@@ -16,13 +16,19 @@ namespace GUI_Clinic.ViewModel
         public ICommand AddMedicalResultCommand { get; set; }
         public ICommand AddPatientCommand { get; set; }
         public ICommand CloseDialogCommand { get; set; }
-
         public MedicalListViewModel()
         {
-            AddPatientCommand = new RelayCommand<object>((p) => { return true; }, (p) => {
-                AddPatientDialog addPatientDialog = new AddPatientDialog();
-                addPatientDialog.ShowDialog();
-            });
+            AddPatientCommand = new RelayCommand<object>( (p) => 
+                {
+                    Grid gr = p as Grid;
+                    if ((gr.FindName("tbxName") as TextBox).Text == "")
+                        return false;
+                    return true; 
+                },
+                (p) =>
+                { 
+                }
+                );
 
             AddMedicalResultCommand = new RelayCommand<object>((p) => { return true; }, (p) => {
                 MedicalResultWindow medicalResultWindow = new MedicalResultWindow();
