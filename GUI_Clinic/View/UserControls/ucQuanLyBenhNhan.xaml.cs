@@ -91,8 +91,16 @@ namespace GUI_Clinic.View.UserControls
 
         private void lvBenhNhan_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            MaBenhNhanSelected = (lvBenhNhan.SelectedItem as DTO_BenhNhan).Id;
-            CollectionViewSource.GetDefaultView(lvDanhSachPKB.ItemsSource).Refresh();
+            var tempMaBenhNhanSelected = lvBenhNhan.SelectedItem;
+            if (tempMaBenhNhanSelected != null)
+            {
+                MaBenhNhanSelected = (lvBenhNhan.SelectedItem as DTO_BenhNhan).Id;
+                CollectionViewSource.GetDefaultView(lvDanhSachPKB.ItemsSource).Refresh();
+            }
+            else
+            {
+                return;
+            }
         }
 
         private void lvDanhSachPKB_MouseDoubleClick(object sender, MouseButtonEventArgs e)
