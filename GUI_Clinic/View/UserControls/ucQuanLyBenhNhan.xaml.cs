@@ -1,5 +1,6 @@
 ﻿using BUS_Clinic.BUS;
 using DTO_Clinic;
+using GUI_Clinic.Command;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -24,12 +25,83 @@ namespace GUI_Clinic.View.UserControls
     public partial class ucQuanLyBenhNhan : UserControl
     {
         public ObservableCollection<DTO_BenhNhan> ListBN { get; set; }
+        public ObservableCollection<DTO_PhieuKhamBenh> ListPKB { get; set; }
+
+        private int MaBenhNhanSelected = 0;
 
         public ucQuanLyBenhNhan()
         {
             InitializeComponent();
             this.DataContext = this;
             ListBN = BUSManager.BenhNhanBUS.GetListBN();
+            ListPKB = BUSManager.PhieuKhamBenhBUS.GetListPKB();
+            lvBenhNhan.ItemsSource = ListBN;
+            lvDanhSachPKB.ItemsSource = ListPKB;
+
+            CollectionView viewBenhNhan = (CollectionView)CollectionViewSource.GetDefaultView(lvBenhNhan.ItemsSource);
+            viewBenhNhan.Filter = BenhNhanFilter;
+
+            CollectionView viewPKB = (CollectionView)CollectionViewSource.GetDefaultView(lvDanhSachPKB.ItemsSource);
+            viewPKB.Filter = PKBFilter;
+        }
+
+        private bool BenhNhanFilter(Object item)
+        {
+            if (String.IsNullOrEmpty(tbxKeyword.Text))
+            {
+                return true;
+            }
+            else
+            {
+                if (cbxSearchType.SelectedIndex == 0)
+                {
+                    return ((item as DTO_BenhNhan).TenBenhNhan.IndexOf(tbxKeyword.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                }
+                else if (cbxSearchType.SelectedIndex == 1)
+                {
+                    return ((item as DTO_BenhNhan).DiaChi.IndexOf(tbxKeyword.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                }
+                else if (cbxSearchType.SelectedIndex == 2)
+                {
+                    return ((item as DTO_BenhNhan).SoDienThoai.IndexOf(tbxKeyword.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        private bool PKBFilter(Object item)
+        {
+            if (MaBenhNhanSelected == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return (item as DTO_PhieuKhamBenh).MaBenhNhan == MaBenhNhanSelected;
+            }
+        }
+
+        private void tbxKeyword_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(lvBenhNhan.ItemsSource).Refresh();
+        }
+
+        private void lvBenhNhan_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            MaBenhNhanSelected = (lvBenhNhan.SelectedItem as DTO_BenhNhan).Id;
+            CollectionViewSource.GetDefaultView(lvDanhSachPKB.ItemsSource).Refresh();
+        }
+
+        private void lvDanhSachPKB_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var item = ((FrameworkElement)e.OriginalSource).DataContext as DTO_PhieuKhamBenh;
+            if (item != null)
+            {
+                //Mo PKB tuong ung
+            }
         }
     }
 }

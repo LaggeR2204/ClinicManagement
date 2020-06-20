@@ -66,19 +66,8 @@
                              Margin="5 5 15 3"
                              materialDesign:HintAssist.Hint="Nội dung tìm kiếm"
                              VerticalAlignment="Center"
-                             MinWidth="100" />
-                    <Button x:Name="btnSearch"
-                            Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
-                            ToolTip="Tìm kiếm"
-                            Background="#0078D7"
-                            BorderBrush="#0078D7"
-                            Width="40"
-                            Height="40"
-                            Margin="5 5 5 0">
-                        <materialDesign:PackIcon Kind="Search"
-                                                 Height="24"
-                                                 Width="24" />
-                    </Button>
+                             MinWidth="100" 
+                             TextChanged="tbxKeyword_TextChanged"/>
                 </WrapPanel>
 
                 <!--<materialDesign:Chip Command="{Binding Command}"
@@ -110,11 +99,13 @@
                       Margin="5"
                       Grid.Column="0"
                       Style="{DynamicResource MaterialDesignCardGroupBox}">
-                <ListView x:Name="lvPatient"
+                <ListView x:Name="lvBenhNhan"
                           ItemsSource="{Binding ListBN}"
                           SelectedItem="{Binding SlectedItem, Mode=TwoWay}"
                           ScrollViewer.CanContentScroll="True"
-                          ScrollViewer.VerticalScrollBarVisibility="Auto">
+                          ScrollViewer.VerticalScrollBarVisibility="Auto"
+                          SelectedIndex="0"
+                          SelectionChanged="lvBenhNhan_SelectionChanged">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Mã bệnh nhân"
@@ -126,7 +117,7 @@
                             <GridViewColumn Header="Ngày Sinh" 
                                             DisplayMemberBinding="{Binding NgaySinh}"/>
                             <GridViewColumn Header="Số điện thoại"
-                                            DisplayMemberBinding="{Binding SDT}" />
+                                            DisplayMemberBinding="{Binding SoDienThoai}" />
                             <GridViewColumn Header="Địa chỉ" 
                                             DisplayMemberBinding="{Binding DiaChi}"/>
                         </GridView>
@@ -142,21 +133,22 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <GroupBox Header="Lịch sử khám"
-                              Style="{DynamicResource MaterialDesignCardGroupBox}">
-                    <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
-                        <ListView ItemsSource="{Binding List}"
-                                          SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}"
-                                          x:Name="lstMedicationEntryDetail">
-                            <ListView.View>
-                                <GridView>
-                                    <GridViewColumn Header="STT" DisplayMemberBinding="{Binding DisplayName}"></GridViewColumn>
-                                    <GridViewColumn Header="Mã phiếu khám" DisplayMemberBinding="{Binding Unit.DisplayName}"></GridViewColumn>
-                                    <GridViewColumn Header="Ngày" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
-                                    <GridViewColumn Header="Loại bệnh" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
-                                </GridView>
-                            </ListView.View>
-                        </ListView>
-                    </ScrollViewer>
+                          Style="{DynamicResource MaterialDesignCardGroupBox}">
+                    <ListView ItemsSource="{Binding ListPKB}"
+                              SelectedItem="{Binding SlectedItem, Mode=TwoWay}"
+                              x:Name="lvDanhSachPKB"
+                              ScrollViewer.CanContentScroll="True"
+                              ScrollViewer.VerticalScrollBarVisibility="Auto"
+                              MouseDoubleClick="lvDanhSachPKB_MouseDoubleClick">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="STT" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
+                                <GridViewColumn Header="Mã phiếu khám" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
+                                <GridViewColumn Header="Ngày" DisplayMemberBinding="{Binding NgayKham}"></GridViewColumn>
+                                <GridViewColumn Header="Loại bệnh" DisplayMemberBinding="{Binding MaBenh}"></GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
                 </GroupBox>
 
                 <Button Grid.Row="1"  x:Name="btnPrint" Command="{Binding AddCommand}" Content="Khám mới" Margin="5" Width="110" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="#0078D7" BorderBrush="#0078D7"></Button>

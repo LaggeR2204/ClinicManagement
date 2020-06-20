@@ -33,6 +33,7 @@ namespace GUI_Clinic.View
         private void LoadLocalData()
         {
             BUSManager.BenhNhanBUS.LoadLocalData();
+            BUSManager.PhieuKhamBenhBUS.LoadLocalData();
         }
 
         private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)

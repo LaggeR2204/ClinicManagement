@@ -44,6 +44,7 @@
     <Compile Include="BUS\BaseBUS.cs" />
     <Compile Include="BUS\BUSManager.cs" />
     <Compile Include="BUS\BUS_BenhNhan.cs" />
+    <Compile Include="BUS\BUS_PhieuKhamBenh.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
