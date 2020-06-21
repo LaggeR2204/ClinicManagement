@@ -59,7 +59,8 @@
                                            VerticalAlignment="Center" />
                             </Grid>
                             <Grid Grid.Column="1">
-                                <TextBox Text="Viên"
+                                <TextBox x:Name="tbxTenDonVi"
+                                         Text="{Binding TenDonViInput, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                          FontSize="15"
                                          Margin="10"
                                          FontWeight="DemiBold"
@@ -74,8 +75,8 @@
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0">
-                                <Button x:Name="btnSave"
-                                        Command="{Binding AddCommand}"
+                                <Button x:Name="btnThemDonVi"
+                                        Command="{Binding ThemDonViCommand}"
                                         Content="Thêm"
                                         Width="90"
                                         HorizontalAlignment="Center"
@@ -84,8 +85,8 @@
                                         BorderBrush="#0078D7"></Button>
                             </Grid>
                             <Grid Grid.Column="1">
-                                <Button x:Name="btnPrint"
-                                        Command="{Binding AddCommand}"
+                                <Button x:Name="btnCapNhatDonVi"
+                                        Command="{Binding SuaDonViCommand}"
                                         Content="Cập nhật"
                                         Width="90"
                                         HorizontalAlignment="Center"
@@ -94,8 +95,8 @@
                                         BorderBrush="#0078D7"></Button>
                             </Grid>
                             <Grid Grid.Column="2">
-                                <Button x:Name="btnPay"
-                                        Command="{Binding PayBillCommand}"
+                                <Button x:Name="btnXoaDonVi"
+                                        Command="{Binding XoaDonViCommand}"
                                         Content="Xoá"
                                         Width="90"
                                         HorizontalAlignment="Center"
@@ -109,18 +110,21 @@
                         <GroupBox Header="Danh sách đơn vị"
                                   Margin="10">
                             <Grid>
-                                <ListView ItemsSource="{Binding List}"
-                                          SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}"
+                                <ListView x:Name="lvDonVi"
+                                          ItemsSource="{Binding ListDV}"
+                                          SelectedItem="{Binding SlectedItem, Mode=TwoWay}"
+                                          SelectedIndex="0"
                                           ScrollViewer.CanContentScroll="True"
-                                          ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                          ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                          SelectionChanged="lvDonVi_SelectionChanged">
                                     <ListView.View>
                                         <GridView>
                                             <GridViewColumn Header="STT"
-                                                                DisplayMemberBinding="{Binding DisplayName}"></GridViewColumn>
+                                                                DisplayMemberBinding="{Binding Id}"></GridViewColumn>
                                             <GridViewColumn Header="Mã đơn vị"
-                                                                DisplayMemberBinding="{Binding DisplayName}"></GridViewColumn>
+                                                                DisplayMemberBinding="{Binding Id}"></GridViewColumn>
                                             <GridViewColumn Header="Tên đơn vị"
-                                                                DisplayMemberBinding="{Binding Unit.DisplayName}"></GridViewColumn>
+                                                                DisplayMemberBinding="{Binding TenDonVi}"></GridViewColumn>
                                         </GridView>
                                     </ListView.View>
                                 </ListView>
@@ -166,7 +170,8 @@
                                            VerticalAlignment="Center" />
                             </Grid>
                             <Grid Grid.Column="1">
-                                <TextBox Text="Viên"
+                                <TextBox x:Name="tbxTenCachDung"
+                                         Text="{Binding TenCachDungInput, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                          FontSize="15"
                                          Margin="10"
                                          FontWeight="DemiBold"
@@ -181,7 +186,8 @@
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0">
-                                <Button Command="{Binding AddCommand}"
+                                <Button x:Name="btnThemCachDung"
+                                        Command="{Binding ThemCachDungCommand}"
                                         Content="Thêm"
                                         Width="90"
                                         HorizontalAlignment="Center"
@@ -190,16 +196,18 @@
                                         BorderBrush="#0078D7"></Button>
                             </Grid>
                             <Grid Grid.Column="1">
-                                <Button Command="{Binding AddCommand}"
-                                        Content="Cập nhật"
+                                <Button x:Name="btnCapNhatCachDung"
+                                        Command="{Binding SuaCachDungCommand}"
                                         Width="90"
+                                        Content="Cập nhật"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         Background="#0078D7"
                                         BorderBrush="#0078D7"></Button>
                             </Grid>
                             <Grid Grid.Column="2">
-                                <Button Command="{Binding PayBillCommand}"
+                                <Button x:Name="btnXoaCachDung"
+                                        Command="{Binding XoaCachDungCommand}"
                                         Content="Xoá"
                                         Width="90"
                                         HorizontalAlignment="Center"
@@ -213,18 +221,21 @@
                         <GroupBox Header="Danh sách cách dùng"
                                   Margin="10">
                             <Grid>
-                                <ListView ItemsSource="{Binding List}"
-                                          SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}"
+                                <ListView x:Name="lvCachDung"
+                                          ItemsSource="{Binding ListCD}"
+                                          SelectedItem="{Binding SlectedItem, Mode=TwoWay}"
+                                          SelectedIndex="0"
                                           ScrollViewer.CanContentScroll="True"
-                                          ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                          ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                          SelectionChanged="lvCachDung_SelectionChanged">
                                     <ListView.View>
                                         <GridView>
                                             <GridViewColumn Header="STT"
-                                                                DisplayMemberBinding="{Binding DisplayName}"></GridViewColumn>
+                                                                DisplayMemberBinding="{Binding Id}"></GridViewColumn>
                                             <GridViewColumn Header="Mã cách dùng"
-                                                                DisplayMemberBinding="{Binding DisplayName}"></GridViewColumn>
+                                                                DisplayMemberBinding="{Binding Id}"></GridViewColumn>
                                             <GridViewColumn Header="Tên cách dùng"
-                                                                DisplayMemberBinding="{Binding Unit.DisplayName}"></GridViewColumn>
+                                                                DisplayMemberBinding="{Binding TenCachDung}"></GridViewColumn>
                                         </GridView>
                                     </ListView.View>
                                 </ListView>

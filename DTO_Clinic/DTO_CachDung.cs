@@ -15,5 +15,15 @@ namespace DTO_Clinic
         private string _tenCachDung;
         public virtual ICollection<DTO_CTPhieuKhamBenh> DS_CTPhieuKhamBenh { get; set; }
         public bool IsDeleted { get => _isDeleted; set { _isDeleted = value; OnPropertyChanged(); } }
+
+        public DTO_CachDung()
+        {
+            _isDeleted = false;
+        }
+        public DTO_CachDung(string tenCachDung)
+        {
+            TenCachDung = tenCachDung;
+            _isDeleted = false;
+        }
     }
 }
