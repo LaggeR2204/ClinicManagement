@@ -24,17 +24,27 @@ namespace GUI_Clinic.View.UserControls
     /// </summary>
     public partial class ucQuanLyBenhNhan : UserControl
     {
-        public ObservableCollection<DTO_BenhNhan> ListBN { get; set; }
-        public ObservableCollection<DTO_PhieuKhamBenh> ListPKB { get; set; }
-
-        private int MaBenhNhanSelected = 0;
-
         public ucQuanLyBenhNhan()
         {
             InitializeComponent();
             this.DataContext = this;
+
+            InitData();  
+        }
+
+        #region Property                
+        public ObservableCollection<DTO_BenhNhan> ListBN { get; set; }
+        public ObservableCollection<DTO_PhieuKhamBenh> ListPKB { get; set; }
+        private int MaBenhNhanSelected = 0;
+        #endregion
+        #region Command
+
+        #endregion
+        public void InitData()
+        {
             ListBN = BUSManager.BenhNhanBUS.GetListBN();
             ListPKB = BUSManager.PhieuKhamBenhBUS.GetListPKB();
+
             lvBenhNhan.ItemsSource = ListBN;
             lvDanhSachPKB.ItemsSource = ListPKB;
 

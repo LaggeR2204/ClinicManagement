@@ -31,9 +31,6 @@ namespace GUI_Clinic.View.UserControls
 
             InitData();
             InitCommand();
-
-            tbxTenDonVi.Text = TenDonViInput;
-            tbxTenCachDung.Text = TenCachDungInput;
         }
         #region Property                
         public ObservableCollection<DTO_DonVi> ListDV { get; set; }
