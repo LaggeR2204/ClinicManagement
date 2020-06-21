@@ -37,7 +37,18 @@ namespace BUS_Clinic.BUS
 
         public void UpdateCachDung(DTO_CachDung cd, string tenCachDungMoi)
         {
-            if (cd.TenCachDung != tenCachDungMoi)
+            ListCD = GetListCD();
+            bool flag = true;
+            foreach (DTO_CachDung item in ListCD)
+            {
+                if (item.TenCachDung == tenCachDungMoi)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+
+            if (cd.TenCachDung != tenCachDungMoi && flag == true)
             {
                 cd.TenCachDung = tenCachDungMoi;
             }

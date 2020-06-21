@@ -37,7 +37,18 @@ namespace BUS_Clinic.BUS
 
         public void UpdateDonVi(DTO_DonVi dv, string tenDonViMoi)
         {
-            if (dv.TenDonVi != tenDonViMoi)
+            ListDV = GetListDV();
+            bool flag = true;
+            foreach (DTO_DonVi item in ListDV)
+            {
+                if (item.TenDonVi == tenDonViMoi)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+
+            if (dv.TenDonVi != tenDonViMoi && flag == true)
             {
                 dv.TenDonVi = tenDonViMoi;
             }
