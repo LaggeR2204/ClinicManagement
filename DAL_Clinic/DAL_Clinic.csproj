@@ -67,6 +67,7 @@
     <Compile Include="BuddyClass\ThuocMap.cs" />
     <Compile Include="DAL\BaseDAL.cs" />
     <Compile Include="DAL\DALManager.cs" />
+    <Compile Include="DAL\DAL_Benh.cs" />
     <Compile Include="DAL\DAL_BenhNhan.cs" />
     <Compile Include="DAL\DAL_CachDung.cs" />
     <Compile Include="DAL\DAL_CTPhieuNhapThuoc.cs" />

@@ -1,5 +1,8 @@
-﻿using System;
+﻿using BUS_Clinic.BUS;
+using DTO_Clinic;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +22,20 @@ namespace GUI_Clinic.View.Windows
     /// </summary>
     public partial class wdPhieuKhamBenh : Window
     {
-        public wdPhieuKhamBenh()
+        public ObservableCollection<DTO_CTPhieuKhamBenh> ListCTPKB { get; set; }
+
+        public wdPhieuKhamBenh(DTO_PhieuKhamBenh phieuKhamBenh)
         {
             InitializeComponent();
+            BUSManager.PhieuKhamBenhBUS.LoadNPBenh(phieuKhamBenh);
+            BUSManager.PhieuKhamBenhBUS.LoadNPBenhNhan(phieuKhamBenh);
+            BUSManager.PhieuKhamBenhBUS.LoadNPDSCTPhieuKhamBenh(phieuKhamBenh);
+
+            tblTenBenhNhan.Text = phieuKhamBenh.BenhNhan.TenBenhNhan;
+            tblNgayKham.Text = phieuKhamBenh.NgayKham.ToString();
+            tblTrieuChung.Text = phieuKhamBenh.TrieuChung;
+            tblDuDoanLoaiBenh.Text = phieuKhamBenh.Benh.TenBenh;
+            lvMedicine.ItemsSource = phieuKhamBenh.DSCTPhieuKhamBenh;
         }
     }
 }

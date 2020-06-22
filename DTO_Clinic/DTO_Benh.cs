@@ -15,5 +15,17 @@ namespace DTO_Clinic
         private string _tenBenh;
         public virtual ICollection<DTO_PhieuKhamBenh> DS_PhieuKhamBenh { get; set; }
         public bool IsDeleted { get => _isDeleted; set { _isDeleted = value; OnPropertyChanged(); } }
+
+        public DTO_Benh()
+        {
+            IsDeleted = false;
+        }
+
+        public DTO_Benh(int maBenh, string tenBenh)
+        {
+            Id = maBenh;
+            TenBenh = tenBenh;
+            IsDeleted = false;
+        }
     }
 }

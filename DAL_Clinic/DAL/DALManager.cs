@@ -12,6 +12,7 @@ namespace DAL_Clinic.DAL
         private static DAL_PhieuKhamBenh _phieuKhamBenhDAL;
         private static DAL_DonVi _donViDAL;
         private static DAL_CachDung _cachDungDAL;
+        private static DAL_Benh _benhDAL;
         private static DAL_Thuoc _thuocDAL;
         private static DAL_PhieuNhapThuoc _phieuNhapThuocDAL;
         private static DAL_CTPhieuNhapThuoc _cTPhieuNhapThuocDAL;
@@ -53,6 +54,16 @@ namespace DAL_Clinic.DAL
                 if (_cachDungDAL == null)
                     _cachDungDAL = new DAL_CachDung();
                 return _cachDungDAL;
+            }
+        }
+
+        public static DAL_Benh BenhDAL
+        {
+            get
+            {
+                if (_benhDAL == null)
+                    _benhDAL = new DAL_Benh();
+                return _benhDAL;
             }
         }
 

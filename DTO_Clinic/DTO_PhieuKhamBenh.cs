@@ -21,5 +21,19 @@ namespace DTO_Clinic
         public virtual DTO_BenhNhan BenhNhan { get; set; }
         public virtual ICollection<DTO_CTPhieuKhamBenh> DSCTPhieuKhamBenh { get; set; }
         public bool IsDeleted { get => _isDeleted; set { _isDeleted = value; OnPropertyChanged(); } }
+        
+        public DTO_PhieuKhamBenh()
+        {
+            IsDeleted = false;
+        }
+
+        public DTO_PhieuKhamBenh(int maBenhNhan, DateTime ngayKham, int maBenh, string trieuChung)
+        {
+            MaBenhNhan = maBenhNhan;
+            MaBenh = maBenh;
+            NgayKham = ngayKham;
+            TrieuChung = trieuChung;
+            IsDeleted = false;
+        }
     }
 }
