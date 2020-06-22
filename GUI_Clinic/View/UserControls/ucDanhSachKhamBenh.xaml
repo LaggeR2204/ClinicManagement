@@ -125,7 +125,8 @@
                                 <DatePicker HorizontalAlignment="Right"
                                             x:Name="dpkNgayKham"
                                             VerticalAlignment="Center"
-                                            SelectedDate="{Binding DateInput}"
+                                            SelectedDate="{Binding DateInput,Mode=TwoWay}"
+                                            SelectedDateChanged="dpkNgayKham_SelectedDateChanged"
                                             Width="100"
                                             Margin="10"
                                             materialDesign:HintAssist.Hint="Ngày khám"
@@ -178,7 +179,7 @@
                             <GroupBox Header="Danh sách đăng ký khám bệnh"
                                       Margin="0">
                                 <Grid>                                    
-                                    <ListView ItemsSource="{Binding ListBN}"
+                                    <ListView x:Name="lvDSBenhNhan"
                                               SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}"
                                               ScrollViewer.CanContentScroll="True"
                                               ScrollViewer.VerticalScrollBarVisibility="Auto"
@@ -199,7 +200,7 @@
                                                 <GridViewColumn Header="Số điện thoại"
                                                                 DisplayMemberBinding="{Binding SoDienThoai}"></GridViewColumn>
                                             </GridView>
-                                        </ListView.View>
+                                        </ListView.View>                                        
                                     </ListView>
                                 </Grid>
                             </GroupBox>

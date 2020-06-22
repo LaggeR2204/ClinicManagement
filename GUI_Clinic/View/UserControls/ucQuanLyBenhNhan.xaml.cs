@@ -36,6 +36,7 @@ namespace GUI_Clinic.View.UserControls
         public ObservableCollection<DTO_BenhNhan> ListBN { get; set; }
         public ObservableCollection<DTO_PhieuKhamBenh> ListPKB { get; set; }
         private int MaBenhNhanSelected = 0;
+        public DTO_BenhNhan SelectedItem { get; set; }
         #endregion
         #region Command
 

@@ -100,11 +100,9 @@
                       Grid.Column="0"
                       Style="{DynamicResource MaterialDesignCardGroupBox}">
                 <ListView x:Name="lvBenhNhan"
-                          ItemsSource="{Binding ListBN}"
-                          SelectedItem="{Binding SlectedItem, Mode=TwoWay}"
+                          SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
                           ScrollViewer.CanContentScroll="True"
                           ScrollViewer.VerticalScrollBarVisibility="Auto"
-                          SelectedIndex="0"
                           SelectionChanged="lvBenhNhan_SelectionChanged">
                     <ListView.View>
                         <GridView>

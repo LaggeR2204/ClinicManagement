@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BUS_Clinic.BUS;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,16 @@ namespace GUI_Clinic
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            LoadLocalData();
+        }
+        private void LoadLocalData()
+        {
+            BUSManager.BenhNhanBUS.LoadLocalData();
+            BUSManager.PhieuKhamBenhBUS.LoadLocalData();
+            BUSManager.DonViBUS.LoadLocalData();
+            BUSManager.CachDungBUS.LoadLocalData();
+        }
     }
 }

@@ -33,8 +33,9 @@ namespace GUI_Clinic.View.UserControls
         }
         #region Property                
         public ObservableCollection<DTO_BenhNhan> ListBN { get; set; }
+        public List<int> MatchBNList { get; set; }
         public string NameInput { get; set; }
-        public DateTime? DateInput  { get; set; }
+        public DateTime? DateInput { get; set; }
         public string DiaChiInput { get; set; }
         public string SDTInput { get; set; }
         #endregion
@@ -43,18 +44,22 @@ namespace GUI_Clinic.View.UserControls
         #endregion
         public void InitData()
         {
-            dpkNgayKham.DisplayDate = DateTime.Now;
-            ListBN = BUSManager.BenhNhanBUS.GetListBN();
+            DateInput = DateTime.Now;
+            ListBN = new ObservableCollection<DTO_BenhNhan>( BUSManager.BenhNhanBUS.GetListBN());
+            lvDSBenhNhan.ItemsSource = ListBN;
+            CollectionView viewBenhNhan = (CollectionView)CollectionViewSource.GetDefaultView(lvDSBenhNhan.ItemsSource);
+            viewBenhNhan.Filter = BenhNhanFilter;
+            RefreshList();
         }
         public void InitCommand()
         {
-            AddPatientCommand = new RelayCommand<Window>((p) => 
+            AddPatientCommand = new RelayCommand<Window>((p) =>
             {
-            if (string.IsNullOrEmpty(NameInput) || 
-                string.IsNullOrEmpty(DiaChiInput) || 
-                string.IsNullOrEmpty(SDTInput) ||
-                cbxGioiTinh.SelectedIndex == -1 || 
-                !DateInput.HasValue)                
+                if (string.IsNullOrEmpty(NameInput) ||
+                    string.IsNullOrEmpty(DiaChiInput) ||
+                    string.IsNullOrEmpty(SDTInput) ||
+                    cbxGioiTinh.SelectedIndex == -1 ||
+                    !DateInput.HasValue)
                     return false;
                 return true;
             }, (p) =>
@@ -66,7 +71,28 @@ namespace GUI_Clinic.View.UserControls
                     gt = true;
                 DTO_BenhNhan benhNhan = new DTO_BenhNhan(NameInput, gt, DateInput.Value, DiaChiInput, SDTInput);
                 BUSManager.BenhNhanBUS.AddBenhNhan(benhNhan);
+                ListBN.Add(benhNhan);
             });
+        }
+        private bool BenhNhanFilter(Object item)
+        {
+            if (String.IsNullOrEmpty(dpkNgayKham.Text))
+            {
+                return true;
+            }
+            else
+            {
+                return (MatchBNList.Contains((item as DTO_BenhNhan).Id));
+            }
+        }
+        private void dpkNgayKham_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            RefreshList();
+        }
+        private void RefreshList()
+        {
+            MatchBNList = BUSManager.PhieuKhamBenhBUS.GetListPKB(DateInput.Value.ToString("d"));
+            CollectionViewSource.GetDefaultView(lvDSBenhNhan.ItemsSource).Refresh();
         }
     }
 }

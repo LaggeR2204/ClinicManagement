@@ -27,16 +27,16 @@ namespace GUI_Clinic.View
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            LoadLocalData();
+            //LoadLocalData();
         }
 
-        private void LoadLocalData()
-        {
-            BUSManager.BenhNhanBUS.LoadLocalData();
-            BUSManager.PhieuKhamBenhBUS.LoadLocalData();
-            BUSManager.DonViBUS.LoadLocalData();
-            BUSManager.CachDungBUS.LoadLocalData();
-        }
+        //private void LoadLocalData()
+        //{
+        //    BUSManager.BenhNhanBUS.LoadLocalData();
+        //    BUSManager.PhieuKhamBenhBUS.LoadLocalData();
+        //    BUSManager.DonViBUS.LoadLocalData();
+        //    BUSManager.CachDungBUS.LoadLocalData();
+        //}
 
         private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
