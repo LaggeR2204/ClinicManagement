@@ -36,6 +36,9 @@ namespace GUI_Clinic.View
             BUSManager.PhieuKhamBenhBUS.LoadLocalData();
             BUSManager.DonViBUS.LoadLocalData();
             BUSManager.CachDungBUS.LoadLocalData();
+            BUSManager.ThuocBUS.LoadLocalData();
+            BUSManager.PhieuNhapThuocBUS.LoadLocalData();
+            BUSManager.CTPhieuNhapThuocBUS.LoadLocalData();
         }
 
         private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
