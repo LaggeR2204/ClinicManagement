@@ -18,6 +18,21 @@ namespace DAL_Clinic.DAL
         {
             SQLServerDBContext.Instant.PhieuKhamBenh.Load();
         }
+        public void LoadNPBenh (DTO_PhieuKhamBenh phieuKhamBenh)
+        {
+            var entry = SQLServerDBContext.Instant.Entry(phieuKhamBenh);
+            entry.Reference(c => c.Benh).Load();
+        }
+        public void LoadNPBenhNhan(DTO_PhieuKhamBenh phieuKhamBenh)
+        {
+            var entry = SQLServerDBContext.Instant.Entry(phieuKhamBenh);
+            entry.Reference(c => c.BenhNhan).Load();
+        }
+        public void LoadNPDSCTPhieuKhamBenh(DTO_PhieuKhamBenh phieuKhamBenh)
+        {
+            var entry = SQLServerDBContext.Instant.Entry(phieuKhamBenh);
+            entry.Collection(c => c.DSCTPhieuKhamBenh).Load();
+        }
         public ObservableCollection<DTO_PhieuKhamBenh> GetListPKB()
         {
             return SQLServerDBContext.Instant.PhieuKhamBenh.Local;      

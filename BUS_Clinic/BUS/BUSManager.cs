@@ -13,6 +13,7 @@ namespace BUS_Clinic.BUS
         private static BUS_PhieuKhamBenh _phieuKhamBenhBUS;
         private static BUS_DonVi _donViBUS;
         private static BUS_CachDung _cachDungBUS;
+        private static BUS_Benh _benhBUS;
 
         public static BUS_BenhNhan BenhNhanBUS
         {
@@ -51,6 +52,16 @@ namespace BUS_Clinic.BUS
                 if (_cachDungBUS == null)
                     _cachDungBUS = new BUS_CachDung();
                 return _cachDungBUS;
+            }
+        }
+
+        public static BUS_Benh BenhBUS
+        {
+            get
+            {
+                if (_benhBUS == null)
+                    _benhBUS = new BUS_Benh();
+                return _benhBUS;
             }
         }
 

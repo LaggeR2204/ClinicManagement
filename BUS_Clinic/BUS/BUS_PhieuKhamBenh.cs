@@ -15,6 +15,31 @@ namespace BUS_Clinic.BUS
         {
 
         }
+        public DTO_PhieuKhamBenh GetPhieuKhamBenh(int maPhieuKhamBenh)
+        {
+            ObservableCollection<DTO_PhieuKhamBenh> ListPKB = GetListPKB();
+            foreach (DTO_PhieuKhamBenh item in ListPKB)
+            {
+                if (item.Id == maPhieuKhamBenh)
+                {
+                    return item;
+                }
+            }
+
+            return null;
+        }
+        public void LoadNPBenh(DTO_PhieuKhamBenh phieuKhamBenh)
+        {
+            DALManager.PhieuKhamBenhDAL.LoadNPBenh(phieuKhamBenh);
+        }
+        public void LoadNPBenhNhan(DTO_PhieuKhamBenh phieuKhamBenh)
+        {
+            DALManager.PhieuKhamBenhDAL.LoadNPBenhNhan(phieuKhamBenh);
+        }
+        public void LoadNPDSCTPhieuKhamBenh(DTO_PhieuKhamBenh phieuKhamBenh)
+        {
+            DALManager.PhieuKhamBenhDAL.LoadNPDSCTPhieuKhamBenh(phieuKhamBenh);
+        }
         public override void LoadLocalData()
         {
             DALManager.PhieuKhamBenhDAL.LoadLocalData();
