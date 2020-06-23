@@ -38,13 +38,13 @@
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Row="0">
-                        <TextBox x:Name="tbxMedicationFindContent" 
-                                 Margin="10 5 0 5" 
+                        <TextBox x:Name="tbxTimThuoc" 
+                                 Margin="10 10 0 10" 
                                  materialDesign:HintAssist.Hint="Tìm thuốc" 
                                  HorizontalAlignment="Left"
                                  VerticalAlignment="Center" 
                                  Width="80"/>
-                        <Button x:Name="btnMedicationFind" 
+                        <!--<Button x:Name="btnMedicationFind" 
                                 Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
                                 ToolTip="Tìm"
                                 Background="#0078D7"
@@ -54,7 +54,7 @@
                                 HorizontalAlignment="Left"
                                 Margin="100 5 5 5">
                             <materialDesign:PackIcon Kind="Search" Height="24" Width="24" />
-                        </Button>
+                        </Button>-->
                     </Grid>
 
                     <!--<materialDesign:Chip Command="{Binding AddMedicineCommand}"
@@ -92,19 +92,25 @@
                     <Grid Grid.Row="1">
                         <GroupBox Header="Thuốc trong kho"
                                   Style="{DynamicResource MaterialDesignCardGroupBox}">
-                            <ListView ItemsSource="{Binding List}"
-                                  SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}"
-                                  x:Name="lstMedicine"
-                                  ScrollViewer.CanContentScroll="True"
-                                  ScrollViewer.VerticalScrollBarVisibility="Auto">>
+                            <ListView x:Name="lvThuoc"
+                                      ItemsSource="{Binding ListThuoc}"
+                                      SelectedItem="{Binding SlectedItem, Mode=TwoWay}"
+                                      ScrollViewer.CanContentScroll="True"
+                                      ScrollViewer.VerticalScrollBarVisibility="Auto">
                                 <ListView.View>
                                     <GridView>
-                                        <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
-                                        <GridViewColumn Header="Tên thuốc" DisplayMemberBinding="{Binding DisplayName}"></GridViewColumn>
-                                        <GridViewColumn Header="Đơn vị tính" DisplayMemberBinding="{Binding Unit.DisplayName}"></GridViewColumn>
-                                        <GridViewColumn Header="Công dụng" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
-                                        <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
-                                        <GridViewColumn Header="Giá" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
+                                        <GridViewColumn Header="ID" 
+                                                        DisplayMemberBinding="{Binding Id}"/>
+                                        <GridViewColumn Header="Tên thuốc" 
+                                                        DisplayMemberBinding="{Binding DisplayName}"/>
+                                        <GridViewColumn Header="Đơn vị tính" 
+                                                        DisplayMemberBinding="{Binding Unit.DisplayName}"/>
+                                        <GridViewColumn Header="Công dụng" 
+                                                        DisplayMemberBinding="{Binding Price}"/>
+                                        <GridViewColumn Header="Số lượng" 
+                                                        DisplayMemberBinding="{Binding Price}"/>
+                                        <GridViewColumn Header="Giá" 
+                                                        DisplayMemberBinding="{Binding Price}"/>
                                     </GridView>
                                 </ListView.View>
                             </ListView>
@@ -119,16 +125,32 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition/>
                         <RowDefinition/>
-                        <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Row="0">
-                        <TextBox Margin="10 5 0 5" 
+                        <DatePicker Margin="10 10 0 10" 
                                  materialDesign:HintAssist.Hint="Tìm phiếu nhập thuốc" 
                                  HorizontalAlignment="Left"
                                  VerticalAlignment="Center" 
-                                 Width="130"/>
-                        <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                                 Width="150"/>
+                        <materialDesign:Chip Command="{Binding AddMedicineCommand}"
+                                     x:Name="btnNhapThuoc"
+                                     Grid.Row="1"
+                                     Content="Nhập thuốc"
+                                     ToolTip="Lập phiếu nhập thuốc"
+                                     Foreground="White"
+                                     HorizontalAlignment="Right"
+                                     VerticalAlignment="Center"
+                                     IconBackground="{DynamicResource PrimaryHueDarkBrush}"
+                                     IconForeground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+                                     Background="Gray"
+                                     Margin="0 5 10 5"
+                                     Click="btnNhapThuoc_Click">
+                            <materialDesign:Chip.Icon>
+                                <materialDesign:PackIcon Kind="Plus"/>
+                            </materialDesign:Chip.Icon>
+                        </materialDesign:Chip>
+                        <!--<Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
                                 ToolTip="Tìm"
                                 Background="#0078D7"
                                 BorderBrush="#0078D7"
@@ -137,29 +159,26 @@
                                 HorizontalAlignment="Left"
                                 Margin="150 5 5 5">
                             <materialDesign:PackIcon Kind="Search" Height="24" Width="24" />
-                        </Button>
+                        </Button>-->
                     </Grid>
 
                     <GroupBox Grid.Row="1"
                               Header="Phiếu nhập thuốc" 
                               Margin="0 0 0 5"
                               Style="{DynamicResource MaterialDesignCardGroupBox}">
-                        <ListView ItemsSource="{Binding List}"
-                                  SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}"
-                                  x:Name="lstMedicationEntryList"
+                        <ListView ItemsSource="{Binding ListPNT}"
+                                  SelectedItem="{Binding SlectedItem, Mode=TwoWay}"
+                                  x:Name="lvPhieuNhapThuoc"
                                   ScrollViewer.CanContentScroll="True"
                                   ScrollViewer.VerticalScrollBarVisibility="Auto">
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn 
-                                        Header="STT" 
-                                        DisplayMemberBinding="{Binding DisplayName}"/>
-                                    <GridViewColumn 
-                                        Header="Ngày" 
-                                        DisplayMemberBinding="{Binding Unit.DisplayName}"/>
-                                    <GridViewColumn 
-                                        Header="Tổng tiền" 
-                                        DisplayMemberBinding="{Binding Price}"/>
+                                    <GridViewColumn Header="STT" 
+                                                    DisplayMemberBinding="{Binding DisplayName}"/>
+                                    <GridViewColumn Header="Ngày" 
+                                                    DisplayMemberBinding="{Binding Unit.DisplayName}"/>
+                                    <GridViewColumn Header="Tổng tiền" 
+                                                    DisplayMemberBinding="{Binding Price}"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>
@@ -170,10 +189,10 @@
                               Margin="0 0 0 5"
                               Style="{DynamicResource MaterialDesignCardGroupBox}">
                         <ListView ItemsSource="{Binding List}"
-                                  SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}"
+                                  SelectedItem="{Binding SlectedItem, Mode=TwoWay}"
                                   x:Name="lstMedicationEntryDetail"
                                   ScrollViewer.CanContentScroll="True"
-                                  ScrollViewer.VerticalScrollBarVisibility="Auto">>
+                                  ScrollViewer.VerticalScrollBarVisibility="Auto">
                             <ListView.View>
                                 <GridView>
                                     <GridViewColumn 
@@ -195,17 +214,6 @@
                             </ListView.View>
                         </ListView>
                     </GroupBox>
-
-                    <Button Grid.Row="3"
-                            x:Name="btnMedicationEntryListShow"
-                            Command="{Binding AddMedicineCommand}"
-                            Content="Nhập thuốc"
-                            Width="110"
-                            Margin="0 0 5 5"
-                            HorizontalAlignment="Right" 
-                            Background="#0078D7"
-                            BorderBrush="#0078D7">
-                    </Button>
                 </Grid>
             </materialDesign:Card>
         </Grid>

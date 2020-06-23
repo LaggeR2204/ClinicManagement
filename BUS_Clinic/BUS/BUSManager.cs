@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,6 +14,10 @@ namespace BUS_Clinic.BUS
         private static BUS_PhieuKhamBenh _phieuKhamBenhBUS;
         private static BUS_DonVi _donViBUS;
         private static BUS_CachDung _cachDungBUS;
+        private static BUS_Benh _benhBUS;
+        private static BUS_Thuoc _thuocBUS;
+        private static BUS_PhieuNhapThuoc _phieuNhapThuocBUS;
+        private static BUS_CTPhieuNhapThuoc _cTPhieuNhapThuocBUS;
 
         public static BUS_BenhNhan BenhNhanBUS
         {
@@ -54,5 +59,44 @@ namespace BUS_Clinic.BUS
             }
         }
 
+        public static BUS_Benh BenhBUS
+        {
+            get
+            {
+                if (_benhBUS == null)
+                    _benhBUS = new BUS_Benh();
+                return _benhBUS;
+            }
+        }
+
+        public static BUS_Thuoc ThuocBUS
+        {
+            get
+            {
+                if (_thuocBUS == null)
+                    _thuocBUS = new BUS_Thuoc();
+                return _thuocBUS;
+            }
+        }
+
+        public static BUS_PhieuNhapThuoc PhieuNhapThuocBUS
+        {
+            get
+            {
+                if (_phieuNhapThuocBUS == null)
+                    _phieuNhapThuocBUS = new BUS_PhieuNhapThuoc();
+                return _phieuNhapThuocBUS;
+            }
+        }
+
+        public static BUS_CTPhieuNhapThuoc CTPhieuNhapThuocBUS
+        {
+            get
+            {
+                if (_cTPhieuNhapThuocBUS == null)
+                    _cTPhieuNhapThuocBUS = new BUS_CTPhieuNhapThuoc();
+                return _cTPhieuNhapThuocBUS;
+            }
+        }
     }
 }

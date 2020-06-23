@@ -30,6 +30,16 @@ namespace GUI_Clinic.View
             //LoadLocalData();
         }
 
+        private void LoadLocalData()
+        {
+            BUSManager.BenhNhanBUS.LoadLocalData();
+            BUSManager.PhieuKhamBenhBUS.LoadLocalData();
+            BUSManager.DonViBUS.LoadLocalData();
+            BUSManager.CachDungBUS.LoadLocalData();
+            BUSManager.ThuocBUS.LoadLocalData();
+            BUSManager.PhieuNhapThuocBUS.LoadLocalData();
+            BUSManager.CTPhieuNhapThuocBUS.LoadLocalData();
+        }
         //private void LoadLocalData()
         //{
         //    BUSManager.BenhNhanBUS.LoadLocalData();

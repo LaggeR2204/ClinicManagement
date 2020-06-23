@@ -1,6 +1,7 @@
 ﻿using BUS_Clinic.BUS;
 using DTO_Clinic;
 using GUI_Clinic.Command;
+using GUI_Clinic.View.Windows;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -120,6 +121,8 @@ namespace GUI_Clinic.View.UserControls
             if (item != null)
             {
                 //Mo PKB tuong ung
+                wdPhieuKhamBenh phieuKhamBenh = new wdPhieuKhamBenh(item);
+                phieuKhamBenh.ShowDialog();
             }
         }
     }
