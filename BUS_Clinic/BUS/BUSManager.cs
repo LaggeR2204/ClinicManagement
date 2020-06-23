@@ -18,6 +18,11 @@ namespace BUS_Clinic.BUS
         private static BUS_Thuoc _thuocBUS;
         private static BUS_PhieuNhapThuoc _phieuNhapThuocBUS;
         private static BUS_CTPhieuNhapThuoc _cTPhieuNhapThuocBUS;
+        private static BUS_BCSuDungThuoc _bcSuDungThuocBUS;
+        private static BUS_BCDoanhThu _bcDoanhThuBUS;
+        private static BUS_CTBaoCaoDoanhThu _cTBaoCaoDoanhThuBUS;
+        private static BUS_HoaDon _hoaDonBUS;
+        private static BUS_CTPhieuKhamBenh _cTPhieuKhamBenhBUS;
 
         public static BUS_BenhNhan BenhNhanBUS
         {
@@ -96,6 +101,55 @@ namespace BUS_Clinic.BUS
                 if (_cTPhieuNhapThuocBUS == null)
                     _cTPhieuNhapThuocBUS = new BUS_CTPhieuNhapThuoc();
                 return _cTPhieuNhapThuocBUS;
+            }
+        }
+        public static BUS_BCSuDungThuoc BCSuDungThuocBUS
+        {
+            get
+            {
+                if (_bcSuDungThuocBUS == null)
+                    _bcSuDungThuocBUS = new BUS_BCSuDungThuoc();
+                return _bcSuDungThuocBUS;
+            }
+        }
+
+        public static BUS_BCDoanhThu BCDoanhThuBUS
+        {
+            get
+            {
+                if (_bcDoanhThuBUS == null)
+                    _bcDoanhThuBUS = new BUS_BCDoanhThu();
+                return _bcDoanhThuBUS;
+            }
+        }
+
+        public static BUS_CTBaoCaoDoanhThu CTBaoCaoDoanhThuBUS
+        {
+            get
+            {
+                if (_cTBaoCaoDoanhThuBUS == null)
+                    _cTBaoCaoDoanhThuBUS = new BUS_CTBaoCaoDoanhThu();
+                return _cTBaoCaoDoanhThuBUS;
+            }
+        }
+
+        public static BUS_HoaDon HoaDonBUS
+        {
+            get
+            {
+                if (_hoaDonBUS == null)
+                    _hoaDonBUS = new BUS_HoaDon();
+                return _hoaDonBUS;
+            }
+        }
+
+        public static BUS_CTPhieuKhamBenh CTPhieuKhamBenhBUS
+        {
+            get
+            {
+                if (_cTPhieuKhamBenhBUS == null)
+                    _cTPhieuKhamBenhBUS = new BUS_CTPhieuKhamBenh();
+                return _cTPhieuKhamBenhBUS;
             }
         }
     }

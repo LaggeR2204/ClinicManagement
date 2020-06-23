@@ -20,10 +20,19 @@ namespace GUI_Clinic
         }
         private void LoadLocalData()
         {
+            BUSManager.BCDoanhThuBUS.LoadLocalData();
+            BUSManager.BCSuDungThuocBUS.LoadLocalData();
+            BUSManager.BenhBUS.LoadLocalData();
             BUSManager.BenhNhanBUS.LoadLocalData();
-            BUSManager.PhieuKhamBenhBUS.LoadLocalData();
-            BUSManager.DonViBUS.LoadLocalData();
             BUSManager.CachDungBUS.LoadLocalData();
+            BUSManager.CTBaoCaoDoanhThuBUS.LoadLocalData();
+            BUSManager.CTPhieuKhamBenhBUS.LoadLocalData();
+            BUSManager.CTPhieuNhapThuocBUS.LoadLocalData();
+            BUSManager.DonViBUS.LoadLocalData();
+            BUSManager.HoaDonBUS.LoadLocalData();
+            BUSManager.PhieuKhamBenhBUS.LoadLocalData();
+            BUSManager.PhieuNhapThuocBUS.LoadLocalData();
+            BUSManager.ThuocBUS.LoadLocalData();
         }
     }
 }
