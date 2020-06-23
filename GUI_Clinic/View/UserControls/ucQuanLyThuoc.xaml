@@ -102,15 +102,15 @@
                                         <GridViewColumn Header="ID" 
                                                         DisplayMemberBinding="{Binding Id}"/>
                                         <GridViewColumn Header="Tên thuốc" 
-                                                        DisplayMemberBinding="{Binding DisplayName}"/>
+                                                        DisplayMemberBinding="{Binding TenThuoc}"/>
                                         <GridViewColumn Header="Đơn vị tính" 
-                                                        DisplayMemberBinding="{Binding Unit.DisplayName}"/>
+                                                        DisplayMemberBinding="{Binding DonVi.TenDonVi}"/>
                                         <GridViewColumn Header="Công dụng" 
-                                                        DisplayMemberBinding="{Binding Price}"/>
+                                                        DisplayMemberBinding="{Binding CongDung}"/>
                                         <GridViewColumn Header="Số lượng" 
-                                                        DisplayMemberBinding="{Binding Price}"/>
-                                        <GridViewColumn Header="Giá" 
-                                                        DisplayMemberBinding="{Binding Price}"/>
+                                                        DisplayMemberBinding="{Binding SoLuong}"/>
+                                        <GridViewColumn Header="Đơn Giá" 
+                                                        DisplayMemberBinding="{Binding DonGia}"/>
                                     </GridView>
                                 </ListView.View>
                             </ListView>

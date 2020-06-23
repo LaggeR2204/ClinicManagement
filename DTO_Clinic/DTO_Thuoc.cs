@@ -24,5 +24,15 @@ namespace DTO_Clinic
         public virtual ICollection<DTO_CTPhieuNhapThuoc> DS_CTPhieuNhapThuoc { get; set; }
         public virtual ICollection<DTO_BCSudungThuoc> DS_BCSuDungThuoc { get; set; }        
         public bool IsDeleted { get => _isDeleted; set { _isDeleted = value; OnPropertyChanged(); } }
+
+        public DTO_Thuoc()
+        {
+            IsDeleted = false;
+        }
+
+        public DTO_Thuoc(string tenThuoc, int maDonVi, int donGia, int soLuong, string congDung)
+        {
+            IsDeleted = false;
+        }
     }
 }

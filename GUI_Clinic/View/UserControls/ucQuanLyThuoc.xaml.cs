@@ -43,6 +43,10 @@ namespace GUI_Clinic.View.UserControls
         private void InitData()
         {
             ListThuoc = BUSManager.ThuocBUS.GetListThuoc();
+            foreach (DTO_Thuoc item in ListThuoc)
+            {
+                BUSManager.ThuocBUS.LoadNPDonVi(item);
+            }
             ListPNT = BUSManager.PhieuNhapThuocBUS.GetListPNT();
         }
 

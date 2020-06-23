@@ -14,6 +14,11 @@ namespace DAL_Clinic.DAL
         public DAL_Thuoc()
         {
         }
+        public void LoadNPDonVi(DTO_Thuoc thuoc)
+        {
+            var entry = SQLServerDBContext.Instant.Entry(thuoc);
+            entry.Reference(c => c.DonVi).Load();
+        }
         public override void LoadLocalData()
         {
             SQLServerDBContext.Instant.Thuoc.Load();

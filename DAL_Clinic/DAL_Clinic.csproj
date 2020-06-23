@@ -70,6 +70,7 @@
     <Compile Include="DAL\DAL_Benh.cs" />
     <Compile Include="DAL\DAL_BenhNhan.cs" />
     <Compile Include="DAL\DAL_CachDung.cs" />
+    <Compile Include="DAL\DAL_CTPhieuKhamBenh.cs" />
     <Compile Include="DAL\DAL_CTPhieuNhapThuoc.cs" />
     <Compile Include="DAL\DAL_DonVi.cs" />
     <Compile Include="DAL\DAL_PhieuKhamBenh.cs" />

@@ -15,12 +15,14 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        WindowState="Maximized"
+        WindowState="Normal"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         Height="700" 
-        Width="1080">
+        Width="1080"
+        BorderBrush="#0078D7"
+        BorderThickness="2">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -29,7 +31,8 @@
 
         <uc:ucControlBar Grid.Row="0"/>
 
-        <Button x:Name="btnIn" Grid.Row="1" Content="In phiếu" Margin="10 40" Width="110" HorizontalAlignment="Right" VerticalAlignment="Top" Background="#0078D7" BorderBrush="#0078D7"></Button>
+        <Button x:Name="btnInPhieu" Grid.Row="1" Content="In phiếu" Margin="10 40" Width="110" HorizontalAlignment="Right" VerticalAlignment="Top" Background="#0078D7" BorderBrush="#0078D7"
+                Click="btnInPhieu_Click"></Button>
 
         <Grid Grid.Row="1" x:Name="grdMain">
             <Grid.RowDefinitions>
@@ -51,7 +54,7 @@
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
 
-                    <TextBlock x:Name="tblTenBenhNhan" Grid.Row="0" FontSize="20" Margin="20 5"/>
+                    <TextBlock x:Name="tblTenBenhNhan" Grid.Row="0" FontSize="20" Margin="20 10 0 5"/>
 
                     <Grid Grid.Row="2">
                         <Grid.RowDefinitions>
@@ -103,8 +106,8 @@
                             </Grid.ColumnDefinitions>
 
                             <TextBlock Grid.Column="0"
-                                       Text="Dự đoán loại bệnh: "
-                                       Margin="20 5 0 5">
+                                       Text="Chẩn đoán: "
+                                       Margin="20 5 0 10">
                             </TextBlock>
 
                             <TextBlock x:Name="tblDuDoanLoaiBenh"
@@ -129,20 +132,21 @@
         </materialDesign:Card>-->
 
             <materialDesign:Card Grid.Row="2" Margin="5" VerticalAlignment="Stretch">
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <ListView x:Name="lvMedicine" ItemsSource="{Binding ListCTPKB}"
-                          SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="STT" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
-                                <GridViewColumn Header="Thuốc" DisplayMemberBinding="{Binding MaThuoc}"></GridViewColumn>
-                                <GridViewColumn Header="Đơn vị" DisplayMemberBinding="{Binding MaDonVi}"></GridViewColumn>
-                                <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding SoLuong}"></GridViewColumn>
-                                <GridViewColumn Header="Cách dùng" DisplayMemberBinding="{Binding MaCachDung}"></GridViewColumn>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                </ScrollViewer>
+                <ListView x:Name="lvMedicine" ItemsSource="{Binding ListCTPKB}"
+                          SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}"
+                          ScrollViewer.CanContentScroll="True"
+                          ScrollViewer.VerticalScrollBarVisibility="Auto"
+                          Margin="5">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="STT" DisplayMemberBinding="{Binding SoThuTu}"></GridViewColumn>
+                            <GridViewColumn Header="Thuốc" DisplayMemberBinding="{Binding Thuoc.TenThuoc}"></GridViewColumn>
+                            <GridViewColumn Header="Đơn vị" DisplayMemberBinding="{Binding Thuoc.DonVi.TenDonVi}"></GridViewColumn>
+                            <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding SoLuong}"></GridViewColumn>
+                            <GridViewColumn Header="Cách dùng" DisplayMemberBinding="{Binding CachDung.TenCachDung}"></GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
             </materialDesign:Card>
 
         </Grid>

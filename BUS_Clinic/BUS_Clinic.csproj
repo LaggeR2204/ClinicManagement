@@ -46,6 +46,7 @@
     <Compile Include="BUS\BUS_Benh.cs" />
     <Compile Include="BUS\BUS_BenhNhan.cs" />
     <Compile Include="BUS\BUS_CachDung.cs" />
+    <Compile Include="BUS\BUS_CTPhieuKhamBenh.cs" />
     <Compile Include="BUS\BUS_CTPhieuNhapThuoc.cs" />
     <Compile Include="BUS\BUS_DonVi.cs" />
     <Compile Include="BUS\BUS_PhieuKhamBenh.cs" />

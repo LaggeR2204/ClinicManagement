@@ -15,6 +15,10 @@ namespace BUS_Clinic.BUS
         {
 
         }
+        public void LoadNPDonVi(DTO_Thuoc thuoc)
+        {
+            DALManager.ThuocDAL.LoadNPDonVi(thuoc);
+        }
         public override void LoadLocalData()
         {
             DALManager.ThuocDAL.LoadLocalData();
