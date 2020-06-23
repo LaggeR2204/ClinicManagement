@@ -18,19 +18,22 @@
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
-        DataContext="{StaticResource BillVM}"
         Height="700"
         Width="550"
         BorderBrush="#0078D7"
         BorderThickness="2">
     <Grid>
-        <Button Command="{Binding CloseWindowCommand}" CommandParameter="{Binding ElementName=billWindow}" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Top">
+        <Button x:Name="btnThoat"
+                Click="btnThoat_Click"
+                HorizontalAlignment="Right" Margin="10" VerticalAlignment="Top">
             <materialDesign:PackIcon Kind="Close"/>
         </Button>
-        <Button Command="{Binding PrintButtonCommand}" CommandParameter="{Binding ElementName=print}" HorizontalAlignment="Right" Margin="10 10 70 10" VerticalAlignment="Top">
+        <Button x:Name="btnInHoaDon"
+                Click="btnInHoaDon_Click"
+                HorizontalAlignment="Right" Margin="10 10 70 10" VerticalAlignment="Top">
             <materialDesign:PackIcon Kind="Printer"/>
         </Button>
-        <Grid x:Name="print">
+        <Grid x:Name="grdMain">
             <Grid.RowDefinitions>
                 <RowDefinition Height="120"/>
                 <RowDefinition Height="400"/>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GUI_Clinic.View.Windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,12 @@ namespace GUI_Clinic.View.UserControls
         public ucCTPhieuKhamBenh()
         {
             InitializeComponent();
+        }
+
+        private void btnThanhToan_Click(object sender, RoutedEventArgs e)
+        {
+            wdHoaDon hoaDon = new wdHoaDon();
+            hoaDon.ShowDialog();
         }
     }
 }

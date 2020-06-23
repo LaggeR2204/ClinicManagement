@@ -23,6 +23,19 @@ namespace DTO_Clinic
         private int _soLuong;
         private float _thanhTien;
         private bool _isDeleted;
-        
+
+        public DTO_CTPhieuKhamBenh()
+        {
+            IsDeleted = false;
+        }
+
+        public DTO_CTPhieuKhamBenh(int maPKB, int maThuoc, int maCachDung, int soLuong)
+        {
+            MaPKB = maPKB;
+            MaThuoc = maThuoc;
+            MaCachDung = maCachDung;
+            SoLuong = soLuong;
+        }
+
     }
 }
