@@ -4,6 +4,7 @@ using GUI_Clinic.Command;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,16 +39,31 @@ namespace GUI_Clinic.View.UserControls
         public DateTime? DateInput { get; set; }
         public string DiaChiInput { get; set; }
         public string SDTInput { get; set; }
+        public DateTime? Date { get; set; }
+        public List<string> RegionIDList { get; set; }
+        public DTO_BenhNhan SelectedPatient { get; set; }
         #endregion
         #region Command
         public ICommand AddPatientCommand { get; set; }
         #endregion
         public void InitData()
         {
-            DateInput = DateTime.Now;
-            ListBN = new ObservableCollection<DTO_BenhNhan>( BUSManager.BenhNhanBUS.GetListBN());
-            lvDSBenhNhan.ItemsSource = ListBN;
-            CollectionView viewBenhNhan = (CollectionView)CollectionViewSource.GetDefaultView(lvDSBenhNhan.ItemsSource);
+            RegionIDList = new List<string>();
+            string line = "";
+            StreamReader streamReader = new StreamReader(System.IO.Path.Combine(Environment.CurrentDirectory.Replace("bin\\Debug", ""), "Resource\\MAVUNG.txt"));
+
+            while ((line = streamReader.ReadLine()) != null)
+            {
+                RegionIDList.Add(line);
+            }
+            Date = DateTime.Now;
+            //set itemsource cho list view danh sách khám
+            ListBN = new ObservableCollection<DTO_BenhNhan>(BUSManager.BenhNhanBUS.GetListBN());
+            lvDSKham.ItemsSource = ListBN;
+            //set itemsource cho combobox đăng ký bệnh nhân
+            cbxDSBenhNhan.ItemsSource = new ObservableCollection<DTO_BenhNhan>(BUSManager.BenhNhanBUS.GetListBN());
+            //Lọc danh sách khám theo ngày
+            CollectionView viewBenhNhan = (CollectionView)CollectionViewSource.GetDefaultView(lvDSKham.ItemsSource);
             viewBenhNhan.Filter = BenhNhanFilter;
             RefreshList();
         }
@@ -91,8 +107,35 @@ namespace GUI_Clinic.View.UserControls
         }
         private void RefreshList()
         {
-            MatchBNList = BUSManager.PhieuKhamBenhBUS.GetListPKB(DateInput.Value.ToString("d"));
-            CollectionViewSource.GetDefaultView(lvDSBenhNhan.ItemsSource).Refresh();
+            MatchBNList = BUSManager.PhieuKhamBenhBUS.GetListPKB(Date.Value.ToString("d"));
+            CollectionViewSource.GetDefaultView(lvDSKham.ItemsSource).Refresh();
+        }
+
+        private void tbxSDT_KeyDown(object sender, KeyEventArgs e)
+        {
+            //TextBox temp = sender as TextBox;
+            //if (e.Key == Key.D0 && temp.Text.Length == 0)
+            //{
+            //    e.Handled = true;
+            //    return;
+            //}
+            //if (!(e.Key <= Key.D9 && e.Key >= Key.D0) || 
+            //    e.KeyboardDevice.Modifiers == ModifierKeys.Control || 
+            //    e.KeyboardDevice.Modifiers == ModifierKeys.Shift ||
+            //    e.KeyboardDevice.Modifiers == ModifierKeys.Windows ||
+            //    e.KeyboardDevice.Modifiers == ModifierKeys.Alt ||
+            //    temp.Text.Length == 9)                
+            //{
+            //    e.Handled = true;
+            //}
+            bool isNumPadNumeric = (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9);
+
+            bool isNumeric = (e.Key >= Key.D0 && e.Key <= Key.D9);
+
+            if (!isNumPadNumeric || !isNumeric || e.Key != Key.OemPeriod || e.Key != Key.Decimal)
+            {
+                e.Handled = true;
+            }
         }
     }
 }

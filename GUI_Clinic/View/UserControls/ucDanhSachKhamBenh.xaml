@@ -62,45 +62,9 @@
                             </TextBlock>
                         </Grid>
                     </Grid>
-                    <!--<TextBox Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Họ và Tên" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                <ComboBox Margin="5 5 15 5" ItemsSource="{Binding Unit}" SelectedItem="{Binding SelectedUnit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Giới tính" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
-                <TextBox Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Năm sinh" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                <TextBox Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Địa chỉ" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />-->
-
-                    <!--<Button Command="{Binding Command}" Background="#0078D7" BorderBrush="#0078D7" Content="Xem" Margin="5 5 5 -2" Width="100" VerticalAlignment="Center" HorizontalAlignment="Center"></Button>
-                    <Button Command="{Binding Command}" Background="#0078D7" BorderBrush="#0078D7" Content="Xuất file" Margin="5 5 5 -2" Width="100" VerticalAlignment="Center" HorizontalAlignment="Center"></Button>-->
-
-                    <!--<Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
-                    ToolTip="Thêm bệnh nhân"
-                    Background="#0078D7"
-                    BorderBrush="#0078D7"
-                    HorizontalAlignment="Right"
-                    Width="40"
-                    Height="40"
-                    Margin="0 0 10 0">
-                    <materialDesign:PackIcon Kind="Plus" Height="24" Width="24" />
-                </Button>-->
-                    <!--<Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
-                    ToolTip="Lập phiếu khám bệnh"
-                    Background="#0078D7"
-                    BorderBrush="#0078D7"
-                    HorizontalAlignment="Right"
-                    Width="40"
-                    Height="40"
-                    Margin="0 0 60 0">
-                    <materialDesign:PackIcon Kind="AccountCardDetails" Height="24" Width="24" />
-                </Button>-->
                 </Grid>
             </materialDesign:Card>
         </Grid>
-
-        <!--<materialDesign:Card Grid.Row="1" Margin="5">
-            <WrapPanel>
-                <Button Command="{Binding AddCommand}" Content="Thêm" Margin="5" Width="100"></Button>
-                <Button Command="{Binding EditCommand}" Content="Sửa" Margin="5" Width="100"></Button>
-                <Button Command="{Binding DeleteCommand}" Content="Xóa" Margin="5" Width="100"></Button>
-            </WrapPanel>
-        </materialDesign:Card>-->
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"></ColumnDefinition>
@@ -117,69 +81,24 @@
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="auto" />
-                                <ColumnDefinition />
-                                <ColumnDefinition Width="auto" />
-                                <ColumnDefinition Width="auto" />
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0">
                                 <DatePicker HorizontalAlignment="Right"
                                             x:Name="dpkNgayKham"
                                             VerticalAlignment="Center"
-                                            SelectedDate="{Binding DateInput,Mode=TwoWay}"
+                                            SelectedDate="{Binding Date,Mode=TwoWay}"
                                             SelectedDateChanged="dpkNgayKham_SelectedDateChanged"
                                             Width="100"
                                             Margin="10"
                                             materialDesign:HintAssist.Hint="Ngày khám"
                                             Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                             </Grid>
-                            <Grid Grid.Column="1">
-                                <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
-                                        ToolTip="Xem"
-                                        Background="#0078D7"
-                                        BorderBrush="#0078D7"
-                                        HorizontalAlignment="Left"
-                                        Width="40"
-                                        Height="40"
-                                        Margin="10">
-                                    <materialDesign:PackIcon Kind="Search"
-                                                             Height="24"
-                                                             Width="24" />
-                                </Button>
-                            </Grid>
-                            <Grid Grid.Column="2">
-                                <materialDesign:Chip Command="{Binding AddMedicalResultCommand}"
-                                                     HorizontalAlignment="Right"
-                                                     Content="Khám"
-                                                     Foreground="White"
-                                                     IconBackground="{DynamicResource PrimaryHueDarkBrush}"
-                                                     IconForeground="{DynamicResource PrimaryHueDarkForegroundBrush}"
-                                                     Background="Gray"
-                                                     Margin="10">
-                                    <materialDesign:Chip.Icon>
-                                        <materialDesign:PackIcon Kind="AccountDetailsOutline"></materialDesign:PackIcon>
-                                    </materialDesign:Chip.Icon>
-                                </materialDesign:Chip>
-                            </Grid>
-                            <!--<Grid Grid.Column="3">
-                                <materialDesign:Chip Command="{Binding AddPatientCommand}"
-                                                     HorizontalAlignment="Right"
-                                                     Content="Thêm bệnh nhân"
-                                                     Foreground="White"
-                                                     IconBackground="{DynamicResource PrimaryHueDarkBrush}"
-                                                     IconForeground="{DynamicResource PrimaryHueDarkForegroundBrush}"
-                                                     Background="Gray"
-                                                     Margin="10">
-                                    <materialDesign:Chip.Icon>
-                                        <materialDesign:PackIcon Kind="Plus"></materialDesign:PackIcon>
-                                    </materialDesign:Chip.Icon>
-                                </materialDesign:Chip>
-                            </Grid>-->
                         </Grid>
                         <Grid Grid.Row="1">
                             <GroupBox Header="Danh sách đăng ký khám bệnh"
                                       Margin="0">
-                                <Grid>                                    
-                                    <ListView x:Name="lvDSBenhNhan"
+                                <Grid>
+                                    <ListView x:Name="lvDSKham"
                                               SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}"
                                               ScrollViewer.CanContentScroll="True"
                                               ScrollViewer.VerticalScrollBarVisibility="Auto"
@@ -200,7 +119,7 @@
                                                 <GridViewColumn Header="Số điện thoại"
                                                                 DisplayMemberBinding="{Binding SoDienThoai}"></GridViewColumn>
                                             </GridView>
-                                        </ListView.View>                                        
+                                        </ListView.View>
                                     </ListView>
                                 </Grid>
                             </GroupBox>
@@ -246,10 +165,25 @@
                                         </TextBlock>
                                         <Grid Grid.Column="1">
                                             <ComboBox BorderBrush="#0078D7"
+                                                      x:Name="cbxDSBenhNhan"
                                                       BorderThickness="2"
                                                       IsEditable="True"
                                                       Margin="20 0 20 0"
-                                                      VerticalAlignment="Center">
+                                                      VerticalAlignment="Center"
+                                                      FontSize="16">
+                                                <ComboBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock>
+                                                            <TextBlock.Text>
+                                                                <MultiBinding StringFormat="{}{0} - {1} - {2}">
+                                                                    <Binding Path="Id" />
+                                                                    <Binding Path="TenBenhNhan" />
+                                                                    <Binding Path="SoDienThoai" />
+                                                                </MultiBinding>
+                                                            </TextBlock.Text>
+                                                        </TextBlock>
+                                                    </DataTemplate>
+                                                </ComboBox.ItemTemplate>
                                             </ComboBox>
                                         </Grid>
                                     </Grid>
@@ -323,7 +257,6 @@
                                             </TextBox>
                                         </Grid>
                                     </Grid>
-
                                     <Grid Grid.Row="2">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="110" />
@@ -374,7 +307,7 @@
                                                       BorderThickness="2"
                                                       x:Name="cbxGioiTinh"
                                                       IsEditable="True"
-                                                      Width="60"
+                                                      Width="70"
                                                       Margin="0 5 10 5"
                                                       HorizontalContentAlignment="Center"
                                                       FontSize="16"
@@ -408,19 +341,32 @@
                                     <Grid Grid.Row="5">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="110" />
+                                            <ColumnDefinition Width="80" />
                                             <ColumnDefinition />
                                         </Grid.ColumnDefinitions>
                                         <TextBlock Grid.Column="0"
                                                    Text="SĐT:">
                                         </TextBlock>
                                         <Grid Grid.Column="1">
+                                            <ComboBox BorderBrush="#0078D7"
+                                                      ItemsSource="{Binding RegionIDList}"
+                                                      BorderThickness="2"
+                                                      IsEditable="True"
+                                                      Margin="0 0 10 0"
+                                                      FontSize="16"
+                                                      VerticalAlignment="Center"
+                                                      HorizontalContentAlignment="Center">
+                                            </ComboBox>
+                                        </Grid>
+                                        <Grid Grid.Column="2">
                                             <TextBox BorderBrush="#0078D7"
                                                      x:Name="tbxSDT"
                                                      Text="{Binding SDTInput, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                      BorderThickness="2"
                                                      Margin="0 5 20 5"
                                                      FontSize="16"
-                                                     VerticalAlignment="Center">
+                                                     VerticalAlignment="Center"
+                                                     KeyDown="tbxSDT_KeyDown">
                                             </TextBox>
                                         </Grid>
                                     </Grid>

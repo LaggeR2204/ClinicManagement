@@ -30,6 +30,7 @@ namespace BUS_Clinic.BUS
         }
         public void AddBenhNhan(DTO_BenhNhan bn)
         {
+
             DALManager.BenhNhanDAL.AddBenhNhan(bn);
         }
 

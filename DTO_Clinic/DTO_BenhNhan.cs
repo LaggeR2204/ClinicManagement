@@ -77,5 +77,9 @@ namespace DTO_Clinic
             SoDienThoai = sdt;
             _isDeleted = false;
         }
+        public override string ToString()
+        {
+            return Id + " - " + TenBenhNhan + " - " + SoDienThoai;
+        }
     }
 }
