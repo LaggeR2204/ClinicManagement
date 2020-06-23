@@ -23,5 +23,28 @@ namespace GUI_Clinic.View.Windows
         {
             InitializeComponent();
         }
+
+        private void btnInHoaDon_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                this.IsEnabled = false;
+                PrintDialog printDialog = new PrintDialog();
+                if (printDialog.ShowDialog() == true)
+                {
+                    printDialog.PrintVisual(grdMain, "HoaDon");
+                }
+            }
+            finally
+            {
+
+                this.IsEnabled = true;
+            }
+        }
+
+        private void btnThoat_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
