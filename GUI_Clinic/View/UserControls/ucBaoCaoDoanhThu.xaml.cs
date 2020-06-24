@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GUI_Clinic.View.Windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,12 @@ namespace GUI_Clinic.View.UserControls
         public ucBaoCaoDoanhThu()
         {
             InitializeComponent();
+        }
+
+        private void btnInBaoCao_Click(object sender, RoutedEventArgs e)
+        {
+            wdInBaoCaoDoanhThu wDInBaoCaoDoanhThu = new wdInBaoCaoDoanhThu();
+            wDInBaoCaoDoanhThu.ShowDialog();
         }
     }
 }

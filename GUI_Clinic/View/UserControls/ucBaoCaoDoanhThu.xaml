@@ -43,7 +43,8 @@
 
                 </StackPanel>
 
-                <materialDesign:Chip Command="{Binding Command}"
+                <materialDesign:Chip x:Name="btnInBaoCao"
+                                     Click="btnInBaoCao_Click"
                                      HorizontalAlignment="Right"
                                      Content="In báo cáo"
                                      Foreground="White"

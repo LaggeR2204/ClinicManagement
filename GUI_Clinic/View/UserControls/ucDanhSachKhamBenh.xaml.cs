@@ -132,10 +132,29 @@ namespace GUI_Clinic.View.UserControls
 
             bool isNumeric = (e.Key >= Key.D0 && e.Key <= Key.D9);
 
-            if (!isNumPadNumeric || !isNumeric || e.Key != Key.OemPeriod || e.Key != Key.Decimal)
+            if (!isNumPadNumeric && !isNumeric && e.Key != Key.OemPeriod && e.Key != Key.Decimal)
             {
                 e.Handled = true;
             }
+
+            //if (tbxSDT.Text == "")
+            //{
+            //    if (e.Key == Key.D0)
+            //    {
+            //        e.Handled = true;
+            //    }
+            //    if ()
+            //    {
+            //        e.Handled = true;
+            //    }
+            //}
+            //else
+            //{
+            //    if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            //    {
+            //        e.Handled = true;
+            //    }
+            //}
         }
     }
 }

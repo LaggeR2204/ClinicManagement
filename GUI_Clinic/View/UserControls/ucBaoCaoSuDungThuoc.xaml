@@ -47,8 +47,8 @@
 
                 </StackPanel>
 
-                <materialDesign:Chip Command="{Binding Command}"
-                                     x:Name="chpPrintMedicationReport"
+                <materialDesign:Chip Click="btnBaoCao_Click"   
+                                     x:Name="btnInBaoCao"
                                      HorizontalAlignment="Right"
                                      Content="In báo cáo"
                                      Foreground="White"
