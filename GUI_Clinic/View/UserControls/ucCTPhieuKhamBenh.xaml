@@ -27,7 +27,7 @@
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
-                            <TextBlock x:Name="tblPatientName"
+                            <TextBlock x:Name="tblTenBenhNhan"
                                        Grid.Row="0"
                                        Text="Võ Thanh Bình"
                                        Margin="5"
@@ -52,14 +52,14 @@
                             </Grid>
                         </Grid>
                         <Grid Grid.Row="2">
-                            <TextBox x:Name="tbxSymptom"
+                            <TextBox x:Name="tbxTrieuChung"
                                      Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}"
                                      Margin="10"
                                      materialDesign:HintAssist.Hint="Triệu chứng"
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                         </Grid>
                         <Grid Grid.Row="3">
-                            <TextBox x:Name="tbxDeseaseType"
+                            <TextBox x:Name="tbxChanDoan"
                                      Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}"
                                      Margin="10"
                                      materialDesign:HintAssist.Hint="Chuẩn đoán"
@@ -81,7 +81,7 @@
                         <ColumnDefinition Width="auto" />
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0">
-                        <ComboBox x:Name="cbxMedicine"
+                        <ComboBox x:Name="cbxThuoc"
                                   Margin="10"
                                   ItemsSource="{Binding Unit}"
                                   SelectedItem="{Binding SelectedUnit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -90,23 +90,24 @@
                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
                     </Grid>
                     <Grid Grid.Column="1">
-                        <TextBox x:Name="tbxQuantity"
+                        <TextBox x:Name="tbxSoLuong"
                                  Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}"
                                  Margin="10"
                                  materialDesign:HintAssist.Hint="Số lượng"
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                     </Grid>
                     <Grid Grid.Column="2">
-                        <TextBox x:Name="tbxUsage"
+                        <TextBox x:Name="tbxCachDung"
                                  Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}"
                                  Margin="10"
                                  materialDesign:HintAssist.Hint="Cách dùng"
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                     </Grid>
                     <Grid Grid.Column="3">
-                        <Button x:Name="btnAdd"
+                        <Button x:Name="btnThemThuoc"
+                                Command="{Binding ThemThuocCommand}"
                                 Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
-                                ToolTip="Thêm bệnh nhân"
+                                ToolTip="Thêm thuốc"
                                 Background="#0078D7"
                                 BorderBrush="#0078D7"
                                 HorizontalAlignment="Right"
@@ -124,8 +125,8 @@
                               Margin="5 10 10 10">
                         <Grid>
                             <ListView x:Name="lvMedicine"
-                                      ItemsSource="{Binding List}"
-                                      SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}"
+                                      ItemsSource="{Binding ListThuoc}"
+                                      SelectedItem="{Binding SlectedItem, Mode=TwoWay}"
                                       ScrollViewer.CanContentScroll="True"
                                       ScrollViewer.VerticalScrollBarVisibility="Auto">
                                 <ListView.View>
@@ -156,8 +157,8 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
-                <Button x:Name="btnSave"
-                        Command="{Binding AddCommand}"
+                <Button x:Name="btnLuuPKB"
+                        Command="{Binding LuuPhieuKhamBenhCommand}"
                         Content="Lưu"
                         Width="110"
                         HorizontalAlignment="Center"

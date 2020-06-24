@@ -28,6 +28,10 @@ namespace BUS_Clinic.BUS
 
             return null;
         }
+        public void AddPhieuKhamBenh(DTO_PhieuKhamBenh phieuKhamBenh)
+        {
+            DALManager.PhieuKhamBenhDAL.AddPhieuKhamBenh(phieuKhamBenh);
+        }
         public void LoadNPBenh(DTO_PhieuKhamBenh phieuKhamBenh)
         {
             DALManager.PhieuKhamBenhDAL.LoadNPBenh(phieuKhamBenh);

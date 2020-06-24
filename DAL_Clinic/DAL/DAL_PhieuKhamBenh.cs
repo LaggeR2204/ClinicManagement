@@ -18,6 +18,10 @@ namespace DAL_Clinic.DAL
         {
             SQLServerDBContext.Instant.PhieuKhamBenh.Load();
         }
+        public void AddPhieuKhamBenh(DTO_PhieuKhamBenh phieuKhamBenh)
+        {
+            SQLServerDBContext.Instant.PhieuKhamBenh.Local.Add(phieuKhamBenh);
+        }
         public void LoadNPBenh (DTO_PhieuKhamBenh phieuKhamBenh)
         {
             var entry = SQLServerDBContext.Instant.Entry(phieuKhamBenh);
