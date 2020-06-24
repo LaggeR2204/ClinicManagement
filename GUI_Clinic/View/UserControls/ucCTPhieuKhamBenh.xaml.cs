@@ -25,13 +25,10 @@ namespace GUI_Clinic.View.UserControls
     /// </summary>
     public partial class ucCTPhieuKhamBenh : UserControl
     {
-        public ucCTPhieuKhamBenh(/*DTO_BenhNhan bn*/)
+        public ucCTPhieuKhamBenh()
         {
             InitializeComponent();
             this.DataContext = this;
-
-            DTO_BenhNhan bn = new DTO_BenhNhan();// để tạm
-            benhNhan = bn;
 
             InitData();
             InitCommmand();
@@ -39,13 +36,26 @@ namespace GUI_Clinic.View.UserControls
 
         #region Property
         private DTO_BenhNhan benhNhan = new DTO_BenhNhan();
+        private DTO_PhieuKhamBenh phieuKhamBenh = new DTO_PhieuKhamBenh();
         public ObservableCollection<DTO_PhieuKhamBenh> ListPKB { get; set; }
         public ObservableCollection<DTO_Thuoc> ListThuoc { get; set; }
+
+        private bool IsSave = false;
         #endregion
         #region Command
         public ICommand LuuPhieuKhamBenhCommand { get; set; }
         public ICommand ThemThuocCommand { get; set; }
+        public ICommand InPhieuKhamCommand { get; set; }
         #endregion
+
+        public void GetBenhNhan(DTO_BenhNhan bn)
+        {
+            benhNhan = bn;
+            tblTenBenhNhan.Text = bn.TenBenhNhan;
+            tblNgayKham.Text = DateTime.Now.ToString();
+
+            IsSave = false;
+        }
 
         public void InitData()
         {
@@ -57,14 +67,16 @@ namespace GUI_Clinic.View.UserControls
             LuuPhieuKhamBenhCommand = new RelayCommand<Window>((p) =>
             {
                 if (string.IsNullOrEmpty(tbxTrieuChung.Text) ||
-                    string.IsNullOrEmpty(tbxChanDoan.Text))
+                    string.IsNullOrEmpty(tbxChanDoan.Text) ||
+                    ListThuoc != null)
                     return false;
                 return true;
             }, (p) =>
             {
-                DTO_PhieuKhamBenh phieuKhamBenh = new DTO_PhieuKhamBenh(benhNhan.Id, DateTime.Now, 1 /*chuyển chẩn đoán thành chọn bệnh*/ , tbxTrieuChung.Text);
+                phieuKhamBenh = new DTO_PhieuKhamBenh(benhNhan.Id, DateTime.Now, 1 /*chuyển chẩn đoán thành chọn bệnh*/ , tbxTrieuChung.Text);
                 BUSManager.PhieuKhamBenhBUS.AddPhieuKhamBenh(phieuKhamBenh);
                 ListPKB.Add(phieuKhamBenh);
+                IsSave = true;
             });
 
             ThemThuocCommand = new RelayCommand<Window>((p) =>
@@ -78,6 +90,17 @@ namespace GUI_Clinic.View.UserControls
             {
                 DTO_Thuoc newThuoc = new DTO_Thuoc();//them cac dữ lieun của thuốc vào
                 ListThuoc.Add(newThuoc);
+            });
+
+            InPhieuKhamCommand = new RelayCommand<Window>((p) =>
+            {
+                if (IsSave)
+                    return true;
+                return false;
+            }, (p) =>
+            {
+                wdPhieuKhamBenh wDPhieuKhamBenh = new wdPhieuKhamBenh(phieuKhamBenh);
+                wDPhieuKhamBenh.ShowDialog();
             });
         }
 
