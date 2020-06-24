@@ -1,0 +1,14 @@
+D:\NMCNPM\NMCNPM\NMCNPM\BUS_Clinic\bin\Release\BUS_Clinic.dll
+D:\NMCNPM\NMCNPM\NMCNPM\BUS_Clinic\bin\Release\BUS_Clinic.pdb
+D:\NMCNPM\NMCNPM\NMCNPM\BUS_Clinic\bin\Release\DAL_Clinic.dll
+D:\NMCNPM\NMCNPM\NMCNPM\BUS_Clinic\bin\Release\DTO_Clinic.dll
+D:\NMCNPM\NMCNPM\NMCNPM\BUS_Clinic\bin\Release\EntityFramework.dll
+D:\NMCNPM\NMCNPM\NMCNPM\BUS_Clinic\bin\Release\DAL_Clinic.pdb
+D:\NMCNPM\NMCNPM\NMCNPM\BUS_Clinic\bin\Release\DAL_Clinic.dll.config
+D:\NMCNPM\NMCNPM\NMCNPM\BUS_Clinic\bin\Release\DTO_Clinic.pdb
+D:\NMCNPM\NMCNPM\NMCNPM\BUS_Clinic\bin\Release\EntityFramework.xml
+D:\NMCNPM\NMCNPM\NMCNPM\BUS_Clinic\obj\Release\BUS_Clinic.csprojAssemblyReference.cache
+D:\NMCNPM\NMCNPM\NMCNPM\BUS_Clinic\obj\Release\BUS_Clinic.csproj.CoreCompileInputs.cache
+D:\NMCNPM\NMCNPM\NMCNPM\BUS_Clinic\obj\Release\BUS_Clinic.csproj.CopyComplete
+D:\NMCNPM\NMCNPM\NMCNPM\BUS_Clinic\obj\Release\BUS_Clinic.dll
+D:\NMCNPM\NMCNPM\NMCNPM\BUS_Clinic\obj\Release\BUS_Clinic.pdb

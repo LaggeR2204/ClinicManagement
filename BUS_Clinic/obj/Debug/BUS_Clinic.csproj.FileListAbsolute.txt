@@ -1,0 +1,14 @@
+D:\NMCNPM\NMCNPM\NMCNPM\BUS_Clinic\bin\Debug\BUS_Clinic.dll
+D:\NMCNPM\NMCNPM\NMCNPM\BUS_Clinic\bin\Debug\BUS_Clinic.pdb
+D:\NMCNPM\NMCNPM\NMCNPM\BUS_Clinic\bin\Debug\DAL_Clinic.dll
+D:\NMCNPM\NMCNPM\NMCNPM\BUS_Clinic\bin\Debug\DTO_Clinic.dll
+D:\NMCNPM\NMCNPM\NMCNPM\BUS_Clinic\bin\Debug\EntityFramework.dll
+D:\NMCNPM\NMCNPM\NMCNPM\BUS_Clinic\bin\Debug\DAL_Clinic.pdb
+D:\NMCNPM\NMCNPM\NMCNPM\BUS_Clinic\bin\Debug\DAL_Clinic.dll.config
+D:\NMCNPM\NMCNPM\NMCNPM\BUS_Clinic\bin\Debug\DTO_Clinic.pdb
+D:\NMCNPM\NMCNPM\NMCNPM\BUS_Clinic\bin\Debug\EntityFramework.xml
+D:\NMCNPM\NMCNPM\NMCNPM\BUS_Clinic\obj\Debug\BUS_Clinic.csprojAssemblyReference.cache
+D:\NMCNPM\NMCNPM\NMCNPM\BUS_Clinic\obj\Debug\BUS_Clinic.csproj.CopyComplete
+D:\NMCNPM\NMCNPM\NMCNPM\BUS_Clinic\obj\Debug\BUS_Clinic.dll
+D:\NMCNPM\NMCNPM\NMCNPM\BUS_Clinic\obj\Debug\BUS_Clinic.pdb
+D:\NMCNPM\NMCNPM\NMCNPM\BUS_Clinic\obj\Debug\BUS_Clinic.csproj.CoreCompileInputs.cache

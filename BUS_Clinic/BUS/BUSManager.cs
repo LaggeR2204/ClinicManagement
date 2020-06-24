@@ -11,6 +11,7 @@ namespace BUS_Clinic.BUS
     public static class BUSManager
     {
         private static BUS_BenhNhan _benhNhanBUS;
+        private static BUS_HoaDon _hoaDonBUS;
         private static BUS_PhieuKhamBenh _phieuKhamBenhBUS;
         private static BUS_CTPhieuKhamBenh _cTPhieuKhamBenhBUS;
         private static BUS_DonVi _donViBUS;

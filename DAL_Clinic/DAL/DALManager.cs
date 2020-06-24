@@ -22,6 +22,7 @@ namespace DAL_Clinic.DAL
         private static DAL_CTBaoCaoDoanhThu _cTBaoCaoDoanhThuDAL;
         private static DAL_HoaDon _hoaDonDAL;
 
+
         public static DAL_BenhNhan BenhNhanDAL 
         { 
             get

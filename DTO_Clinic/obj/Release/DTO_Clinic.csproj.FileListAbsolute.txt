@@ -1,0 +1,6 @@
+D:\NMCNPM\NMCNPM\NMCNPM\DTO_Clinic\bin\Release\DTO_Clinic.dll
+D:\NMCNPM\NMCNPM\NMCNPM\DTO_Clinic\bin\Release\DTO_Clinic.pdb
+D:\NMCNPM\NMCNPM\NMCNPM\DTO_Clinic\obj\Release\DTO_Clinic.csprojAssemblyReference.cache
+D:\NMCNPM\NMCNPM\NMCNPM\DTO_Clinic\obj\Release\DTO_Clinic.csproj.CoreCompileInputs.cache
+D:\NMCNPM\NMCNPM\NMCNPM\DTO_Clinic\obj\Release\DTO_Clinic.dll
+D:\NMCNPM\NMCNPM\NMCNPM\DTO_Clinic\obj\Release\DTO_Clinic.pdb
