@@ -24,10 +24,5 @@ namespace GUI_Clinic.View.UserControls
         {
             InitializeComponent();
         }
-
-        private void ucCTPKB_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

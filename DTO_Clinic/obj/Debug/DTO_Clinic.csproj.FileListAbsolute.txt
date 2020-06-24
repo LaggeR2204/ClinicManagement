@@ -1,6 +1,0 @@
-D:\NMCNPM\NMCNPM\NMCNPM\DTO_Clinic\bin\Debug\DTO_Clinic.dll
-D:\NMCNPM\NMCNPM\NMCNPM\DTO_Clinic\bin\Debug\DTO_Clinic.pdb
-D:\NMCNPM\NMCNPM\NMCNPM\DTO_Clinic\obj\Debug\DTO_Clinic.dll
-D:\NMCNPM\NMCNPM\NMCNPM\DTO_Clinic\obj\Debug\DTO_Clinic.pdb
-D:\NMCNPM\NMCNPM\NMCNPM\DTO_Clinic\obj\Debug\DTO_Clinic.csproj.CoreCompileInputs.cache
-D:\NMCNPM\NMCNPM\NMCNPM\DTO_Clinic\obj\Debug\DTO_Clinic.csprojAssemblyReference.cache
