@@ -32,10 +32,10 @@ namespace GUI_Clinic.View.Windows
         }
 
         #region Property
-        public string SelectedMedicine { get; set; }
-        public string SelectedUnit { get; set; }
-        public int Amount { get; set; }
-        public float Price { get; set; }
+        public int SoLuong { get; set; }
+        public float DonGia { get; set; }
+        public string TenThuocMoi { get; set; }
+        public string CongDungThuocMoi { get; set; }
         #endregion
 
         #region Command
@@ -44,12 +44,26 @@ namespace GUI_Clinic.View.Windows
 
         private void InitData()
         {
-
+            cbxTenThuoc.ItemsSource = new ObservableCollection<DTO_Thuoc>(BUSManager.ThuocBUS.GetListThuoc());
+            cbxDonVi.ItemsSource = new ObservableCollection<DTO_DonVi>(BUSManager.DonViBUS.GetListDV());
+            cbxDonViThuocMoi.ItemsSource = new ObservableCollection<DTO_DonVi>(BUSManager.DonViBUS.GetListDV());
         }
 
         private void InitCommand()
         {
-            
+            AddMedicineCommand = new RelayCommand<Window>((p) =>
+            {
+                if (SoLuong == 0 || DonGia == 0 ||
+                    cbxTenThuoc.SelectedIndex == -1 ||
+                    cbxDonVi.SelectedIndex == -1)
+                    return false;
+                return true;
+            }, (p) =>
+            {
+                DTO_CTPhieuNhapThuoc cTPhieuNhapThuoc = new DTO_CTPhieuNhapThuoc();
+                cTPhieuNhapThuoc.SoLuongNhap = SoLuong;
+                cTPhieuNhapThuoc.DonGiaNhap = DonGia;
+            });
         }
     }
 }

@@ -15,9 +15,17 @@ namespace BUS_Clinic.BUS
         {
 
         }
+        public void LoadNPCTPhieuNhapThuoc(DTO_Thuoc thuoc)
+        {
+            DALManager.ThuocDAL.LoadNPCTPhieuNhapThuoc(thuoc);
+        }
         public void LoadNPDonVi(DTO_Thuoc thuoc)
         {
             DALManager.ThuocDAL.LoadNPDonVi(thuoc);
+        }
+        public void AddThuoc(DTO_Thuoc thuoc)
+        {
+            DALManager.ThuocDAL.AddThuoc(thuoc);
         }
         public override void LoadLocalData()
         {

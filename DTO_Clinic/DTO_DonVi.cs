@@ -24,5 +24,10 @@ namespace DTO_Clinic
             TenDonVi = tenDonVi;
             _isDeleted = false;
         }
+
+        public override string ToString()
+        {
+            return TenDonVi;
+        }
     }
 }

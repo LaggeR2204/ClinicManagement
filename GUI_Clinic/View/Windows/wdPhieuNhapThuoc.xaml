@@ -15,10 +15,12 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        WindowState="Maximized"
+        WindowState="Normal"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
+        BorderBrush="#0078D7"
+        BorderThickness="2"
         Title="MedicalResultWindow" Height="700" Width="1080">
     <Grid>
         <Grid.RowDefinitions>
@@ -58,32 +60,60 @@
                 <Grid>
                     <StackPanel Margin="10 0 0 10" Orientation="Horizontal" >
                         <ComboBox x:Name="cbxTenThuoc" 
-                                  Width="60" Height="45"
-                                  Margin="5 5 15 5" 
-                                  ItemsSource="{Binding Unit}" 
+                                  Width="150" Height="45"
+                                  Margin="5 5 15 5"
                                   SelectedItem="{Binding SelectedMedicine, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                                   materialDesign:HintAssist.Hint="Thuốc" 
                                   IsEditable="True" 
-                                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
+                                  FontSize="16"
+                                  Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock>
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0} - {1}">
+                                                <Binding Path="Id" />
+                                                <Binding Path="TenThuoc" />
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
                         <ComboBox x:Name="cbxDonVi" 
-                                  Width="60" Height="45"
-                                  Margin="5 5 15 5" 
-                                  ItemsSource="{Binding SelectedUnit}" 
+                                  Width="100" Height="45"
+                                  Margin="5 5 15 5"
                                   SelectedItem="{Binding Unit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                                   materialDesign:HintAssist.Hint="Đơn vị" 
                                   IsEditable="True" 
-                                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
+                                  FontSize="16"
+                                  Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock>
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0} - {1}">
+                                                <Binding Path="Id" />
+                                                <Binding Path="TenDonVi" />
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
                         <TextBox x:Name="tbxSoLuong" 
-                                 Width="60" Height="45"
+                                 Width="100" Height="45"
                                  Text="{Binding Amount, UpdateSourceTrigger=PropertyChanged}" 
                                  Margin="5 5 15 5" 
+                                 FontSize="16"
                                  materialDesign:HintAssist.Hint="Số lượng" 
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                         <TextBox x:Name="tbxDonGia" 
-                                 Width="60" Height="45"
+                                 Width="150" Height="45"
                                  Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}" 
                                  Margin="5 5 15 5" 
                                  materialDesign:HintAssist.Hint="Đơn giá" 
+                                 FontSize="16"
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                         <Button x:Name="btnThemThuoc"
                                 Command="{Binding AddMedicineCommand}"
@@ -95,8 +125,8 @@
                                 Width="40"
                                 Height="40"
                                 Margin="5 5 15 5">
-                                <materialDesign:PackIcon Kind="Plus"
-                                                         Height="24" Width="24" />
+                            <materialDesign:PackIcon Kind="Plus"
+                                                         Height="30" Width="30" />
                         </Button>
                     </StackPanel>
                 </Grid>
@@ -110,30 +140,157 @@
                 <Button Command="{Binding DeleteCommand}" Content="Xóa" Margin="5" Width="100"></Button>
             </WrapPanel>
         </materialDesign:Card>-->
-
-            <materialDesign:Card Grid.Row="2" Margin="5" VerticalAlignment="Stretch">
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <ListView ItemsSource="{Binding List}"
-                              SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}"
-                              x:Name="lvDanhSachThuocNhap">
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <materialDesign:Card Grid.Column="0"
+                                         Margin="5">
+                    <ListView  x:Name="lvDanhSachThuocNhap"
+                                  ItemsSource="{Binding List}"
+                                  SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}"
+                                  ScrollViewer.CanContentScroll="True"
+                                  ScrollViewer.VerticalScrollBarVisibility="Auto">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="STT" 
-                                                DisplayMemberBinding="{Binding DisplayName}"/>
+                                                        DisplayMemberBinding="{Binding STT}"/>
+                                <GridViewColumn Header="Mã thuốc"
+                                                        DisplayMemberBinding="{Binding Id}"/>
                                 <GridViewColumn Header="Thuốc" 
-                                                DisplayMemberBinding="{Binding Unit.DisplayName}"/>
+                                                        DisplayMemberBinding="{Binding Thuoc.TenThuoc}"/>
                                 <GridViewColumn Header="Đơn vị" 
-                                                DisplayMemberBinding="{Binding Price}"/>
+                                                        DisplayMemberBinding="{Binding DonVi.TenDonVi}"/>
                                 <GridViewColumn Header="Số lượng" 
-                                                DisplayMemberBinding="{Binding Price}"/>
+                                                        DisplayMemberBinding="{Binding SoLuongNhap}"/>
                                 <GridViewColumn Header="Đơn giá" 
-                                                DisplayMemberBinding="{Binding Price}"/>
+                                                        DisplayMemberBinding="{Binding DonGiaNhap}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
-                </ScrollViewer>
-            </materialDesign:Card>
+                </materialDesign:Card>
+                <materialDesign:Card Grid.Column="1"
+                                         Margin="5">
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="70"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0"
+                                   Margin="10"
+                                   HorizontalAlignment="Center"
+                                   Text="Thêm loại thuốc mới"
+                                   VerticalAlignment="Center"
+                                   FontSize="25"
+                                   FontWeight="Bold"
+                                   Foreground="#0078D7" />
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="110" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
+                                       Margin="10"
+                                       FontSize="16"
+                                       Text="Tên thuốc:"
+                                       VerticalAlignment="Center">
+                            </TextBlock>
+                            <Grid Grid.Column="1">
+                                <TextBox BorderBrush="#0078D7"
+                                         x:Name="tbxTenThuocMoi"
+                                         Text="{Binding TenThuocMoi, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         BorderThickness="2"
+                                         Margin="0 5 20 5"
+                                         FontSize="16"
+                                         VerticalAlignment="Center">
+                                </TextBox>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="110" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <TextBlock Grid.Column="0"
+                                           Margin="10"
+                                           FontSize="16"
+                                           Text="Đơn vị:"
+                                           VerticalAlignment="Center">
+                                </TextBlock>
+                            </Grid>
 
+                            <Grid Grid.Column="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="133*"/>
+                                    <ColumnDefinition Width="106*"/>
+                                </Grid.ColumnDefinitions>
+                                <ComboBox BorderBrush="#0078D7"
+                                          BorderThickness="2"
+                                          x:Name="cbxDonViThuocMoi"
+                                          IsEditable="True"
+                                          Width="120"
+                                          Margin="0,10"
+                                          FontSize="16"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Left">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock>
+                                                <TextBlock.Text>
+                                                    <MultiBinding StringFormat="{}{0} - {1}">
+                                                        <Binding Path="Id" />
+                                                        <Binding Path="TenDonVi" />
+                                                    </MultiBinding>
+                                                </TextBlock.Text>
+                                            </TextBlock>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="110" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
+                                       Margin="10"
+                                       FontSize="16"
+                                       Text="Công dụng:"
+                                       VerticalAlignment="Center">
+                            </TextBlock>
+                            <Grid Grid.Column="1">
+                                <TextBox BorderBrush="#0078D7"
+                                         x:Name="tbxCongDungThuocMoi"
+                                         Text="{Binding CongDungThuocMoi, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         BorderThickness="2"
+                                         Margin="0 5 20 5"
+                                         FontSize="16"
+                                         VerticalAlignment="Center">
+                                </TextBox>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="4">
+                            <Button Command="{Binding AddPatientCommand}"
+                                                x:Name="btnThemThuocMoi"
+                                                Background="#0078D7"
+                                                BorderBrush="#0078D7"
+                                                Content="Thêm bệnh nhân"
+                                                Margin="5 5 5 20"
+                                                Foreground="White"
+                                                Width="150"
+                                                FontWeight="Bold"
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center"/>
+                        </Grid>
+                    </Grid>
+                </materialDesign:Card>
+            </Grid>
         </Grid>
     </Grid>
 </Window>

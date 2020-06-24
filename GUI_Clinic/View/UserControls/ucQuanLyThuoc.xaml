@@ -99,7 +99,7 @@
                                       ScrollViewer.VerticalScrollBarVisibility="Auto">
                                 <ListView.View>
                                     <GridView>
-                                        <GridViewColumn Header="ID" 
+                                        <GridViewColumn Header="Mã thuốc" 
                                                         DisplayMemberBinding="{Binding Id}"/>
                                         <GridViewColumn Header="Tên thuốc" 
                                                         DisplayMemberBinding="{Binding TenThuoc}"/>
@@ -173,12 +173,12 @@
                                   ScrollViewer.VerticalScrollBarVisibility="Auto">
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Header="STT" 
-                                                    DisplayMemberBinding="{Binding DisplayName}"/>
-                                    <GridViewColumn Header="Ngày" 
-                                                    DisplayMemberBinding="{Binding Unit.DisplayName}"/>
+                                    <GridViewColumn Header="Mã phiếu nhập" 
+                                                    DisplayMemberBinding="{Binding Id}"/>
+                                    <GridViewColumn Header="Ngày nhập" 
+                                                    DisplayMemberBinding="{Binding NgayNhap}"/>
                                     <GridViewColumn Header="Tổng tiền" 
-                                                    DisplayMemberBinding="{Binding Price}"/>
+                                                    DisplayMemberBinding="{Binding TongTien}"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>
