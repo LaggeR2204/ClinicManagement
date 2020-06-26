@@ -170,8 +170,7 @@
                     </Grid>
 
                     <GroupBox Grid.Row="1"
-                              Header="Phiếu nhập thuốc" 
-                              Margin="0 0 0 5"
+                              Header="Phiếu nhập thuốc"
                               Style="{DynamicResource MaterialDesignCardGroupBox}">
                         <ListView ItemsSource="{Binding ListPNT}"
                                   SelectedItem="{Binding SlectedItem, Mode=TwoWay}"

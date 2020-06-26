@@ -275,7 +275,7 @@
                             </Grid>
                         </Grid>
                         <Grid Grid.Row="4">
-                            <Button Command="{Binding AddPatientCommand}"
+                            <Button Command="{Binding ThemThuocMoiCommand}"
                                     x:Name="btnThemThuocMoi"
                                     Background="#0078D7"
                                     BorderBrush="#0078D7"
