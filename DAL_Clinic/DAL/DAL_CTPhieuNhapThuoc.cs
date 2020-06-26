@@ -34,5 +34,10 @@ namespace DAL_Clinic.DAL
         {
             return SQLServerDBContext.Instant.CTPhieuNhapThuoc.Local;
         }
+
+        public void AddCTPhieuNhapThuoc(DTO_CTPhieuNhapThuoc ctPhieuNhapThuoc)
+        {
+            SQLServerDBContext.Instant.CTPhieuNhapThuoc.Local.Add(ctPhieuNhapThuoc);
+        }
     }
 }

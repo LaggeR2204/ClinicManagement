@@ -32,6 +32,7 @@ namespace DTO_Clinic
             MaThuoc = _maThuoc;
             SoLuongNhap = _soLuongNhap;
             DonGiaNhap = _donGiaNhap;
+            ThanhTien = SoLuongNhap * DonGiaNhap;
         }
     }
 }
