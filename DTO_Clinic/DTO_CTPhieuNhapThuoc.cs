@@ -20,5 +20,18 @@ namespace DTO_Clinic
         public float DonGiaNhap { get => _donGiaNhap; set { _donGiaNhap = value; OnPropertyChanged(); } }
         public float ThanhTien { get => _thanhTien; set { _thanhTien = value; OnPropertyChanged(); } }
         public bool IsDeleted { get => _isDeleted; set { _isDeleted = value; OnPropertyChanged(); } }
+
+        public DTO_CTPhieuNhapThuoc()
+        {
+
+        }
+
+        public DTO_CTPhieuNhapThuoc(int _maPNT, int _maThuoc, int _soLuongNhap, float _donGiaNhap)
+        {
+            MaPNT = _maPNT;
+            MaThuoc = _maThuoc;
+            SoLuongNhap = _soLuongNhap;
+            DonGiaNhap = _donGiaNhap;
+        }
     }
 }

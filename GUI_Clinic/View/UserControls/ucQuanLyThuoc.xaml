@@ -21,7 +21,14 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <TextBlock x:Name="tblTitle" Margin="20 10" HorizontalAlignment="Left" Text="Quản lý thuốc" VerticalAlignment="Center" FontSize="35" FontWeight="Bold" Foreground="#0078D7"/>
+            <TextBlock x:Name="tblTieuDe"
+                       Margin="20 10" 
+                       Text="Quản lý thuốc" 
+                       HorizontalAlignment="Left" 
+                       VerticalAlignment="Center"
+                       FontSize="35"
+                       FontWeight="Bold"
+                       Foreground="#0078D7"/>
         </Grid>
 
         <Grid Grid.Row="1">
@@ -43,7 +50,8 @@
                                  materialDesign:HintAssist.Hint="Tìm thuốc" 
                                  HorizontalAlignment="Left"
                                  VerticalAlignment="Center" 
-                                 Width="80"/>
+                                 Width="80"
+                                 TextChanged="tbx_TimThuoc_TextChanged"/>
                         <!--<Button x:Name="btnMedicationFind" 
                                 Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
                                 ToolTip="Tìm"
@@ -93,7 +101,6 @@
                         <GroupBox Header="Thuốc trong kho"
                                   Style="{DynamicResource MaterialDesignCardGroupBox}">
                             <ListView x:Name="lvThuoc"
-                                      ItemsSource="{Binding ListThuoc}"
                                       SelectedItem="{Binding SlectedItem, Mode=TwoWay}"
                                       ScrollViewer.CanContentScroll="True"
                                       ScrollViewer.VerticalScrollBarVisibility="Auto">

@@ -5,6 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -34,36 +37,117 @@ namespace GUI_Clinic.View.Windows
         #region Property
         public int SoLuong { get; set; }
         public float DonGia { get; set; }
+        //public List<int> ListSTT { get; set; }
         public string TenThuocMoi { get; set; }
         public string CongDungThuocMoi { get; set; }
+        public ObservableCollection<DTO_Thuoc> ListThuoc { get; set; }
+        public ObservableCollection<DTO_DonVi> ListDonVi { get; set; }
+        public ObservableCollection<Thuoc> List { get; set; }
         #endregion
 
         #region Command
-        public ICommand AddMedicineCommand { get; set; }
+        public ICommand ThemThuocCommand { get; set; }
+        public ICommand ThemThuocMoiCommand { get; set; }
         #endregion
 
         private void InitData()
         {
-            cbxTenThuoc.ItemsSource = new ObservableCollection<DTO_Thuoc>(BUSManager.ThuocBUS.GetListThuoc());
-            cbxDonVi.ItemsSource = new ObservableCollection<DTO_DonVi>(BUSManager.DonViBUS.GetListDV());
-            cbxDonViThuocMoi.ItemsSource = new ObservableCollection<DTO_DonVi>(BUSManager.DonViBUS.GetListDV());
+            ListThuoc = BUSManager.ThuocBUS.GetListThuoc();
+            ListDonVi = BUSManager.DonViBUS.GetListDV();
+
+            //foreach(DTO_Thuoc item in ListThuoc)
+            //{
+            //    BUSManager.ThuocBUS.LoadNPDonVi(item);
+            //}
+
+            //ListSTT = new List<int>();
+            //lvSTT.ItemsSource = ListSTT;
+
+            List = new ObservableCollection<Thuoc>();
+            lvDanhSachThuocNhap.ItemsSource = List;
+
+            //foreach(DTO_Thuoc item in List)
+            //{
+            //    BUSManager.ThuocBUS.LoadNPDonVi(item);
+            //}
         }
 
         private void InitCommand()
         {
-            AddMedicineCommand = new RelayCommand<Window>((p) =>
+            ThemThuocCommand = new RelayCommand<Window>((p) =>
             {
-                if (SoLuong == 0 || DonGia == 0 ||
-                    cbxTenThuoc.SelectedIndex == -1 ||
-                    cbxDonVi.SelectedIndex == -1)
+                if (SoLuong == 0 || DonGia == 0 || cbxTenThuoc.SelectedIndex == -1 || cbxDonVi.SelectedIndex == -1)
                     return false;
                 return true;
             }, (p) =>
             {
-                DTO_CTPhieuNhapThuoc cTPhieuNhapThuoc = new DTO_CTPhieuNhapThuoc();
-                cTPhieuNhapThuoc.SoLuongNhap = SoLuong;
-                cTPhieuNhapThuoc.DonGiaNhap = DonGia;
+                Thuoc themThuoc = new Thuoc();
+
+                themThuoc.cId = List.Count + 1;
+                themThuoc.cTenThuoc = (cbxTenThuoc.SelectedItem as DTO_Thuoc).TenThuoc;
+                themThuoc.cTenDonVi = (cbxDonVi.SelectedItem as DTO_DonVi).TenDonVi;
+                themThuoc.cSoLuong = SoLuong;
+                themThuoc.cDonGia = DonGia;
+
+                List.Add(themThuoc);
+            });
+
+            ThemThuocMoiCommand = new RelayCommand<Window>((p) =>
+            {
+                if (string.IsNullOrEmpty(tbxTenThuocMoi.Text) || cbxDonViThuocMoi.SelectedIndex == -1 || string.IsNullOrEmpty(tbxCongDungThuocMoi.Text))
+                    return false;
+                return true;
+            }, (p) =>
+            {
+                DTO_Thuoc thuocMoi = new DTO_Thuoc();
+                thuocMoi.TenThuoc = tbxTenThuocMoi.Text;
+                thuocMoi.MaDonVi = (cbxDonViThuocMoi.SelectedItem as DTO_DonVi).Id;
+                thuocMoi.CongDung = tbxCongDungThuocMoi.Text;
+                thuocMoi.DonGia = 0;
+                thuocMoi.SoLuong = 0;
+
+                BUSManager.ThuocBUS.AddThuoc(thuocMoi);
+                ListThuoc.Add(thuocMoi);
             });
         }
+
+        public class Thuoc
+        {
+            public int cId { get; set; }
+            public string cTenThuoc { get; set; }
+            public string cTenDonVi { get; set; }
+            public int cSoLuong { get; set; }
+            public float cDonGia { get; set; }
+
+            public Thuoc()
+            {
+
+            }
+
+            public Thuoc(int _cID, string _cTenThuoc, string _cTenDonVi, int _cSoLuong, float _cDonGia)
+            {
+                cId = _cID;
+                cTenThuoc = _cTenThuoc;
+                cTenDonVi = _cTenDonVi;
+                cSoLuong = _cSoLuong;
+                cDonGia = _cDonGia;
+            }
+        }
+        
+
+        //private void btnThemThuoc_Click(object sender, RoutedEventArgs e)
+        //{
+        //    DTO_Thuoc themThuoc = new DTO_Thuoc((cbxTenThuoc.SelectedItem as DTO_Thuoc).TenThuoc, (cbxDonVi.SelectedItem as DTO_DonVi).Id, DonGia, SoLuong, "");
+        //    //themThuoc.Id = STTBatDau + 1;
+        //    //themThuoc.TenThuoc = (cbxTenThuoc.SelectedItem as DTO_Thuoc).TenThuoc;
+        //    //themThuoc.MaDonVi = (cbxDonVi.SelectedItem as DTO_DonVi).Id;
+        //    //themThuoc.SoLuong = SoLuong;
+        //    //themThuoc.DonGia = DonGia;
+
+        //    List = new ObservableCollection<DTO_Thuoc>();
+        //    List.Add(themThuoc);
+
+        //    CollectionViewSource.GetDefaultView(lvDanhSachThuocNhap.ItemsSource).Refresh();
+        //}
     }
 }

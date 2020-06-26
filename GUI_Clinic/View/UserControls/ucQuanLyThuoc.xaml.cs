@@ -61,6 +61,24 @@ namespace GUI_Clinic.View.UserControls
             {
                 BUSManager.PhieuNhapThuocBUS.TransferTongTien(item);
             }
+
+            lvThuoc.ItemsSource = ListThuoc;
+
+            CollectionView viewThuoc = (CollectionView)CollectionViewSource.GetDefaultView(lvThuoc.ItemsSource);
+            viewThuoc.Filter = ThuocFilter;
+        }
+
+        private bool ThuocFilter(object item)
+        {
+            if (String.IsNullOrEmpty(tbxTimThuoc.Text))
+                return true;
+            else
+                return ((item as DTO_Thuoc).TenThuoc.IndexOf(tbxTimThuoc.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+        }
+
+        private void tbx_TimThuoc_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(lvThuoc.ItemsSource).Refresh();
         }
 
         private void btnNhapThuoc_Click(object sender, RoutedEventArgs e)
