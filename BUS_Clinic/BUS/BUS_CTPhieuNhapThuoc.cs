@@ -31,5 +31,10 @@ namespace BUS_Clinic.BUS
         {
             return DALManager.CTPhieuNhapThuocDAL.GetListCTPNT();
         }
+
+        public void AddCTPhieuNhapThuoc (DTO_CTPhieuNhapThuoc ctPhieuNhapThuoc)
+        {
+            DALManager.CTPhieuNhapThuocDAL.AddCTPhieuNhapThuoc(ctPhieuNhapThuoc);
+        }
     }
 }

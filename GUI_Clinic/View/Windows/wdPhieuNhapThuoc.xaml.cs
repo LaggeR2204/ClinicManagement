@@ -1,4 +1,4 @@
-﻿using BUS_Clinic.BUS;
+using BUS_Clinic.BUS;
 using DTO_Clinic;
 using GUI_Clinic.Command;
 using System;
@@ -37,7 +37,7 @@ namespace GUI_Clinic.View.Windows
         #region Property
         public int SoLuong { get; set; }
         public float DonGia { get; set; }
-        //public List<int> ListSTT { get; set; }
+        public List<int> ListSTT { get; set; }
         public string TenThuocMoi { get; set; }
         public string CongDungThuocMoi { get; set; }
         public ObservableCollection<DTO_Thuoc> ListThuoc { get; set; }
@@ -55,18 +55,18 @@ namespace GUI_Clinic.View.Windows
             ListThuoc = BUSManager.ThuocBUS.GetListThuoc();
             ListDonVi = BUSManager.DonViBUS.GetListDV();
 
-            //foreach(DTO_Thuoc item in ListThuoc)
-            //{
-            //    BUSManager.ThuocBUS.LoadNPDonVi(item);
-            //}
+            foreach (DTO_Thuoc item in ListThuoc)
+            {
+                BUSManager.ThuocBUS.LoadNPDonVi(item);
+            }
 
-            //ListSTT = new List<int>();
+            ListSTT = new List<int>();
             //lvSTT.ItemsSource = ListSTT;
 
             List = new ObservableCollection<Thuoc>();
             lvDanhSachThuocNhap.ItemsSource = List;
 
-            //foreach(DTO_Thuoc item in List)
+            //foreach (DTO_Thuoc item in List)
             //{
             //    BUSManager.ThuocBUS.LoadNPDonVi(item);
             //}
@@ -133,7 +133,7 @@ namespace GUI_Clinic.View.Windows
                 cDonGia = _cDonGia;
             }
         }
-        
+
 
         //private void btnThemThuoc_Click(object sender, RoutedEventArgs e)
         //{
