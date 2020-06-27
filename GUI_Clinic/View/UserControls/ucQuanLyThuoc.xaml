@@ -21,7 +21,14 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <TextBlock x:Name="tblTitle" Margin="20 10" HorizontalAlignment="Left" Text="Quản lý thuốc" VerticalAlignment="Center" FontSize="35" FontWeight="Bold" Foreground="#0078D7"/>
+            <TextBlock x:Name="tblTieuDe"
+                       Margin="20 10" 
+                       Text="Quản lý thuốc" 
+                       HorizontalAlignment="Left" 
+                       VerticalAlignment="Center"
+                       FontSize="35"
+                       FontWeight="Bold"
+                       Foreground="#0078D7"/>
         </Grid>
 
         <Grid Grid.Row="1">
@@ -43,7 +50,8 @@
                                  materialDesign:HintAssist.Hint="Tìm thuốc" 
                                  HorizontalAlignment="Left"
                                  VerticalAlignment="Center" 
-                                 Width="80"/>
+                                 Width="80"
+                                 TextChanged="tbx_TimThuoc_TextChanged"/>
                         <!--<Button x:Name="btnMedicationFind" 
                                 Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
                                 ToolTip="Tìm"
@@ -93,13 +101,12 @@
                         <GroupBox Header="Thuốc trong kho"
                                   Style="{DynamicResource MaterialDesignCardGroupBox}">
                             <ListView x:Name="lvThuoc"
-                                      ItemsSource="{Binding ListThuoc}"
                                       SelectedItem="{Binding SlectedItem, Mode=TwoWay}"
                                       ScrollViewer.CanContentScroll="True"
                                       ScrollViewer.VerticalScrollBarVisibility="Auto">
                                 <ListView.View>
                                     <GridView>
-                                        <GridViewColumn Header="ID" 
+                                        <GridViewColumn Header="Mã thuốc" 
                                                         DisplayMemberBinding="{Binding Id}"/>
                                         <GridViewColumn Header="Tên thuốc" 
                                                         DisplayMemberBinding="{Binding TenThuoc}"/>
@@ -128,11 +135,14 @@
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Row="0">
-                        <DatePicker Margin="10 10 0 10" 
+                        <DatePicker 
+                                 x:Name="dpTimPNT" 
+                                 Margin="10 10 0 10" 
                                  materialDesign:HintAssist.Hint="Tìm phiếu nhập thuốc" 
                                  HorizontalAlignment="Left"
                                  VerticalAlignment="Center" 
-                                 Width="150"/>
+                                 Width="150"
+                                 SelectedDateChanged="dpTimPNT_SelectedDateChanged"/>
                         <materialDesign:Chip Command="{Binding AddMedicineCommand}"
                                      x:Name="btnNhapThuoc"
                                      Grid.Row="1"
@@ -163,22 +173,23 @@
                     </Grid>
 
                     <GroupBox Grid.Row="1"
-                              Header="Phiếu nhập thuốc" 
-                              Margin="0 0 0 5"
+                              Header="Phiếu nhập thuốc"
                               Style="{DynamicResource MaterialDesignCardGroupBox}">
                         <ListView ItemsSource="{Binding ListPNT}"
                                   SelectedItem="{Binding SlectedItem, Mode=TwoWay}"
                                   x:Name="lvPhieuNhapThuoc"
                                   ScrollViewer.CanContentScroll="True"
-                                  ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                  SelectionChanged="lvPhieuNhapThuoc_SelectionChanged">
+                                  
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Header="STT" 
-                                                    DisplayMemberBinding="{Binding DisplayName}"/>
-                                    <GridViewColumn Header="Ngày" 
-                                                    DisplayMemberBinding="{Binding Unit.DisplayName}"/>
+                                    <GridViewColumn Header="Mã phiếu nhập" 
+                                                    DisplayMemberBinding="{Binding Id}"/>
+                                    <GridViewColumn Header="Ngày nhập" 
+                                                    DisplayMemberBinding="{Binding NgayNhap, StringFormat='MM/dd/yyyy'}"/>
                                     <GridViewColumn Header="Tổng tiền" 
-                                                    DisplayMemberBinding="{Binding Price}"/>
+                                                    DisplayMemberBinding="{Binding TongTien}"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>
@@ -188,28 +199,28 @@
                               Header="Chi tiết phiếu nhập thuốc" 
                               Margin="0 0 0 5"
                               Style="{DynamicResource MaterialDesignCardGroupBox}">
-                        <ListView ItemsSource="{Binding List}"
+                        <ListView ItemsSource="{Binding ListCTPNT}"
                                   SelectedItem="{Binding SlectedItem, Mode=TwoWay}"
-                                  x:Name="lstMedicationEntryDetail"
+                                  x:Name="lvCTPhieuNhapThuoc"
                                   ScrollViewer.CanContentScroll="True"
                                   ScrollViewer.VerticalScrollBarVisibility="Auto">
                             <ListView.View>
                                 <GridView>
                                     <GridViewColumn 
                                         Header="STT" 
-                                        DisplayMemberBinding="{Binding DisplayName}"/>
+                                        DisplayMemberBinding="{Binding MaPNT}"/>
                                     <GridViewColumn
                                         Header="Thuốc"
-                                        DisplayMemberBinding="{Binding Unit.DisplayName}"/>
-                                    <GridViewColumn 
-                                        Header="Đơn vị"
-                                        DisplayMemberBinding="{Binding Price}"/>
+                                        DisplayMemberBinding="{Binding Thuoc.TenThuoc}"/>
                                     <GridViewColumn 
                                         Header="Số lượng"
-                                        DisplayMemberBinding="{Binding Price}"/>
+                                        DisplayMemberBinding="{Binding SoLuongNhap}"/>
                                     <GridViewColumn 
                                         Header="Đơn giá" 
-                                        DisplayMemberBinding="{Binding Price}"/>
+                                        DisplayMemberBinding="{Binding DonGiaNhap}"/>
+                                    <GridViewColumn 
+                                        Header="Thành tiền"
+                                        DisplayMemberBinding="{Binding ThanhTien}"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>

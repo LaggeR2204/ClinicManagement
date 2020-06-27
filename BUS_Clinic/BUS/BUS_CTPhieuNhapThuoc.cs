@@ -15,6 +15,14 @@ namespace BUS_Clinic.BUS
         {
 
         }
+        public void LoadNPThuoc(DTO_CTPhieuNhapThuoc cTPhieuNhapThuoc)
+        {
+            DALManager.CTPhieuNhapThuocDAL.LoadNPThuoc(cTPhieuNhapThuoc);
+        }
+        public void LoadNPPhieuNhapThuoc(DTO_CTPhieuNhapThuoc cTPhieuNhapThuoc)
+        {
+            DALManager.CTPhieuNhapThuocDAL.LoadNPPhieuNhapThuoc(cTPhieuNhapThuoc);
+        }
         public override void LoadLocalData()
         {
             DALManager.CTPhieuNhapThuocDAL.LoadLocalData();
@@ -22,6 +30,11 @@ namespace BUS_Clinic.BUS
         public ObservableCollection<DTO_CTPhieuNhapThuoc> GetListCTPNT()
         {
             return DALManager.CTPhieuNhapThuocDAL.GetListCTPNT();
+        }
+
+        public void AddCTPhieuNhapThuoc (DTO_CTPhieuNhapThuoc ctPhieuNhapThuoc)
+        {
+            DALManager.CTPhieuNhapThuocDAL.AddCTPhieuNhapThuoc(ctPhieuNhapThuoc);
         }
     }
 }

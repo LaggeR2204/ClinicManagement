@@ -30,9 +30,19 @@ namespace DTO_Clinic
             IsDeleted = false;
         }
 
-        public DTO_Thuoc(string tenThuoc, int maDonVi, int donGia, int soLuong, string congDung)
+        public DTO_Thuoc(string tenThuoc, int maDonVi, float donGia, int soLuong, string congDung)
         {
+            TenThuoc = tenThuoc;
+            MaDonVi = maDonVi;
+            DonGia = donGia;
+            SoLuong = soLuong;
+            CongDung = congDung;
             IsDeleted = false;
+        }
+
+        public override string ToString()
+        {
+            return TenThuoc;
         }
     }
 }

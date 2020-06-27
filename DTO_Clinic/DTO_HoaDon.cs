@@ -8,6 +8,7 @@ namespace DTO_Clinic
 {
     public class DTO_HoaDon:BaseModel
     {
+        public virtual DTO_CTPhieuKhamBenh CTPhieuKhamBenh { get; set; }
         public virtual DTO_PhieuKhamBenh PhieuKhamBenh { get; set; }
         public int Id { get; set; }
         public float TienKham { get => _tienKham; set { _tienKham = value; OnPropertyChanged(); } }
@@ -20,5 +21,10 @@ namespace DTO_Clinic
         private float _tienThuoc;
         private float _thanhTien;
         private bool _isDeleted;
+
+        public void TinhTien()
+        {
+            PhieuKhamBenh.DSCTPhieuKhamBenh.Count();
+        }
     }
 }

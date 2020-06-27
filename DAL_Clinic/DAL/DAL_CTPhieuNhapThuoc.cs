@@ -16,6 +16,16 @@ namespace DAL_Clinic.DAL
         {
 
         }
+        public void LoadNPThuoc(DTO_CTPhieuNhapThuoc cTPhieuNhapThuoc)
+        {
+            var entry = SQLServerDBContext.Instant.Entry(cTPhieuNhapThuoc);
+            entry.Reference(c => c.Thuoc).Load();
+        }
+        public void LoadNPPhieuNhapThuoc(DTO_CTPhieuNhapThuoc cTPhieuNhapThuoc)
+        {
+            var entry = SQLServerDBContext.Instant.Entry(cTPhieuNhapThuoc);
+            entry.Reference(c => c.PhieuNhapThuoc).Load();
+        }
         public override void LoadLocalData()
         {
             SQLServerDBContext.Instant.CTPhieuNhapThuoc.Load();
@@ -23,6 +33,11 @@ namespace DAL_Clinic.DAL
         public ObservableCollection<DTO_CTPhieuNhapThuoc> GetListCTPNT()
         {
             return SQLServerDBContext.Instant.CTPhieuNhapThuoc.Local;
+        }
+
+        public void AddCTPhieuNhapThuoc(DTO_CTPhieuNhapThuoc ctPhieuNhapThuoc)
+        {
+            SQLServerDBContext.Instant.CTPhieuNhapThuoc.Local.Add(ctPhieuNhapThuoc);
         }
     }
 }

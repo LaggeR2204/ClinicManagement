@@ -8,6 +8,10 @@ namespace DTO_Clinic
 {
     public class DTO_CTPhieuNhapThuoc:BaseModel
     {
+        private int _soLuongNhap;
+        private float _donGiaNhap;
+        private float _thanhTien;
+        private bool _isDeleted;
         public virtual DTO_PhieuNhapThuoc PhieuNhapThuoc  { get; set; }
         public virtual DTO_Thuoc Thuoc { get; set; }
         public int MaThuoc { get; set; }
@@ -17,9 +21,18 @@ namespace DTO_Clinic
         public float ThanhTien { get => _thanhTien; set { _thanhTien = value; OnPropertyChanged(); } }
         public bool IsDeleted { get => _isDeleted; set { _isDeleted = value; OnPropertyChanged(); } }
 
-        private int _soLuongNhap;
-        private float _donGiaNhap;
-        private float _thanhTien;
-        private bool _isDeleted;
+        public DTO_CTPhieuNhapThuoc()
+        {
+
+        }
+
+        public DTO_CTPhieuNhapThuoc(int _maPNT, int _maThuoc, int _soLuongNhap, float _donGiaNhap)
+        {
+            MaPNT = _maPNT;
+            MaThuoc = _maThuoc;
+            SoLuongNhap = _soLuongNhap;
+            DonGiaNhap = _donGiaNhap;
+            ThanhTien = SoLuongNhap * DonGiaNhap;
+        }
     }
 }
