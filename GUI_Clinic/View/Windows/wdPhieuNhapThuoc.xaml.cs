@@ -1,4 +1,4 @@
-using BUS_Clinic.BUS;
+﻿using BUS_Clinic.BUS;
 using DTO_Clinic;
 using GUI_Clinic.Command;
 using System;
@@ -36,10 +36,11 @@ namespace GUI_Clinic.View.Windows
 
         #region Property
         public int SoLuong { get; set; }
-        public float DonGia { get; set; }
-        public List<int> ListSTT { get; set; }
+        public double DonGia { get; set; }
+        //public List<int> ListSTT { get; set; }
         public string TenThuocMoi { get; set; }
         public string CongDungThuocMoi { get; set; }
+        public DateTime? NgayNhapThuoc { get; set; }
         public ObservableCollection<DTO_Thuoc> ListThuoc { get; set; }
         public ObservableCollection<DTO_DonVi> ListDonVi { get; set; }
         public ObservableCollection<Thuoc> List { get; set; }
@@ -60,7 +61,7 @@ namespace GUI_Clinic.View.Windows
                 BUSManager.ThuocBUS.LoadNPDonVi(item);
             }
 
-            ListSTT = new List<int>();
+            //ListSTT = new List<int>();
             //lvSTT.ItemsSource = ListSTT;
 
             List = new ObservableCollection<Thuoc>();
@@ -76,7 +77,7 @@ namespace GUI_Clinic.View.Windows
         {
             ThemThuocCommand = new RelayCommand<Window>((p) =>
             {
-                if (SoLuong == 0 || DonGia == 0 || cbxTenThuoc.SelectedIndex == -1 || cbxDonVi.SelectedIndex == -1)
+                if (tbxDonGia.Text == "0" || tbxSoLuong.Text == "0" || cbxTenThuoc.SelectedIndex == -1 || cbxDonVi.SelectedIndex == -1)
                     return false;
                 return true;
             }, (p) =>
@@ -84,6 +85,7 @@ namespace GUI_Clinic.View.Windows
                 Thuoc themThuoc = new Thuoc();
 
                 themThuoc.cId = List.Count + 1;
+                themThuoc.cIdThuoc = (cbxTenThuoc.SelectedItem as DTO_Thuoc).Id;
                 themThuoc.cTenThuoc = (cbxTenThuoc.SelectedItem as DTO_Thuoc).TenThuoc;
                 themThuoc.cTenDonVi = (cbxDonVi.SelectedItem as DTO_DonVi).TenDonVi;
                 themThuoc.cSoLuong = SoLuong;
@@ -114,23 +116,72 @@ namespace GUI_Clinic.View.Windows
         public class Thuoc
         {
             public int cId { get; set; }
+            public int cIdThuoc { get; set; }
             public string cTenThuoc { get; set; }
             public string cTenDonVi { get; set; }
             public int cSoLuong { get; set; }
-            public float cDonGia { get; set; }
+            public double cDonGia { get; set; }
 
             public Thuoc()
             {
 
             }
 
-            public Thuoc(int _cID, string _cTenThuoc, string _cTenDonVi, int _cSoLuong, float _cDonGia)
+            public Thuoc(int _cID, string _cTenThuoc, string _cTenDonVi, int _cSoLuong, double _cDonGia)
             {
                 cId = _cID;
                 cTenThuoc = _cTenThuoc;
                 cTenDonVi = _cTenDonVi;
                 cSoLuong = _cSoLuong;
                 cDonGia = _cDonGia;
+            }
+        }
+
+        private void btnNhapThuoc_Click(object sender, RoutedEventArgs e)
+        {
+            if (List.Count != 0)
+            {
+                if (!NgayNhapThuoc.HasValue)
+                {
+                    var result = MessageBox.Show("Nếu bạn không chọn ngày, ngày nhập mặc định sẽ là hôm nay, bạn đồng ý chứ?", "Ngày nhập thuốc chưa được chọn", MessageBoxButton.YesNo);
+
+                    if (result == MessageBoxResult.No)
+                    {
+
+                    }
+                    else
+                    {
+                        DTO_PhieuNhapThuoc phieuNhapThuoc = new DTO_PhieuNhapThuoc(DateTime.Now, 0);
+                        BUSManager.PhieuNhapThuocBUS.AddPhieuNhapThuoc(phieuNhapThuoc);
+                        int tempID = phieuNhapThuoc.Id;
+
+                        foreach (Thuoc item in List)
+                        {
+                            DTO_CTPhieuNhapThuoc cTPhieuNhapThuoc = new DTO_CTPhieuNhapThuoc(tempID, item.cIdThuoc, item.cSoLuong, item.cDonGia);
+                            BUSManager.CTPhieuNhapThuocBUS.AddCTPhieuNhapThuoc(cTPhieuNhapThuoc);
+                        }
+
+                        BUSManager.PhieuNhapThuocBUS.CapNhatTongTien(phieuNhapThuoc);
+                    }
+                }
+                else
+                {
+                    DTO_PhieuNhapThuoc phieuNhapThuoc = new DTO_PhieuNhapThuoc(NgayNhapThuoc.Value, 0);
+                    BUSManager.PhieuNhapThuocBUS.AddPhieuNhapThuoc(phieuNhapThuoc);
+                    int tempID = phieuNhapThuoc.Id;
+
+                    foreach (Thuoc item in List)
+                    {
+                        DTO_CTPhieuNhapThuoc cTPhieuNhapThuoc = new DTO_CTPhieuNhapThuoc(tempID, item.cIdThuoc, item.cSoLuong, item.cDonGia);
+                        BUSManager.CTPhieuNhapThuocBUS.AddCTPhieuNhapThuoc(cTPhieuNhapThuoc);
+                    }
+
+                    BUSManager.PhieuNhapThuocBUS.CapNhatTongTien(phieuNhapThuoc);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bạn chưa nhập thuốc.");
             }
         }
 

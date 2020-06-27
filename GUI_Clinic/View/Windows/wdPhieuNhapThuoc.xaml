@@ -46,14 +46,22 @@
                            FontSize="35" 
                            FontWeight="Bold" 
                            Foreground="#0078D7"/>
-                <DatePicker x:Name="dpkMedicationEntryDate" 
+                <DatePicker x:Name="dpkNgayNhapThuoc" 
                             HorizontalAlignment="Right" 
                             VerticalAlignment="Center" 
-                            SelectedDate="{Binding DateInput}" 
+                            SelectedDate="{Binding NgayNhapThuoc}" 
                             Width="130" Margin="5 5 130 10" 
                             materialDesign:HintAssist.Hint="Ngày nhập thuốc" 
                             Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
-                <Button x:Name="btnMedicationEntry" Command="{Binding AddCommand}" Content="Nhập thuốc" Margin="5" Width="110" HorizontalAlignment="Right" VerticalAlignment="Center" Background="#0078D7" BorderBrush="#0078D7"></Button>
+                <Button x:Name="btnNhapThuoc"
+                        Content="Nhập thuốc" 
+                        Margin="5" 
+                        Width="110" 
+                        HorizontalAlignment="Right" 
+                        VerticalAlignment="Center" 
+                        Background="#0078D7" 
+                        BorderBrush="#0078D7" 
+                        Click="btnNhapThuoc_Click"/>
             </Grid>
 
             <materialDesign:Card Grid.Row="1" Margin="5">

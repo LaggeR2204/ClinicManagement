@@ -23,9 +23,13 @@ namespace BUS_Clinic.BUS
         {
             DALManager.PhieuNhapThuocDAL.AddPhieuNhapThuoc(phieuNhapThuoc);
         }
-        public void TransferTongTien(DTO_PhieuNhapThuoc phieuNhapThuoc)
+        //public void TransferTongTien(DTO_PhieuNhapThuoc phieuNhapThuoc)
+        //{
+        //    DALManager.PhieuNhapThuocDAL.TransferTongTien(phieuNhapThuoc);
+        //}
+        public void CapNhatTongTien(DTO_PhieuNhapThuoc phieuNhapThuoc)
         {
-            DALManager.PhieuNhapThuocDAL.TransferTongTien(phieuNhapThuoc);
+            DALManager.PhieuNhapThuocDAL.CapNhatTongTien(phieuNhapThuoc);
         }
         public override void LoadLocalData()
         {
