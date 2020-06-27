@@ -124,7 +124,7 @@
                     <GroupBox Header="Đơn thuốc"
                               Margin="5 10 10 10">
                         <Grid>
-                            <ListView x:Name="lvMedicine"
+                            <ListView x:Name="lvThuoc"
                                       ItemsSource="{Binding ListThuoc}"
                                       SelectedItem="{Binding SlectedItem, Mode=TwoWay}"
                                       ScrollViewer.CanContentScroll="True"
@@ -132,15 +132,15 @@
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn Header="STT"
-                                                            DisplayMemberBinding="{Binding DisplayName}"></GridViewColumn>
+                                                            DisplayMemberBinding="{Binding MaThuoc}"></GridViewColumn>
                                         <GridViewColumn Header="Tên thuốc"
-                                                            DisplayMemberBinding="{Binding Unit.DisplayName}"></GridViewColumn>
+                                                            DisplayMemberBinding="{Binding Thuoc.TenThuoc}"></GridViewColumn>
                                         <GridViewColumn Header="Số lượng"
-                                                            DisplayMemberBinding="{Binding Price}"></GridViewColumn>
+                                                            DisplayMemberBinding="{Binding SoLuong}"></GridViewColumn>
                                         <GridViewColumn Header="Đơn vị"
-                                                            DisplayMemberBinding="{Binding Price}"></GridViewColumn>
+                                                            DisplayMemberBinding="{Binding Thuoc.DonVi.TenDonVi}"></GridViewColumn>
                                         <GridViewColumn Header="Cách dùng"
-                                                            DisplayMemberBinding="{Binding Price}"></GridViewColumn>
+                                                            DisplayMemberBinding="{Binding CachDung.TenCachDung}"></GridViewColumn>
                                     </GridView>
                                 </ListView.View>
                             </ListView>

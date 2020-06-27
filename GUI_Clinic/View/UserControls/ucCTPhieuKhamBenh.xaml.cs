@@ -57,6 +57,29 @@ namespace GUI_Clinic.View.UserControls
             IsSave = false;
         }
 
+        public void GetPKB(DTO_PhieuKhamBenh pkb)
+        {
+            phieuKhamBenh = pkb;
+
+            BUSManager.PhieuKhamBenhBUS.LoadNPBenh(pkb);
+            BUSManager.PhieuKhamBenhBUS.LoadNPBenhNhan(pkb);
+            BUSManager.PhieuKhamBenhBUS.LoadNPDSCTPhieuKhamBenh(pkb);
+            foreach (DTO_CTPhieuKhamBenh item in pkb.DSCTPhieuKhamBenh)
+            {
+                BUSManager.CTPhieuKhamBenhBUS.LoadNPThuoc(item);
+                BUSManager.ThuocBUS.LoadNPDonVi(item.Thuoc);
+                BUSManager.CTPhieuKhamBenhBUS.LoadNPCachDung(item);
+            }
+            benhNhan = pkb.BenhNhan;
+            tblTenBenhNhan.Text = benhNhan.TenBenhNhan;
+            tblNgayKham.Text = pkb.NgayKham.ToString();
+            lvThuoc.ItemsSource = pkb.DSCTPhieuKhamBenh;
+            tbxTrieuChung.Text = pkb.TrieuChung;
+            tbxChanDoan.Text = pkb.Benh.TenBenh;
+
+            IsSave = true;
+        }
+
         public void InitData()
         {
             ListPKB = BUSManager.PhieuKhamBenhBUS.GetListPKB();
@@ -68,7 +91,7 @@ namespace GUI_Clinic.View.UserControls
             {
                 if (string.IsNullOrEmpty(tbxTrieuChung.Text) ||
                     string.IsNullOrEmpty(tbxChanDoan.Text) ||
-                    ListThuoc != null)
+                    ListThuoc != null || IsSave == true)
                     return false;
                 return true;
             }, (p) =>
@@ -83,7 +106,8 @@ namespace GUI_Clinic.View.UserControls
             {
                 if (string.IsNullOrEmpty(cbxThuoc.Text) ||
                     string.IsNullOrEmpty(tbxSoLuong.Text) ||
-                    string.IsNullOrEmpty(tbxCachDung.Text))
+                    string.IsNullOrEmpty(tbxCachDung.Text) ||
+                    IsSave == true)
                     return false;
                 return true;
             }, (p) =>
