@@ -136,6 +136,5 @@ namespace GUI_Clinic.View.UserControls
             wdPhieuNhapThuoc wd = new wdPhieuNhapThuoc();
             wd.ShowDialog();
         }
-
     }
 }

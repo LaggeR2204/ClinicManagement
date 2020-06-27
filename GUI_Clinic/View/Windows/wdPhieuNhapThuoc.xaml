@@ -49,7 +49,7 @@
                 <DatePicker x:Name="dpkNgayNhapThuoc" 
                             HorizontalAlignment="Right" 
                             VerticalAlignment="Center" 
-                            SelectedDate="{Binding NgayNhapThuoc}" 
+                            SelectedDate="{Binding NgayNhapThuoc, Mode=TwoWay}" 
                             Width="130" Margin="5 5 130 10" 
                             materialDesign:HintAssist.Hint="Ngày nhập thuốc" 
                             Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>

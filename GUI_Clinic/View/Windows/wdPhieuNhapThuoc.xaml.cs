@@ -1,6 +1,7 @@
 ﻿using BUS_Clinic.BUS;
 using DTO_Clinic;
 using GUI_Clinic.Command;
+using GUI_Clinic.View.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -53,6 +54,8 @@ namespace GUI_Clinic.View.Windows
 
         private void InitData()
         {
+            NgayNhapThuoc = DateTime.Now;
+
             ListThuoc = BUSManager.ThuocBUS.GetListThuoc();
             ListDonVi = BUSManager.DonViBUS.GetListDV();
 
@@ -92,6 +95,11 @@ namespace GUI_Clinic.View.Windows
                 themThuoc.cDonGia = DonGia;
 
                 List.Add(themThuoc);
+
+                cbxTenThuoc.SelectedIndex = -1;
+                cbxDonVi.SelectedIndex = -1;
+                tbxDonGia.Text = "0";
+                tbxSoLuong.Text = "0";
             });
 
             ThemThuocMoiCommand = new RelayCommand<Window>((p) =>
@@ -110,6 +118,10 @@ namespace GUI_Clinic.View.Windows
 
                 BUSManager.ThuocBUS.AddThuoc(thuocMoi);
                 ListThuoc.Add(thuocMoi);
+
+                tbxTenThuocMoi.Clear();
+                cbxDonViThuocMoi.SelectedIndex = -1;
+                tbxCongDungThuocMoi.Text = "";
             });
         }
 
@@ -141,43 +153,20 @@ namespace GUI_Clinic.View.Windows
         {
             if (List.Count != 0)
             {
-                if (!NgayNhapThuoc.HasValue)
+                
+                DTO_PhieuNhapThuoc phieuNhapThuoc = new DTO_PhieuNhapThuoc(DateTime.Now, 0);
+                BUSManager.PhieuNhapThuocBUS.AddPhieuNhapThuoc(phieuNhapThuoc);
+                int tempID = phieuNhapThuoc.Id;
+
+                foreach (Thuoc item in List)
                 {
-                    var result = MessageBox.Show("Nếu bạn không chọn ngày, ngày nhập mặc định sẽ là hôm nay, bạn đồng ý chứ?", "Ngày nhập thuốc chưa được chọn", MessageBoxButton.YesNo);
-
-                    if (result == MessageBoxResult.No)
-                    {
-
-                    }
-                    else
-                    {
-                        DTO_PhieuNhapThuoc phieuNhapThuoc = new DTO_PhieuNhapThuoc(DateTime.Now, 0);
-                        BUSManager.PhieuNhapThuocBUS.AddPhieuNhapThuoc(phieuNhapThuoc);
-                        int tempID = phieuNhapThuoc.Id;
-
-                        foreach (Thuoc item in List)
-                        {
-                            DTO_CTPhieuNhapThuoc cTPhieuNhapThuoc = new DTO_CTPhieuNhapThuoc(tempID, item.cIdThuoc, item.cSoLuong, item.cDonGia);
-                            BUSManager.CTPhieuNhapThuocBUS.AddCTPhieuNhapThuoc(cTPhieuNhapThuoc);
-                        }
-
-                        BUSManager.PhieuNhapThuocBUS.CapNhatTongTien(phieuNhapThuoc);
-                    }
+                    DTO_CTPhieuNhapThuoc cTPhieuNhapThuoc = new DTO_CTPhieuNhapThuoc(tempID, item.cIdThuoc, item.cSoLuong, item.cDonGia);
+                    BUSManager.CTPhieuNhapThuocBUS.AddCTPhieuNhapThuoc(cTPhieuNhapThuoc);
                 }
-                else
-                {
-                    DTO_PhieuNhapThuoc phieuNhapThuoc = new DTO_PhieuNhapThuoc(NgayNhapThuoc.Value, 0);
-                    BUSManager.PhieuNhapThuocBUS.AddPhieuNhapThuoc(phieuNhapThuoc);
-                    int tempID = phieuNhapThuoc.Id;
 
-                    foreach (Thuoc item in List)
-                    {
-                        DTO_CTPhieuNhapThuoc cTPhieuNhapThuoc = new DTO_CTPhieuNhapThuoc(tempID, item.cIdThuoc, item.cSoLuong, item.cDonGia);
-                        BUSManager.CTPhieuNhapThuocBUS.AddCTPhieuNhapThuoc(cTPhieuNhapThuoc);
-                    }
+                BUSManager.PhieuNhapThuocBUS.CapNhatTongTien(phieuNhapThuoc);
 
-                    BUSManager.PhieuNhapThuocBUS.CapNhatTongTien(phieuNhapThuoc);
-                }
+                this.Close();
             }
             else
             {
