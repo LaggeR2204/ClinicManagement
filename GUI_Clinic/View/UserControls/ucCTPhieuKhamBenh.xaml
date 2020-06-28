@@ -11,7 +11,7 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid>
+        <Grid x:Name="grdThongTinPKB" Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -73,7 +73,7 @@
                     <RowDefinition Height="auto"></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
+                <Grid x:Name="grdNhapThuoc" Grid.Row="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
                         <ColumnDefinition />
@@ -154,39 +154,27 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
-                <Button x:Name="btnLuuPKB"
-                        Command="{Binding LuuPhieuKhamBenhCommand}"
-                        Content="Lưu"
-                        Width="110"
-                        Margin="5 5 5 10"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center"
-                        Background="#0078D7"
-                        BorderBrush="#0078D7"></Button>
-            </Grid>
-            <Grid Grid.Column="1">
                 <Button x:Name="btnInPhieu"
                         Command="{Binding InPhieuKhamCommand}"
                         Content="In phiếu"
                         Width="110"
                         Margin="5 5 5 10"
                         VerticalAlignment="Center"
+                        HorizontalAlignment="Right"
                         Background="#0078D7"
                         BorderBrush="#0078D7"></Button>
             </Grid>
-            <Grid Grid.Column="2">
+            <Grid Grid.Column="1">
                 <Button x:Name="btnThanhToan"
-                        Command="{Binding PayBillCommand}"
+                        Command="{Binding ThanhToanPhieuKhamCommand}"
                         Content="Thanh Toán"
                         Width="110"
                         Margin="5 5 5 10"
                         VerticalAlignment="Center"
                         Background="#0078D7"
-                        BorderBrush="#0078D7"
-                        Click="btnThanhToan_Click"></Button>
+                        BorderBrush="#0078D7"></Button>
             </Grid>
         </Grid>
     </Grid>
