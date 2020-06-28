@@ -97,11 +97,13 @@
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                     </Grid>
                     <Grid Grid.Column="2">
-                        <TextBox x:Name="tbxCachDung"
-                                 Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}"
-                                 Margin="10"
-                                 materialDesign:HintAssist.Hint="Cách dùng"
-                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        <ComboBox x:Name="cbxCachDung"
+                                  Margin="10"
+                                  ItemsSource="{Binding Unit}"
+                                  SelectedItem="{Binding SelectedUnit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                  materialDesign:HintAssist.Hint="Cách dùng"
+                                  IsEditable="True"
+                                  Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
                     </Grid>
                     <Grid Grid.Column="3">
                         <Button x:Name="btnThemThuoc"

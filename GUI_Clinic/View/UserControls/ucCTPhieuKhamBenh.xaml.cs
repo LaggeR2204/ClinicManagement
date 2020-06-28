@@ -96,14 +96,14 @@ namespace GUI_Clinic.View.UserControls
             {
                 if (string.IsNullOrEmpty(cbxThuoc.Text) ||
                     string.IsNullOrEmpty(tbxSoLuong.Text) ||
-                    string.IsNullOrEmpty(tbxCachDung.Text) ||
+                    string.IsNullOrEmpty(cbxCachDung.Text) ||
                     IsSave == true)
                     return false;
                 return true;
             }, (p) =>
             {
                 DTO_Thuoc newThuoc = cbxThuoc.SelectedItem as DTO_Thuoc;
-                DTO_CTPhieuKhamBenh cTPhieuKhamBenh = new DTO_CTPhieuKhamBenh(phieuKhamBenh.Id, newThuoc.Id, 1 /*Chuyen cach dung thành chọncachs dùng*/, int.Parse(tbxSoLuong.Text), newThuoc.DonGia);
+                DTO_CTPhieuKhamBenh cTPhieuKhamBenh = new DTO_CTPhieuKhamBenh(phieuKhamBenh.Id, newThuoc.Id, (cbxCachDung.SelectedItem as DTO_CachDung).Id, int.Parse(tbxSoLuong.Text), newThuoc.DonGia);
                 ListThuoc.Add(cTPhieuKhamBenh);
             });
 
