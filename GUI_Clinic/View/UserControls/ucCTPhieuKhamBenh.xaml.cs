@@ -38,7 +38,10 @@ namespace GUI_Clinic.View.UserControls
         private DTO_BenhNhan benhNhan = new DTO_BenhNhan();
         private DTO_PhieuKhamBenh phieuKhamBenh = new DTO_PhieuKhamBenh();
         public ObservableCollection<DTO_PhieuKhamBenh> ListPKB { get; set; }
-        public ObservableCollection<DTO_CTPhieuKhamBenh> ListThuoc { get; set; }
+        public ObservableCollection<DTO_CTPhieuKhamBenh> ListCTPKB { get; set; }
+        public ObservableCollection<DTO_Thuoc> ListThuoc { get; set; }
+        public ObservableCollection<DTO_CachDung> ListCachDung { get; set; }
+        public ObservableCollection<DTO_Benh> ListBenh { get; set; }
 
         private bool IsSave = false;
         #endregion
@@ -78,7 +81,7 @@ namespace GUI_Clinic.View.UserControls
             tblNgayKham.Text = pkb.NgayKham.ToString();
             lvThuoc.ItemsSource = pkb.DSCTPhieuKhamBenh;
             tbxTrieuChung.Text = pkb.TrieuChung;
-            tbxChanDoan.Text = pkb.Benh.TenBenh;
+            cbxChanDoan.Text = pkb.Benh.TenBenh;
 
             phieuKhamBenh = pkb;
 
@@ -87,6 +90,9 @@ namespace GUI_Clinic.View.UserControls
 
         public void InitData()
         {
+            ListThuoc = BUSManager.ThuocBUS.GetListThuoc();
+            ListCachDung = BUSManager.CachDungBUS.GetListCD();
+            ListBenh = BUSManager.BenhBUS.GetListBenh();
             ListPKB = BUSManager.PhieuKhamBenhBUS.GetListPKB();
         }
 
@@ -104,13 +110,13 @@ namespace GUI_Clinic.View.UserControls
             {
                 DTO_Thuoc newThuoc = cbxThuoc.SelectedItem as DTO_Thuoc;
                 DTO_CTPhieuKhamBenh cTPhieuKhamBenh = new DTO_CTPhieuKhamBenh(phieuKhamBenh.Id, newThuoc.Id, (cbxCachDung.SelectedItem as DTO_CachDung).Id, int.Parse(tbxSoLuong.Text), newThuoc.DonGia);
-                ListThuoc.Add(cTPhieuKhamBenh);
+                ListCTPKB.Add(cTPhieuKhamBenh);
             });
 
             InPhieuKhamCommand = new RelayCommand<Window>((p) =>
             {
                 if (string.IsNullOrEmpty(tbxTrieuChung.Text) ||
-                    string.IsNullOrEmpty(tbxChanDoan.Text) ||
+                    string.IsNullOrEmpty(cbxChanDoan.Text) ||
                     lvThuoc.Items == null)
                     return false;
                 return true;
@@ -123,7 +129,7 @@ namespace GUI_Clinic.View.UserControls
             ThanhToanPhieuKhamCommand = new RelayCommand<Window>((p) =>
             {
                 if (string.IsNullOrEmpty(tbxTrieuChung.Text) ||
-                    string.IsNullOrEmpty(tbxChanDoan.Text) ||
+                    string.IsNullOrEmpty(cbxChanDoan.Text) ||
                     lvThuoc.Items == null)
                     return false;
                 return true;
@@ -142,21 +148,21 @@ namespace GUI_Clinic.View.UserControls
 
         private void DisablePKB()
         {
-            tbxChanDoan.IsEnabled = false;
+            cbxChanDoan.IsEnabled = false;
             tbxTrieuChung.IsEnabled = false;
             grdNhapThuoc.Visibility = Visibility.Collapsed;
         }
 
         private void EnablePKB()
         {
-            tbxChanDoan.IsEnabled = true;
+            cbxChanDoan.IsEnabled = true;
             tbxTrieuChung.IsEnabled = true;
             grdNhapThuoc.Visibility = Visibility.Visible;
 
             tblTenBenhNhan.Text = null;
             tblNgayKham.Text = null;
             tbxTrieuChung.Text = null;
-            tbxChanDoan.Text = null;
+            cbxChanDoan.Text = null;
         }
     }
 }
