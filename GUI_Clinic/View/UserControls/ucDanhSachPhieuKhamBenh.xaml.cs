@@ -33,8 +33,6 @@ namespace GUI_Clinic.View.UserControls
 
         #region Property
         public ObservableCollection<DTO_PhieuKhamBenh> ListPKB { get; set; }
-
-        private bool IsSave = false;
         #endregion
         #region Command
         #endregion

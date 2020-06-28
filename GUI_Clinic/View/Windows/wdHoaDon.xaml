@@ -46,14 +46,15 @@
             <StackPanel Grid.Row="1" HorizontalAlignment="Stretch" Margin="20">
                 <Grid HorizontalAlignment="Stretch">
                     <StackPanel Grid.Column="0" Margin="10">
-                        <TextBlock Text="Võ Thanh Bình" FontSize="20" Margin="5"/>
+                        <TextBlock Text="{Binding Hoadon.PhieuKhamBenh.BenhNhan.TenBenhNhan}" 
+                                   FontSize="20" Margin="5"/>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Ngày khám:" FontSize="12" Margin="5"/>
-                            <TextBlock Text="22/04/2020" FontSize="12" Margin="5" FontWeight="DemiBold"/>
+                            <TextBlock Text="{Binding Hoadon.PhieuKhamBenh.NgayKham, StringFormat='dd/MM/yyyy'}" FontSize="12" Margin="5" FontWeight="DemiBold"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Mã hóa đơn:" FontSize="12" Margin="5"/>
-                            <TextBlock Text="0001" FontSize="12" Margin="5" FontWeight="DemiBold"/>
+                            <TextBlock Text="{Binding HoaDon.PhieuKhamBenh.Id}" FontSize="12" Margin="5" FontWeight="DemiBold"/>
                         </StackPanel>
                     </StackPanel>
                 </Grid>
@@ -75,7 +76,7 @@
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="Tiền khám" Grid.Column="0"/>
-                            <TextBlock Text="100000" Grid.Column="1" HorizontalAlignment="Right"/>
+                            <TextBlock Text="{Binding HoaDon.TienKham}" Grid.Column="1" HorizontalAlignment="Right"/>
                         </Grid>
                     </ListViewItem>
                     <ListViewItem>
@@ -85,7 +86,7 @@
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="Tiền thuốc" Grid.Column="0"/>
-                            <TextBlock Text="500000" Grid.Column="1" HorizontalAlignment="Right"/>
+                            <TextBlock Text="{Binding HoaDon.TienThuoc}" Grid.Column="1" HorizontalAlignment="Right"/>
                         </Grid>
                     </ListViewItem>
                 </ListView>
@@ -99,7 +100,7 @@
                 <Grid Margin="10">
 
                     <StackPanel Grid.Column="2">
-                        <TextBlock Text="600000" FontSize="25" Margin="5" HorizontalAlignment="Right" Foreground="#0078D7" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding HoaDon.ThanhTien}" FontSize="25" Margin="5" HorizontalAlignment="Right" Foreground="#0078D7" FontWeight="Bold"/>
                     </StackPanel>
                 </Grid>
                 <Rectangle Fill="Black" Height="1" Margin="5" Opacity="0.5"/>
