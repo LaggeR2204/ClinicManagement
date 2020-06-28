@@ -41,5 +41,10 @@ namespace DAL_Clinic.DAL
         {
             return SQLServerDBContext.Instant.PhieuKhamBenh.Local;      
         }
+        public void LoadNPDSCTPhieuKB(DTO_PhieuKhamBenh phieuKhamBenh)
+        {
+            var entry = SQLServerDBContext.Instant.Entry(phieuKhamBenh);
+            entry.Collection(c => c.DSCTPhieuKhamBenh).Load();
+        }
     }
 }

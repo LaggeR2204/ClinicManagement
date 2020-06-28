@@ -1,8 +1,10 @@
 ﻿using BUS_Clinic.BUS;
 using DTO_Clinic;
+using GUI_Clinic.Command;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,20 +31,35 @@ namespace GUI_Clinic.View.UserControls
             this.DataContext = this;
 
             InitData();
+            InitCommand();
+            grdPhieuKhamBenh.Visibility = Visibility.Collapsed;
         }
 
         #region Property
         public ObservableCollection<DTO_PhieuKhamBenh> ListPKB { get; set; }
-
-        private bool IsSave = false;
         #endregion
         #region Command
+        public ICommand TaoPhieuKhamCommand { get; set; }
         #endregion
 
         public void InitData()
         {
             ListPKB = new ObservableCollection<DTO_PhieuKhamBenh>(BUSManager.PhieuKhamBenhBUS.GetListPKB());
             lvDSPKB.ItemsSource = ListPKB;
+        }
+
+        public void InitCommand()
+        {
+            TaoPhieuKhamCommand = new RelayCommand<Window>((p) =>
+            {
+                if (lvBenhNhan.SelectedIndex == -1)
+                    return false;
+                return true;
+            }, (p) =>
+            {
+                grdPhieuKhamBenh.Visibility = Visibility.Visible;
+                ucCTPKB.GetBenhNhan(lvBenhNhan.SelectedItem as DTO_BenhNhan);
+            });
         }
 
         private bool PhieuKhamBenhFilter(Object item)
@@ -67,6 +84,7 @@ namespace GUI_Clinic.View.UserControls
 
         private void lvDSPKB_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            grdPhieuKhamBenh.Visibility = Visibility.Visible;
             var item = ((FrameworkElement)e.OriginalSource).DataContext as DTO_PhieuKhamBenh;
             if (item != null)
             {

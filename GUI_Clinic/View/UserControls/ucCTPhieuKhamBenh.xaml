@@ -11,7 +11,7 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid>
+        <Grid x:Name="grdThongTinPKB" Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -29,7 +29,6 @@
                         <Grid Grid.Row="0">
                             <TextBlock x:Name="tblTenBenhNhan"
                                        Grid.Row="0"
-                                       Text="Võ Thanh Bình"
                                        Margin="5"
                                        FontSize="20" />
                         </Grid>
@@ -45,7 +44,6 @@
                             </Grid>
                             <Grid Grid.Column="1">
                                 <TextBlock x:Name="tblNgayKham"
-                                           Text="22/04/2020"
                                            FontSize="15"
                                            Margin="10"
                                            FontWeight="DemiBold" />
@@ -59,11 +57,38 @@
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                         </Grid>
                         <Grid Grid.Row="3">
-                            <TextBox x:Name="tbxChanDoan"
-                                     Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}"
-                                     Margin="10"
-                                     materialDesign:HintAssist.Hint="Chuẩn đoán"
-                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <TextBlock Text="Chẩn đoán:"
+                                           FontSize="15"
+                                           Foreground="Gray"
+                                           Margin="10"
+                                           VerticalAlignment="Bottom"/>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <ComboBox x:Name="cbxChanDoan"
+                                  Margin="10"
+                                  ItemsSource="{Binding ListBenh}"
+                                  materialDesign:HintAssist.Hint="Bệnh"
+                                  IsEditable="True"
+                                  Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock>
+                                                <TextBlock.Text>
+                                                    <MultiBinding StringFormat="{}{0} - {1}">
+                                                        <Binding Path="Id" />
+                                                        <Binding Path="TenBenh"/>
+                                                    </MultiBinding>
+                                                </TextBlock.Text>
+                                            </TextBlock>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                            </Grid>
                         </Grid>
                     </Grid>
                 </GroupBox>
@@ -73,7 +98,7 @@
                     <RowDefinition Height="auto"></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
+                <Grid x:Name="grdNhapThuoc" Grid.Row="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
                         <ColumnDefinition />
@@ -83,11 +108,23 @@
                     <Grid Grid.Column="0">
                         <ComboBox x:Name="cbxThuoc"
                                   Margin="10"
-                                  ItemsSource="{Binding Unit}"
-                                  SelectedItem="{Binding SelectedUnit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                  ItemsSource="{Binding ListThuoc}"
                                   materialDesign:HintAssist.Hint="Thuốc"
                                   IsEditable="True"
-                                  Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+                                  Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock>
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0} - {1}">
+                                                <Binding Path="Id" />
+                                                <Binding Path="TenThuoc" />
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
                     </Grid>
                     <Grid Grid.Column="1">
                         <TextBox x:Name="tbxSoLuong"
@@ -97,11 +134,25 @@
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                     </Grid>
                     <Grid Grid.Column="2">
-                        <TextBox x:Name="tbxCachDung"
-                                 Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}"
-                                 Margin="10"
-                                 materialDesign:HintAssist.Hint="Cách dùng"
-                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        <ComboBox x:Name="cbxCachDung"
+                                  Margin="10"
+                                  ItemsSource="{Binding ListCachDung}"
+                                  materialDesign:HintAssist.Hint="Cách dùng"
+                                  IsEditable="True"
+                                  Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock>
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0} - {1}">
+                                                <Binding Path="Id" />
+                                                <Binding Path="TenCachDung"/>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
                     </Grid>
                     <Grid Grid.Column="3">
                         <Button x:Name="btnThemThuoc"
@@ -125,7 +176,7 @@
                               Margin="5 10 10 10">
                         <Grid>
                             <ListView x:Name="lvThuoc"
-                                      ItemsSource="{Binding ListThuoc}"
+                                      ItemsSource="{Binding ListCTPKB}"
                                       SelectedItem="{Binding SlectedItem, Mode=TwoWay}"
                                       ScrollViewer.CanContentScroll="True"
                                       ScrollViewer.VerticalScrollBarVisibility="Auto">
@@ -154,39 +205,27 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
-                <Button x:Name="btnLuuPKB"
-                        Command="{Binding LuuPhieuKhamBenhCommand}"
-                        Content="Lưu"
-                        Width="110"
-                        Margin="5 5 5 10"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center"
-                        Background="#0078D7"
-                        BorderBrush="#0078D7"></Button>
-            </Grid>
-            <Grid Grid.Column="1">
                 <Button x:Name="btnInPhieu"
                         Command="{Binding InPhieuKhamCommand}"
                         Content="In phiếu"
                         Width="110"
                         Margin="5 5 5 10"
                         VerticalAlignment="Center"
+                        HorizontalAlignment="Right"
                         Background="#0078D7"
                         BorderBrush="#0078D7"></Button>
             </Grid>
-            <Grid Grid.Column="2">
+            <Grid Grid.Column="1">
                 <Button x:Name="btnThanhToan"
-                        Command="{Binding PayBillCommand}"
+                        Command="{Binding ThanhToanPhieuKhamCommand}"
                         Content="Thanh Toán"
                         Width="110"
                         Margin="5 5 5 10"
                         VerticalAlignment="Center"
                         Background="#0078D7"
-                        BorderBrush="#0078D7"
-                        Click="btnThanhToan_Click"></Button>
+                        BorderBrush="#0078D7"></Button>
             </Grid>
         </Grid>
     </Grid>

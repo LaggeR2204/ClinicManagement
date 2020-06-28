@@ -27,5 +27,10 @@ namespace DTO_Clinic
             TenBenh = tenBenh;
             IsDeleted = false;
         }
+
+        public override string ToString()
+        {
+            return TenBenh;
+        }
     }
 }

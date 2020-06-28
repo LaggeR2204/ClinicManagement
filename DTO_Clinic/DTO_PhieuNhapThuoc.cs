@@ -26,6 +26,7 @@ namespace DTO_Clinic
         {
             NgayNhap = ngayNhap;
             TongTien = tongTien;
+            IsDeleted = false;
         }
     }
 }

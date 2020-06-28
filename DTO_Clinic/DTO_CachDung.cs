@@ -25,5 +25,10 @@ namespace DTO_Clinic
             TenCachDung = tenCachDung;
             _isDeleted = false;
         }
+
+        public override string ToString()
+        {
+            return TenCachDung;
+        }
     }
 }

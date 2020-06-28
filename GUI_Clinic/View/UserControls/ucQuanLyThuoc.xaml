@@ -184,7 +184,7 @@
                                   
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Header="Mã phiếu nhập" 
+                                    <GridViewColumn Header="Mã PNT" 
                                                     DisplayMemberBinding="{Binding Id}"/>
                                     <GridViewColumn Header="Ngày nhập" 
                                                     DisplayMemberBinding="{Binding NgayNhap, StringFormat='dd/MM/yyyy'}"/>
@@ -207,7 +207,7 @@
                             <ListView.View>
                                 <GridView>
                                     <GridViewColumn 
-                                        Header="STT" 
+                                        Header="Mã PNT" 
                                         DisplayMemberBinding="{Binding MaPNT}"/>
                                     <GridViewColumn
                                         Header="Thuốc"

@@ -163,15 +163,15 @@
                             <ListView.View>
                                 <GridView>
                                     <GridViewColumn Header="STT"
-                                                    DisplayMemberBinding="{Binding cId}"/>
+                                                    DisplayMemberBinding="{Binding Id}"/>
                                     <GridViewColumn Header="Thuốc" 
-                                                    DisplayMemberBinding="{Binding cTenThuoc}"/>
+                                                    DisplayMemberBinding="{Binding TenThuoc}"/>
                                     <GridViewColumn Header="Đơn vị" 
-                                                    DisplayMemberBinding="{Binding cTenDonVi}"/>
+                                                    DisplayMemberBinding="{Binding DonVi.TenDonVi}"/>
                                     <GridViewColumn Header="Số lượng" 
-                                                    DisplayMemberBinding="{Binding cSoLuong}"/>
+                                                    DisplayMemberBinding="{Binding SoLuong}"/>
                                     <GridViewColumn Header="Đơn giá" 
-                                                    DisplayMemberBinding="{Binding cDonGia}"/>
+                                                    DisplayMemberBinding="{Binding DonGia}"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>
@@ -208,7 +208,6 @@
                             <Grid Grid.Column="1">
                                 <TextBox BorderBrush="#0078D7"
                                          x:Name="tbxTenThuocMoi"
-                                         Text="{Binding TenThuocMoi, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                          BorderThickness="2"
                                          Margin="0 5 20 5"
                                          FontSize="16"
@@ -274,7 +273,6 @@
                             <Grid Grid.Column="1">
                                 <TextBox BorderBrush="#0078D7"
                                          x:Name="tbxCongDungThuocMoi"
-                                         Text="{Binding CongDungThuocMoi, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                          BorderThickness="2"
                                          Margin="0 5 20 5"
                                          FontSize="16"

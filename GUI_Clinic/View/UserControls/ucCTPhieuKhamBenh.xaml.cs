@@ -38,7 +38,10 @@ namespace GUI_Clinic.View.UserControls
         private DTO_BenhNhan benhNhan = new DTO_BenhNhan();
         private DTO_PhieuKhamBenh phieuKhamBenh = new DTO_PhieuKhamBenh();
         public ObservableCollection<DTO_PhieuKhamBenh> ListPKB { get; set; }
+        public ObservableCollection<DTO_CTPhieuKhamBenh> ListCTPKB { get; set; }
         public ObservableCollection<DTO_Thuoc> ListThuoc { get; set; }
+        public ObservableCollection<DTO_CachDung> ListCachDung { get; set; }
+        public ObservableCollection<DTO_Benh> ListBenh { get; set; }
 
         private bool IsSave = false;
         #endregion
@@ -46,20 +49,23 @@ namespace GUI_Clinic.View.UserControls
         public ICommand LuuPhieuKhamBenhCommand { get; set; }
         public ICommand ThemThuocCommand { get; set; }
         public ICommand InPhieuKhamCommand { get; set; }
+        public ICommand ThanhToanPhieuKhamCommand { get; set; }
         #endregion
 
         public void GetBenhNhan(DTO_BenhNhan bn)
         {
+            EnablePKB();
+            phieuKhamBenh = new DTO_PhieuKhamBenh();
+            btnThanhToan.Content = "Thanh toán";
+
             benhNhan = bn;
             tblTenBenhNhan.Text = bn.TenBenhNhan;
             tblNgayKham.Text = DateTime.Now.ToString();
-
-            IsSave = false;
         }
 
         public void GetPKB(DTO_PhieuKhamBenh pkb)
         {
-            phieuKhamBenh = pkb;
+            btnThanhToan.Content = "Hóa đơn";
 
             BUSManager.PhieuKhamBenhBUS.LoadNPBenh(pkb);
             BUSManager.PhieuKhamBenhBUS.LoadNPBenhNhan(pkb);
@@ -75,63 +81,88 @@ namespace GUI_Clinic.View.UserControls
             tblNgayKham.Text = pkb.NgayKham.ToString();
             lvThuoc.ItemsSource = pkb.DSCTPhieuKhamBenh;
             tbxTrieuChung.Text = pkb.TrieuChung;
-            tbxChanDoan.Text = pkb.Benh.TenBenh;
+            cbxChanDoan.Text = pkb.Benh.TenBenh;
 
-            IsSave = true;
+            phieuKhamBenh = pkb;
+
+            DisablePKB();
         }
 
         public void InitData()
         {
+            ListThuoc = BUSManager.ThuocBUS.GetListThuoc();
+            ListCachDung = BUSManager.CachDungBUS.GetListCD();
+            ListBenh = BUSManager.BenhBUS.GetListBenh();
             ListPKB = BUSManager.PhieuKhamBenhBUS.GetListPKB();
         }
 
         public void InitCommmand()
         {
-            LuuPhieuKhamBenhCommand = new RelayCommand<Window>((p) =>
-            {
-                if (string.IsNullOrEmpty(tbxTrieuChung.Text) ||
-                    string.IsNullOrEmpty(tbxChanDoan.Text) ||
-                    ListThuoc != null || IsSave == true)
-                    return false;
-                return true;
-            }, (p) =>
-            {
-                phieuKhamBenh = new DTO_PhieuKhamBenh(benhNhan.Id, DateTime.Now, 1 /*chuyển chẩn đoán thành chọn bệnh*/ , tbxTrieuChung.Text);
-                BUSManager.PhieuKhamBenhBUS.AddPhieuKhamBenh(phieuKhamBenh);
-                ListPKB.Add(phieuKhamBenh);
-                IsSave = true;
-            });
-
             ThemThuocCommand = new RelayCommand<Window>((p) =>
             {
                 if (string.IsNullOrEmpty(cbxThuoc.Text) ||
                     string.IsNullOrEmpty(tbxSoLuong.Text) ||
-                    string.IsNullOrEmpty(tbxCachDung.Text) ||
+                    string.IsNullOrEmpty(cbxCachDung.Text) ||
                     IsSave == true)
                     return false;
                 return true;
             }, (p) =>
             {
-                DTO_Thuoc newThuoc = new DTO_Thuoc();//them cac dữ lieun của thuốc vào
-                ListThuoc.Add(newThuoc);
+                DTO_Thuoc newThuoc = cbxThuoc.SelectedItem as DTO_Thuoc;
+                DTO_CTPhieuKhamBenh cTPhieuKhamBenh = new DTO_CTPhieuKhamBenh(phieuKhamBenh.Id, newThuoc.Id, (cbxCachDung.SelectedItem as DTO_CachDung).Id, int.Parse(tbxSoLuong.Text), newThuoc.DonGia);
+                ListCTPKB.Add(cTPhieuKhamBenh);
             });
 
             InPhieuKhamCommand = new RelayCommand<Window>((p) =>
             {
-                if (IsSave)
-                    return true;
-                return false;
+                if (string.IsNullOrEmpty(tbxTrieuChung.Text) ||
+                    string.IsNullOrEmpty(cbxChanDoan.Text) ||
+                    lvThuoc.Items == null)
+                    return false;
+                return true;
             }, (p) =>
             {
                 wdPhieuKhamBenh wDPhieuKhamBenh = new wdPhieuKhamBenh(phieuKhamBenh);
                 wDPhieuKhamBenh.ShowDialog();
             });
+
+            ThanhToanPhieuKhamCommand = new RelayCommand<Window>((p) =>
+            {
+                if (string.IsNullOrEmpty(tbxTrieuChung.Text) ||
+                    string.IsNullOrEmpty(cbxChanDoan.Text) ||
+                    lvThuoc.Items == null)
+                    return false;
+                return true;
+            }, (p) =>
+            {
+                //phieuKhamBenh = new DTO_PhieuKhamBenh(benhNhan.Id, DateTime.Now, 1 /*chuyển chẩn đoán thành chọn bệnh*/ , tbxTrieuChung.Text);
+                BUSManager.PhieuKhamBenhBUS.AddPhieuKhamBenh(phieuKhamBenh);
+                ListPKB.Add(phieuKhamBenh);
+
+                wdHoaDon hoaDon = new wdHoaDon(phieuKhamBenh);
+                hoaDon.ShowDialog();
+
+                IsSave = true;
+            });
         }
 
-        private void btnThanhToan_Click(object sender, RoutedEventArgs e)
+        private void DisablePKB()
         {
-            wdHoaDon hoaDon = new wdHoaDon();
-            hoaDon.ShowDialog();
+            cbxChanDoan.IsEnabled = false;
+            tbxTrieuChung.IsEnabled = false;
+            grdNhapThuoc.Visibility = Visibility.Collapsed;
+        }
+
+        private void EnablePKB()
+        {
+            cbxChanDoan.IsEnabled = true;
+            tbxTrieuChung.IsEnabled = true;
+            grdNhapThuoc.Visibility = Visibility.Visible;
+
+            tblTenBenhNhan.Text = null;
+            tblNgayKham.Text = null;
+            tbxTrieuChung.Text = null;
+            cbxChanDoan.Text = null;
         }
     }
 }
