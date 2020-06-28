@@ -94,6 +94,8 @@ namespace GUI_Clinic.View.UserControls
             ListCachDung = BUSManager.CachDungBUS.GetListCD();
             ListBenh = BUSManager.BenhBUS.GetListBenh();
             ListPKB = BUSManager.PhieuKhamBenhBUS.GetListPKB();
+            ListCTPKB = new ObservableCollection<DTO_CTPhieuKhamBenh>();
+            lvThuoc.ItemsSource = ListCTPKB;
         }
 
         public void InitCommmand()

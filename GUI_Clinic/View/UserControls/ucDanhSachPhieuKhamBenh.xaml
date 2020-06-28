@@ -81,7 +81,7 @@
                                                FontSize="30"
                                                FontWeight="Bold"
                                                Margin="10"
-                                               Text="50">
+                                               Text="{Binding ListBNWaiting.Count}">
                                     </TextBlock>
                                 </Grid>
                                 <Grid Grid.Column="2">
@@ -100,20 +100,18 @@
                         <Grid Grid.Row="1">
                             <GroupBox Header="Danh sách bệnh nhân đang chờ">
                                 <ListView x:Name="lvBenhNhan"
-                                          ItemsSource="{Binding List}"
-                                          SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}"
                                           ScrollViewer.CanContentScroll="True"
                                           ScrollViewer.VerticalScrollBarVisibility="Auto">
                                     <ListView.View>
                                         <GridView>
                                             <GridViewColumn Header="STT"
-                                                                DisplayMemberBinding="{Binding DisplayName}"></GridViewColumn>
+                                                                DisplayMemberBinding="{Binding Id}"></GridViewColumn>
                                             <GridViewColumn Header="Họ và Tên"
-                                                                DisplayMemberBinding="{Binding DisplayName}"></GridViewColumn>
+                                                                DisplayMemberBinding="{Binding TenBenhNhan}"></GridViewColumn>
                                             <GridViewColumn Header="Giới tính"
-                                                                DisplayMemberBinding="{Binding Unit.DisplayName}"></GridViewColumn>
-                                            <GridViewColumn Header="Năm sinh"
-                                                                DisplayMemberBinding="{Binding Price}"></GridViewColumn>
+                                                                DisplayMemberBinding="{Binding GioiTinh}"></GridViewColumn>
+                                            <GridViewColumn Header="Ngày sinh"
+                                                                DisplayMemberBinding="{Binding NgaySinh}"></GridViewColumn>
                                         </GridView>
                                     </ListView.View>
                                 </ListView>
@@ -148,46 +146,10 @@
                                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDateChanged="dpkNgayKham_SelectedDateChanged" />
                         </Grid>
                         <Grid Grid.Column="1">
-                            <!--<Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
-                                    ToolTip="Xem"
-                                    Background="#0078D7"
-                                    BorderBrush="#0078D7"
-                                    HorizontalAlignment="Left"
-                                    Width="40"
-                                    Height="40"
-                                    Margin="10">
-                                <materialDesign:PackIcon Kind="Search"
-                                                         Height="24"
-                                                         Width="24" />
-                            </Button>-->
                         </Grid>
                         <Grid Grid.Column="2">
-                            <!--<materialDesign:Chip Command="{Binding AddMedicalResultCommand}"
-                                                 HorizontalAlignment="Right"
-                                                 Content="Khám"
-                                                 Foreground="White"
-                                                 IconBackground="{DynamicResource PrimaryHueDarkBrush}"
-                                                 IconForeground="{DynamicResource PrimaryHueDarkForegroundBrush}"
-                                                 Background="Gray"
-                                                 Margin="10">
-                                <materialDesign:Chip.Icon>
-                                    <materialDesign:PackIcon Kind="AccountDetailsOutline"></materialDesign:PackIcon>
-                                </materialDesign:Chip.Icon>
-                            </materialDesign:Chip>-->
                         </Grid>
                         <Grid Grid.Column="3">
-                            <!--<materialDesign:Chip Command="{Binding AddPatientCommand}"
-                                                 HorizontalAlignment="Right"
-                                                 Content="Thêm bệnh nhân"
-                                                 Foreground="White"
-                                                 IconBackground="{DynamicResource PrimaryHueDarkBrush}"
-                                                 IconForeground="{DynamicResource PrimaryHueDarkForegroundBrush}"
-                                                 Background="Gray"
-                                                 Margin="10">
-                                <materialDesign:Chip.Icon>
-                                    <materialDesign:PackIcon Kind="Plus"></materialDesign:PackIcon>
-                                </materialDesign:Chip.Icon>
-                            </materialDesign:Chip>-->
                         </Grid>
                     </Grid>
                     <Grid Grid.Row="1">
@@ -195,23 +157,23 @@
                                   Margin="0">
                             <Grid>
                                 <ListView x:Name="lvDSPKB"
-                                          ItemsSource="{Binding List}"
-                                          SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}"
-                                          MouseDoubleClick="lvDSPKB_MouseDoubleClick"
-                                          ScrollViewer.CanContentScroll="True"
-                                          ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                          ScrollViewer.CanContentScroll="True"                                          
+                                          ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                          MouseDoubleClick="lvDSPKB_MouseDoubleClick">                                    
                                     <ListView.View>
                                         <GridView>
                                             <GridViewColumn Header="STT"
-                                                                DisplayMemberBinding="{Binding DisplayName}"></GridViewColumn>
+                                                                DisplayMemberBinding="{Binding Id}"></GridViewColumn>
                                             <GridViewColumn Header="Mã PKB"
                                                                 DisplayMemberBinding="{Binding Id}"></GridViewColumn>
-                                            <GridViewColumn Header="Mã bệnh nhân"
-                                                                DisplayMemberBinding="{Binding MaBenhNhan}"></GridViewColumn>
+                                            <GridViewColumn Header="Tên bệnh nhân"
+                                                                DisplayMemberBinding="{Binding BenhNhan.TenBenhNhan}"></GridViewColumn>
                                             <GridViewColumn Header="Ngày khám"
                                                                 DisplayMemberBinding="{Binding NgayKham}"></GridViewColumn>
                                             <GridViewColumn Header="Triệu chứng"
                                                                 DisplayMemberBinding="{Binding TrieuChung}"></GridViewColumn>
+                                            <GridViewColumn Header="Chẩn đoán"
+                                                            DisplayMemberBinding="{Binding Benh.TenBenh}"></GridViewColumn>
                                         </GridView>
                                     </ListView.View>
                                 </ListView>

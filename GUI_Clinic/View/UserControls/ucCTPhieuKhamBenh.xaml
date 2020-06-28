@@ -176,8 +176,6 @@
                               Margin="5 10 10 10">
                         <Grid>
                             <ListView x:Name="lvThuoc"
-                                      ItemsSource="{Binding ListCTPKB}"
-                                      SelectedItem="{Binding SlectedItem, Mode=TwoWay}"
                                       ScrollViewer.CanContentScroll="True"
                                       ScrollViewer.VerticalScrollBarVisibility="Auto">
                                 <ListView.View>

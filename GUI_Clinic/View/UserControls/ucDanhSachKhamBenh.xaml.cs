@@ -43,6 +43,9 @@ namespace GUI_Clinic.View.UserControls
         public ICommand AddPatientCommand { get; set; }
         public ICommand SignedCommand { get; set; }
         #endregion
+        #region
+        public event EventHandler PatientSigned;
+        #endregion
         public void InitData()
         {
             RegionIDList = new List<string>();
@@ -130,7 +133,7 @@ namespace GUI_Clinic.View.UserControls
                     lvDSKham.ItemsSource = ListBN1;
                     RefreshList();
                 }
-            }           
+            }       
         }
         private void RefreshList()
         {
@@ -164,6 +167,8 @@ namespace GUI_Clinic.View.UserControls
                 return;
             }               
             CurSignedList.Add(bn);
+            if (PatientSigned != null)
+                PatientSigned(bn, new EventArgs());
         }
     }
 }

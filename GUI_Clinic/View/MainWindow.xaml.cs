@@ -23,30 +23,13 @@ namespace GUI_Clinic.View
         public MainWindow()
         {
             InitializeComponent();
+            uc_DanhSachKhamBenh.PatientSigned += Uc_DanhSachKhamBenh_PatientSigned;
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Uc_DanhSachKhamBenh_PatientSigned(object sender, EventArgs e)
         {
-            //LoadLocalData();
+            uc_DanhSachPhieuKhamBenh.UpdateWaitingList(sender);
         }
-
-        private void LoadLocalData()
-        {
-            BUSManager.BenhNhanBUS.LoadLocalData();
-            BUSManager.PhieuKhamBenhBUS.LoadLocalData();
-            BUSManager.DonViBUS.LoadLocalData();
-            BUSManager.CachDungBUS.LoadLocalData();
-            BUSManager.ThuocBUS.LoadLocalData();
-            BUSManager.PhieuNhapThuocBUS.LoadLocalData();
-            BUSManager.CTPhieuNhapThuocBUS.LoadLocalData();
-        }
-        //private void LoadLocalData()
-        //{
-        //    BUSManager.BenhNhanBUS.LoadLocalData();
-        //    BUSManager.PhieuKhamBenhBUS.LoadLocalData();
-        //    BUSManager.DonViBUS.LoadLocalData();
-        //    BUSManager.CachDungBUS.LoadLocalData();
-        //}
 
         private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -127,7 +110,6 @@ namespace GUI_Clinic.View
                     break;
             }
         }
-
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             BUSManager.BenhNhanBUS.SaveChange();

@@ -37,6 +37,8 @@ namespace GUI_Clinic.View.UserControls
 
         #region Property
         public ObservableCollection<DTO_PhieuKhamBenh> ListPKB { get; set; }
+        public ObservableCollection<DTO_BenhNhan> ListBNWaiting { get; set; }
+        public CollectionView ViewPKB  { get; set; }
         #endregion
         #region Command
         public ICommand TaoPhieuKhamCommand { get; set; }
@@ -45,7 +47,11 @@ namespace GUI_Clinic.View.UserControls
         public void InitData()
         {
             ListPKB = new ObservableCollection<DTO_PhieuKhamBenh>(BUSManager.PhieuKhamBenhBUS.GetListPKB());
+            ListBNWaiting = new ObservableCollection<DTO_BenhNhan>();
             lvDSPKB.ItemsSource = ListPKB;
+            lvBenhNhan.ItemsSource = ListBNWaiting;
+            ViewPKB = (CollectionView)CollectionViewSource.GetDefaultView(ListPKB);
+            ViewPKB.Filter = PhieuKhamBenhFilter;
         }
 
         public void InitCommand()
@@ -64,32 +70,33 @@ namespace GUI_Clinic.View.UserControls
 
         private bool PhieuKhamBenhFilter(Object item)
         {
-            if (String.IsNullOrEmpty(dpkNgayKham.Text))
+            if (!dpkNgayKham.SelectedDate.HasValue)
             {
                 return true;
             }
             else
             {
-                return ((item as DTO_PhieuKhamBenh).NgayKham.Date.Equals(dpkNgayKham.SelectedDate));
+                return ((item as DTO_PhieuKhamBenh).NgayKham.Date.Equals(dpkNgayKham.SelectedDate.Value.Date));
             }
         }
-
         private void dpkNgayKham_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-            lvDSPKB.ItemsSource = ListPKB;
-
-            CollectionView viewPKB = (CollectionView)CollectionViewSource.GetDefaultView(lvDSPKB.ItemsSource);
-            viewPKB.Filter = PhieuKhamBenhFilter;
+        {                
+            ViewPKB.Refresh();
         }
 
         private void lvDSPKB_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            grdPhieuKhamBenh.Visibility = Visibility.Visible;
+        {            
             var item = ((FrameworkElement)e.OriginalSource).DataContext as DTO_PhieuKhamBenh;
             if (item != null)
             {
+                grdPhieuKhamBenh.Visibility = Visibility.Visible;
                 ucCTPKB.GetPKB(item);
             }
+        }
+        public void UpdateWaitingList(object bn)
+        {
+            var bNhan = bn as DTO_BenhNhan;
+            ListBNWaiting.Add(bNhan);
         }
     }
 }

@@ -15,7 +15,6 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         Title="Clinic Management" Height="700" Width="1080" WindowStartupLocation="CenterScreen" MinWidth="1080" MinHeight="600" WindowStyle="None" ResizeMode="NoResize" WindowState="Maximized"
-        Loaded="Window_Loaded"
         Closing="Window_Closing">
     <Window.Resources>
         <Storyboard x:Key="OpenMenu">
