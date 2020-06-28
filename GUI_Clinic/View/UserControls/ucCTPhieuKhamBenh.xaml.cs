@@ -38,7 +38,7 @@ namespace GUI_Clinic.View.UserControls
         private DTO_BenhNhan benhNhan = new DTO_BenhNhan();
         private DTO_PhieuKhamBenh phieuKhamBenh = new DTO_PhieuKhamBenh();
         public ObservableCollection<DTO_PhieuKhamBenh> ListPKB { get; set; }
-        public ObservableCollection<DTO_Thuoc> ListThuoc { get; set; }
+        public ObservableCollection<DTO_CTPhieuKhamBenh> ListThuoc { get; set; }
 
         private bool IsSave = false;
         #endregion
@@ -50,6 +50,9 @@ namespace GUI_Clinic.View.UserControls
 
         public void GetBenhNhan(DTO_BenhNhan bn)
         {
+            phieuKhamBenh = new DTO_PhieuKhamBenh();
+            btnThanhToan.Content = "Thanh toán";
+
             benhNhan = bn;
             tblTenBenhNhan.Text = bn.TenBenhNhan;
             tblNgayKham.Text = DateTime.Now.ToString();
@@ -59,7 +62,9 @@ namespace GUI_Clinic.View.UserControls
 
         public void GetPKB(DTO_PhieuKhamBenh pkb)
         {
+            ResetPKB();
             phieuKhamBenh = pkb;
+            btnThanhToan.Content = "Hóa đơn";
 
             BUSManager.PhieuKhamBenhBUS.LoadNPBenh(pkb);
             BUSManager.PhieuKhamBenhBUS.LoadNPBenhNhan(pkb);
@@ -112,8 +117,9 @@ namespace GUI_Clinic.View.UserControls
                 return true;
             }, (p) =>
             {
-                DTO_Thuoc newThuoc = new DTO_Thuoc();//them cac dữ lieun của thuốc vào
-                ListThuoc.Add(newThuoc);
+                DTO_Thuoc newThuoc = cbxThuoc.SelectedItem as DTO_Thuoc;
+                DTO_CTPhieuKhamBenh cTPhieuKhamBenh = new DTO_CTPhieuKhamBenh(phieuKhamBenh.Id, newThuoc.Id, 1 /*Chuyen cach dung thành chọncachs dùng*/, int.Parse(tbxSoLuong.Text));
+                ListThuoc.Add(cTPhieuKhamBenh);
             });
 
             InPhieuKhamCommand = new RelayCommand<Window>((p) =>
@@ -130,8 +136,18 @@ namespace GUI_Clinic.View.UserControls
 
         private void btnThanhToan_Click(object sender, RoutedEventArgs e)
         {
-            wdHoaDon hoaDon = new wdHoaDon();
+            wdHoaDon hoaDon = new wdHoaDon(phieuKhamBenh, 100000);
             hoaDon.ShowDialog();
+        }
+
+        private void ResetPKB()
+        {
+            tblTenBenhNhan.Text = null;
+            tblNgayKham.Text = null;
+            tbxTrieuChung.Text = null;
+            tbxChanDoan.Text = null;
+
+            lvThuoc.Items.Clear();
         }
     }
 }
