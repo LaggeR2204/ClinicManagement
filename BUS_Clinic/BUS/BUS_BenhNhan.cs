@@ -9,31 +9,26 @@ using System.Threading.Tasks;
 
 namespace BUS_Clinic.BUS
 {
-    public class BUS_BenhNhan: BaseBUS
+    public class BUS_BenhNhan : BaseBUS
     {
         public BUS_BenhNhan()
         {
 
         }
-        public DTO_BenhNhan GetBenhNhan(int maBenhNhan)
+        public DTO_BenhNhan GetBenhNhanById(int maBenhNhan)
         {
             ObservableCollection<DTO_BenhNhan> ListBN = GetListBN();
-            foreach  (DTO_BenhNhan benhNhan in ListBN)
-            {
-                if (benhNhan.Id == maBenhNhan)
-                {
-                    return benhNhan;
-                }
-            }
-
-            return null;
+            var result = ListBN.Where(c => c.Id == maBenhNhan).FirstOrDefault();
+            return result;
         }
         public void AddBenhNhan(DTO_BenhNhan bn)
         {
-
+            ObservableCollection<DTO_BenhNhan> ListBN = GetListBN();
+            var rel = ListBN.Where(c => c.TenBenhNhan == bn.TenBenhNhan && c.SoDienThoai == bn.SoDienThoai).FirstOrDefault();
+            if (rel != null)
+                return;
             DALManager.BenhNhanDAL.AddBenhNhan(bn);
         }
-
         public override void LoadLocalData()
         {
             DALManager.BenhNhanDAL.LoadLocalData();
