@@ -103,7 +103,7 @@ namespace GUI_Clinic.View.UserControls
             }, (p) =>
             {
                 DTO_Thuoc newThuoc = cbxThuoc.SelectedItem as DTO_Thuoc;
-                DTO_CTPhieuKhamBenh cTPhieuKhamBenh = new DTO_CTPhieuKhamBenh(phieuKhamBenh.Id, newThuoc.Id, 1 /*Chuyen cach dung thành chọncachs dùng*/, int.Parse(tbxSoLuong.Text));
+                DTO_CTPhieuKhamBenh cTPhieuKhamBenh = new DTO_CTPhieuKhamBenh(phieuKhamBenh.Id, newThuoc.Id, 1 /*Chuyen cach dung thành chọncachs dùng*/, int.Parse(tbxSoLuong.Text), newThuoc.DonGia);
                 ListThuoc.Add(cTPhieuKhamBenh);
             });
 
