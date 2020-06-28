@@ -94,12 +94,24 @@ namespace GUI_Clinic.View.Windows
                 themThuoc.SoLuong = SoLuong;
                 themThuoc.DonGia = DonGia;
 
-                List.Add(themThuoc);
+                if (BUSManager.ThuocBUS.CheckThuocMoi(themThuoc))
+                {
+                    List.Add(themThuoc);
 
-                cbxTenThuoc.SelectedIndex = -1;
-                cbxDonVi.SelectedIndex = -1;
-                tbxDonGia.Text = "0";
-                tbxSoLuong.Text = "0";
+                    cbxTenThuoc.SelectedIndex = -1;
+                    cbxDonVi.SelectedIndex = -1;
+                    tbxDonGia.Text = "0";
+                    tbxSoLuong.Text = "0";
+                }
+                else
+                {
+                    MessageBox.Show("Thuốc bạn chọn chưa có loại đơn vị này.");
+
+                    cbxTenThuoc.SelectedIndex = -1;
+                    cbxDonVi.SelectedIndex = -1;
+                    tbxDonGia.Text = "0";
+                    tbxSoLuong.Text = "0";
+                }
             });
 
             ThemThuocMoiCommand = new RelayCommand<Window>((p) =>
@@ -140,7 +152,6 @@ namespace GUI_Clinic.View.Windows
         {
             if (List.Count != 0)
             {
-                
                 DTO_PhieuNhapThuoc phieuNhapThuoc = new DTO_PhieuNhapThuoc(NgayNhapThuoc, 0);
                 BUSManager.PhieuNhapThuocBUS.AddPhieuNhapThuoc(phieuNhapThuoc);
                 int tempID = phieuNhapThuoc.Id;
@@ -148,6 +159,7 @@ namespace GUI_Clinic.View.Windows
                 foreach (DTO_Thuoc item in List)
                 {
                     DTO_CTPhieuNhapThuoc cTPhieuNhapThuoc = new DTO_CTPhieuNhapThuoc(tempID, item.Id, item.SoLuong, item.DonGia);
+                    BUSManager.ThuocBUS.CapNhatThuocVuaNhap(item);
                     BUSManager.CTPhieuNhapThuocBUS.AddCTPhieuNhapThuoc(cTPhieuNhapThuoc);
                 }
 

@@ -35,6 +35,15 @@ namespace BUS_Clinic.BUS
 
             return has;
         }
+        public void CapNhatThuocVuaNhap(DTO_Thuoc thuocVuaNhap)
+        {
+            ObservableCollection<DTO_Thuoc> thuocs = DALManager.ThuocDAL.GetListThuoc();
+
+            var kq = thuocs.Where(c => (c.Id == thuocVuaNhap.Id) && (c.MaDonVi == thuocVuaNhap.MaDonVi)).FirstOrDefault();
+
+            kq.SoLuong += thuocVuaNhap.SoLuong;
+            kq.DonGia = thuocVuaNhap.DonGia;
+        }
         public override void LoadLocalData()
         {
             DALManager.ThuocDAL.LoadLocalData();
