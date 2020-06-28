@@ -32,7 +32,7 @@ namespace GUI_Clinic.View.UserControls
             InitData();
             InitCommand();
         }
-        #region Property                
+        #region Property
         public ObservableCollection<DTO_BenhNhan> ListBN1 { get; set; }
         public ObservableCollection<DTO_BenhNhan> ListBN2 { get; set; }
         public List<int> MatchBNList { get; set; }
@@ -73,6 +73,7 @@ namespace GUI_Clinic.View.UserControls
                 if (string.IsNullOrEmpty(tbxHoTen.Text) ||
                     string.IsNullOrEmpty(tbxDiaChi.Text) ||
                     string.IsNullOrEmpty(tbxSDT.Text) ||
+                    cbxMaVungSDT.SelectedIndex == -1 ||
                     cbxGioiTinh.SelectedIndex == -1 ||
                     !dpkNgaySinh.SelectedDate.HasValue)
                     return false;
@@ -84,7 +85,7 @@ namespace GUI_Clinic.View.UserControls
                     gt = false;
                 else
                     gt = true;
-                DTO_BenhNhan benhNhan = new DTO_BenhNhan(tbxHoTen.Text, gt, dpkNgaySinh.SelectedDate.Value, tbxDiaChi.Text, tbxSDT.Text);
+                DTO_BenhNhan benhNhan = new DTO_BenhNhan(tbxHoTen.Text, gt, dpkNgaySinh.SelectedDate.Value, tbxDiaChi.Text, cbxMaVungSDT.Text + tbxSDT.Text);
                 BUSManager.BenhNhanBUS.AddBenhNhan(benhNhan);
                 ListBN1.Add(benhNhan);
                 ListBN2.Add(benhNhan);
@@ -94,13 +95,13 @@ namespace GUI_Clinic.View.UserControls
             });
             SignedCommand = new RelayCommand<Window>((p) =>
             {
-                if (string.IsNullOrEmpty(cbxDSBenhNhan.SelectedItem.ToString()))
+                if (cbxDSBenhNhan.SelectedIndex == -1)
                     return false;
                 return true;
             }, (p) =>
             {
                 DangKyKham(cbxDSBenhNhan.SelectedItem as DTO_BenhNhan);
-                cbxDSBenhNhan.SelectedItem = null;
+                cbxDSBenhNhan.SelectedIndex = -1;
             });
         }
         private bool BenhNhanFilter(Object item)
@@ -142,7 +143,7 @@ namespace GUI_Clinic.View.UserControls
             tbxHoTen.Clear();
             tbxDiaChi.Clear();
             dpkNgaySinh.SelectedDate = null;
-            cbxGioiTinh.SelectedItem = null;
+            cbxGioiTinh.SelectedIndex = -1;
         }
         private void tbxSDT_KeyDown(object sender, KeyEventArgs e)
         {

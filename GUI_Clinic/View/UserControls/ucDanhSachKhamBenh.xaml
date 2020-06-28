@@ -345,6 +345,7 @@
                                         </TextBlock>
                                         <Grid Grid.Column="1">
                                             <ComboBox BorderBrush="#0078D7"
+                                                      x:Name="cbxMaVungSDT"
                                                       ItemsSource="{Binding RegionIDList}"
                                                       BorderThickness="2"
                                                       IsEditable="True"
