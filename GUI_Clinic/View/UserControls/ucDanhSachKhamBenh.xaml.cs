@@ -89,7 +89,7 @@ namespace GUI_Clinic.View.UserControls
                 ListBN1.Add(benhNhan);
                 ListBN2.Add(benhNhan);
                 if (ckbDangKy.IsChecked.Value)
-                    CurSignedList.Add(benhNhan);
+                    DangKyKham(benhNhan);
                 Clear();
             });
             SignedCommand = new RelayCommand<Window>((p) =>
@@ -99,7 +99,7 @@ namespace GUI_Clinic.View.UserControls
                 return true;
             }, (p) =>
             {
-                CurSignedList.Add(cbxDSBenhNhan.SelectedItem as DTO_BenhNhan);
+                DangKyKham(cbxDSBenhNhan.SelectedItem as DTO_BenhNhan);
                 cbxDSBenhNhan.SelectedItem = null;
             });
         }
@@ -154,6 +154,15 @@ namespace GUI_Clinic.View.UserControls
             {
                 e.Handled = true;
             }
+        }
+        private void DangKyKham(DTO_BenhNhan bn)
+        {
+            if (CurSignedList.Contains(bn))
+            {
+                MessageBox.Show("Benh nhan da duoc dang ky");
+                return;
+            }               
+            CurSignedList.Add(bn);
         }
     }
 }
