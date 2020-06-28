@@ -39,12 +39,12 @@ namespace GUI_Clinic.View.Windows
         public int SoLuong { get; set; }
         public double DonGia { get; set; }
         //public List<int> ListSTT { get; set; }
-        public string TenThuocMoi { get; set; }
-        public string CongDungThuocMoi { get; set; }
-        public DateTime? NgayNhapThuoc { get; set; }
+        //public string TenThuocMoi { get; set; }
+        //public string CongDungThuocMoi { get; set; }
+        public DateTime NgayNhapThuoc { get; set; }
         public ObservableCollection<DTO_Thuoc> ListThuoc { get; set; }
         public ObservableCollection<DTO_DonVi> ListDonVi { get; set; }
-        public ObservableCollection<Thuoc> List { get; set; }
+        public ObservableCollection<DTO_Thuoc> List { get; set; }
         #endregion
 
         #region Command
@@ -67,7 +67,7 @@ namespace GUI_Clinic.View.Windows
             //ListSTT = new List<int>();
             //lvSTT.ItemsSource = ListSTT;
 
-            List = new ObservableCollection<Thuoc>();
+            List = new ObservableCollection<DTO_Thuoc>();
             lvDanhSachThuocNhap.ItemsSource = List;
 
             //foreach (DTO_Thuoc item in List)
@@ -85,14 +85,14 @@ namespace GUI_Clinic.View.Windows
                 return true;
             }, (p) =>
             {
-                Thuoc themThuoc = new Thuoc();
+                DTO_Thuoc themThuoc = new DTO_Thuoc();
 
-                themThuoc.cId = List.Count + 1;
-                themThuoc.cIdThuoc = (cbxTenThuoc.SelectedItem as DTO_Thuoc).Id;
-                themThuoc.cTenThuoc = (cbxTenThuoc.SelectedItem as DTO_Thuoc).TenThuoc;
-                themThuoc.cTenDonVi = (cbxDonVi.SelectedItem as DTO_DonVi).TenDonVi;
-                themThuoc.cSoLuong = SoLuong;
-                themThuoc.cDonGia = DonGia;
+                themThuoc.Id = (cbxTenThuoc.SelectedItem as DTO_Thuoc).Id;
+                themThuoc.TenThuoc = (cbxTenThuoc.SelectedItem as DTO_Thuoc).TenThuoc;
+                themThuoc.MaDonVi = (cbxDonVi.SelectedItem as DTO_DonVi).Id;
+                themThuoc.DonVi = BUSManager.DonViBUS.GetDonViById(themThuoc.MaDonVi);
+                themThuoc.SoLuong = SoLuong;
+                themThuoc.DonGia = DonGia;
 
                 List.Add(themThuoc);
 
@@ -116,37 +116,24 @@ namespace GUI_Clinic.View.Windows
                 thuocMoi.DonGia = 0;
                 thuocMoi.SoLuong = 0;
 
-                BUSManager.ThuocBUS.AddThuoc(thuocMoi);
-                ListThuoc.Add(thuocMoi);
+                if (!BUSManager.ThuocBUS.CheckThuocMoi(thuocMoi))
+                {
+                    BUSManager.ThuocBUS.AddThuoc(thuocMoi);
+                    ListThuoc.Add(thuocMoi);
 
-                tbxTenThuocMoi.Clear();
-                cbxDonViThuocMoi.SelectedIndex = -1;
-                tbxCongDungThuocMoi.Text = "";
+                    tbxTenThuocMoi.Clear();
+                    cbxDonViThuocMoi.SelectedIndex = -1;
+                    tbxCongDungThuocMoi.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show("Thuốc với đơn vị bạn nhập đã tồn tại trong cơ sở dữ liệu");
+
+                    tbxTenThuocMoi.Clear();
+                    cbxDonViThuocMoi.SelectedIndex = -1;
+                    tbxCongDungThuocMoi.Text = "";
+                }
             });
-        }
-
-        public class Thuoc
-        {
-            public int cId { get; set; }
-            public int cIdThuoc { get; set; }
-            public string cTenThuoc { get; set; }
-            public string cTenDonVi { get; set; }
-            public int cSoLuong { get; set; }
-            public double cDonGia { get; set; }
-
-            public Thuoc()
-            {
-
-            }
-
-            public Thuoc(int _cID, string _cTenThuoc, string _cTenDonVi, int _cSoLuong, double _cDonGia)
-            {
-                cId = _cID;
-                cTenThuoc = _cTenThuoc;
-                cTenDonVi = _cTenDonVi;
-                cSoLuong = _cSoLuong;
-                cDonGia = _cDonGia;
-            }
         }
 
         private void btnNhapThuoc_Click(object sender, RoutedEventArgs e)
@@ -154,17 +141,17 @@ namespace GUI_Clinic.View.Windows
             if (List.Count != 0)
             {
                 
-                DTO_PhieuNhapThuoc phieuNhapThuoc = new DTO_PhieuNhapThuoc(DateTime.Now, 0);
+                DTO_PhieuNhapThuoc phieuNhapThuoc = new DTO_PhieuNhapThuoc(NgayNhapThuoc, 0);
                 BUSManager.PhieuNhapThuocBUS.AddPhieuNhapThuoc(phieuNhapThuoc);
                 int tempID = phieuNhapThuoc.Id;
 
-                foreach (Thuoc item in List)
+                foreach (DTO_Thuoc item in List)
                 {
-                    DTO_CTPhieuNhapThuoc cTPhieuNhapThuoc = new DTO_CTPhieuNhapThuoc(tempID, item.cIdThuoc, item.cSoLuong, item.cDonGia);
+                    DTO_CTPhieuNhapThuoc cTPhieuNhapThuoc = new DTO_CTPhieuNhapThuoc(tempID, item.Id, item.SoLuong, item.DonGia);
                     BUSManager.CTPhieuNhapThuocBUS.AddCTPhieuNhapThuoc(cTPhieuNhapThuoc);
                 }
 
-                BUSManager.PhieuNhapThuocBUS.CapNhatTongTien(phieuNhapThuoc);
+                BUSManager.PhieuNhapThuocBUS.TinhTongTien(phieuNhapThuoc);
 
                 this.Close();
             }

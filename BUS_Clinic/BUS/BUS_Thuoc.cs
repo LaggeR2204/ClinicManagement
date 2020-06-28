@@ -27,6 +27,14 @@ namespace BUS_Clinic.BUS
         {
             DALManager.ThuocDAL.AddThuoc(thuoc);
         }
+        public bool CheckThuocMoi(DTO_Thuoc thuocMoi)
+        {
+            ObservableCollection<DTO_Thuoc> thuocs = DALManager.ThuocDAL.GetListThuoc();
+
+            bool has = thuocs.Any(t => (t.TenThuoc.Equals(thuocMoi.TenThuoc, StringComparison.OrdinalIgnoreCase)) && (t.MaDonVi == thuocMoi.MaDonVi));
+
+            return has;
+        }
         public override void LoadLocalData()
         {
             DALManager.ThuocDAL.LoadLocalData();

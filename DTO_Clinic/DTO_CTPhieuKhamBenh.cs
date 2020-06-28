@@ -35,6 +35,7 @@ namespace DTO_Clinic
             MaThuoc = maThuoc;
             MaCachDung = maCachDung;
             SoLuong = soLuong;
+            IsDeleted = false;
         }
 
     }

@@ -66,6 +66,15 @@ namespace BUS_Clinic.BUS
             }
         }
 
+        public DTO_DonVi GetDonViById(int maDonVi)
+        {
+            ObservableCollection<DTO_DonVi> donvis = DALManager.DonViDAL.GetListDV();
+
+            var dv = donvis.Where(c => c.Id == maDonVi).FirstOrDefault();
+            
+            return dv;
+        }
+
         public override void LoadLocalData()
         {
             DALManager.DonViDAL.LoadLocalData();

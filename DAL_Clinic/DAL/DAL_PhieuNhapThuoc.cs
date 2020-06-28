@@ -29,19 +29,19 @@ namespace DAL_Clinic.DAL
         //{
         //    phieuNhapThuoc.TongTien.ToString();
         //}
-        public void CapNhatTongTien(DTO_PhieuNhapThuoc phieuNhapThuoc)
-        {
-            ObservableCollection<DTO_CTPhieuNhapThuoc> CTPNTs = DALManager.CTPhieuNhapThuocDAL.GetListCTPNT();
+        //public void CapNhatTongTien(DTO_PhieuNhapThuoc phieuNhapThuoc)
+        //{
+        //    ObservableCollection<DTO_CTPhieuNhapThuoc> CTPNTs = DALManager.CTPhieuNhapThuocDAL.GetListCTPNT();
 
-            var cTPNT = from p in CTPNTs
-                        where p.MaPNT == phieuNhapThuoc.Id
-                        select p;
+        //    var cTPNT = from p in CTPNTs
+        //                where p.MaPNT == phieuNhapThuoc.Id
+        //                select p;
 
-            foreach (var item in cTPNT)
-            {
-                phieuNhapThuoc.TongTien += item.ThanhTien;
-            }
-        }
+        //    foreach (var item in cTPNT)
+        //    {
+        //        phieuNhapThuoc.TongTien += item.ThanhTien;
+        //    }
+        //}
         public override void LoadLocalData()
         {
             SQLServerDBContext.Instant.PhieuNhapThuoc.Load();
