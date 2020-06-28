@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DTO_Clinic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,9 @@ namespace GUI_Clinic.View.Windows
         {
             InitializeComponent();
         }
+        #region Property
+        public DTO_HoaDon hoaDon;
+        #endregion
 
         private void btnInHoaDon_Click(object sender, RoutedEventArgs e)
         {
