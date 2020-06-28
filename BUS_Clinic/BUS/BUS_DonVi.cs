@@ -11,6 +11,7 @@ namespace BUS_Clinic.BUS
 {
     public class BUS_DonVi : BaseBUS
     {
+        private const string _idPrefix = "DV";
         public ObservableCollection<DTO_DonVi> ListDV { get; set; }
 
         public BUS_DonVi()
@@ -31,6 +32,7 @@ namespace BUS_Clinic.BUS
             }
             if (flag)
             {
+                dv.Id = AutoGenerateID();
                 DALManager.DonViDAL.AddDonVi(dv);
             }
         }
@@ -82,6 +84,15 @@ namespace BUS_Clinic.BUS
         public ObservableCollection<DTO_DonVi> GetListDV()
         {
             return DALManager.DonViDAL.GetListDV();
+        }
+        public int DemSoDonVi()
+        {
+            int re = DALManager.DonViDAL.GetListDV().Count;
+            return re;
+        }
+        public string AutoGenerateID()
+        {
+            return _idPrefix + (DemSoDonVi() + 1).ToString("D5");
         }
     }
 }

@@ -11,6 +11,7 @@ namespace BUS_Clinic.BUS
 {
     public class BUS_CachDung : BaseBUS
     {
+        private const string _idPrefix = "CD";
         public ObservableCollection<DTO_CachDung> ListCD { get; set; }
 
         public BUS_CachDung()
@@ -31,6 +32,7 @@ namespace BUS_Clinic.BUS
             }
             if (flag)
             {
+                cd.Id = AutoGenerateID();
                 DALManager.CachDungDAL.AddCachDung(cd);
             }
         }
@@ -73,6 +75,15 @@ namespace BUS_Clinic.BUS
         public ObservableCollection<DTO_CachDung> GetListCD()
         {
             return DALManager.CachDungDAL.GetListCD();
+        }
+        public int DemSoCachDung()
+        {
+            int re = DALManager.CachDungDAL.GetListCD().Count;
+            return re;
+        }
+        public string AutoGenerateID()
+        {
+            return _idPrefix + (DemSoCachDung() + 1).ToString("D5");
         }
     }
 }

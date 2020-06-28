@@ -138,6 +138,7 @@ namespace GUI_Clinic.View.UserControls
             }, (p) =>
             {
                 //phieuKhamBenh = new DTO_PhieuKhamBenh(benhNhan.Id, DateTime.Now, 1 /*chuyển chẩn đoán thành chọn bệnh*/ , tbxTrieuChung.Text);
+                phieuKhamBenh.DSCTPhieuKhamBenh = ListCTPKB;
                 BUSManager.PhieuKhamBenhBUS.AddPhieuKhamBenh(phieuKhamBenh);
                 ListPKB.Add(phieuKhamBenh);
 
