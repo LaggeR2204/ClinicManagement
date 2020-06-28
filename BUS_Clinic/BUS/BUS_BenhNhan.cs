@@ -41,7 +41,8 @@ namespace BUS_Clinic.BUS
         }
         public int GetPatientAmount()
         {
-            return DALManager.BenhDAL.GetListBenh().Count;
+            int re = DALManager.BenhNhanDAL.GetListBN().Count;
+            return re;
         }
         public string AutoGenerateID()
         {
