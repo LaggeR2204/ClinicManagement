@@ -37,6 +37,7 @@ namespace DTO_Clinic
             SoLuong = soLuong;
             DonGia = donGia;
             ThanhTien = SoLuong * DonGia;
+            IsDeleted = false;
         }
 
 
