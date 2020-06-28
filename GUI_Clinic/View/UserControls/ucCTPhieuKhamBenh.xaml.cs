@@ -136,7 +136,7 @@ namespace GUI_Clinic.View.UserControls
 
         private void btnThanhToan_Click(object sender, RoutedEventArgs e)
         {
-            wdHoaDon hoaDon = new wdHoaDon(phieuKhamBenh, 100000);
+            wdHoaDon hoaDon = new wdHoaDon(phieuKhamBenh);
             hoaDon.ShowDialog();
         }
 

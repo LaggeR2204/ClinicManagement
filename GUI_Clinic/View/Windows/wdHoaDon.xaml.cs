@@ -20,9 +20,10 @@ namespace GUI_Clinic.View.Windows
     /// </summary>
     public partial class wdHoaDon : Window
     {
-        public wdHoaDon()
+        public wdHoaDon(DTO_PhieuKhamBenh phieuKhamBenh)
         {
             InitializeComponent();
+            hoaDon = new DTO_HoaDon(phieuKhamBenh, 100000);
         }
         #region Property
         public DTO_HoaDon hoaDon;
