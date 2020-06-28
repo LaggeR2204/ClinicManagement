@@ -105,7 +105,7 @@
                                               Margin="0,0,0,-0.4">
                                         <ListView.View>
                                             <GridView>
-                                                <GridViewColumn Header="STT"
+                                                <GridViewColumn Header="Mã bệnh nhân"
                                                                 DisplayMemberBinding="{Binding Id}"></GridViewColumn>
                                                 <GridViewColumn Header="Họ và Tên"
                                                                 DisplayMemberBinding="{Binding TenBenhNhan}"></GridViewColumn>

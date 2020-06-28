@@ -8,7 +8,7 @@ namespace DTO_Clinic
 {
    public class DTO_PhieuNhapThuoc:BaseModel
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         private DateTime _ngayNhap;
         private double _tongTien;
         private bool _isDeleted;

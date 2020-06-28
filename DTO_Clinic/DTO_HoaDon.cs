@@ -12,7 +12,7 @@ namespace DTO_Clinic
     {
         public virtual DTO_CTPhieuKhamBenh CTPhieuKhamBenh { get; set; }
         public virtual DTO_PhieuKhamBenh PhieuKhamBenh { get; set; }
-        public int Id { get; set; }
+        public string Id { get; set; }
         public double TienKham { get => _tienKham; set { _tienKham = value; OnPropertyChanged(); } }
         public double TienThuoc { get => _tienThuoc; set { _tienThuoc = value; OnPropertyChanged(); } }
         public double ThanhTien { get => _thanhTien; set { _thanhTien = value; OnPropertyChanged(); } }

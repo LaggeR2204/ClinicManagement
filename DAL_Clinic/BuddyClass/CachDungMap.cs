@@ -13,6 +13,7 @@ namespace DAL_Clinic.BuddyClass
         public CachDungMap()
         {
             ToTable("CACHDUNG");
+            HasKey(p => p.Id);
             Property(p => p.Id).HasColumnName("MaCachDung");
             Property(p => p.TenCachDung).HasMaxLength(50);
             Property(p => p.TenCachDung).IsRequired();

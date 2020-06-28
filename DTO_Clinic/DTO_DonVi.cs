@@ -10,7 +10,7 @@ namespace DTO_Clinic
     {
         private string _tenDonVi;
         private bool _isDeleted;
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string TenDonVi { get => _tenDonVi; set { _tenDonVi = value; OnPropertyChanged(); }  }        
         public virtual ICollection<DTO_Thuoc> DSThuoc { get; set; }
         public bool IsDeleted { get => _isDeleted; set { _isDeleted = value; OnPropertyChanged(); } }

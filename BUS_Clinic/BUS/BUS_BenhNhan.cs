@@ -11,11 +11,12 @@ namespace BUS_Clinic.BUS
 {
     public class BUS_BenhNhan : BaseBUS
     {
+        private const string _idPrefix = "BN";
         public BUS_BenhNhan()
         {
 
         }
-        public DTO_BenhNhan GetBenhNhanById(int maBenhNhan)
+        public DTO_BenhNhan GetBenhNhanById(string maBenhNhan)
         {
             ObservableCollection<DTO_BenhNhan> ListBN = GetListBN();
             var result = ListBN.Where(c => c.Id == maBenhNhan).FirstOrDefault();
@@ -27,6 +28,7 @@ namespace BUS_Clinic.BUS
             var rel = ListBN.Where(c => c.TenBenhNhan == bn.TenBenhNhan && c.SoDienThoai == bn.SoDienThoai).FirstOrDefault();
             if (rel != null)
                 return;
+            bn.Id = AutoGenerateID();
             DALManager.BenhNhanDAL.AddBenhNhan(bn);
         }
         public override void LoadLocalData()
@@ -36,6 +38,14 @@ namespace BUS_Clinic.BUS
         public ObservableCollection<DTO_BenhNhan> GetListBN()
         {
             return DALManager.BenhNhanDAL.GetListBN();
+        }
+        public int GetPatientAmount()
+        {
+            return DALManager.BenhDAL.GetListBenh().Count;
+        }
+        public string AutoGenerateID()
+        {
+            return _idPrefix + (GetPatientAmount() + 1).ToString("D5");
         }
     }
 }

@@ -8,14 +8,15 @@ namespace DTO_Clinic
 {
     public class DTO_Thuoc:BaseModel
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         private string _tenThuoc;
         private string _congDung;
         private double _donGia;
         private int _soLuong;
+        private string _maDonVi;
         private bool _isDeleted;
         public virtual DTO_DonVi DonVi { get; set; }
-        public int MaDonVi { get; set; }
+        public string MaDonVi { get => _maDonVi; set { _maDonVi = value; OnPropertyChanged(); } }
         public string TenThuoc { get => _tenThuoc; set { _tenThuoc = value; OnPropertyChanged(); }  }
         public string CongDung { get => _congDung; set { _congDung = value; OnPropertyChanged(); } }
         public double DonGia { get => _donGia; set { _donGia = value; OnPropertyChanged(); } }
@@ -30,7 +31,7 @@ namespace DTO_Clinic
             IsDeleted = false;
         }
 
-        public DTO_Thuoc(string tenThuoc, int maDonVi, double donGia, int soLuong, string congDung)
+        public DTO_Thuoc(string tenThuoc, string maDonVi, double donGia, int soLuong, string congDung)
         {
             TenThuoc = tenThuoc;
             MaDonVi = maDonVi;

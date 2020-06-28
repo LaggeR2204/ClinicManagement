@@ -13,6 +13,7 @@ namespace DAL_Clinic.BuddyClass
         public BenhNhanMap()
         {
             ToTable("BENHNHAN");
+            HasKey(p => p.Id);
             Property(p => p.Id).HasColumnName("MaBenhNhan");
             Property(p => p.TenBenhNhan).HasMaxLength(50);
             Property(p => p.TenBenhNhan).IsRequired();

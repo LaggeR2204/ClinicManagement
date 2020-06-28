@@ -66,7 +66,7 @@ namespace BUS_Clinic.BUS
             }
         }
 
-        public DTO_DonVi GetDonViById(int maDonVi)
+        public DTO_DonVi GetDonViById(string maDonVi)
         {
             ObservableCollection<DTO_DonVi> donvis = DALManager.DonViDAL.GetListDV();
 

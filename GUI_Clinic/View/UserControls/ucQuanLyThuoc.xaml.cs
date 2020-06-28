@@ -38,7 +38,7 @@ namespace GUI_Clinic.View.UserControls
         public DTO_Thuoc thuoc { get; set; }
         public DTO_PhieuNhapThuoc phieuNhapThuoc { get; set; }
         public DTO_CTPhieuNhapThuoc cTPhieuNhapThuoc { get; set; }
-        private int MaPNTSelected = 0;
+        private string MaPNTSelected;
 
         #endregion
 
@@ -98,7 +98,7 @@ namespace GUI_Clinic.View.UserControls
 
         private bool CTPNTFilter(Object item)
         {
-            if (MaPNTSelected == 0)
+            if (MaPNTSelected == null)
             {
                 return true;
             }

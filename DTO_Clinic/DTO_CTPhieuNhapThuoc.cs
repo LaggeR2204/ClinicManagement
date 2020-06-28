@@ -14,8 +14,8 @@ namespace DTO_Clinic
         private bool _isDeleted;
         public virtual DTO_PhieuNhapThuoc PhieuNhapThuoc  { get; set; }
         public virtual DTO_Thuoc Thuoc { get; set; }
-        public int MaThuoc { get; set; }
-        public int MaPNT { get; set; }
+        public string MaThuoc { get; set; }
+        public string MaPNT { get; set; }
         public int SoLuongNhap { get => _soLuongNhap; set { _soLuongNhap = value; OnPropertyChanged(); } }
         public double DonGiaNhap { get => _donGiaNhap; set { _donGiaNhap = value; OnPropertyChanged(); } }
         public double ThanhTien { get => _thanhTien; set { _thanhTien = value; OnPropertyChanged(); } }
@@ -26,7 +26,7 @@ namespace DTO_Clinic
 
         }
 
-        public DTO_CTPhieuNhapThuoc(int _maPNT, int _maThuoc, int _soLuongNhap, double _donGiaNhap)
+        public DTO_CTPhieuNhapThuoc(string _maPNT, string _maThuoc, int _soLuongNhap, double _donGiaNhap)
         {
             MaPNT = _maPNT;
             MaThuoc = _maThuoc;

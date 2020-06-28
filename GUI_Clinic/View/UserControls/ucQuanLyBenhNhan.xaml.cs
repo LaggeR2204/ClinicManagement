@@ -36,7 +36,7 @@ namespace GUI_Clinic.View.UserControls
         #region Property                
         public ObservableCollection<DTO_BenhNhan> ListBN { get; set; }
         public ObservableCollection<DTO_PhieuKhamBenh> ListPKB { get; set; }
-        private int MaBenhNhanSelected = 0;
+        private string MaBenhNhanSelected;
         public DTO_BenhNhan SelectedItem { get; set; }
         #endregion
         #region Command
@@ -86,7 +86,7 @@ namespace GUI_Clinic.View.UserControls
 
         private bool PKBFilter(Object item)
         {
-            if (MaBenhNhanSelected == 0)
+            if (MaBenhNhanSelected == null)
             {
                 return true;
             }

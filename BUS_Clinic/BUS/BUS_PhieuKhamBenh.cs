@@ -15,7 +15,7 @@ namespace BUS_Clinic.BUS
         {
 
         }
-        public DTO_PhieuKhamBenh GetPhieuKhamBenh(int maPhieuKhamBenh)
+        public DTO_PhieuKhamBenh GetPhieuKhamBenh(string maPhieuKhamBenh)
         {
             ObservableCollection<DTO_PhieuKhamBenh> ListPKB = GetListPKB();
             foreach (DTO_PhieuKhamBenh item in ListPKB)
@@ -52,13 +52,13 @@ namespace BUS_Clinic.BUS
         {
             return DALManager.PhieuKhamBenhDAL.GetListPKB();
         }
-        public List<int> GetListPKB(string ngayKham)
+        public List<string> GetListPKB(string ngayKham)
         {
             var listpkb = DALManager.PhieuKhamBenhDAL.GetListPKB();
             var result = from pkb in listpkb
                          where pkb.NgayKham.ToString("d") == ngayKham
                          select pkb.MaBenhNhan;
-            return new List<int>(result);
+            return new List<string>(result);
         }
     }
 }

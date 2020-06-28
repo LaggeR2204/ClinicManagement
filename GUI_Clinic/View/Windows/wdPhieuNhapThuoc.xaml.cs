@@ -154,7 +154,7 @@ namespace GUI_Clinic.View.Windows
             {
                 DTO_PhieuNhapThuoc phieuNhapThuoc = new DTO_PhieuNhapThuoc(NgayNhapThuoc, 0);
                 BUSManager.PhieuNhapThuocBUS.AddPhieuNhapThuoc(phieuNhapThuoc);
-                int tempID = phieuNhapThuoc.Id;
+                string tempID = phieuNhapThuoc.Id;
 
                 foreach (DTO_Thuoc item in List)
                 {

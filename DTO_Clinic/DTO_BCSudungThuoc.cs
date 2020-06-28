@@ -18,7 +18,7 @@ namespace DTO_Clinic
         public int SoLanDung { get => _soLanDung; set { _soLanDung = value; OnPropertyChanged(); } }
         public int SoLuongDung { get => _soLuongDung; set { _soLuongDung = value; OnPropertyChanged(); } }
         public virtual DTO_Thuoc Thuoc { get; set; }
-        public int MaThuoc { get; set; }
+        public string MaThuoc { get; set; }
         public bool IsDeleted { get => _isDeleted; set { _isDeleted = value; OnPropertyChanged(); } }
     }
 }

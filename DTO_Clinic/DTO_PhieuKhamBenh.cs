@@ -8,14 +8,14 @@ namespace DTO_Clinic
 {
     public class DTO_PhieuKhamBenh:BaseModel
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         private DateTime _ngayKham;
         private string _trieuChung;
         private bool _isDeleted;
         public string TrieuChung { get => _trieuChung; set { _trieuChung = value; OnPropertyChanged(); }  }
         public DateTime NgayKham { get => _ngayKham; set { _ngayKham = value; OnPropertyChanged(); }  }
-        public int MaBenhNhan { get; set; }
-        public int MaBenh { get; set; }
+        public string MaBenhNhan { get; set; }
+        public string MaBenh { get; set; }
         public virtual DTO_HoaDon HoaDon { get; set; }
         public virtual DTO_Benh Benh { get; set; }
         public virtual DTO_BenhNhan BenhNhan { get; set; }
@@ -27,7 +27,7 @@ namespace DTO_Clinic
             IsDeleted = false;
         }
 
-        public DTO_PhieuKhamBenh(int maBenhNhan, DateTime ngayKham, int maBenh, string trieuChung)
+        public DTO_PhieuKhamBenh(string maBenhNhan, DateTime ngayKham, string maBenh, string trieuChung)
         {
             MaBenhNhan = maBenhNhan;
             MaBenh = maBenh;

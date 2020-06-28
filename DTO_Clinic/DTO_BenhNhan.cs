@@ -8,7 +8,7 @@ namespace DTO_Clinic
 {
     public class DTO_BenhNhan : BaseModel
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string TenBenhNhan
         {
             get => _tenBenhNhan;

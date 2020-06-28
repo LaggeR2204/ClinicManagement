@@ -35,7 +35,7 @@ namespace GUI_Clinic.View.UserControls
         #region Property
         public ObservableCollection<DTO_BenhNhan> ListBN1 { get; set; }
         public ObservableCollection<DTO_BenhNhan> ListBN2 { get; set; }
-        public List<int> MatchBNList { get; set; }
+        public List<string> MatchBNList { get; set; }
         public ObservableCollection<DTO_BenhNhan> CurSignedList { get; set; }
         public List<string> RegionIDList { get; set; }
         #endregion

@@ -8,12 +8,12 @@ namespace DTO_Clinic
 {
     public class DTO_CTPhieuKhamBenh: BaseModel
     {
-        public int MaThuoc { get; set; }
-        public int MaCachDung { get; set; }
+        public string MaThuoc { get; set; }
+        public string MaCachDung { get; set; }
         public virtual DTO_Thuoc Thuoc { get; set; }
         public virtual DTO_CachDung CachDung { get; set; }
         public virtual DTO_PhieuKhamBenh PhieuKhamBenh { get; set; }
-        public int MaPKB { get; set; }
+        public string MaPKB { get; set; }
         public double DonGia { get => _donGia; set { _donGia = value; OnPropertyChanged(); } }
         public int SoLuong { get => _soLuong; set { _soLuong = value; OnPropertyChanged(); } }
         public double ThanhTien { get => _thanhTien; set { _thanhTien = value; OnPropertyChanged(); } }
@@ -29,7 +29,7 @@ namespace DTO_Clinic
             IsDeleted = false;
         }
 
-        public DTO_CTPhieuKhamBenh(int maPKB, int maThuoc, int maCachDung, int soLuong, double donGia)
+        public DTO_CTPhieuKhamBenh(string maPKB, string maThuoc, string maCachDung, int soLuong, double donGia)
         {
             MaPKB = maPKB;
             MaThuoc = maThuoc;

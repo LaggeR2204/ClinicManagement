@@ -32,6 +32,7 @@ namespace DAL_Clinic.BuddyClass
                 .WithRequiredPrincipal(e => e.PhieuKhamBenh)
                 .WillCascadeOnDelete();
             ToTable("PHIEUKHAMBENH");
+            HasKey(p => p.Id);
             Property(p => p.Id).HasColumnName("MaPKB");
             Property(p => p.NgayKham).IsRequired();
             Property(p => p.TrieuChung).IsOptional();

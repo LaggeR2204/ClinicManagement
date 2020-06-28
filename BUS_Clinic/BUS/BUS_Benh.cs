@@ -15,7 +15,7 @@ namespace BUS_Clinic.BUS
         {
 
         }
-        public DTO_Benh GetBenh(int maBenh)
+        public DTO_Benh GetBenh(string maBenh)
         {
             ObservableCollection<DTO_Benh> ListBenh = GetListBenh();
             foreach (DTO_Benh benh in ListBenh)

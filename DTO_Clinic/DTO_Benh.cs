@@ -9,7 +9,7 @@ namespace DTO_Clinic
     public class DTO_Benh : BaseModel
     {
         private bool _isDeleted;
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string TenBenh { get => _tenBenh; set { _tenBenh = value; OnPropertyChanged(); }  }
 
         private string _tenBenh;
@@ -21,7 +21,7 @@ namespace DTO_Clinic
             IsDeleted = false;
         }
 
-        public DTO_Benh(int maBenh, string tenBenh)
+        public DTO_Benh(string maBenh, string tenBenh)
         {
             Id = maBenh;
             TenBenh = tenBenh;

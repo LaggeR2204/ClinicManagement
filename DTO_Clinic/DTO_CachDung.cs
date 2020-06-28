@@ -9,7 +9,7 @@ namespace DTO_Clinic
     public class DTO_CachDung: BaseModel
     {
         private bool _isDeleted;
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string TenCachDung { get => _tenCachDung; set { _tenCachDung = value; OnPropertyChanged(); } }
 
         private string _tenCachDung;
