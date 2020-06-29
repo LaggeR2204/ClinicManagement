@@ -119,10 +119,10 @@ namespace GUI_Clinic.View.Windows
                         MessageBox.Show("Thuốc bạn chọn chưa có loại đơn vị này.");
                     }
 
-                    cbxTenThuoc.SelectedIndex = -1;
-                    cbxDonVi.SelectedIndex = -1;
-                    tbxDonGia.Text = "0";
-                    tbxSoLuong.Text = "0";
+                    //cbxTenThuoc.SelectedIndex = -1;
+                    //cbxDonVi.SelectedIndex = -1;
+                    //tbxDonGia.Text = "0";
+                    //tbxSoLuong.Text = "0";
                 }
                 else
                 {
@@ -197,6 +197,13 @@ namespace GUI_Clinic.View.Windows
             cbxTenThuoc.Visibility = Visibility.Visible;
             tbxTenThuocMoi.Visibility = Visibility.Hidden;
             tbxCongDungThuocMoi.Visibility = Visibility.Collapsed;
+        }
+
+        private void RemoveCategory(object sender, RoutedEventArgs e)
+        {
+            Button b = sender as Button;
+            DTO_Thuoc item = b.CommandParameter as DTO_Thuoc;
+            List.Remove(item);
         }
         //private void btnThemThuoc_Click(object sender, RoutedEventArgs e)
         //{

@@ -177,21 +177,39 @@
             <materialDesign:Card Grid.Row="2"
                                      Margin="5">
                 <ListView Grid.Column="1"
-                                  x:Name="lvDanhSachThuocNhap"
-                                  ScrollViewer.CanContentScroll="True"
-                                  ScrollViewer.VerticalScrollBarVisibility="Auto">
+                          x:Name="lvDanhSachThuocNhap"
+                          ScrollViewer.CanContentScroll="True"
+                          ScrollViewer.VerticalScrollBarVisibility="Auto">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Mã thuốc"
-                                                    DisplayMemberBinding="{Binding Id}"/>
+                                            DisplayMemberBinding="{Binding Id}"/>
                             <GridViewColumn Header="Thuốc" 
-                                                    DisplayMemberBinding="{Binding TenThuoc}"/>
+                                            DisplayMemberBinding="{Binding TenThuoc}"/>
                             <GridViewColumn Header="Đơn vị" 
-                                                    DisplayMemberBinding="{Binding DonVi.TenDonVi}"/>
+                                            DisplayMemberBinding="{Binding DonVi.TenDonVi}"/>
                             <GridViewColumn Header="Số lượng" 
-                                                    DisplayMemberBinding="{Binding SoLuong}"/>
+                                            DisplayMemberBinding="{Binding SoLuong}"/>
                             <GridViewColumn Header="Đơn giá" 
-                                                    DisplayMemberBinding="{Binding DonGia}"/>
+                                            DisplayMemberBinding="{Binding DonGia}"/>
+                            <GridViewColumn Header="" Width="40">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button x:Name="btnXoa"
+                                                CommandParameter="{Binding}"
+                                                Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                                                ToolTip="Xóa"
+                                                Background="#0078D7"
+                                                BorderBrush="#0078D7"
+                                                Width="20"
+                                                Height="20"
+                                                Click="RemoveCategory">
+                                            <materialDesign:PackIcon Kind="Minus"
+                                                                     Height="15" Width="15" />
+                                        </Button>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
                         </GridView>
                     </ListView.View>
                 </ListView>
