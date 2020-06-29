@@ -49,7 +49,6 @@ namespace GUI_Clinic.View.Windows
 
         #region Command
         public ICommand ThemThuocCommand { get; set; }
-        public ICommand ThemThuocMoiCommand { get; set; }
         #endregion
 
         private void InitData()
@@ -70,33 +69,55 @@ namespace GUI_Clinic.View.Windows
             List = new ObservableCollection<DTO_Thuoc>();
             lvDanhSachThuocNhap.ItemsSource = List;
 
-            //foreach (DTO_Thuoc item in List)
-            //{
-            //    BUSManager.ThuocBUS.LoadNPDonVi(item);
-            //}
+            ckbThuocMoi.IsChecked = false;
         }
 
         private void InitCommand()
         {
             ThemThuocCommand = new RelayCommand<Window>((p) =>
             {
-                if (tbxDonGia.Text == "0" || tbxSoLuong.Text == "0" || cbxTenThuoc.SelectedIndex == -1 || cbxDonVi.SelectedIndex == -1)
-                    return false;
-                return true;
+                if (ckbThuocMoi.IsChecked == false)
+                {
+                    if (cbxTenThuoc.SelectedIndex == -1 || cbxDonVi.SelectedIndex == -1 ||
+                        tbxDonGia.Text == "0" || tbxSoLuong.Text == "0" ||
+                        string.IsNullOrEmpty(tbxSoLuong.Text) || string.IsNullOrEmpty(tbxDonGia.Text))
+                    {
+                        return false;
+                    }
+                    return true;
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(tbxTenThuocMoi.Text) || cbxDonVi.SelectedIndex == -1 ||
+                        tbxDonGia.Text == "0" || tbxSoLuong.Text == "0" ||
+                        string.IsNullOrEmpty(tbxSoLuong.Text) || string.IsNullOrEmpty(tbxDonGia.Text) ||
+                        string.IsNullOrEmpty(tbxCongDungThuocMoi.Text))
+                    {
+                        return false;
+                    }
+                    return true;
+                }
             }, (p) =>
             {
-                DTO_Thuoc themThuoc = new DTO_Thuoc();
-
-                themThuoc.Id = (cbxTenThuoc.SelectedItem as DTO_Thuoc).Id;
-                themThuoc.TenThuoc = (cbxTenThuoc.SelectedItem as DTO_Thuoc).TenThuoc;
-                themThuoc.MaDonVi = (cbxDonVi.SelectedItem as DTO_DonVi).Id;
-                themThuoc.DonVi = BUSManager.DonViBUS.GetDonViById(themThuoc.MaDonVi);
-                themThuoc.SoLuong = SoLuong;
-                themThuoc.DonGia = DonGia;
-
-                if (BUSManager.ThuocBUS.CheckThuocMoi(themThuoc))
+                if (ckbThuocMoi.IsChecked == false)
                 {
-                    List.Add(themThuoc);
+                    DTO_Thuoc themThuoc = new DTO_Thuoc();
+
+                    themThuoc.Id = (cbxTenThuoc.SelectedItem as DTO_Thuoc).Id;
+                    themThuoc.TenThuoc = (cbxTenThuoc.SelectedItem as DTO_Thuoc).TenThuoc;
+                    themThuoc.MaDonVi = (cbxDonVi.SelectedItem as DTO_DonVi).Id;
+                    themThuoc.DonVi = BUSManager.DonViBUS.GetDonViById(themThuoc.MaDonVi);
+                    themThuoc.SoLuong = SoLuong;
+                    themThuoc.DonGia = DonGia;
+
+                    if (BUSManager.ThuocBUS.CheckThuocMoi(themThuoc))
+                    {
+                        List.Add(themThuoc);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thuốc bạn chọn chưa có loại đơn vị này.");
+                    }
 
                     cbxTenThuoc.SelectedIndex = -1;
                     cbxDonVi.SelectedIndex = -1;
@@ -105,45 +126,29 @@ namespace GUI_Clinic.View.Windows
                 }
                 else
                 {
-                    MessageBox.Show("Thuốc bạn chọn chưa có loại đơn vị này.");
+                    DTO_Thuoc thuocMoi = new DTO_Thuoc();
+                    thuocMoi.TenThuoc = tbxTenThuocMoi.Text;
+                    thuocMoi.MaDonVi = (cbxDonVi.SelectedItem as DTO_DonVi).Id;
+                    thuocMoi.DonVi = BUSManager.DonViBUS.GetDonViById(thuocMoi.MaDonVi);
+                    thuocMoi.CongDung = tbxCongDungThuocMoi.Text;
+                    thuocMoi.SoLuong = SoLuong;
+                    thuocMoi.DonGia = DonGia;
 
-                    cbxTenThuoc.SelectedIndex = -1;
+                    if (!BUSManager.ThuocBUS.CheckThuocMoi(thuocMoi))
+                    {
+                        List.Add(thuocMoi);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thuốc với đơn vị bạn nhập đã tồn tại trong cơ sở dữ liệu");
+                    }
+
+                    tbxTenThuocMoi.Clear();
                     cbxDonVi.SelectedIndex = -1;
                     tbxDonGia.Text = "0";
                     tbxSoLuong.Text = "0";
-                }
-            });
-
-            ThemThuocMoiCommand = new RelayCommand<Window>((p) =>
-            {
-                if (string.IsNullOrEmpty(tbxTenThuocMoi.Text) || cbxDonViThuocMoi.SelectedIndex == -1 || string.IsNullOrEmpty(tbxCongDungThuocMoi.Text))
-                    return false;
-                return true;
-            }, (p) =>
-            {
-                DTO_Thuoc thuocMoi = new DTO_Thuoc();
-                thuocMoi.TenThuoc = tbxTenThuocMoi.Text;
-                thuocMoi.MaDonVi = (cbxDonViThuocMoi.SelectedItem as DTO_DonVi).Id;
-                thuocMoi.CongDung = tbxCongDungThuocMoi.Text;
-                thuocMoi.DonGia = 0;
-                thuocMoi.SoLuong = 0;
-
-                if (!BUSManager.ThuocBUS.CheckThuocMoi(thuocMoi))
-                {
-                    BUSManager.ThuocBUS.AddThuoc(thuocMoi);
-                    ListThuoc.Add(thuocMoi);
-
-                    tbxTenThuocMoi.Clear();
-                    cbxDonViThuocMoi.SelectedIndex = -1;
-                    tbxCongDungThuocMoi.Text = "";
-                }
-                else
-                {
-                    MessageBox.Show("Thuốc với đơn vị bạn nhập đã tồn tại trong cơ sở dữ liệu");
-
-                    tbxTenThuocMoi.Clear();
-                    cbxDonViThuocMoi.SelectedIndex = -1;
-                    tbxCongDungThuocMoi.Text = "";
+                    tbxCongDungThuocMoi.Clear();
+                    ckbThuocMoi.IsChecked = false;
                 }
             });
         }
@@ -158,6 +163,11 @@ namespace GUI_Clinic.View.Windows
 
                 foreach (DTO_Thuoc item in List)
                 {
+                    if (!BUSManager.ThuocBUS.CheckThuocMoi(item))
+                    {
+                        BUSManager.ThuocBUS.AddThuoc(item);
+                    }
+
                     DTO_CTPhieuNhapThuoc cTPhieuNhapThuoc = new DTO_CTPhieuNhapThuoc(tempID, item.Id, item.SoLuong, item.DonGia);
                     BUSManager.ThuocBUS.CapNhatThuocVuaNhap(item);
                     BUSManager.CTPhieuNhapThuocBUS.AddCTPhieuNhapThuoc(cTPhieuNhapThuoc);
@@ -175,7 +185,19 @@ namespace GUI_Clinic.View.Windows
             }
         }
 
+        private void ckbThuocMoi_Checked(object sender, RoutedEventArgs e)
+        {
+            cbxTenThuoc.Visibility = Visibility.Hidden;
+            tbxTenThuocMoi.Visibility = Visibility.Visible;
+            tbxCongDungThuocMoi.Visibility = Visibility.Visible;
+        }
 
+        private void ckbThuocMoi_Unchecked(object sender, RoutedEventArgs e)
+        {
+            cbxTenThuoc.Visibility = Visibility.Visible;
+            tbxTenThuocMoi.Visibility = Visibility.Hidden;
+            tbxCongDungThuocMoi.Visibility = Visibility.Collapsed;
+        }
         //private void btnThemThuoc_Click(object sender, RoutedEventArgs e)
         //{
         //    DTO_Thuoc themThuoc = new DTO_Thuoc((cbxTenThuoc.SelectedItem as DTO_Thuoc).TenThuoc, (cbxDonVi.SelectedItem as DTO_DonVi).Id, DonGia, SoLuong, "");

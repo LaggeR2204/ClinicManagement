@@ -11,6 +11,7 @@ namespace BUS_Clinic.BUS
 {
     public class BUS_Thuoc: BaseBUS
     {
+        private const string _idPrefix = "TH";
         public BUS_Thuoc()
         {
 
@@ -25,6 +26,7 @@ namespace BUS_Clinic.BUS
         }
         public void AddThuoc(DTO_Thuoc thuoc)
         {
+            thuoc.Id = AutoGenerateID();
             DALManager.ThuocDAL.AddThuoc(thuoc);
         }
         public bool CheckThuocMoi(DTO_Thuoc thuocMoi)
@@ -41,8 +43,11 @@ namespace BUS_Clinic.BUS
 
             var kq = thuocs.Where(c => (c.Id == thuocVuaNhap.Id) && (c.MaDonVi == thuocVuaNhap.MaDonVi)).FirstOrDefault();
 
-            kq.SoLuong += thuocVuaNhap.SoLuong;
-            kq.DonGia = thuocVuaNhap.DonGia;
+            if (kq != null)
+            {
+                kq.SoLuong += thuocVuaNhap.SoLuong;
+                kq.DonGia = thuocVuaNhap.DonGia;
+            }
         }
         public override void LoadLocalData()
         {
@@ -51,6 +56,15 @@ namespace BUS_Clinic.BUS
         public ObservableCollection<DTO_Thuoc> GetListThuoc()
         {
             return DALManager.ThuocDAL.GetListThuoc();
+        }
+        public int GetThuocAmount()
+        {
+            int amount = DALManager.ThuocDAL.GetListThuoc().Count;
+            return amount;
+        }
+        public string AutoGenerateID()
+        {
+            return _idPrefix + (GetThuocAmount() + 1).ToString("D5");
         }
     }
 }
