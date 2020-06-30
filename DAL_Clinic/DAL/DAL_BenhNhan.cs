@@ -13,6 +13,7 @@ namespace DAL_Clinic.DAL
     {
         public DAL_BenhNhan()
         {
+
         }
         public void AddBenhNhan(DTO_BenhNhan bn)
         {
