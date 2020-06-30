@@ -29,7 +29,7 @@
                         <Grid Grid.Row="0">
                             <TextBlock x:Name="tblTenBenhNhan"
                                        Grid.Row="0"
-                                       Margin="5"
+                                       Margin="10 5"
                                        FontSize="20" />
                         </Grid>
                         <Grid Grid.Row="1">
@@ -180,7 +180,7 @@
                                       ScrollViewer.VerticalScrollBarVisibility="Auto">
                                 <ListView.View>
                                     <GridView>
-                                        <GridViewColumn Header="STT"
+                                        <GridViewColumn Header="Mã thuốc"
                                                             DisplayMemberBinding="{Binding MaThuoc}"></GridViewColumn>
                                         <GridViewColumn Header="Tên thuốc"
                                                             DisplayMemberBinding="{Binding Thuoc.TenThuoc}"></GridViewColumn>
@@ -190,6 +190,24 @@
                                                             DisplayMemberBinding="{Binding Thuoc.DonVi.TenDonVi}"></GridViewColumn>
                                         <GridViewColumn Header="Cách dùng"
                                                             DisplayMemberBinding="{Binding CachDung}"></GridViewColumn>
+                                        <GridViewColumn Header="" Width="40">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button x:Name="btnXoa"
+                                                            CommandParameter="{Binding}"
+                                                            Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                                                            ToolTip="Xóa"
+                                                            Background="#0078D7"
+                                                            BorderBrush="#0078D7"
+                                                            Width="20"
+                                                            Height="20"
+                                                            Click="RemoveCategory"> 
+                                                        <materialDesign:PackIcon Kind="Minus"
+                                                                                 Height="15" Width="15" />
+                                                    </Button>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
                                     </GridView>
                                 </ListView.View>
                             </ListView>

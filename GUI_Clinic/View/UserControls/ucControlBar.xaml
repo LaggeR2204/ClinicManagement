@@ -19,7 +19,7 @@
                 Background="{x:Null}" 
                 BorderBrush="{x:Null}"
                 Click="btnShutdown_Click">
-            <materialDesign:PackIcon Kind="Shutdown" Width="25" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#0078D7"/>
+            <materialDesign:PackIcon Kind="Multiply" Width="25" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#0078D7"/>
         </Button>
         <Button x:Name="btnMaximize" 
                 Grid.Row="0"

@@ -1,6 +1,7 @@
 ﻿using BUS_Clinic.BUS;
 using DTO_Clinic;
 using GUI_Clinic.Command;
+using GUI_Clinic.CustomControl;
 using GUI_Clinic.View.UserControls;
 using System;
 using System.Collections.Generic;
@@ -110,19 +111,19 @@ namespace GUI_Clinic.View.Windows
                     themThuoc.SoLuong = SoLuong;
                     themThuoc.DonGia = DonGia;
 
-                    if (BUSManager.ThuocBUS.CheckThuocMoi(themThuoc))
+                    if (BUSManager.ThuocBUS.CheckIfThuocDaTonTai(themThuoc))
                     {
                         List.Add(themThuoc);
                     }
                     else
                     {
-                        MessageBox.Show("Thuốc bạn chọn chưa có loại đơn vị này.");
+                        MsgBox.Show("Thuốc bạn chọn chưa có loại đơn vị này");
                     }
 
-                    //cbxTenThuoc.SelectedIndex = -1;
-                    //cbxDonVi.SelectedIndex = -1;
-                    //tbxDonGia.Text = "0";
-                    //tbxSoLuong.Text = "0";
+                    cbxTenThuoc.SelectedIndex = -1;
+                    cbxDonVi.SelectedIndex = -1;
+                    tbxDonGia.Text = "0";
+                    tbxSoLuong.Text = "0";
                 }
                 else
                 {
@@ -134,13 +135,13 @@ namespace GUI_Clinic.View.Windows
                     thuocMoi.SoLuong = SoLuong;
                     thuocMoi.DonGia = DonGia;
 
-                    if (!BUSManager.ThuocBUS.CheckThuocMoi(thuocMoi))
+                    if (!BUSManager.ThuocBUS.CheckIfThuocDaTonTai(thuocMoi))
                     {
                         List.Add(thuocMoi);
                     }
                     else
                     {
-                        MessageBox.Show("Thuốc với đơn vị bạn nhập đã tồn tại trong cơ sở dữ liệu");
+                        MsgBox.Show("Thuốc với đơn vị bạn nhập đã tồn tại trong cơ sở dữ liệu");
                     }
 
                     tbxTenThuocMoi.Clear();
@@ -163,7 +164,7 @@ namespace GUI_Clinic.View.Windows
 
                 foreach (DTO_Thuoc item in List)
                 {
-                    if (!BUSManager.ThuocBUS.CheckThuocMoi(item))
+                    if (!BUSManager.ThuocBUS.CheckIfThuocDaTonTai(item))
                     {
                         BUSManager.ThuocBUS.AddThuoc(item);
                     }
@@ -181,7 +182,7 @@ namespace GUI_Clinic.View.Windows
             }
             else
             {
-                MessageBox.Show("Bạn chưa nhập thuốc.");
+                MsgBox.Show("Bạn chưa nhập thuốc");
             }
         }
 

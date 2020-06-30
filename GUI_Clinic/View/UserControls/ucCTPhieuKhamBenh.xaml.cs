@@ -1,6 +1,7 @@
 ﻿using BUS_Clinic.BUS;
 using DTO_Clinic;
 using GUI_Clinic.Command;
+using GUI_Clinic.CustomControl;
 using GUI_Clinic.View.Windows;
 using System;
 using System.Collections.Generic;
@@ -116,11 +117,19 @@ namespace GUI_Clinic.View.UserControls
             }, (p) =>
             {
                 DTO_Thuoc newThuoc = cbxThuoc.SelectedItem as DTO_Thuoc;
-                DTO_CTPhieuKhamBenh cTPhieuKhamBenh = new DTO_CTPhieuKhamBenh(phieuKhamBenh.Id, newThuoc.Id, (cbxCachDung.SelectedItem as DTO_CachDung).Id, int.Parse(tbxSoLuong.Text), newThuoc.DonGia);
-                BUSManager.ThuocBUS.LoadNPDonVi(newThuoc);
-                cTPhieuKhamBenh.Thuoc = newThuoc;
-                cTPhieuKhamBenh.CachDung = cbxCachDung.SelectedItem as DTO_CachDung;
-                ListCTPKB.Add(cTPhieuKhamBenh);
+                if (BUSManager.ThuocBUS.CheckIfSoLuongThuocDu(newThuoc, int.Parse(tbxSoLuong.Text)))
+                {
+                    DTO_CTPhieuKhamBenh cTPhieuKhamBenh = new DTO_CTPhieuKhamBenh(phieuKhamBenh.Id, newThuoc.Id, (cbxCachDung.SelectedItem as DTO_CachDung).Id, int.Parse(tbxSoLuong.Text), newThuoc.DonGia);
+                    BUSManager.ThuocBUS.LoadNPDonVi(newThuoc);
+                    cTPhieuKhamBenh.Thuoc = newThuoc;
+                    cTPhieuKhamBenh.CachDung = cbxCachDung.SelectedItem as DTO_CachDung;
+                    ListCTPKB.Add(cTPhieuKhamBenh);
+                    ResetThuocInput();
+                }
+                else
+                {
+                    MsgBox.Show("Số lượng thuốc còn lại trong kho không đủ");
+                }
             });
 
             InPhieuKhamCommand = new RelayCommand<Window>((p) =>
@@ -152,6 +161,7 @@ namespace GUI_Clinic.View.UserControls
                     foreach (DTO_CTPhieuKhamBenh item in ListCTPKB)
                     {
                         item.MaPKB = newPhieuKhamBenh.Id;
+                        BUSManager.ThuocBUS.SuDungThuoc(item.MaThuoc, item.SoLuong);
                         BUSManager.CTPhieuKhamBenhBUS.AddCTPhieuKhamBenh(item);
                     }
                     BUSManager.PhieuKhamBenhBUS.SaveChange();
@@ -170,6 +180,18 @@ namespace GUI_Clinic.View.UserControls
             });
         }
 
+        private void RemoveCategory(object sender, RoutedEventArgs e)
+        {
+            Button b = sender as Button;
+            DTO_CTPhieuKhamBenh item = b.CommandParameter as DTO_CTPhieuKhamBenh;
+            ListCTPKB.Remove(item);
+        }
+        private void ResetThuocInput()
+        {
+            cbxThuoc.SelectedIndex = -1;
+            cbxCachDung.SelectedIndex = -1;
+            tbxSoLuong.Clear();
+        }
         private void DisablePKB()
         {
             cbxChanDoan.IsHitTestVisible = false;
@@ -189,8 +211,8 @@ namespace GUI_Clinic.View.UserControls
         {
             tblTenBenhNhan.Text = null;
             tblNgayKham.Text = null;
-            tbxTrieuChung.Text = null;
-            cbxChanDoan.Text = null;
+            tbxTrieuChung.Clear();
+            cbxChanDoan.SelectedIndex = -1;
 
             ListCTPKB.Clear();
             lvThuoc.ItemsSource = null;
