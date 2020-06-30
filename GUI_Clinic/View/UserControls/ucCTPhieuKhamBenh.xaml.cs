@@ -1,6 +1,7 @@
 ﻿using BUS_Clinic.BUS;
 using DTO_Clinic;
 using GUI_Clinic.Command;
+using GUI_Clinic.CustomControl;
 using GUI_Clinic.View.Windows;
 using System;
 using System.Collections.Generic;
@@ -122,10 +123,11 @@ namespace GUI_Clinic.View.UserControls
                     cTPhieuKhamBenh.Thuoc = newThuoc;
                     cTPhieuKhamBenh.CachDung = cbxCachDung.SelectedItem as DTO_CachDung;
                     ListCTPKB.Add(cTPhieuKhamBenh);
+                    ResetThuocInput();
                 }
                 else
                 {
-                    MessageBox.Show("Số lượng thuốc còn lại trong kho không đủ");
+                    MsgBox.Show("Số lượng thuốc còn lại trong kho không đủ");
                 }
             });
 
