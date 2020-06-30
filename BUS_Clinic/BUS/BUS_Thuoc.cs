@@ -29,7 +29,7 @@ namespace BUS_Clinic.BUS
             thuoc.Id = AutoGenerateID();
             DALManager.ThuocDAL.AddThuoc(thuoc);
         }
-        public bool CheckThuocMoi(DTO_Thuoc thuocMoi)
+        public bool CheckIfThuocDaTonTai(DTO_Thuoc thuocMoi)
         {
             ObservableCollection<DTO_Thuoc> thuocs = DALManager.ThuocDAL.GetListThuoc();
 
@@ -48,6 +48,32 @@ namespace BUS_Clinic.BUS
                 kq.SoLuong += thuocVuaNhap.SoLuong;
                 kq.DonGia = thuocVuaNhap.DonGia;
             }
+        }
+        public void SuDungThuoc(string idThuocSuDung, int soLuongThuocSuDung)
+        {
+            ObservableCollection<DTO_Thuoc> thuocs = DALManager.ThuocDAL.GetListThuoc();
+
+            var kq = thuocs.Where(c => c.Id == idThuocSuDung).FirstOrDefault();
+
+            if (kq != null)
+            {
+                kq.SoLuong -= soLuongThuocSuDung;
+            }
+        }
+        public bool CheckIfSoLuongThuocDu(DTO_Thuoc thuocSuDung)
+        {
+            ObservableCollection<DTO_Thuoc> thuocs = DALManager.ThuocDAL.GetListThuoc();
+
+            var kq = thuocs.Where(c => c.Id == thuocSuDung.Id).FirstOrDefault();
+
+            if (kq != null)
+            {
+                if (kq.SoLuong >= thuocSuDung.SoLuong)
+                    return true;
+                return false;
+            }
+
+            return false;
         }
         public override void LoadLocalData()
         {

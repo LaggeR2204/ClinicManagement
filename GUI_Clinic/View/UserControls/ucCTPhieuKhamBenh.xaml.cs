@@ -115,11 +115,18 @@ namespace GUI_Clinic.View.UserControls
             }, (p) =>
             {               
                 DTO_Thuoc newThuoc = cbxThuoc.SelectedItem as DTO_Thuoc;
-                DTO_CTPhieuKhamBenh cTPhieuKhamBenh = new DTO_CTPhieuKhamBenh(phieuKhamBenh.Id, newThuoc.Id, (cbxCachDung.SelectedItem as DTO_CachDung).Id, int.Parse(tbxSoLuong.Text), newThuoc.DonGia);
-                BUSManager.ThuocBUS.LoadNPDonVi(newThuoc);
-                cTPhieuKhamBenh.Thuoc = newThuoc;
-                cTPhieuKhamBenh.CachDung = cbxCachDung.SelectedItem as DTO_CachDung;
-                ListCTPKB.Add(cTPhieuKhamBenh);
+                if (BUSManager.ThuocBUS.CheckIfSoLuongThuocDu(newThuoc))
+                {
+                    DTO_CTPhieuKhamBenh cTPhieuKhamBenh = new DTO_CTPhieuKhamBenh(phieuKhamBenh.Id, newThuoc.Id, (cbxCachDung.SelectedItem as DTO_CachDung).Id, int.Parse(tbxSoLuong.Text), newThuoc.DonGia);
+                    BUSManager.ThuocBUS.LoadNPDonVi(newThuoc);
+                    cTPhieuKhamBenh.Thuoc = newThuoc;
+                    cTPhieuKhamBenh.CachDung = cbxCachDung.SelectedItem as DTO_CachDung;
+                    ListCTPKB.Add(cTPhieuKhamBenh);
+                }
+                else
+                {
+                    MessageBox.Show("Số lượng thuốc còn lại trong kho không đủ");
+                }
             });
 
             InPhieuKhamCommand = new RelayCommand<Window>((p) =>
@@ -151,6 +158,7 @@ namespace GUI_Clinic.View.UserControls
                     foreach (DTO_CTPhieuKhamBenh item in ListCTPKB)
                     {
                         item.MaPKB = newPhieuKhamBenh.Id;
+                        BUSManager.ThuocBUS.SuDungThuoc(item.MaThuoc, item.SoLuong);
                         BUSManager.CTPhieuKhamBenhBUS.AddCTPhieuKhamBenh(item);
                     }
                     BUSManager.PhieuKhamBenhBUS.SaveChange();
