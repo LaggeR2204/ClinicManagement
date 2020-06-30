@@ -189,7 +189,7 @@
                                         <GridViewColumn Header="Đơn vị"
                                                             DisplayMemberBinding="{Binding Thuoc.DonVi.TenDonVi}"></GridViewColumn>
                                         <GridViewColumn Header="Cách dùng"
-                                                            DisplayMemberBinding="{Binding CachDung.TenCachDung}"></GridViewColumn>
+                                                            DisplayMemberBinding="{Binding CachDung}"></GridViewColumn>
                                     </GridView>
                                 </ListView.View>
                             </ListView>

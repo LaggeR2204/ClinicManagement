@@ -37,73 +37,73 @@ namespace GUI_Clinic.View
             switch (index)
             {
                 case 0:
-                    uc_BaoCaoDoanhThu.Visibility = Visibility.Hidden;
-                    uc_BaoCaoSuDungThuoc.Visibility = Visibility.Hidden;
-                    uc_DonViCachDung.Visibility = Visibility.Hidden;
-                    uc_QuanLyThuoc.Visibility = Visibility.Hidden;
-                    uc_QuanLyBenhNhan.Visibility = Visibility.Hidden;
-                    uc_DanhSachPhieuKhamBenh.Visibility = Visibility.Hidden;
+                    uc_BaoCaoDoanhThu.Visibility = Visibility.Collapsed;
+                    uc_BaoCaoSuDungThuoc.Visibility = Visibility.Collapsed;
+                    uc_DonViCachDung.Visibility = Visibility.Collapsed;
+                    uc_QuanLyThuoc.Visibility = Visibility.Collapsed;
+                    uc_QuanLyBenhNhan.Visibility = Visibility.Collapsed;
+                    uc_DanhSachPhieuKhamBenh.Visibility = Visibility.Collapsed;
                     uc_DanhSachKhamBenh.Visibility = Visibility.Visible;
                     grdSelectedButton.Margin = new Thickness(0, 0, 0, 0);
                     break;
                 case 1:
-                    uc_BaoCaoDoanhThu.Visibility = Visibility.Hidden;
-                    uc_BaoCaoSuDungThuoc.Visibility = Visibility.Hidden;
-                    uc_DonViCachDung.Visibility = Visibility.Hidden;
-                    uc_QuanLyThuoc.Visibility = Visibility.Hidden;
-                    uc_QuanLyBenhNhan.Visibility = Visibility.Hidden;
+                    uc_BaoCaoDoanhThu.Visibility = Visibility.Collapsed;
+                    uc_BaoCaoSuDungThuoc.Visibility = Visibility.Collapsed;
+                    uc_DonViCachDung.Visibility = Visibility.Collapsed;
+                    uc_QuanLyThuoc.Visibility = Visibility.Collapsed;
+                    uc_QuanLyBenhNhan.Visibility = Visibility.Collapsed;
                     uc_DanhSachPhieuKhamBenh.Visibility = Visibility.Visible;
-                    uc_DanhSachKhamBenh.Visibility = Visibility.Hidden;
+                    uc_DanhSachKhamBenh.Visibility = Visibility.Collapsed;
                     grdSelectedButton.Margin = new Thickness(0, 60, 0, 0);
                     break;
                 case 2:
-                    uc_BaoCaoDoanhThu.Visibility = Visibility.Hidden;
-                    uc_BaoCaoSuDungThuoc.Visibility = Visibility.Hidden;
-                    uc_DonViCachDung.Visibility = Visibility.Hidden;
-                    uc_QuanLyThuoc.Visibility = Visibility.Hidden;
+                    uc_BaoCaoDoanhThu.Visibility = Visibility.Collapsed;
+                    uc_BaoCaoSuDungThuoc.Visibility = Visibility.Collapsed;
+                    uc_DonViCachDung.Visibility = Visibility.Collapsed;
+                    uc_QuanLyThuoc.Visibility = Visibility.Collapsed;
                     uc_QuanLyBenhNhan.Visibility = Visibility.Visible;
-                    uc_DanhSachPhieuKhamBenh.Visibility = Visibility.Hidden;
-                    uc_DanhSachKhamBenh.Visibility = Visibility.Hidden;
+                    uc_DanhSachPhieuKhamBenh.Visibility = Visibility.Collapsed;
+                    uc_DanhSachKhamBenh.Visibility = Visibility.Collapsed;
                     grdSelectedButton.Margin = new Thickness(0, 120, 0, 0);
                     break;
                 case 3:
-                    uc_BaoCaoDoanhThu.Visibility = Visibility.Hidden;
-                    uc_BaoCaoSuDungThuoc.Visibility = Visibility.Hidden;
-                    uc_DonViCachDung.Visibility = Visibility.Hidden;
+                    uc_BaoCaoDoanhThu.Visibility = Visibility.Collapsed;
+                    uc_BaoCaoSuDungThuoc.Visibility = Visibility.Collapsed;
+                    uc_DonViCachDung.Visibility = Visibility.Collapsed;
                     uc_QuanLyThuoc.Visibility = Visibility.Visible;
-                    uc_QuanLyBenhNhan.Visibility = Visibility.Hidden;
-                    uc_DanhSachPhieuKhamBenh.Visibility = Visibility.Hidden;
-                    uc_DanhSachKhamBenh.Visibility = Visibility.Hidden;
+                    uc_QuanLyBenhNhan.Visibility = Visibility.Collapsed;
+                    uc_DanhSachPhieuKhamBenh.Visibility = Visibility.Collapsed;
+                    uc_DanhSachKhamBenh.Visibility = Visibility.Collapsed;
                     grdSelectedButton.Margin = new Thickness(0, 180, 0, 0);
                     break;
                 case 4:
-                    uc_BaoCaoDoanhThu.Visibility = Visibility.Hidden;
-                    uc_BaoCaoSuDungThuoc.Visibility = Visibility.Hidden;
+                    uc_BaoCaoDoanhThu.Visibility = Visibility.Collapsed;
+                    uc_BaoCaoSuDungThuoc.Visibility = Visibility.Collapsed;
                     uc_DonViCachDung.Visibility = Visibility.Visible;
-                    uc_QuanLyThuoc.Visibility = Visibility.Hidden;
-                    uc_QuanLyBenhNhan.Visibility = Visibility.Hidden;
-                    uc_DanhSachPhieuKhamBenh.Visibility = Visibility.Hidden;
-                    uc_DanhSachKhamBenh.Visibility = Visibility.Hidden;
+                    uc_QuanLyThuoc.Visibility = Visibility.Collapsed;
+                    uc_QuanLyBenhNhan.Visibility = Visibility.Collapsed;
+                    uc_DanhSachPhieuKhamBenh.Visibility = Visibility.Collapsed;
+                    uc_DanhSachKhamBenh.Visibility = Visibility.Collapsed;
                     grdSelectedButton.Margin = new Thickness(0, 240, 0, 0);
                     break;
                 case 5:
-                    uc_BaoCaoDoanhThu.Visibility = Visibility.Hidden;
+                    uc_BaoCaoDoanhThu.Visibility = Visibility.Collapsed;
                     uc_BaoCaoSuDungThuoc.Visibility = Visibility.Visible;
-                    uc_DonViCachDung.Visibility = Visibility.Hidden;
-                    uc_QuanLyThuoc.Visibility = Visibility.Hidden;
-                    uc_QuanLyBenhNhan.Visibility = Visibility.Hidden;
-                    uc_DanhSachPhieuKhamBenh.Visibility = Visibility.Hidden;
-                    uc_DanhSachKhamBenh.Visibility = Visibility.Hidden;
+                    uc_DonViCachDung.Visibility = Visibility.Collapsed;
+                    uc_QuanLyThuoc.Visibility = Visibility.Collapsed;
+                    uc_QuanLyBenhNhan.Visibility = Visibility.Collapsed;
+                    uc_DanhSachPhieuKhamBenh.Visibility = Visibility.Collapsed;
+                    uc_DanhSachKhamBenh.Visibility = Visibility.Collapsed;
                     grdSelectedButton.Margin = new Thickness(0, 300, 0, 0);
                     break;
                 case 6:
                     uc_BaoCaoDoanhThu.Visibility = Visibility.Visible;
-                    uc_BaoCaoSuDungThuoc.Visibility = Visibility.Hidden;
-                    uc_DonViCachDung.Visibility = Visibility.Hidden;
-                    uc_QuanLyThuoc.Visibility = Visibility.Hidden;
-                    uc_QuanLyBenhNhan.Visibility = Visibility.Hidden;
-                    uc_DanhSachPhieuKhamBenh.Visibility = Visibility.Hidden;
-                    uc_DanhSachKhamBenh.Visibility = Visibility.Hidden;
+                    uc_BaoCaoSuDungThuoc.Visibility = Visibility.Collapsed;
+                    uc_DonViCachDung.Visibility = Visibility.Collapsed;
+                    uc_QuanLyThuoc.Visibility = Visibility.Collapsed;
+                    uc_QuanLyBenhNhan.Visibility = Visibility.Collapsed;
+                    uc_DanhSachPhieuKhamBenh.Visibility = Visibility.Collapsed;
+                    uc_DanhSachKhamBenh.Visibility = Visibility.Collapsed;
                     grdSelectedButton.Margin = new Thickness(0, 360, 0, 0);
                     break;
                 default:

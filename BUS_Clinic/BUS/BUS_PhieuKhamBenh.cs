@@ -11,6 +11,7 @@ namespace BUS_Clinic.BUS
 {
     public class BUS_PhieuKhamBenh : BaseBUS
     {
+        private const string _idPrefix = "PKB";
         public BUS_PhieuKhamBenh()
         {
 
@@ -30,6 +31,7 @@ namespace BUS_Clinic.BUS
         }
         public void AddPhieuKhamBenh(DTO_PhieuKhamBenh phieuKhamBenh)
         {
+            phieuKhamBenh.Id = AutoGenerateID();
             DALManager.PhieuKhamBenhDAL.AddPhieuKhamBenh(phieuKhamBenh);
         }
         public void LoadNPBenh(DTO_PhieuKhamBenh phieuKhamBenh)
@@ -59,6 +61,16 @@ namespace BUS_Clinic.BUS
                          where pkb.NgayKham.ToString("d") == ngayKham
                          select pkb.MaBenhNhan;
             return new List<string>(result);
+        }
+
+        public int DemSoPKB()
+        {
+            int re = DALManager.PhieuKhamBenhDAL.GetListPKB().Count;
+            return re;
+        }
+        public string AutoGenerateID()
+        {
+            return _idPrefix + (DemSoPKB() + 1).ToString("D5");
         }
     }
 }

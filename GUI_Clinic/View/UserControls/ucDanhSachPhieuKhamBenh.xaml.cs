@@ -37,6 +37,7 @@ namespace GUI_Clinic.View.UserControls
 
         #region Property
         public ObservableCollection<DTO_PhieuKhamBenh> ListPKB { get; set; }
+        public ObservableCollection<DTO_PhieuKhamBenh> ListPKBsource { get; set; }
         public ObservableCollection<DTO_BenhNhan> ListBNWaiting { get; set; }
         public CollectionView ViewPKB  { get; set; }
         #endregion
@@ -80,8 +81,16 @@ namespace GUI_Clinic.View.UserControls
             }
         }
         private void dpkNgayKham_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {                
-            ViewPKB.Refresh();
+        {
+            if (ViewPKB == null)
+            {
+                return;
+            }
+            else
+            {
+                //ListPKB = new ObservableCollection<DTO_PhieuKhamBenh>(BUSManager.PhieuKhamBenhBUS.GetListPKB());
+                ViewPKB.Refresh();
+            }
         }
 
         private void lvDSPKB_MouseDoubleClick(object sender, MouseButtonEventArgs e)

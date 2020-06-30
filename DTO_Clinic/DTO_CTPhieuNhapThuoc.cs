@@ -23,7 +23,7 @@ namespace DTO_Clinic
 
         public DTO_CTPhieuNhapThuoc()
         {
-
+            IsDeleted = false;
         }
 
         public DTO_CTPhieuNhapThuoc(string _maPNT, string _maThuoc, int _soLuongNhap, double _donGiaNhap)
@@ -33,6 +33,7 @@ namespace DTO_Clinic
             SoLuongNhap = _soLuongNhap;
             DonGiaNhap = _donGiaNhap;
             ThanhTien = SoLuongNhap * DonGiaNhap;
+            IsDeleted = false;
         }
     }
 }

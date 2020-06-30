@@ -14,6 +14,10 @@ namespace DAL_Clinic.DAL
         public DAL_CTPhieuKhamBenh()
         {
         }
+        public void AddCTPhieuKhamBenh(DTO_CTPhieuKhamBenh cTPhieuKhamBenh)
+        {
+            SQLServerDBContext.Instant.CTPhieuKhamBenh.Local.Add(cTPhieuKhamBenh);
+        }
         public override void LoadLocalData()
         {
             SQLServerDBContext.Instant.CTPhieuKhamBenh.Load();
