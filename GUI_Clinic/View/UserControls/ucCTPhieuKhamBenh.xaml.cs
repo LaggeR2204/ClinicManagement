@@ -116,7 +116,7 @@ namespace GUI_Clinic.View.UserControls
             }, (p) =>
             {               
                 DTO_Thuoc newThuoc = cbxThuoc.SelectedItem as DTO_Thuoc;
-                if (BUSManager.ThuocBUS.CheckIfSoLuongThuocDu(newThuoc))
+                if (BUSManager.ThuocBUS.CheckIfSoLuongThuocDu(newThuoc, int.Parse(tbxSoLuong.Text)))
                 {
                     DTO_CTPhieuKhamBenh cTPhieuKhamBenh = new DTO_CTPhieuKhamBenh(phieuKhamBenh.Id, newThuoc.Id, (cbxCachDung.SelectedItem as DTO_CachDung).Id, int.Parse(tbxSoLuong.Text), newThuoc.DonGia);
                     BUSManager.ThuocBUS.LoadNPDonVi(newThuoc);

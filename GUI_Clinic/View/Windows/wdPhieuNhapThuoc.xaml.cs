@@ -1,6 +1,7 @@
 ﻿using BUS_Clinic.BUS;
 using DTO_Clinic;
 using GUI_Clinic.Command;
+using GUI_Clinic.CustomControl;
 using GUI_Clinic.View.UserControls;
 using System;
 using System.Collections.Generic;
@@ -116,7 +117,7 @@ namespace GUI_Clinic.View.Windows
                     }
                     else
                     {
-                        MessageBox.Show("Thuốc bạn chọn chưa có loại đơn vị này.");
+                        MsgBox.Show("Thuốc bạn chọn chưa có loại đơn vị này");
                     }
 
                     cbxTenThuoc.SelectedIndex = -1;
@@ -140,7 +141,7 @@ namespace GUI_Clinic.View.Windows
                     }
                     else
                     {
-                        MessageBox.Show("Thuốc với đơn vị bạn nhập đã tồn tại trong cơ sở dữ liệu");
+                        MsgBox.Show("Thuốc với đơn vị bạn nhập đã tồn tại trong cơ sở dữ liệu");
                     }
 
                     tbxTenThuocMoi.Clear();
@@ -181,7 +182,7 @@ namespace GUI_Clinic.View.Windows
             }
             else
             {
-                MessageBox.Show("Bạn chưa nhập thuốc.");
+                MsgBox.Show("Bạn chưa nhập thuốc");
             }
         }
 
