@@ -55,16 +55,20 @@ namespace GUI_Clinic.View.UserControls
         public void GetBenhNhan(DTO_BenhNhan bn)
         {
             EnablePKB();
-            phieuKhamBenh = new DTO_PhieuKhamBenh();
+            ResetPKB();
             btnThanhToan.Content = "Thanh toán";
 
             benhNhan = bn;
             tblTenBenhNhan.Text = bn.TenBenhNhan;
             tblNgayKham.Text = DateTime.Now.ToString();
+            lvThuoc.ItemsSource = ListCTPKB;
+
+            phieuKhamBenh = new DTO_PhieuKhamBenh(benhNhan.Id, DateTime.Now, null, null);
         }
 
         public void GetPKB(DTO_PhieuKhamBenh pkb)
         {
+            ResetPKB();
             btnThanhToan.Content = "Hóa đơn";
 
             BUSManager.PhieuKhamBenhBUS.LoadNPBenh(pkb);
@@ -109,9 +113,12 @@ namespace GUI_Clinic.View.UserControls
                     return false;
                 return true;
             }, (p) =>
-            {
+            {               
                 DTO_Thuoc newThuoc = cbxThuoc.SelectedItem as DTO_Thuoc;
                 DTO_CTPhieuKhamBenh cTPhieuKhamBenh = new DTO_CTPhieuKhamBenh(phieuKhamBenh.Id, newThuoc.Id, (cbxCachDung.SelectedItem as DTO_CachDung).Id, int.Parse(tbxSoLuong.Text), newThuoc.DonGia);
+                BUSManager.ThuocBUS.LoadNPDonVi(newThuoc);
+                cTPhieuKhamBenh.Thuoc = newThuoc;
+                cTPhieuKhamBenh.CachDung = cbxCachDung.SelectedItem as DTO_CachDung;
                 ListCTPKB.Add(cTPhieuKhamBenh);
             });
 
@@ -137,35 +144,55 @@ namespace GUI_Clinic.View.UserControls
                 return true;
             }, (p) =>
             {
-                //phieuKhamBenh = new DTO_PhieuKhamBenh(benhNhan.Id, DateTime.Now, 1 /*chuyển chẩn đoán thành chọn bệnh*/ , tbxTrieuChung.Text);
-                phieuKhamBenh.DSCTPhieuKhamBenh = ListCTPKB;
-                BUSManager.PhieuKhamBenhBUS.AddPhieuKhamBenh(phieuKhamBenh);
-                ListPKB.Add(phieuKhamBenh);
+                if (IsSave == false)
+                {
+                    DTO_PhieuKhamBenh newPhieuKhamBenh = new DTO_PhieuKhamBenh(benhNhan.Id, DateTime.Now, (cbxChanDoan.SelectedItem as DTO_Benh).Id, tbxTrieuChung.Text);
+                    BUSManager.PhieuKhamBenhBUS.AddPhieuKhamBenh(newPhieuKhamBenh);
+                    foreach (DTO_CTPhieuKhamBenh item in ListCTPKB)
+                    {
+                        item.MaPKB = newPhieuKhamBenh.Id;
+                        BUSManager.CTPhieuKhamBenhBUS.AddCTPhieuKhamBenh(item);
+                    }
+                    BUSManager.PhieuKhamBenhBUS.SaveChange();
 
-                wdHoaDon hoaDon = new wdHoaDon(phieuKhamBenh);
-                hoaDon.ShowDialog();
+                    ListPKB.Add(BUSManager.PhieuKhamBenhBUS.GetPhieuKhamBenh(newPhieuKhamBenh.Id));
 
+                    //wdHoaDon hoaDon = new wdHoaDon(BUSManager.PhieuKhamBenhBUS.GetPhieuKhamBenh(newPhieuKhamBenh.Id));
+                    //hoaDon.ShowDialog();
+                }
+                else
+                {
+                    //wdHoaDon hoaDon = new wdHoaDon(BUSManager.PhieuKhamBenhBUS.GetPhieuKhamBenh(phieuKhamBenh.Id));
+                    //hoaDon.ShowDialog();
+                }
                 IsSave = true;
             });
         }
 
         private void DisablePKB()
         {
-            cbxChanDoan.IsEnabled = false;
-            tbxTrieuChung.IsEnabled = false;
+            cbxChanDoan.IsHitTestVisible = false;
+            //tbxTrieuChung.IsEnabled = false;
+            tbxTrieuChung.IsHitTestVisible = false;
             grdNhapThuoc.Visibility = Visibility.Collapsed;
         }
 
         private void EnablePKB()
         {
-            cbxChanDoan.IsEnabled = true;
-            tbxTrieuChung.IsEnabled = true;
+            cbxChanDoan.IsHitTestVisible = true;
+            tbxTrieuChung.IsHitTestVisible = true;
             grdNhapThuoc.Visibility = Visibility.Visible;
+        }
 
+        private void ResetPKB()
+        {
             tblTenBenhNhan.Text = null;
             tblNgayKham.Text = null;
             tbxTrieuChung.Text = null;
             cbxChanDoan.Text = null;
+
+            ListCTPKB.Clear();
+            lvThuoc.ItemsSource = null;
         }
     }
 }
