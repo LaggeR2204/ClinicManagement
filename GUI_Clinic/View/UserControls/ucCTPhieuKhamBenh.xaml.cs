@@ -169,6 +169,18 @@ namespace GUI_Clinic.View.UserControls
             });
         }
 
+        private void RemoveCategory(object sender, RoutedEventArgs e)
+        {
+            Button b = sender as Button;
+            DTO_CTPhieuKhamBenh item = b.CommandParameter as DTO_CTPhieuKhamBenh;
+            ListCTPKB.Remove(item);
+        }
+        private void ResetThuocInput()
+        {
+            cbxThuoc.SelectedIndex = -1;
+            cbxCachDung.SelectedIndex = -1;
+            tbxSoLuong.Clear();
+        }
         private void DisablePKB()
         {
             cbxChanDoan.IsHitTestVisible = false;
@@ -188,8 +200,8 @@ namespace GUI_Clinic.View.UserControls
         {
             tblTenBenhNhan.Text = null;
             tblNgayKham.Text = null;
-            tbxTrieuChung.Text = null;
-            cbxChanDoan.Text = null;
+            tbxTrieuChung.Clear();
+            cbxChanDoan.SelectedIndex = -1;
 
             ListCTPKB.Clear();
             lvThuoc.ItemsSource = null;
