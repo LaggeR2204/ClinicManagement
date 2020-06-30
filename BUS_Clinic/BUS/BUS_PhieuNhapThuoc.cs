@@ -11,6 +11,7 @@ namespace BUS_Clinic.BUS
 {
     public class BUS_PhieuNhapThuoc : BaseBUS
     {
+        private const string _idPrefix = "PNT";
         public BUS_PhieuNhapThuoc()
         {
 
@@ -21,6 +22,7 @@ namespace BUS_Clinic.BUS
         }
         public void AddPhieuNhapThuoc(DTO_PhieuNhapThuoc phieuNhapThuoc)
         {
+            phieuNhapThuoc.Id = AutoGenerateID();
             DALManager.PhieuNhapThuocDAL.AddPhieuNhapThuoc(phieuNhapThuoc);
         }
         //public void TransferTongTien(DTO_PhieuNhapThuoc phieuNhapThuoc)
@@ -47,6 +49,15 @@ namespace BUS_Clinic.BUS
         public ObservableCollection<DTO_PhieuNhapThuoc> GetListPNT()
         {
             return DALManager.PhieuNhapThuocDAL.GetListPNT();
+        }
+        public int GetPNTAmount()
+        {
+            int amount = DALManager.PhieuNhapThuocDAL.GetListPNT().Count;
+            return amount;
+        }
+        public string AutoGenerateID()
+        {
+            return _idPrefix + (GetPNTAmount() + 1).ToString("D5");
         }
     }
 }
