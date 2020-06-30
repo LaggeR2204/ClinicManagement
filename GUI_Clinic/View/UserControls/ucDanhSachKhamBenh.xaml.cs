@@ -1,6 +1,7 @@
 ﻿using BUS_Clinic.BUS;
 using DTO_Clinic;
 using GUI_Clinic.Command;
+using GUI_Clinic.CustomControl;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -163,7 +164,7 @@ namespace GUI_Clinic.View.UserControls
         {
             if (CurSignedList.Contains(bn))
             {
-                MessageBox.Show("Benh nhan da duoc dang ky");
+                MsgBox.Show("Bệnh nhân này đã được đăng ký");
                 return;
             }               
             CurSignedList.Add(bn);
