@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GUI_Clinic.View.UserControls"
              mc:Ignorable="d" 
+             xmlns:cvt="clr-namespace:GUI_Clinic.Converter"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              TextElement.FontWeight="Regular"
@@ -13,6 +14,9 @@
              TextOptions.TextRenderingMode="Auto"
              Background="{DynamicResource MaterialDesignPaper}"
              FontFamily="{DynamicResource MaterialDesignFont}">
+    <UserControl.Resources>
+        <cvt:IndexConverter x:Key="IndexConverter"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -83,7 +87,9 @@
                       ScrollViewer.VerticalScrollBarVisibility="Auto">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="STT" DisplayMemberBinding="{Binding DisplayName}"></GridViewColumn>
+                        <GridViewColumn Header="STT" DisplayMemberBinding="{Binding RelativeSource=
+                                                                                   {RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}, 
+                                                                                   Converter={StaticResource IndexConverter}}"></GridViewColumn>
                         <GridViewColumn Header="Thuốc" DisplayMemberBinding="{Binding Thuoc.TenThuoc}"></GridViewColumn>
                         <GridViewColumn Header="Đơn vị tính" DisplayMemberBinding="{Binding Thuoc.DonVi.TenDonVi}"></GridViewColumn>
                         <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding SoLuongDung}"></GridViewColumn>

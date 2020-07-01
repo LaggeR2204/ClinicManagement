@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GUI_Clinic.View.UserControls"
              mc:Ignorable="d" 
+             xmlns:cvt="clr-namespace:GUI_Clinic.Converter"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              TextElement.FontWeight="Regular"
@@ -14,6 +15,9 @@
              Background="{DynamicResource MaterialDesignPaper}"
              FontFamily="{DynamicResource MaterialDesignFont}"
              Name="uc_Medicine">
+    <UserControl.Resources>
+        <cvt:IndexConverter x:Key="IndexConverter"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -106,6 +110,9 @@
                                       ScrollViewer.VerticalScrollBarVisibility="Auto">
                                 <ListView.View>
                                     <GridView>
+                                        <GridViewColumn Header="STT" DisplayMemberBinding="{Binding RelativeSource=
+                                                                                   {RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}, 
+                                                                                   Converter={StaticResource IndexConverter}}"></GridViewColumn>
                                         <GridViewColumn Header="Mã thuốc" 
                                                         DisplayMemberBinding="{Binding Id}"/>
                                         <GridViewColumn Header="Tên thuốc" 
@@ -184,6 +191,9 @@
                                   
                             <ListView.View>
                                 <GridView>
+                                    <GridViewColumn Header="STT" DisplayMemberBinding="{Binding RelativeSource=
+                                                                                   {RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}, 
+                                                                                   Converter={StaticResource IndexConverter}}"></GridViewColumn>
                                     <GridViewColumn Header="Mã PNT" 
                                                     DisplayMemberBinding="{Binding Id}"/>
                                     <GridViewColumn Header="Ngày nhập" 
@@ -206,6 +216,9 @@
                                   ScrollViewer.VerticalScrollBarVisibility="Auto">
                             <ListView.View>
                                 <GridView>
+                                    <GridViewColumn Header="STT" DisplayMemberBinding="{Binding RelativeSource=
+                                                                                   {RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}, 
+                                                                                   Converter={StaticResource IndexConverter}}"></GridViewColumn>
                                     <GridViewColumn 
                                         Header="Mã PNT" 
                                         DisplayMemberBinding="{Binding MaPNT}"/>

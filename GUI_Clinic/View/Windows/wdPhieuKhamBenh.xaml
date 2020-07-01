@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:GUI_Clinic.View.Windows"
         xmlns:uc="clr-namespace:GUI_Clinic.View.UserControls"
         mc:Ignorable="d"
+        xmlns:cvt="clr-namespace:GUI_Clinic.Converter"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -23,6 +24,9 @@
         Width="1080"
         BorderBrush="#0078D7"
         BorderThickness="2">
+    <Window.Resources>
+        <cvt:IndexConverter x:Key="IndexConverter"/>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -139,7 +143,9 @@
                           Margin="5">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="STT" DisplayMemberBinding="{Binding SoThuTu}"></GridViewColumn>
+                            <GridViewColumn Header="STT" DisplayMemberBinding="{Binding RelativeSource=
+                                                                                   {RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}, 
+                                                                                   Converter={StaticResource IndexConverter}}"></GridViewColumn>
                             <GridViewColumn Header="Thuốc" DisplayMemberBinding="{Binding Thuoc.TenThuoc}"></GridViewColumn>
                             <GridViewColumn Header="Đơn vị" DisplayMemberBinding="{Binding Thuoc.DonVi.TenDonVi}"></GridViewColumn>
                             <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding SoLuong}"></GridViewColumn>
