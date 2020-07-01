@@ -15,7 +15,8 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         Title="Clinic Management" Height="700" Width="1080" WindowStartupLocation="CenterScreen" MinWidth="1080" MinHeight="600" WindowStyle="None" ResizeMode="NoResize" WindowState="Maximized"
-        Closing="Window_Closing">
+        Closing="Window_Closing" 
+        Icon="/GUI_Clinic;component/Icons/Clinic.ico">
     <Window.Resources>
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="grdMenu">
