@@ -38,7 +38,6 @@ namespace GUI_Clinic.View.UserControls
         #region Property
         private DTO_BenhNhan benhNhan = new DTO_BenhNhan();
         private DTO_PhieuKhamBenh phieuKhamBenh = new DTO_PhieuKhamBenh();
-        public ObservableCollection<DTO_PhieuKhamBenh> ListPKB { get; set; }
         public ObservableCollection<DTO_CTPhieuKhamBenh> ListCTPKB { get; set; }
         public ObservableCollection<DTO_Thuoc> ListThuoc { get; set; }
         public ObservableCollection<DTO_CachDung> ListCachDung { get; set; }
@@ -46,6 +45,7 @@ namespace GUI_Clinic.View.UserControls
 
         private bool IsSave = false;
         #endregion
+
         #region Command
         public ICommand LuuPhieuKhamBenhCommand { get; set; }
         public ICommand ThemThuocCommand { get; set; }
@@ -53,6 +53,9 @@ namespace GUI_Clinic.View.UserControls
         public ICommand ThanhToanPhieuKhamCommand { get; set; }
         #endregion
 
+        #region Event
+        public event EventHandler PKBAdded;
+        #endregion
         public void GetBenhNhan(DTO_BenhNhan bn)
         {
             EnablePKB();
@@ -100,11 +103,9 @@ namespace GUI_Clinic.View.UserControls
             ListThuoc = BUSManager.ThuocBUS.GetListThuoc();
             ListCachDung = BUSManager.CachDungBUS.GetListCD();
             ListBenh = BUSManager.BenhBUS.GetListBenh();
-            ListPKB = BUSManager.PhieuKhamBenhBUS.GetListPKB();
             ListCTPKB = new ObservableCollection<DTO_CTPhieuKhamBenh>();
             lvThuoc.ItemsSource = ListCTPKB;
         }
-
         public void InitCommmand()
         {
             ThemThuocCommand = new RelayCommand<Window>((p) =>
@@ -116,7 +117,7 @@ namespace GUI_Clinic.View.UserControls
                     return false;
                 return true;
             }, (p) =>
-            {               
+            {
                 DTO_Thuoc newThuoc = cbxThuoc.SelectedItem as DTO_Thuoc;
                 if (BUSManager.ThuocBUS.CheckIfSoLuongThuocDu(newThuoc, int.Parse(tbxSoLuong.Text)))
                 {
@@ -185,8 +186,8 @@ namespace GUI_Clinic.View.UserControls
                         BUSManager.CTPhieuKhamBenhBUS.AddCTPhieuKhamBenh(item);
                     }
                     BUSManager.PhieuKhamBenhBUS.SaveChange();
-
-                    ListPKB.Add(BUSManager.PhieuKhamBenhBUS.GetPhieuKhamBenh(newPhieuKhamBenh.Id));
+                    if (PKBAdded != null)
+                        PKBAdded(newPhieuKhamBenh, new EventArgs());
 
                     //wdHoaDon hoaDon = new wdHoaDon(BUSManager.PhieuKhamBenhBUS.GetPhieuKhamBenh(newPhieuKhamBenh.Id));
                     //hoaDon.ShowDialog();

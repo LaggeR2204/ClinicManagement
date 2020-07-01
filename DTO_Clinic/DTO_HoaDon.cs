@@ -10,13 +10,11 @@ namespace DTO_Clinic
 {
     public class DTO_HoaDon : BaseModel
     {
-        public virtual DTO_CTPhieuKhamBenh CTPhieuKhamBenh { get; set; }
         public virtual DTO_PhieuKhamBenh PhieuKhamBenh { get; set; }
         public string Id { get; set; }
         public double TienKham { get => _tienKham; set { _tienKham = value; OnPropertyChanged(); } }
         public double TienThuoc { get => _tienThuoc; set { _tienThuoc = value; OnPropertyChanged(); } }
         public double ThanhTien { get => _thanhTien; set { _thanhTien = value; OnPropertyChanged(); } }
-
         public bool IsDeleted { get => _isDeleted; set { _isDeleted = value; OnPropertyChanged(); } }
 
         private double _tienKham;
@@ -44,7 +42,6 @@ namespace DTO_Clinic
             TienThuoc = TinhTienThuoc(phieuKhamBenh);
             TienKham = _tienKham;
             ThanhTien = TienKham + TienThuoc;
-
             IsDeleted = false;
         }
     }

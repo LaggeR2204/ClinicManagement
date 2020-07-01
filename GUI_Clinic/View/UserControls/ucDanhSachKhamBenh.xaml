@@ -109,16 +109,35 @@
                                                                 DisplayMemberBinding="{Binding Id}"></GridViewColumn>
                                                 <GridViewColumn Header="Họ và Tên"
                                                                 DisplayMemberBinding="{Binding TenBenhNhan}"></GridViewColumn>
-                                                <GridViewColumn Header="Giới tính"
-                                                                DisplayMemberBinding="{Binding GioiTinh}"></GridViewColumn>
+                                                <GridViewColumn Header="Giới tính">
+                                                    <GridViewColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock>
+                                                                <TextBlock.Style>
+                                                                    <Style TargetType="TextBlock">
+                                                                        <Setter Property="Text"
+                                                                                Value="Nam"></Setter>
+                                                                        <Style.Triggers>
+                                                                            <DataTrigger Binding="{Binding GioiTinh}"
+                                                                                         Value="True">
+                                                                                <Setter Property="Text"
+                                                                                        Value="Nữ" />
+                                                                            </DataTrigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+                                                                </TextBlock.Style>
+                                                            </TextBlock>
+                                                        </DataTemplate>
+                                                    </GridViewColumn.CellTemplate>
+                                                </GridViewColumn>
                                                 <GridViewColumn Header="Năm sinh"
                                                                 DisplayMemberBinding="{Binding NgaySinh}"></GridViewColumn>
                                                 <GridViewColumn Header="Địa chỉ"
                                                                 DisplayMemberBinding="{Binding DiaChi}"></GridViewColumn>
                                                 <GridViewColumn Header="Số điện thoại"
                                                                 DisplayMemberBinding="{Binding SoDienThoai}"></GridViewColumn>
-                                            </GridView>
-                                        </ListView.View>
+                                            </GridView>                                          
+                                        </ListView.View>                                        
                                     </ListView>
                                 </Grid>
                             </GroupBox>
@@ -258,9 +277,7 @@
                                     <Grid Grid.Row="2">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="110" />
-                                            <ColumnDefinition />
-                                            <!--<ColumnDefinition Width="auto" />
-                                            <ColumnDefinition />-->
+                                            <ColumnDefinition />                                            
                                         </Grid.ColumnDefinitions>
                                         <Grid>
                                             <TextBlock Grid.Column="0"
@@ -362,7 +379,8 @@
                                                      Margin="0 5 20 5"
                                                      FontSize="16"
                                                      VerticalAlignment="Center"
-                                                     KeyDown="tbxSDT_KeyDown">
+                                                     DataObject.Pasting="tbxSDT_Pasting"
+                                                     PreviewTextInput="tbxSDT_PreviewTextInput">
                                             </TextBox>
                                         </Grid>
                                     </Grid>
