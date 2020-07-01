@@ -149,7 +149,6 @@ namespace GUI_Clinic.View.Windows
                     tbxDonGia.Text = "0";
                     tbxSoLuong.Text = "0";
                     tbxCongDungThuocMoi.Clear();
-                    ckbThuocMoi.IsChecked = false;
                 }
             });
         }

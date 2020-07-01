@@ -61,6 +61,7 @@ namespace GUI_Clinic.View.UserControls
 
             benhNhan = bn;
             tblTenBenhNhan.Text = bn.TenBenhNhan;
+            tblMaBenhNhan.Text = bn.Id;
             tblNgayKham.Text = DateTime.Now.ToString();
             lvThuoc.ItemsSource = ListCTPKB;
 
@@ -83,6 +84,7 @@ namespace GUI_Clinic.View.UserControls
             }
             benhNhan = pkb.BenhNhan;
             tblTenBenhNhan.Text = benhNhan.TenBenhNhan;
+            tblMaBenhNhan.Text = benhNhan.Id;
             tblNgayKham.Text = pkb.NgayKham.ToString();
             lvThuoc.ItemsSource = pkb.DSCTPhieuKhamBenh;
             tbxTrieuChung.Text = pkb.TrieuChung;
@@ -122,7 +124,24 @@ namespace GUI_Clinic.View.UserControls
                     BUSManager.ThuocBUS.LoadNPDonVi(newThuoc);
                     cTPhieuKhamBenh.Thuoc = newThuoc;
                     cTPhieuKhamBenh.CachDung = cbxCachDung.SelectedItem as DTO_CachDung;
-                    ListCTPKB.Add(cTPhieuKhamBenh);
+
+                    bool flag = true;
+                    foreach (DTO_CTPhieuKhamBenh item in ListCTPKB)
+                    {
+                        if (item.Thuoc.Id == cTPhieuKhamBenh.Thuoc.Id)
+                        {
+                            flag = false;
+                            break;
+                        }
+                    }
+                    if (flag)
+                    {
+                        ListCTPKB.Add(cTPhieuKhamBenh);
+                    }
+                    else
+                    {
+                        MsgBox.Show("Thuốc đã có trong danh sách", MessageType.Error, MessageButtons.Ok);
+                    }
                     ResetThuocInput();
                 }
                 else
@@ -161,6 +180,8 @@ namespace GUI_Clinic.View.UserControls
                     {
                         item.MaPKB = newPhieuKhamBenh.Id;
                         BUSManager.ThuocBUS.SuDungThuoc(item.MaThuoc, item.SoLuong);
+                        DTO_BCSudungThuoc bCSudungThuoc = new DTO_BCSudungThuoc(item.MaThuoc, item.SoLuong, DateTime.Now);
+                        BUSManager.BCSuDungThuocBUS.AddBCSuDungThuoc(bCSudungThuoc);
                         BUSManager.CTPhieuKhamBenhBUS.AddCTPhieuKhamBenh(item);
                     }
                     BUSManager.PhieuKhamBenhBUS.SaveChange();
@@ -169,6 +190,9 @@ namespace GUI_Clinic.View.UserControls
 
                     //wdHoaDon hoaDon = new wdHoaDon(BUSManager.PhieuKhamBenhBUS.GetPhieuKhamBenh(newPhieuKhamBenh.Id));
                     //hoaDon.ShowDialog();
+
+
+                    DisablePKB();
                 }
                 else
                 {
@@ -209,6 +233,7 @@ namespace GUI_Clinic.View.UserControls
         private void ResetPKB()
         {
             tblTenBenhNhan.Text = null;
+            tblMaBenhNhan.Text = null;
             tblNgayKham.Text = null;
             tbxTrieuChung.Clear();
             cbxChanDoan.SelectedIndex = -1;
