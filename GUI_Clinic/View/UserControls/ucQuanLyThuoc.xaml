@@ -117,7 +117,7 @@
                                         <GridViewColumn Header="Số lượng" 
                                                         DisplayMemberBinding="{Binding SoLuong}"/>
                                         <GridViewColumn Header="Đơn Giá" 
-                                                        DisplayMemberBinding="{Binding DonGia}"/>
+                                                        DisplayMemberBinding="{Binding DonGia, StringFormat={}{0:N0} VNĐ}"/>
                                     </GridView>
                                 </ListView.View>
                             </ListView>
@@ -189,7 +189,7 @@
                                     <GridViewColumn Header="Ngày nhập" 
                                                     DisplayMemberBinding="{Binding NgayNhap, StringFormat='dd/MM/yyyy'}"/>
                                     <GridViewColumn Header="Tổng tiền" 
-                                                    DisplayMemberBinding="{Binding TongTien}"/>
+                                                    DisplayMemberBinding="{Binding TongTien, StringFormat={}{0:N0} VNĐ}"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>
@@ -220,7 +220,7 @@
                                         DisplayMemberBinding="{Binding DonGiaNhap}"/>
                                     <GridViewColumn 
                                         Header="Thành tiền"
-                                        DisplayMemberBinding="{Binding ThanhTien}"/>
+                                        DisplayMemberBinding="{Binding ThanhTien, StringFormat={}{0:N0} VNĐ}"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>

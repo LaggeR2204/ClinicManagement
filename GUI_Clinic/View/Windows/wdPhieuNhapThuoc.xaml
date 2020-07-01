@@ -115,6 +115,8 @@
                                  Margin="5 5 15 5" 
                                  FontSize="16"
                                  materialDesign:HintAssist.Hint="Số lượng" 
+                                 DataObject.Pasting="tbxDonGia_Pasting"
+                                 PreviewTextInput="tbxDonGia_PreviewTextInput"
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                         <TextBox x:Name="tbxDonGia" 
                                  Width="150" Height="45"
@@ -122,6 +124,8 @@
                                  Margin="5 5 15 5" 
                                  materialDesign:HintAssist.Hint="Đơn giá" 
                                  FontSize="16"
+                                 DataObject.Pasting="tbxDonGia_Pasting"
+                                 PreviewTextInput="tbxDonGia_PreviewTextInput"
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                         <TextBox x:Name="tbxCongDungThuocMoi" 
                                  Width="150" Height="45"
