@@ -144,7 +144,7 @@
                                                      Height="25"
                                                      Width="25"
                                                      Margin="5 10" />
-                            <TextBlock Text="Đơn vị và Cách dùng"
+                            <TextBlock Text="Các thiết lập khác"
                                        VerticalAlignment="Center"
                                        Margin="7 10"
                                        FontFamily="Arial"
