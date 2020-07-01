@@ -219,5 +219,19 @@ namespace GUI_Clinic.View.UserControls
                 tbxTenCachDung.Text = TenCachDungInput;
             }
         }
+
+        private void lvBenh_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lvBenh.SelectedIndex != -1)
+            {
+                TenBenhInput = ListBenh.ElementAt<DTO_Benh>(lvBenh.SelectedIndex).TenBenh;
+                tbxTenBenh.Text = TenBenhInput;
+            }
+            else
+            {
+                TenBenhInput = null;
+                tbxTenBenh.Text = TenBenhInput;
+            }
+        }
     }
 }
