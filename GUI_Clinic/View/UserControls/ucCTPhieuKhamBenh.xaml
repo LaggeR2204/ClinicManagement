@@ -145,10 +145,11 @@
                     </Grid>
                     <Grid Grid.Column="1">
                         <TextBox x:Name="tbxSoLuong"
-                                 Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}"
                                  Margin="10"
                                  materialDesign:HintAssist.Hint="Số lượng"
-                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                                 DataObject.Pasting="tbxSoLuong_Pasting"
+                                 PreviewTextInput="tbxSoLuong_PreviewTextInput"/>
                     </Grid>
                     <Grid Grid.Column="2">
                         <ComboBox x:Name="cbxCachDung"
