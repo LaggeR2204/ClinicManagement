@@ -114,7 +114,7 @@
                                                                                    Converter={StaticResource IndexConverter}}"></GridViewColumn>
                                             <GridViewColumn Header="Mã bệnh nhân"
                                                                 DisplayMemberBinding="{Binding Id}"></GridViewColumn>
-                                            <GridViewColumn Header="Họ và Tên"
+                                            <GridViewColumn Header="Họ và tên"
                                                                 DisplayMemberBinding="{Binding TenBenhNhan}"></GridViewColumn>
                                             <GridViewColumn Header="Giới tính">
                                                 <GridViewColumn.CellTemplate>
