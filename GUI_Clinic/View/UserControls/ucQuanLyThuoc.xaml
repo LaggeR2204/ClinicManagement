@@ -143,30 +143,27 @@
 
                     <Grid Grid.Row="0">
                         <DatePicker 
-                                 x:Name="dpTimPNT" 
+                                 x:Name="dpkTimPNT" 
                                  Margin="10 10 0 10" 
                                  materialDesign:HintAssist.Hint="Tìm phiếu nhập thuốc" 
                                  HorizontalAlignment="Left"
                                  VerticalAlignment="Center" 
                                  Width="150"
                                  SelectedDateChanged="dpTimPNT_SelectedDateChanged"/>
-                        <materialDesign:Chip Command="{Binding AddMedicineCommand}"
-                                     x:Name="btnNhapThuoc"
-                                     Grid.Row="1"
-                                     Content="Nhập thuốc"
-                                     ToolTip="Lập phiếu nhập thuốc"
-                                     Foreground="White"
-                                     HorizontalAlignment="Right"
-                                     VerticalAlignment="Center"
-                                     IconBackground="{DynamicResource PrimaryHueDarkBrush}"
-                                     IconForeground="{DynamicResource PrimaryHueDarkForegroundBrush}"
-                                     Background="Gray"
-                                     Margin="0 5 10 5"
-                                     Click="btnNhapThuoc_Click">
-                            <materialDesign:Chip.Icon>
-                                <materialDesign:PackIcon Kind="Plus"/>
-                            </materialDesign:Chip.Icon>
-                        </materialDesign:Chip>
+                        <Button Command="{Binding AddMedicineCommand}"
+                                x:Name="btnNhapThuoc"
+                                Grid.Row="1"
+                                Content="Nhập thuốc"
+                                ToolTip="Lập phiếu nhập thuốc"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                BorderBrush="#0078D7"
+                                Background="#0078D7"
+                                Foreground="White"
+                                Margin="0 5 10 5"
+                                FontWeight="Bold"
+                                Click="btnNhapThuoc_Click"/>
+
                         <!--<Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
                                 ToolTip="Tìm"
                                 Background="#0078D7"
