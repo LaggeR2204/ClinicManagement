@@ -1,6 +1,8 @@
-﻿using DTO_Clinic;
+﻿using BUS_Clinic.BUS;
+using DTO_Clinic;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,10 +22,15 @@ namespace GUI_Clinic.View.Windows
     /// </summary>
     public partial class wdHoaDon : Window
     {
-        public wdHoaDon(DTO_PhieuKhamBenh phieuKhamBenh)
+        public wdHoaDon(DTO_HoaDon hoaDon)
         {
             InitializeComponent();
-            hoaDon = new DTO_HoaDon(phieuKhamBenh, 100000);
+            tblMaHoaDon.Text = hoaDon.Id;
+            tblNgayKham.Text = hoaDon.PhieuKhamBenh.NgayKham.ToString();
+            tblTenBenhNhan.Text = hoaDon.PhieuKhamBenh.BenhNhan.TenBenhNhan;
+            tblTienKham.Text = hoaDon.TienKham.ToString();
+            tblTienThuoc.Text = hoaDon.TienThuoc.ToString();
+            tblTongTien.Text = hoaDon.ThanhTien.ToString();
         }
         #region Property
         public DTO_HoaDon hoaDon;
