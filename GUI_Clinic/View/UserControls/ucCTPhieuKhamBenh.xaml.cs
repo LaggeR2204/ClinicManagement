@@ -61,6 +61,7 @@ namespace GUI_Clinic.View.UserControls
         {
             EnablePKB();
             ResetPKB();
+            IsSave = false;
             btnThanhToan.Content = "Thanh toán";
 
             benhNhan = bn;
@@ -75,6 +76,7 @@ namespace GUI_Clinic.View.UserControls
         public void GetPKB(DTO_PhieuKhamBenh pkb)
         {
             ResetPKB();
+            IsSave = true;
             btnThanhToan.Content = "Hóa đơn";
 
             BUSManager.PhieuKhamBenhBUS.LoadNPBenh(pkb);
@@ -190,20 +192,18 @@ namespace GUI_Clinic.View.UserControls
                     if (PKBAdded != null)
                         PKBAdded(newPhieuKhamBenh, new EventArgs());
 
-                    ListPKB.Add(BUSManager.PhieuKhamBenhBUS.GetPhieuKhamBenh(newPhieuKhamBenh.Id));
-
                     DTO_HoaDon newHoaDon = new DTO_HoaDon(newPhieuKhamBenh);
                     newHoaDon = BUSManager.HoaDonBUS.XuatHoaDon(newHoaDon, newPhieuKhamBenh);
-                    BUSManager.HoaDonBUS.AddHoaDon(newHoaDon);
+                    BUSManager.HoaDonBUS.AddHoaDon(newHoaDon, newPhieuKhamBenh);
                     wdHoaDon hoaDon = new wdHoaDon(newHoaDon);
                     hoaDon.ShowDialog();
+                    IsSave = true;
                 }
                 else
                 {
                     wdHoaDon hoaDon = new wdHoaDon(BUSManager.HoaDonBUS.GetHoaDon(phieuKhamBenh));
                     hoaDon.ShowDialog();
                 }
-                IsSave = true;
             });
         }
 

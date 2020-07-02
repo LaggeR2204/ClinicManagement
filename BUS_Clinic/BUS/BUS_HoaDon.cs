@@ -21,8 +21,9 @@ namespace BUS_Clinic.BUS
             DALManager.HoaDonDAL.LoadNPPhieuKhamBenh(hoaDon);
         }
 
-        public void AddHoaDon(DTO_HoaDon hd)
+        public void AddHoaDon(DTO_HoaDon hd, DTO_PhieuKhamBenh pkb)
         {
+            hd.Id = pkb.Id;
             DALManager.HoaDonDAL.AddHoaDon(hd);
         }
         public double TinhTienThuoc(DTO_PhieuKhamBenh phieuKhamBenh)
