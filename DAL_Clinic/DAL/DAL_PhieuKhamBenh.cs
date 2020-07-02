@@ -24,6 +24,7 @@ namespace DAL_Clinic.DAL
         }
         public void LoadNPBenh (DTO_PhieuKhamBenh phieuKhamBenh)
         {
+            
             var entry = SQLServerDBContext.Instant.Entry(phieuKhamBenh);
             entry.Reference(c => c.Benh).Load();
         }

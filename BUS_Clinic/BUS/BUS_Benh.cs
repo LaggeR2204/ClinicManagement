@@ -12,37 +12,17 @@ namespace BUS_Clinic.BUS
     public class BUS_Benh : BaseBUS
     {
         private const string _idPrefix = "BE";
-        public ObservableCollection<DTO_Benh> ListBenh { get; set; }
         public BUS_Benh()
         {
 
         }
-        public DTO_Benh GetBenh(string maBenh)
-        {
-            ObservableCollection<DTO_Benh> ListBenh = GetListBenh();
-            foreach (DTO_Benh benh in ListBenh)
-            {
-                if (benh.Id == maBenh)
-                {
-                    return benh;
-                }
-            }
-
-            return null;
-        }
         public void AddBenh(DTO_Benh benh)
         {
-            ListBenh = GetListBenh();
-            bool flag = true;
-            foreach (DTO_Benh item in ListBenh)
-            {
-                if (item.TenBenh == benh.TenBenh)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            if (flag)
+            ObservableCollection<DTO_Benh> benhs = DALManager.BenhDAL.GetListBenh();
+
+            bool flag = benhs.Any(b => b.TenBenh.Equals(benh.TenBenh, StringComparison.OrdinalIgnoreCase));
+
+            if (!flag)
             {
                 benh.Id = AutoGenerateID();
                 DALManager.BenhDAL.AddBenh(benh);
@@ -50,28 +30,21 @@ namespace BUS_Clinic.BUS
         }
         public void UpdateBenh(DTO_Benh benh, string tenBenhMoi)
         {
-            ListBenh = GetListBenh();
-            bool flag = true;
-            foreach (DTO_Benh item in ListBenh)
-            {
-                if (item.TenBenh == tenBenhMoi)
-                {
-                    flag = false;
-                    break;
-                }
-            }
+            ObservableCollection<DTO_Benh> benhs = DALManager.BenhDAL.GetListBenh();
 
-            if (benh.TenBenh != tenBenhMoi && flag == true)
+            bool flag = benhs.Any(b => b.TenBenh.Equals(tenBenhMoi, StringComparison.OrdinalIgnoreCase));
+
+            if (benh.TenBenh != tenBenhMoi && !flag)
             {
                 benh.TenBenh = tenBenhMoi;
             }
         }
         public void Delbenh(DTO_Benh benh)
         {
-            ListBenh = GetListBenh();
+            ObservableCollection<DTO_Benh> benhs = DALManager.BenhDAL.GetListBenh();
             if (benh != null)
             {
-                if (ListBenh.Contains(benh))
+                if (benhs.Any(b=>b.TenBenh.Equals(benh.TenBenh, StringComparison.OrdinalIgnoreCase)))
                 {
                     DALManager.BenhDAL.DelBenh(benh);
                 }

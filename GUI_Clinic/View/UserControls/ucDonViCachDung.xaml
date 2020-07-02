@@ -48,7 +48,7 @@
                                        Foreground="Gray"
                                        FontWeight="Bold"
                                        FontSize="25"
-                                       Margin="10"></TextBlock>
+                                       Margin="10"/>
                         </Grid>
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
@@ -70,7 +70,8 @@
                                          Margin="10"
                                          FontWeight="DemiBold"
                                          Foreground="Gray"
-                                         VerticalAlignment="Center" />
+                                         VerticalAlignment="Center"
+                                         KeyDown="tbxTenBenh_KeyDown"/>
                             </Grid>
                         </Grid>
                         <Grid Grid.Row="3">
@@ -88,7 +89,7 @@
                                         HorizontalAlignment="Right"
                                         VerticalAlignment="Center"
                                         Background="#0078D7"
-                                        BorderBrush="#0078D7"></Button>
+                                        BorderBrush="#0078D7"/>
                             </Grid>
                             <Grid Grid.Column="1">
                                 <Button x:Name="btnCapNhatBenh"
@@ -99,7 +100,7 @@
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         Background="#0078D7"
-                                        BorderBrush="#0078D7"></Button>
+                                        BorderBrush="#0078D7"/>
                             </Grid>
                             <Grid Grid.Column="2">
                                 <Button x:Name="btnXoaBenh"
@@ -110,7 +111,7 @@
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         Background="#0078D7"
-                                        BorderBrush="#0078D7"></Button>
+                                        BorderBrush="#0078D7"/>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -129,11 +130,11 @@
                                         <GridView>
                                             <GridViewColumn Header="STT" DisplayMemberBinding="{Binding RelativeSource=
                                                                                    {RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}, 
-                                                                                   Converter={StaticResource IndexConverter}}"></GridViewColumn>
+                                                                                   Converter={StaticResource IndexConverter}}"/>
                                             <GridViewColumn Header="Mã bệnh"
-                                                                DisplayMemberBinding="{Binding Id}"></GridViewColumn>
+                                                                DisplayMemberBinding="{Binding Id}"/>
                                             <GridViewColumn Header="Tên bệnh"
-                                                                DisplayMemberBinding="{Binding TenBenh}"></GridViewColumn>
+                                                                DisplayMemberBinding="{Binding TenBenh}"/>
                                         </GridView>
                                     </ListView.View>
                                 </ListView>
@@ -163,7 +164,7 @@
                                        Foreground="Gray"
                                        FontWeight="Bold"
                                        FontSize="25"
-                                       Margin="10"></TextBlock>
+                                       Margin="10"/>
                         </Grid>
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
@@ -185,7 +186,8 @@
                                          Margin="10"
                                          FontWeight="DemiBold"
                                          Foreground="Gray"
-                                         VerticalAlignment="Center" />
+                                         VerticalAlignment="Center"
+                                         KeyDown="tbxTenDonVi_KeyDown"/>
                             </Grid>
                         </Grid>
                         <Grid Grid.Row="3">
@@ -203,7 +205,7 @@
                                         HorizontalAlignment="Right"
                                         VerticalAlignment="Center"
                                         Background="#0078D7"
-                                        BorderBrush="#0078D7"></Button>
+                                        BorderBrush="#0078D7"/>
                             </Grid>
                             <Grid Grid.Column="1">
                                 <Button x:Name="btnCapNhatDonVi"
@@ -214,7 +216,7 @@
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         Background="#0078D7"
-                                        BorderBrush="#0078D7"></Button>
+                                        BorderBrush="#0078D7"/>
                             </Grid>
                             <Grid Grid.Column="2">
                                 <Button x:Name="btnXoaDonVi"
@@ -225,7 +227,7 @@
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         Background="#0078D7"
-                                        BorderBrush="#0078D7"></Button>
+                                        BorderBrush="#0078D7"/>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -244,11 +246,11 @@
                                         <GridView>
                                             <GridViewColumn Header="STT" DisplayMemberBinding="{Binding RelativeSource=
                                                                                    {RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}, 
-                                                                                   Converter={StaticResource IndexConverter}}"></GridViewColumn>
+                                                                                   Converter={StaticResource IndexConverter}}"/>
                                             <GridViewColumn Header="Mã đơn vị"
-                                                                DisplayMemberBinding="{Binding Id}"></GridViewColumn>
+                                                                DisplayMemberBinding="{Binding Id}"/>
                                             <GridViewColumn Header="Tên đơn vị"
-                                                                DisplayMemberBinding="{Binding TenDonVi}"></GridViewColumn>
+                                                                DisplayMemberBinding="{Binding TenDonVi}"/>
                                         </GridView>
                                     </ListView.View>
                                 </ListView>
@@ -278,7 +280,7 @@
                                        Foreground="Gray"
                                        FontWeight="Bold"
                                        FontSize="25"
-                                       Margin="10"></TextBlock>
+                                       Margin="10"/>
                         </Grid>
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
@@ -300,7 +302,8 @@
                                          Margin="10"
                                          FontWeight="DemiBold"
                                          Foreground="Gray"
-                                         VerticalAlignment="Center" />
+                                         VerticalAlignment="Center"
+                                         KeyDown="tbxTenCachDung_KeyDown"/>
                             </Grid>
                         </Grid>
                         <Grid Grid.Row="3">
@@ -318,7 +321,7 @@
                                         HorizontalAlignment="Right"
                                         VerticalAlignment="Center"
                                         Background="#0078D7"
-                                        BorderBrush="#0078D7"></Button>
+                                        BorderBrush="#0078D7"/>
                             </Grid>
                             <Grid Grid.Column="1">
                                 <Button x:Name="btnCapNhatCachDung"
@@ -329,7 +332,7 @@
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         Background="#0078D7"
-                                        BorderBrush="#0078D7"></Button>
+                                        BorderBrush="#0078D7"/>
                             </Grid>
                             <Grid Grid.Column="2">
                                 <Button x:Name="btnXoaCachDung"
@@ -340,7 +343,7 @@
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         Background="#0078D7"
-                                        BorderBrush="#0078D7"></Button>
+                                        BorderBrush="#0078D7"/>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -359,11 +362,11 @@
                                         <GridView>
                                             <GridViewColumn Header="STT" DisplayMemberBinding="{Binding RelativeSource=
                                                                                    {RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}, 
-                                                                                   Converter={StaticResource IndexConverter}}"></GridViewColumn>
+                                                                                   Converter={StaticResource IndexConverter}}"/>
                                             <GridViewColumn Header="Mã cách dùng"
-                                                                DisplayMemberBinding="{Binding Id}"></GridViewColumn>
+                                                                DisplayMemberBinding="{Binding Id}"/>
                                             <GridViewColumn Header="Tên cách dùng"
-                                                                DisplayMemberBinding="{Binding TenCachDung}"></GridViewColumn>
+                                                                DisplayMemberBinding="{Binding TenCachDung}"/>
                                         </GridView>
                                     </ListView.View>
                                 </ListView>

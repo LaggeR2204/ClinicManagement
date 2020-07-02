@@ -12,62 +12,44 @@ namespace BUS_Clinic.BUS
     public class BUS_DonVi : BaseBUS
     {
         private const string _idPrefix = "DV";
-        public ObservableCollection<DTO_DonVi> ListDV { get; set; }
-
         public BUS_DonVi()
         {
 
         }
-        public void AddDonVi(DTO_DonVi dv)
+        public void AddDonVi(DTO_DonVi donVi)
         {
-            ListDV = GetListDV();
-            bool flag = true;
-            foreach (DTO_DonVi item in ListDV)
+            ObservableCollection<DTO_DonVi> donvis = DALManager.DonViDAL.GetListDV();
+
+            bool flag = donvis.Any(d => d.TenDonVi.Equals(donVi.TenDonVi, StringComparison.OrdinalIgnoreCase));
+
+            if (!flag)
             {
-                if (item.TenDonVi == dv.TenDonVi)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            if (flag)
-            {
-                dv.Id = AutoGenerateID();
-                DALManager.DonViDAL.AddDonVi(dv);
+                donVi.Id = AutoGenerateID();
+                DALManager.DonViDAL.AddDonVi(donVi);
             }
         }
-
-        public void UpdateDonVi(DTO_DonVi dv, string tenDonViMoi)
+        public void UpdateDonVi(DTO_DonVi donVi, string tenDonViMoi)
         {
-            ListDV = GetListDV();
-            bool flag = true;
-            foreach (DTO_DonVi item in ListDV)
-            {
-                if (item.TenDonVi == tenDonViMoi)
-                {
-                    flag = false;
-                    break;
-                }
-            }
+            ObservableCollection<DTO_DonVi> donvis = DALManager.DonViDAL.GetListDV();
 
-            if (dv.TenDonVi != tenDonViMoi && flag == true)
+            bool flag = donvis.Any(d => d.TenDonVi.Equals(tenDonViMoi, StringComparison.OrdinalIgnoreCase));
+
+            if (donVi.TenDonVi != tenDonViMoi && !flag)
             {
-                dv.TenDonVi = tenDonViMoi;
+                donVi.TenDonVi = tenDonViMoi;
             }
         }
-
-        public void DelDonVi(DTO_DonVi dv)
+        public void DelDonVi(DTO_DonVi donVi)
         {
-            ListDV = GetListDV();
-            if (dv != null)
+            ObservableCollection<DTO_DonVi> donvis = DALManager.DonViDAL.GetListDV();
+            if (donVi != null)
             {
-                if (ListDV.Contains(dv))
+                if (donvis.Any(d => d.TenDonVi.Equals(donVi.TenDonVi, StringComparison.OrdinalIgnoreCase)))
                 {
-                    DALManager.DonViDAL.DelDonVi(dv);
+                    DALManager.DonViDAL.DelDonVi(donVi);
                 }
             }
         }
-
         public DTO_DonVi GetDonViById(string maDonVi)
         {
             ObservableCollection<DTO_DonVi> donvis = DALManager.DonViDAL.GetListDV();
@@ -76,7 +58,6 @@ namespace BUS_Clinic.BUS
             
             return dv;
         }
-
         public override void LoadLocalData()
         {
             DALManager.DonViDAL.LoadLocalData();

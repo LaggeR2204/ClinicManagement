@@ -42,22 +42,17 @@ namespace BUS_Clinic.BUS
             return DALManager.HoaDonDAL.GetListHoaDon();
         }
 
-        public DTO_HoaDon XuatHoaDon(DTO_HoaDon hoaDon, DTO_PhieuKhamBenh phieuKhamBenh)
+        public void XuatHoaDon(DTO_HoaDon hoaDon, DTO_PhieuKhamBenh phieuKhamBenh)
         {
+            hoaDon.TienKham = BUSManager.ThamSoBUS.GetTienKham();
             hoaDon.TienThuoc = TinhTienThuoc(phieuKhamBenh);
-            hoaDon.ThanhTien = hoaDon.TienKham + hoaDon.TienThuoc; 
-            return hoaDon;
+            hoaDon.ThanhTien = hoaDon.TienKham + hoaDon.TienThuoc;
+            AddHoaDon(hoaDon, phieuKhamBenh);
         }
 
-        public DTO_HoaDon GetHoaDon (DTO_PhieuKhamBenh phieuKhamBenh)
+        public DTO_HoaDon GetHoaDonById (string id)
         {
-            DTO_HoaDon hoaDon = null;
-            ObservableCollection<DTO_HoaDon> ListHD = GetListHoaDon();
-            foreach (DTO_HoaDon item in ListHD)
-            {
-                item.Id = phieuKhamBenh.Id;
-                hoaDon = item;
-            }
+            DTO_HoaDon hoaDon = GetListHoaDon().Where(x => x.Id == id).FirstOrDefault();
             return hoaDon;
         }
     }

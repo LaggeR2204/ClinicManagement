@@ -17,7 +17,7 @@ namespace DTO_Clinic
         public double ThanhTien { get => _thanhTien; set { _thanhTien = value; OnPropertyChanged(); } }
         public bool IsDeleted { get => _isDeleted; set { _isDeleted = value; OnPropertyChanged(); } }
 
-        private double _tienKham=10000;
+        private double _tienKham;
         private double _tienThuoc;
         private double _thanhTien;
         private bool _isDeleted;
@@ -30,6 +30,7 @@ namespace DTO_Clinic
         public DTO_HoaDon(DTO_PhieuKhamBenh phieuKhamBenh)
         {
             Id = phieuKhamBenh.Id;
+            IsDeleted = false;
         }
     }
 }

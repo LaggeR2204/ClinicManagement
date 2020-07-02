@@ -12,62 +12,44 @@ namespace BUS_Clinic.BUS
     public class BUS_CachDung : BaseBUS
     {
         private const string _idPrefix = "CD";
-        public ObservableCollection<DTO_CachDung> ListCD { get; set; }
-
         public BUS_CachDung()
         {
 
         }
-        public void AddCachDung(DTO_CachDung cd)
+        public void AddCachDung(DTO_CachDung cachDung)
         {
-            ListCD = GetListCD();
-            bool flag = true;
-            foreach (DTO_CachDung item in ListCD)
+            ObservableCollection<DTO_CachDung> cachdungs = DALManager.CachDungDAL.GetListCD();
+
+            bool flag = cachdungs.Any(c => c.TenCachDung.Equals(cachDung.TenCachDung, StringComparison.OrdinalIgnoreCase));
+
+            if (!flag)
             {
-                if (item.TenCachDung == cd.TenCachDung)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            if (flag)
-            {
-                cd.Id = AutoGenerateID();
-                DALManager.CachDungDAL.AddCachDung(cd);
+                cachDung.Id = AutoGenerateID();
+                DALManager.CachDungDAL.AddCachDung(cachDung);
             }
         }
-
-        public void UpdateCachDung(DTO_CachDung cd, string tenCachDungMoi)
+        public void UpdateCachDung(DTO_CachDung cachDung, string tenCachDungMoi)
         {
-            ListCD = GetListCD();
-            bool flag = true;
-            foreach (DTO_CachDung item in ListCD)
-            {
-                if (item.TenCachDung == tenCachDungMoi)
-                {
-                    flag = false;
-                    break;
-                }
-            }
+            ObservableCollection<DTO_CachDung> cachdungs = DALManager.CachDungDAL.GetListCD();
 
-            if (cd.TenCachDung != tenCachDungMoi && flag == true)
+            bool flag = cachdungs.Any(c => c.TenCachDung.Equals(tenCachDungMoi, StringComparison.OrdinalIgnoreCase));
+
+            if (cachDung.TenCachDung != tenCachDungMoi && !flag)
             {
-                cd.TenCachDung = tenCachDungMoi;
+                cachDung.TenCachDung = tenCachDungMoi;
             }
         }
-
-        public void DelCachDung(DTO_CachDung cd)
+        public void DelCachDung(DTO_CachDung cachDung)
         {
-            ListCD = GetListCD();
-            if (cd != null)
+            ObservableCollection<DTO_CachDung> cachdungs = DALManager.CachDungDAL.GetListCD();
+            if (cachDung != null)
             {
-                if (ListCD.Contains(cd))
+                if (cachdungs.Any(c => c.TenCachDung.Equals(cachDung.TenCachDung, StringComparison.OrdinalIgnoreCase)))
                 {
-                    DALManager.CachDungDAL.DelCachDung(cd);
+                    DALManager.CachDungDAL.DelCachDung(cachDung);
                 }
             }
         }
-
         public override void LoadLocalData()
         {
             DALManager.CachDungDAL.LoadLocalData();
