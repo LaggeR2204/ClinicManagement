@@ -60,20 +60,20 @@ namespace GUI_Clinic.View.UserControls
 
             ListBCDT = BUSManager.BCDoanhThuBUS.GetListBCDoanhThu();
 
-
             foreach (DTO_BCDoanhThu item in ListBCDT)
             {
                 if (item.Thang == int.Parse(cbxThang.Text) && item.Nam == int.Parse(cbxNam.Text))
                 {
                     bCDoanhThu = item;
                 }
-
             }
-            BUSManager.BCDoanhThuBUS.LoadNPCTBaoCaoDoanhThu(bCDoanhThu);
-            ListCTBCDT = bCDoanhThu.DS_CTBaoCaoDoanhThu;
-            lvCTBaoCaoDoanhThu.ItemsSource = ListCTBCDT;
-            tblTongDoanhThu.Text = bCDoanhThu.TongDoanhThu.ToString();
-
+            if (bCDoanhThu!= null)
+            {
+                BUSManager.BCDoanhThuBUS.LoadNPCTBaoCaoDoanhThu(bCDoanhThu);
+                ListCTBCDT = bCDoanhThu.DS_CTBaoCaoDoanhThu;
+                lvCTBaoCaoDoanhThu.ItemsSource = ListCTBCDT;
+                tblTongDoanhThu.Text = bCDoanhThu.TongDoanhThu.ToString();
+            }
         }
 
         public void InitCommand()

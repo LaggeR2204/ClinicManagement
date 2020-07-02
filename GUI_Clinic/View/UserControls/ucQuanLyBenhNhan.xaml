@@ -139,7 +139,7 @@
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
                             <GridViewColumn Header="Ngày Sinh" 
-                                            DisplayMemberBinding="{Binding NgaySinh}"/>
+                                            DisplayMemberBinding="{Binding NgaySinh, StringFormat='dd/MM/yyyy'}"/>
                             <GridViewColumn Header="Số điện thoại"
                                             DisplayMemberBinding="{Binding SoDienThoai}" />
                             <GridViewColumn Header="Địa chỉ" 

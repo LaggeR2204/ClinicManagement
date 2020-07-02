@@ -136,7 +136,7 @@
                                                         </DataTemplate>
                                                     </GridViewColumn.CellTemplate>
                                                 </GridViewColumn>
-                                                <GridViewColumn Header="Năm sinh"
+                                                <GridViewColumn Header="Ngày sinh"
                                                                 DisplayMemberBinding="{Binding NgaySinh, StringFormat='dd/MM/yyyy'}"></GridViewColumn>
                                                 <GridViewColumn Header="Địa chỉ"
                                                                 DisplayMemberBinding="{Binding DiaChi}"></GridViewColumn>
