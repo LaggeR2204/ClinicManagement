@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:GUI_Clinic.View.UserControls"
              mc:Ignorable="d"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:cvt="clr-namespace:GUI_Clinic.Converter"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              TextElement.FontWeight="Regular"
              TextElement.FontSize="13"
@@ -13,6 +14,9 @@
              TextOptions.TextRenderingMode="Auto"
              Background="{DynamicResource MaterialDesignPaper}"
              FontFamily="{DynamicResource MaterialDesignFont}">
+    <UserControl.Resources>
+        <cvt:IndexConverter x:Key="IndexConverter"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -106,6 +110,9 @@
                           SelectionChanged="lvBenhNhan_SelectionChanged">
                     <ListView.View>
                         <GridView>
+                            <GridViewColumn Header="STT" DisplayMemberBinding="{Binding RelativeSource=
+                                                                                   {RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}, 
+                                                                                   Converter={StaticResource IndexConverter}}"></GridViewColumn>
                             <GridViewColumn Header="Mã bệnh nhân"
                                             DisplayMemberBinding="{Binding Id}" />
                             <GridViewColumn Header="Họ và Tên" 
@@ -155,7 +162,9 @@
                               MouseDoubleClick="lvDanhSachPKB_MouseDoubleClick">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="STT" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
+                                <GridViewColumn Header="STT" DisplayMemberBinding="{Binding RelativeSource=
+                                                                                   {RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}, 
+                                                                                   Converter={StaticResource IndexConverter}}"></GridViewColumn>
                                 <GridViewColumn Header="Mã phiếu khám" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
                                 <GridViewColumn Header="Ngày" DisplayMemberBinding="{Binding NgayKham}"></GridViewColumn>
                                 <GridViewColumn Header="Loại bệnh" DisplayMemberBinding="{Binding MaBenh}"></GridViewColumn>

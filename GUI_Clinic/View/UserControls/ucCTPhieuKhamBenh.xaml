@@ -4,8 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GUI_Clinic.View.UserControls"
+             xmlns:cvt="clr-namespace:GUI_Clinic.Converter"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d">
+    <UserControl.Resources>
+        <cvt:IndexConverter x:Key="IndexConverter"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -23,6 +27,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition />
+                            <RowDefinition />
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
@@ -38,6 +43,23 @@
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0">
+                                <TextBlock Text="Mã bệnh nhân:"
+                                           FontSize="15"
+                                           Margin="10" />
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <TextBlock x:Name="tblMaBenhNhan"
+                                           FontSize="15"
+                                           Margin="0 10"
+                                           FontWeight="DemiBold" />
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
                                 <TextBlock Text="Ngày khám:"
                                            FontSize="15"
                                            Margin="10" />
@@ -45,18 +67,18 @@
                             <Grid Grid.Column="1">
                                 <TextBlock x:Name="tblNgayKham"
                                            FontSize="15"
-                                           Margin="10"
+                                           Margin="0 10"
                                            FontWeight="DemiBold" />
                             </Grid>
                         </Grid>
-                        <Grid Grid.Row="2">
+                        <Grid Grid.Row="3">
                             <TextBox x:Name="tbxTrieuChung"
                                      Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}"
-                                     Margin="10"
+                                     Margin="10 5 10 5"
                                      materialDesign:HintAssist.Hint="Triệu chứng"
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                         </Grid>
-                        <Grid Grid.Row="3">
+                        <Grid Grid.Row="4">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="auto" />
                                 <ColumnDefinition />
@@ -65,16 +87,15 @@
                                 <TextBlock Text="Chẩn đoán:"
                                            FontSize="15"
                                            Foreground="Gray"
-                                           Margin="10"
+                                           Margin="10 5 5 5"
                                            VerticalAlignment="Bottom"/>
                             </Grid>
                             <Grid Grid.Column="1">
                                 <ComboBox x:Name="cbxChanDoan"
-                                  Margin="10"
+                                  Margin="5"
                                   ItemsSource="{Binding ListBenh}"
                                   materialDesign:HintAssist.Hint="Bệnh"
-                                  IsEditable="True"
-                                  Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                  IsEditable="True">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
                                             <TextBlock>
@@ -128,10 +149,11 @@
                     </Grid>
                     <Grid Grid.Column="1">
                         <TextBox x:Name="tbxSoLuong"
-                                 Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}"
                                  Margin="10"
                                  materialDesign:HintAssist.Hint="Số lượng"
-                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                                 DataObject.Pasting="tbxSoLuong_Pasting"
+                                 PreviewTextInput="tbxSoLuong_PreviewTextInput"/>
                     </Grid>
                     <Grid Grid.Column="2">
                         <ComboBox x:Name="cbxCachDung"
@@ -180,6 +202,9 @@
                                       ScrollViewer.VerticalScrollBarVisibility="Auto">
                                 <ListView.View>
                                     <GridView>
+                                        <GridViewColumn Header="STT" DisplayMemberBinding="{Binding RelativeSource=
+                                                                                   {RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}, 
+                                                                                   Converter={StaticResource IndexConverter}}"></GridViewColumn>
                                         <GridViewColumn Header="Mã thuốc"
                                                             DisplayMemberBinding="{Binding MaThuoc}"></GridViewColumn>
                                         <GridViewColumn Header="Tên thuốc"

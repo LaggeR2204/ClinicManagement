@@ -1,5 +1,7 @@
-﻿using System;
+﻿using DTO_Clinic;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +21,14 @@ namespace GUI_Clinic.View.Windows
     /// </summary>
     public partial class wdInBaoCaoSuDungThuoc : Window
     {
-        public wdInBaoCaoSuDungThuoc()
+        private List<DTO_BCSudungThuoc> ListBCSDT { get; set; }
+        public wdInBaoCaoSuDungThuoc(List<DTO_BCSudungThuoc> listBCSDT, int thang, int nam)
         {
             InitializeComponent();
+            this.DataContext = this;
+            ListBCSDT = listBCSDT;
+            lvBCSDT.ItemsSource = ListBCSDT;
+            tblThangNam.Text = thang.ToString() + "/" + nam.ToString();
         }
 
         private void btnThoat_Click(object sender, RoutedEventArgs e)

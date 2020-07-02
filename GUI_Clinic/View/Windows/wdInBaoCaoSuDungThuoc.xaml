@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI_Clinic.View.Windows"
         mc:Ignorable="d"
+        xmlns:cvt="clr-namespace:GUI_Clinic.Converter"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -16,6 +17,9 @@
         BorderBrush="#0078D7"
         BorderThickness="2"
         Title="wdInBaoCaoSuDungThuoc" Height="842" Width="595" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ShowInTaskbar="False" WindowStyle="None">
+    <Window.Resources>
+        <cvt:IndexConverter x:Key="IndexConverter"/>
+    </Window.Resources>
     <Grid>
 
         <Button x:Name="btnThoat"
@@ -75,9 +79,9 @@
                            Foreground="Black"
                            FontWeight="Bold"
                            FontSize="25"
-                           Margin="10 10 0 10"></TextBlock>
+                           Margin="20 10 0 10"></TextBlock>
                 <TextBlock Grid.Column="1"
-                           x:Name="tbxThangNam"
+                           x:Name="tblThangNam"
                            HorizontalAlignment="Left"
                            Text="6/2020"
                            Foreground="Black"
@@ -86,20 +90,21 @@
                            Margin="0 10 10 10"></TextBlock>
             </Grid>
 
-            <ListView Grid.Row="2"
+            <ListView x:Name="lvBCSDT"
+                      Grid.Row="2"
                       Margin="10 0"
                       AlternationCount="2"
-                      ItemsSource="{Binding List}"
-                      SelectedItem="{Binding SlectedItem, Mode=TwoWay}"
                       ScrollViewer.CanContentScroll="True"
                       ScrollViewer.VerticalScrollBarVisibility="Auto">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="STT" Width="60" DisplayMemberBinding="{Binding DisplayName}"></GridViewColumn>
-                        <GridViewColumn Header="Thuốc" Width="200" DisplayMemberBinding="{Binding Unit.DisplayName}"></GridViewColumn>
-                        <GridViewColumn Header="Đơn vị" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
-                        <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
-                        <GridViewColumn Header="Số lần dùng" Width="120" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
+                        <GridViewColumn Header="STT" DisplayMemberBinding="{Binding RelativeSource=
+                                                                                   {RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}, 
+                                                                                   Converter={StaticResource IndexConverter}}"></GridViewColumn>
+                        <GridViewColumn Header="Thuốc" Width="200" DisplayMemberBinding="{Binding Thuoc.TenThuoc}"></GridViewColumn>
+                        <GridViewColumn Header="Đơn vị" DisplayMemberBinding="{Binding Thuoc.DonVi.TenDonVi}"></GridViewColumn>
+                        <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding SoLuongDung}"></GridViewColumn>
+                        <GridViewColumn Header="Số lần dùng" Width="120" DisplayMemberBinding="{Binding SoLanDung}"></GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>

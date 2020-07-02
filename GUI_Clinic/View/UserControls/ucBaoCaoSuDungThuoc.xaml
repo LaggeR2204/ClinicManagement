@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GUI_Clinic.View.UserControls"
              mc:Ignorable="d" 
+             xmlns:cvt="clr-namespace:GUI_Clinic.Converter"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              TextElement.FontWeight="Regular"
@@ -13,6 +14,9 @@
              TextOptions.TextRenderingMode="Auto"
              Background="{DynamicResource MaterialDesignPaper}"
              FontFamily="{DynamicResource MaterialDesignFont}">
+    <UserControl.Resources>
+        <cvt:IndexConverter x:Key="IndexConverter"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -31,10 +35,13 @@
                     <!--<Button x:Name="btnBack" Command="{Binding BackCommand}" CommandParameter="{Binding ElementName=uc_MedicineReport}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="5 5 5 -2" ToolTip="Quay lại">
                         <materialDesign:PackIcon Kind="ArrowBack" Foreground="{DynamicResource MaterialDesignBody}"/>
                     </Button>-->
-                    <ComboBox x:Name="cbxMonth" Margin="5 5 15 5" ItemsSource="{Binding Unit}" SelectedItem="{Binding SelectedUnit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Tháng" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
-                    <ComboBox x:Name="cbxYear" Margin="5 5 15 5" ItemsSource="{Binding Unit}" SelectedItem="{Binding SelectedUnit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Năm" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
-                    <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
-                            x:Name="btnMedicationReportShow"
+                    <ComboBox x:Name="cbxThang" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Tháng" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                              />
+                    <ComboBox x:Name="cbxNam" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Năm" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                              />
+                    <Button x:Name="btnFilter"
+                            Command="{Binding FilterBaoCaoCommand}"
+                            Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
                             ToolTip="Xem báo cáo"
                             Background="#0078D7"
                             BorderBrush="#0078D7"
@@ -47,7 +54,7 @@
 
                 </StackPanel>
 
-                <materialDesign:Chip Click="btnBaoCao_Click"   
+                <materialDesign:Chip Command="{Binding InBaoCaoCommand}"   
                                      x:Name="btnInBaoCao"
                                      HorizontalAlignment="Right"
                                      Content="In báo cáo"
@@ -73,17 +80,20 @@
         </materialDesign:Card>-->
 
         <GroupBox Grid.Row="2" Margin="5" Style="{DynamicResource MaterialDesignCardGroupBox}" Header="Chi tiết sử dụng thuốc">
-            <ListView ItemsSource="{Binding List}"
+            <ListView x:Name="lvBCSDT"
+                      ItemsSource="{Binding ListBCSDT}"
                       SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}"
                       ScrollViewer.CanContentScroll="True"
                       ScrollViewer.VerticalScrollBarVisibility="Auto">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="STT" DisplayMemberBinding="{Binding DisplayName}"></GridViewColumn>
-                        <GridViewColumn Header="Thuốc" DisplayMemberBinding="{Binding Unit.DisplayName}"></GridViewColumn>
-                        <GridViewColumn Header="Đơn vị tính" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
-                        <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
-                        <GridViewColumn Header="Số lần dùng" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
+                        <GridViewColumn Header="STT" DisplayMemberBinding="{Binding RelativeSource=
+                                                                                   {RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}, 
+                                                                                   Converter={StaticResource IndexConverter}}"></GridViewColumn>
+                        <GridViewColumn Header="Thuốc" DisplayMemberBinding="{Binding Thuoc.TenThuoc}"></GridViewColumn>
+                        <GridViewColumn Header="Đơn vị tính" DisplayMemberBinding="{Binding Thuoc.DonVi.TenDonVi}"></GridViewColumn>
+                        <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding SoLuongDung}"></GridViewColumn>
+                        <GridViewColumn Header="Số lần dùng" DisplayMemberBinding="{Binding SoLanDung}"></GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>

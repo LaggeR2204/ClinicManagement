@@ -47,22 +47,15 @@ namespace GUI_Clinic.CustomControl
 
                 case MessageType.Info:
                     txtTitle.Text = "Thông báo";
-                    break;
-                case MessageType.Confirmation:
-                    txtTitle.Text = "Xác nhận";
-                    break;
-                case MessageType.Success:
-                    {
-                        txtTitle.Text = "Thành Công";
-                    }
+                    icon.Kind = MaterialDesignThemes.Wpf.PackIconKind.Information;
                     break;
                 case MessageType.Warning:
                     txtTitle.Text = "Cảnh báo";
+                    icon.Kind = MaterialDesignThemes.Wpf.PackIconKind.Warning;
                     break;
                 case MessageType.Error:
-                    {
-                        txtTitle.Text = "Lỗi";
-                    }
+                    txtTitle.Text = "Lỗi";
+                    icon.Kind = MaterialDesignThemes.Wpf.PackIconKind.Error;
                     break;
             }
             switch (Buttons)
@@ -135,8 +128,6 @@ namespace GUI_Clinic.CustomControl
     public enum MessageType
     {
         Info,
-        Confirmation,
-        Success,
         Warning,
         Error,
     }

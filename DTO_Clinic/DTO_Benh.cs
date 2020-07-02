@@ -21,6 +21,12 @@ namespace DTO_Clinic
             IsDeleted = false;
         }
 
+        public DTO_Benh(string tenBenh)
+        {
+            TenBenh = tenBenh;
+            IsDeleted = false;
+        }
+
         public DTO_Benh(string maBenh, string tenBenh)
         {
             Id = maBenh;

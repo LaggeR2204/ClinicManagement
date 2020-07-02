@@ -154,7 +154,7 @@ namespace GUI_Clinic.View.UserControls
         {
             if (CurSignedList.Contains(bn))
             {
-                MsgBox.Show("Bệnh nhân này đã được đăng ký");
+                MsgBox.Show("Bệnh nhân này đã được đăng ký", MessageType.Error);
                 return;
             }
             CurSignedList.Add(bn);
