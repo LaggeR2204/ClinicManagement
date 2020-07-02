@@ -70,6 +70,8 @@ namespace GUI_Clinic.View.UserControls
             {
                 DTO_Benh benh = new DTO_Benh(TenBenhInput);
                 BUSManager.BenhBUS.AddBenh(benh);
+
+                tbxTenBenh.Clear();
             });
 
             SuaBenhCommand = new RelayCommand<Window>((p) =>
@@ -113,6 +115,8 @@ namespace GUI_Clinic.View.UserControls
             {
                 DTO_DonVi donVi = new DTO_DonVi(TenDonViInput);
                 BUSManager.DonViBUS.AddDonVi(donVi);
+
+                tbxTenDonVi.Clear();
             });
 
             SuaDonViCommand = new RelayCommand<Window>((p) =>
@@ -157,6 +161,8 @@ namespace GUI_Clinic.View.UserControls
             {
                 DTO_CachDung cachDung = new DTO_CachDung(TenCachDungInput);
                 BUSManager.CachDungBUS.AddCachDung(cachDung);
+
+                tbxTenCachDung.Clear();
             });
 
             SuaCachDungCommand = new RelayCommand<Window>((p) =>
@@ -231,6 +237,54 @@ namespace GUI_Clinic.View.UserControls
             {
                 TenBenhInput = null;
                 tbxTenBenh.Text = TenBenhInput;
+            }
+        }
+
+        private void tbxTenBenh_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (string.IsNullOrEmpty(TenBenhInput))
+                {
+                    return;
+                }
+
+                DTO_Benh benh = new DTO_Benh(TenBenhInput);
+                BUSManager.BenhBUS.AddBenh(benh);
+
+                tbxTenBenh.Clear();
+            }
+        }
+
+        private void tbxTenDonVi_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (string.IsNullOrEmpty(TenDonViInput))
+                {
+                    return;
+                }
+
+                DTO_DonVi donVi = new DTO_DonVi(TenDonViInput);
+                BUSManager.DonViBUS.AddDonVi(donVi);
+
+                tbxTenDonVi.Clear();
+            }
+        }
+
+        private void tbxTenCachDung_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (string.IsNullOrEmpty(TenCachDungInput))
+                {
+                    return;
+                }
+
+                DTO_CachDung cachDung = new DTO_CachDung(TenCachDungInput);
+                BUSManager.CachDungBUS.AddCachDung(cachDung);
+
+                tbxTenCachDung.Clear();
             }
         }
     }

@@ -40,15 +40,14 @@ namespace GUI_Clinic.View.Windows
         #endregion
         private void InitData()
         {
-            TienKham = BUSManager.ThamSoBUS.GetListThamSo().Where(x => x.TenThamSo == "Tiền khám").FirstOrDefault().GiaTri;
-            SoBNToiDa = BUSManager.ThamSoBUS.GetListThamSo().Where(x => x.TenThamSo == "Số bệnh nhân tối đa 1 ngày").FirstOrDefault().GiaTri;
+            TienKham = BUSManager.ThamSoBUS.GetTienKham();
+            SoBNToiDa = BUSManager.ThamSoBUS.GetSoBNToiDa();
         }
         private bool IsValueChanged(int curTienKham, int curBNMax)
         {
-            var list = BUSManager.ThamSoBUS.GetListThamSo();
-            if (curBNMax != list.Where(x => x.TenThamSo == "Số bệnh nhân tối đa 1 ngày").FirstOrDefault().GiaTri)
+            if (curBNMax != BUSManager.ThamSoBUS.GetSoBNToiDa())
                 return true;
-            if (curTienKham != list.Where(x => x.TenThamSo == "Tiền khám").FirstOrDefault().GiaTri)
+            if (curTienKham != BUSManager.ThamSoBUS.GetTienKham())
                 return true;
             return false;
         }
@@ -70,15 +69,7 @@ namespace GUI_Clinic.View.Windows
                 return true;
             }, (p) =>
             {
-                //if (IsValueChanged(TienKham, SoBNToiDa))
-                //{
-                //    bool rel = MsgBox.Show1("Có những thay đổi chưa được lưu. Bạn có muốn tiếp tục thoát?", MessageType.Warning, MessageButtons.OkCancel);
-                //    if (rel)
-                //        this.Close();
-                //}
-                //else
                     this.Close();
-
             });
         }
     }
