@@ -54,19 +54,15 @@
 
                 </StackPanel>
 
-                <materialDesign:Chip Command="{Binding InBaoCaoCommand}"   
+                <Button Command="{Binding InBaoCaoCommand}"   
                                      x:Name="btnInBaoCao"
                                      HorizontalAlignment="Right"
                                      Content="In báo cáo"
                                      Foreground="White"
-                                     IconBackground="{DynamicResource PrimaryHueDarkBrush}"
-                                     IconForeground="{DynamicResource PrimaryHueDarkForegroundBrush}"
-                                     Background="Gray"
+                                     Background="#0078D7"
+                                     BorderBrush="#0078D7"
                                      Margin="0 0 5 0">
-                    <materialDesign:Chip.Icon>
-                        <materialDesign:PackIcon Kind="Printer"></materialDesign:PackIcon>
-                    </materialDesign:Chip.Icon>
-                </materialDesign:Chip>
+                </Button>
             </Grid>
         </materialDesign:Card>
 
