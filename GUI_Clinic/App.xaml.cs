@@ -33,6 +33,7 @@ namespace GUI_Clinic
             BUSManager.PhieuKhamBenhBUS.LoadLocalData();
             BUSManager.PhieuNhapThuocBUS.LoadLocalData();
             BUSManager.ThuocBUS.LoadLocalData();
+            BUSManager.ThamSoBUS.LoadLocalData();
         }
     }
 }

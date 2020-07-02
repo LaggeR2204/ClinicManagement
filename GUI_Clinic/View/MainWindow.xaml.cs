@@ -1,4 +1,5 @@
 ﻿using BUS_Clinic.BUS;
+using GUI_Clinic.View.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -113,6 +114,12 @@ namespace GUI_Clinic.View
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             BUSManager.BenhNhanBUS.SaveChange();
+        }
+
+        private void btnSetting_Click(object sender, RoutedEventArgs e)
+        {
+            wdThietLap wdThietLap = new wdThietLap();
+            wdThietLap.ShowDialog();
         }
     }
 }

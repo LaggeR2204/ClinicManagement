@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -24,6 +25,13 @@ namespace GUI_Clinic.CustomControl
         {
             msgBox = new MsgBox(message, type, buttons);
             msgBox.ShowDialog();
+        }
+        public static bool Show1(string message, MessageType type, MessageButtons buttons)
+        {
+            msgBox = new MsgBox(message, type, buttons);
+            if (msgBox.ShowDialog().HasValue)
+                return msgBox.ShowDialog().Value;
+            return false;
         }
         public static void Show(string message, MessageType type)
         {
