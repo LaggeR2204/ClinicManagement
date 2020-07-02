@@ -86,10 +86,16 @@ namespace GUI_Clinic.View.UserControls
             FilterBaoCaoCommand = new RelayCommand<Window>((p) =>
             {
                 if (String.IsNullOrEmpty(cbxThang.Text) ||
-                    String.IsNullOrEmpty(cbxNam.Text) ||
-                    (cbxThang.Text == bCDoanhThu.Thang.ToString() && cbxNam.Text == bCDoanhThu.Nam.ToString()))
+                    String.IsNullOrEmpty(cbxNam.Text)
+                    )
                 {
-                    return false;
+                    if (bCDoanhThu != null)
+                    {
+                        if (cbxThang.Text == bCDoanhThu.Thang.ToString() && cbxNam.Text == bCDoanhThu.Nam.ToString())
+                        {
+                            return false;
+                        }
+                    }
                 }
                 return true;
             }, (p) =>
