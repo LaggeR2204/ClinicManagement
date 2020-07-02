@@ -88,9 +88,8 @@
                                             VerticalAlignment="Center"
                                             SelectedDateChanged="dpkNgayKham_SelectedDateChanged"
                                             Width="100"
-                                            Margin="10"
-                                            materialDesign:HintAssist.Hint="Ngày khám"
-                                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                                            Margin="10">
+                                </DatePicker>
                             </Grid>
                         </Grid>
                         <Grid Grid.Row="1">
@@ -131,7 +130,7 @@
                                                     </GridViewColumn.CellTemplate>
                                                 </GridViewColumn>
                                                 <GridViewColumn Header="Năm sinh"
-                                                                DisplayMemberBinding="{Binding NgaySinh}"></GridViewColumn>
+                                                                DisplayMemberBinding="{Binding NgaySinh, StringFormat='dd/MM/yyyy'}"></GridViewColumn>
                                                 <GridViewColumn Header="Địa chỉ"
                                                                 DisplayMemberBinding="{Binding DiaChi}"></GridViewColumn>
                                                 <GridViewColumn Header="Số điện thoại"
