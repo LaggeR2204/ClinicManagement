@@ -25,15 +25,11 @@ namespace GUI_Clinic.View.Windows
         public wdHoaDon(DTO_HoaDon hoaDon)
         {
             InitializeComponent();
-            tblMaHoaDon.Text = hoaDon.Id;
-            tblNgayKham.Text = hoaDon.PhieuKhamBenh.NgayKham.ToString();
-            tblTenBenhNhan.Text = hoaDon.PhieuKhamBenh.BenhNhan.TenBenhNhan;
-            tblTienKham.Text = hoaDon.TienKham.ToString();
-            tblTienThuoc.Text = hoaDon.TienThuoc.ToString();
-            tblTongTien.Text = hoaDon.ThanhTien.ToString();
+            this.DataContext = this;
+            HoaDon = hoaDon;
         }
         #region Property
-        public DTO_HoaDon hoaDon;
+        public DTO_HoaDon HoaDon { get; set; }
         #endregion
 
         private void btnInHoaDon_Click(object sender, RoutedEventArgs e)

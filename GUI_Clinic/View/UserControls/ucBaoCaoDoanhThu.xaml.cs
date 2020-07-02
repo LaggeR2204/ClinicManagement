@@ -37,7 +37,7 @@ namespace GUI_Clinic.View.UserControls
         #region Property
         private ObservableCollection<DTO_BCDoanhThu> ListBCDT { get; set; }
         private ICollection<DTO_CTBaoCaoDoanhThu> ListCTBCDT { get; set; }
-        private DTO_BCDoanhThu bCDoanhThu { get; set; }
+        public DTO_BCDoanhThu bCDoanhThu { get; set; }
         private List<int> ListThang { get; set; }
         private List<int> ListNam { get; set; }
 
@@ -50,7 +50,6 @@ namespace GUI_Clinic.View.UserControls
 
         public void InitData()
         {
-
             ListThang = Enumerable.Range(1, 12).ToList();
             cbxThang.ItemsSource = ListThang;
             cbxThang.SelectedIndex = DateTime.Now.Month - 1;
@@ -74,12 +73,10 @@ namespace GUI_Clinic.View.UserControls
                 BUSManager.BCDoanhThuBUS.LoadNPCTBaoCaoDoanhThu(bCDoanhThu);
                 ListCTBCDT = bCDoanhThu.DS_CTBaoCaoDoanhThu;
                 lvCTBaoCaoDoanhThu.ItemsSource = ListCTBCDT;
-                tblTongDoanhThu.Text = bCDoanhThu.TongDoanhThu.ToString();
             }
             else
             {
                 lvCTBaoCaoDoanhThu.ItemsSource = ListCTBCDT;
-                tblTongDoanhThu.Text = "0";
             }
 
         }
@@ -89,9 +86,16 @@ namespace GUI_Clinic.View.UserControls
             FilterBaoCaoCommand = new RelayCommand<Window>((p) =>
             {
                 if (String.IsNullOrEmpty(cbxThang.Text) ||
-                    String.IsNullOrEmpty(cbxNam.Text))
+                    String.IsNullOrEmpty(cbxNam.Text)
+                    )
                 {
-                    return false;
+                    if (bCDoanhThu != null)
+                    {
+                        if (cbxThang.Text == bCDoanhThu.Thang.ToString() && cbxNam.Text == bCDoanhThu.Nam.ToString())
+                        {
+                            return false;
+                        }
+                    }
                 }
                 return true;
             }, (p) =>
@@ -112,12 +116,10 @@ namespace GUI_Clinic.View.UserControls
                     BUSManager.BCDoanhThuBUS.LoadNPCTBaoCaoDoanhThu(bCDoanhThu);
                     ListCTBCDT = bCDoanhThu.DS_CTBaoCaoDoanhThu;
                     lvCTBaoCaoDoanhThu.ItemsSource = ListCTBCDT;
-                    tblTongDoanhThu.Text = bCDoanhThu.TongDoanhThu.ToString();
                 }
                 else
                 {
                     lvCTBaoCaoDoanhThu.ItemsSource = ListCTBCDT;
-                    tblTongDoanhThu.Text = "0";
                 }
                
             });
