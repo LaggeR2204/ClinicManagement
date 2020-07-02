@@ -113,7 +113,7 @@
                                                                                    Converter={StaticResource IndexConverter}}"></GridViewColumn>
                                                 <GridViewColumn Header="Mã bệnh nhân"
                                                                 DisplayMemberBinding="{Binding Id}"></GridViewColumn>
-                                                <GridViewColumn Header="Họ và Tên"
+                                                <GridViewColumn Header="Họ và tên"
                                                                 DisplayMemberBinding="{Binding TenBenhNhan}"></GridViewColumn>
                                                 <GridViewColumn Header="Giới tính">
                                                     <GridViewColumn.CellTemplate>
@@ -345,7 +345,7 @@
                                             <ColumnDefinition />
                                         </Grid.ColumnDefinitions>
                                         <TextBlock Grid.Column="0"
-                                                   Text="Đia chỉ:">
+                                                   Text="Địa chỉ:">
                                         </TextBlock>
                                         <Grid Grid.Column="1">
                                             <TextBox BorderBrush="#0078D7"
