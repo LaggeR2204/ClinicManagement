@@ -41,6 +41,7 @@ namespace GUI_Clinic.View.UserControls
         public ObservableCollection<DTO_BenhNhan> CurSignedList { get; set; }
         public List<string> RegionIDList { get; set; }
         public DTO_ThamSo thamSo { get; set; }
+        public CollectionView ListDKView { get; set; }
         #endregion
         #region Command
         public ICommand AddPatientCommand { get; set; }
@@ -69,8 +70,10 @@ namespace GUI_Clinic.View.UserControls
             cbxDSBenhNhan.ItemsSource = ListBN2;
             lvDSKham.ItemsSource = CurSignedList;
             //Lọc danh sách khám theo ngày
-            CollectionView viewBenhNhan = (CollectionView)CollectionViewSource.GetDefaultView(ListBN1);
-            viewBenhNhan.Filter = BenhNhanFilter;
+            PreLoadCurListBN();
+            //Khoi tao filter danh sach kham
+            ListDKView = (CollectionView)CollectionViewSource.GetDefaultView(ListBN1);
+            ListDKView.Filter = BenhNhanFilterDate;
             //Load tham so
             thamSo = BUSManager.ThamSoBUS.GetThamSoSoBNToiDa();
         }
@@ -112,7 +115,7 @@ namespace GUI_Clinic.View.UserControls
                 cbxDSBenhNhan.SelectedIndex = -1;
             });
         }
-        private bool BenhNhanFilter(Object item)
+        private bool BenhNhanFilterDate(Object item)
         {
             if (String.IsNullOrEmpty(dpkNgayKham.Text))
             {
@@ -143,7 +146,7 @@ namespace GUI_Clinic.View.UserControls
         private void RefreshList()
         {
             MatchBNList = BUSManager.PhieuKhamBenhBUS.GetListPKB(dpkNgayKham.SelectedDate.Value.ToString("d"));
-            CollectionViewSource.GetDefaultView(lvDSKham.ItemsSource).Refresh();
+            ListDKView.Refresh();
         }
         public void Clear()
         {
@@ -199,6 +202,32 @@ namespace GUI_Clinic.View.UserControls
             if (CurSignedList.Count < thamSo.GiaTri)
                 return true;
             return false;
+        }
+        private void PreLoadCurListBN()
+        {
+            var listBN = BUSManager.PhieuKhamBenhBUS.GetListPKB(DateTime.Now.ToString("d"));
+            foreach (var id in listBN)
+            {
+                var bn = BUSManager.BenhNhanBUS.GetBenhNhanById(id);
+                CurSignedList.Add(bn);
+            }
+        }
+
+        private void cbxDSBenhNhan_KeyUp(object sender, KeyEventArgs e)
+        {
+            var Cmb = sender as ComboBox;
+            CollectionView itemsViewOriginal = (CollectionView)CollectionViewSource.GetDefaultView(Cmb.ItemsSource);
+
+            itemsViewOriginal.Filter = ((o) =>
+            {
+                if (String.IsNullOrEmpty(Cmb.Text)) 
+                    return true;
+                else
+                {
+                    return ((o as DTO_BenhNhan).TenBenhNhan.IndexOf(Cmb.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                }
+            });
+            itemsViewOriginal.Refresh();
         }
     }
 }

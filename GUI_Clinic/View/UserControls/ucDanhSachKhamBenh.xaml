@@ -193,6 +193,7 @@
                                                       BorderThickness="2"
                                                       IsEditable="True"
                                                       Margin="20 0 20 0"
+                                                      KeyUp="cbxDSBenhNhan_KeyUp"
                                                       VerticalAlignment="Center"
                                                       FontSize="16">
                                                 <ComboBox.ItemTemplate>

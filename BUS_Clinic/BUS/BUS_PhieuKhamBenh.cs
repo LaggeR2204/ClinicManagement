@@ -58,8 +58,9 @@ namespace BUS_Clinic.BUS
         {
             var listpkb = DALManager.PhieuKhamBenhDAL.GetListPKB();
             var result = from pkb in listpkb
+                         orderby pkb.NgayKham
                          where pkb.NgayKham.ToString("d") == ngayKham
-                         select pkb.MaBenhNhan;
+                         select pkb.MaBenhNhan;                  
             return new List<string>(result);
         }
 
