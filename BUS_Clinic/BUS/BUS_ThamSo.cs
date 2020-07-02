@@ -27,5 +27,9 @@ namespace BUS_Clinic.BUS
         {
             return DALManager.ThamSoDAL.GetListThamSo().Where(x => x.TenThamSo == "Số bệnh nhân tối đa 1 ngày").FirstOrDefault().GiaTri;
         }
+        public DTO_ThamSo GetThamSoSoBNToiDa()
+        {
+            return DALManager.ThamSoDAL.GetListThamSo().Where(x => x.TenThamSo == "Số bệnh nhân tối đa 1 ngày").FirstOrDefault();
+        }
     }
 }

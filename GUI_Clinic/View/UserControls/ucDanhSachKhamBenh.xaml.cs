@@ -40,7 +40,7 @@ namespace GUI_Clinic.View.UserControls
         public List<string> MatchBNList { get; set; }
         public ObservableCollection<DTO_BenhNhan> CurSignedList { get; set; }
         public List<string> RegionIDList { get; set; }
-        public int NumPatientMax { get; set; }
+        public DTO_ThamSo thamSo { get; set; }
         #endregion
         #region Command
         public ICommand AddPatientCommand { get; set; }
@@ -71,7 +71,8 @@ namespace GUI_Clinic.View.UserControls
             //Lọc danh sách khám theo ngày
             CollectionView viewBenhNhan = (CollectionView)CollectionViewSource.GetDefaultView(ListBN1);
             viewBenhNhan.Filter = BenhNhanFilter;
-            NumPatientMax = BUSManager.ThamSoBUS.GetSoBNToiDa();
+            //Load tham so
+            thamSo = BUSManager.ThamSoBUS.GetThamSoSoBNToiDa();
         }
         public void InitCommand()
         {
@@ -195,7 +196,7 @@ namespace GUI_Clinic.View.UserControls
         }
         private bool CheckConstraintMaxPatient()
         {
-            if (CurSignedList.Count < NumPatientMax)
+            if (CurSignedList.Count < thamSo.GiaTri)
                 return true;
             return false;
         }
