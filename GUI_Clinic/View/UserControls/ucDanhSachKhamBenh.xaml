@@ -218,6 +218,7 @@
                                                 Content="Đăng ký"
                                                 Margin="10 10 0 5"
                                                 Foreground="White"
+                                                BorderBrush="#0078D7"
                                                 Width="150"
                                                 FontWeight="Bold"
                                                 VerticalAlignment="Center"
