@@ -167,13 +167,16 @@ namespace GUI_Clinic.View.UserControls
 
                     ListPKB.Add(BUSManager.PhieuKhamBenhBUS.GetPhieuKhamBenh(newPhieuKhamBenh.Id));
 
-                    //wdHoaDon hoaDon = new wdHoaDon(BUSManager.PhieuKhamBenhBUS.GetPhieuKhamBenh(newPhieuKhamBenh.Id));
-                    //hoaDon.ShowDialog();
+                    DTO_HoaDon newHoaDon = new DTO_HoaDon(newPhieuKhamBenh);
+                    newHoaDon = BUSManager.HoaDonBUS.XuatHoaDon(newHoaDon, newPhieuKhamBenh);
+                    BUSManager.HoaDonBUS.AddHoaDon(newHoaDon);
+                    wdHoaDon hoaDon = new wdHoaDon(newHoaDon);
+                    hoaDon.ShowDialog();
                 }
                 else
                 {
-                    //wdHoaDon hoaDon = new wdHoaDon(BUSManager.PhieuKhamBenhBUS.GetPhieuKhamBenh(phieuKhamBenh.Id));
-                    //hoaDon.ShowDialog();
+                    wdHoaDon hoaDon = new wdHoaDon(BUSManager.HoaDonBUS.GetHoaDon(phieuKhamBenh));
+                    hoaDon.ShowDialog();
                 }
                 IsSave = true;
             });
