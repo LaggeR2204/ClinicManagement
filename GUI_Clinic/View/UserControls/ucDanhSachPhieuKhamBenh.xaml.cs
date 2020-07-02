@@ -29,15 +29,21 @@ namespace GUI_Clinic.View.UserControls
         {
             InitializeComponent();
             this.DataContext = this;
-
+            ucCTPKB.PKBAdded += UcCTPKB_PKBAdded;
             InitData();
             InitCommand();
             grdPhieuKhamBenh.Visibility = Visibility.Collapsed;
         }
 
+        private void UcCTPKB_PKBAdded(object sender, EventArgs e)
+        {
+            var pkb = sender as DTO_PhieuKhamBenh;
+            ListPKB.Add(pkb);
+            ListBNWaiting.Remove(BUSManager.BenhNhanBUS.GetBenhNhanById(pkb.MaBenhNhan));
+        }
+
         #region Property
         public ObservableCollection<DTO_PhieuKhamBenh> ListPKB { get; set; }
-        public ObservableCollection<DTO_PhieuKhamBenh> ListPKBsource { get; set; }
         public ObservableCollection<DTO_BenhNhan> ListBNWaiting { get; set; }
         public CollectionView ViewPKB  { get; set; }
         #endregion

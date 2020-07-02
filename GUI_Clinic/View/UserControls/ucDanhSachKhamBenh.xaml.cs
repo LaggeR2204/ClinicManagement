@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -134,7 +135,7 @@ namespace GUI_Clinic.View.UserControls
                     lvDSKham.ItemsSource = ListBN1;
                     RefreshList();
                 }
-            }       
+            }
         }
         private void RefreshList()
         {
@@ -149,27 +150,41 @@ namespace GUI_Clinic.View.UserControls
             dpkNgaySinh.SelectedDate = null;
             cbxGioiTinh.SelectedIndex = -1;
         }
-        private void tbxSDT_KeyDown(object sender, KeyEventArgs e)
-        {
-            bool isNumPadNumeric = (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9);
-
-            bool isNumeric = (e.Key >= Key.D0 && e.Key <= Key.D9);
-
-            if (!isNumPadNumeric && !isNumeric && e.Key != Key.OemPeriod && e.Key != Key.Decimal)
-            {
-                e.Handled = true;
-            }
-        }
         private void DangKyKham(DTO_BenhNhan bn)
         {
             if (CurSignedList.Contains(bn))
             {
-                MsgBox.Show("Bệnh nhân này đã được đăng ký");
+                MsgBox.Show("Bệnh nhân này đã được đăng ký", MessageType.Error);
                 return;
-            }               
+            }
             CurSignedList.Add(bn);
             if (PatientSigned != null)
                 PatientSigned(bn, new EventArgs());
+        }
+
+        private void tbxSDT_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !IsTextAllowed(e.Text);
+        }
+        private static readonly Regex _regex = new Regex(@"([^0-9]+)|\s+", RegexOptions.Singleline); //regex that matches disallowed text
+        private static bool IsTextAllowed(string text)
+        {
+            return !_regex.IsMatch(text);
+        }
+        private void tbxSDT_Pasting(object sender, DataObjectPastingEventArgs e)
+        {
+            if (e.DataObject.GetDataPresent(typeof(String)))
+            {
+                String text = (String)e.DataObject.GetData(typeof(String));
+                if (!IsTextAllowed(text))
+                {
+                    e.CancelCommand();
+                }
+            }
+            else
+            {
+                e.CancelCommand();
+            }
         }
     }
 }

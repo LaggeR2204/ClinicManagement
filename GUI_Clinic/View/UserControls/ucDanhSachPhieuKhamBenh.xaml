@@ -4,9 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GUI_Clinic.View.UserControls"
+             xmlns:cvt="clr-namespace:GUI_Clinic.Converter"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d">
+    <UserControl.Resources>
+        <cvt:IndexConverter x:Key="IndexConverter"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -105,12 +109,34 @@
                                           ScrollViewer.VerticalScrollBarVisibility="Auto">
                                     <ListView.View>
                                         <GridView>
-                                            <GridViewColumn Header="STT"
+                                            <GridViewColumn Header="STT" DisplayMemberBinding="{Binding RelativeSource=
+                                                                                   {RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}, 
+                                                                                   Converter={StaticResource IndexConverter}}"></GridViewColumn>
+                                            <GridViewColumn Header="Mã bệnh nhân"
                                                                 DisplayMemberBinding="{Binding Id}"></GridViewColumn>
                                             <GridViewColumn Header="Họ và Tên"
                                                                 DisplayMemberBinding="{Binding TenBenhNhan}"></GridViewColumn>
-                                            <GridViewColumn Header="Giới tính"
-                                                                DisplayMemberBinding="{Binding GioiTinh}"></GridViewColumn>
+                                            <GridViewColumn Header="Giới tính">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock>
+                                                            <TextBlock.Style>
+                                                                <Style TargetType="TextBlock">
+                                                                    <Setter Property="Text"
+                                                                            Value="Nam"></Setter>
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding GioiTinh}"
+                                                                                     Value="True">
+                                                                            <Setter Property="Text"
+                                                                                    Value="Nữ" />
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </TextBlock.Style>
+                                                        </TextBlock>
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
                                             <GridViewColumn Header="Ngày sinh"
                                                                 DisplayMemberBinding="{Binding NgaySinh}"></GridViewColumn>
                                         </GridView>
@@ -164,8 +190,9 @@
                                           MouseDoubleClick="lvDSPKB_MouseDoubleClick">                                    
                                     <ListView.View>
                                         <GridView>
-                                            <GridViewColumn Header="STT"
-                                                                DisplayMemberBinding="{Binding Id}"></GridViewColumn>
+                                            <GridViewColumn Header="STT" DisplayMemberBinding="{Binding RelativeSource=
+                                                                                   {RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}, 
+                                                                                   Converter={StaticResource IndexConverter}}"></GridViewColumn>
                                             <GridViewColumn Header="Mã PKB"
                                                                 DisplayMemberBinding="{Binding Id}"></GridViewColumn>
                                             <GridViewColumn Header="Tên bệnh nhân"

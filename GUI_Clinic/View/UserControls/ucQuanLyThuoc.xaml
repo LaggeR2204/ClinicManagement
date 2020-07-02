@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GUI_Clinic.View.UserControls"
              mc:Ignorable="d" 
+             xmlns:cvt="clr-namespace:GUI_Clinic.Converter"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              TextElement.FontWeight="Regular"
@@ -14,6 +15,9 @@
              Background="{DynamicResource MaterialDesignPaper}"
              FontFamily="{DynamicResource MaterialDesignFont}"
              Name="uc_Medicine">
+    <UserControl.Resources>
+        <cvt:IndexConverter x:Key="IndexConverter"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -106,6 +110,9 @@
                                       ScrollViewer.VerticalScrollBarVisibility="Auto">
                                 <ListView.View>
                                     <GridView>
+                                        <GridViewColumn Header="STT" DisplayMemberBinding="{Binding RelativeSource=
+                                                                                   {RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}, 
+                                                                                   Converter={StaticResource IndexConverter}}"></GridViewColumn>
                                         <GridViewColumn Header="Mã thuốc" 
                                                         DisplayMemberBinding="{Binding Id}"/>
                                         <GridViewColumn Header="Tên thuốc" 
@@ -117,7 +124,7 @@
                                         <GridViewColumn Header="Số lượng" 
                                                         DisplayMemberBinding="{Binding SoLuong}"/>
                                         <GridViewColumn Header="Đơn Giá" 
-                                                        DisplayMemberBinding="{Binding DonGia}"/>
+                                                        DisplayMemberBinding="{Binding DonGia, StringFormat={}{0:N0} VNĐ}"/>
                                     </GridView>
                                 </ListView.View>
                             </ListView>
@@ -136,30 +143,27 @@
 
                     <Grid Grid.Row="0">
                         <DatePicker 
-                                 x:Name="dpTimPNT" 
+                                 x:Name="dpkTimPNT" 
                                  Margin="10 10 0 10" 
                                  materialDesign:HintAssist.Hint="Tìm phiếu nhập thuốc" 
                                  HorizontalAlignment="Left"
                                  VerticalAlignment="Center" 
                                  Width="150"
                                  SelectedDateChanged="dpTimPNT_SelectedDateChanged"/>
-                        <materialDesign:Chip Command="{Binding AddMedicineCommand}"
-                                     x:Name="btnNhapThuoc"
-                                     Grid.Row="1"
-                                     Content="Nhập thuốc"
-                                     ToolTip="Lập phiếu nhập thuốc"
-                                     Foreground="White"
-                                     HorizontalAlignment="Right"
-                                     VerticalAlignment="Center"
-                                     IconBackground="{DynamicResource PrimaryHueDarkBrush}"
-                                     IconForeground="{DynamicResource PrimaryHueDarkForegroundBrush}"
-                                     Background="Gray"
-                                     Margin="0 5 10 5"
-                                     Click="btnNhapThuoc_Click">
-                            <materialDesign:Chip.Icon>
-                                <materialDesign:PackIcon Kind="Plus"/>
-                            </materialDesign:Chip.Icon>
-                        </materialDesign:Chip>
+                        <Button Command="{Binding AddMedicineCommand}"
+                                x:Name="btnNhapThuoc"
+                                Grid.Row="1"
+                                Content="Nhập thuốc"
+                                ToolTip="Lập phiếu nhập thuốc"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                BorderBrush="#0078D7"
+                                Background="#0078D7"
+                                Foreground="White"
+                                Margin="0 5 10 5"
+                                FontWeight="Bold"
+                                Click="btnNhapThuoc_Click"/>
+
                         <!--<Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
                                 ToolTip="Tìm"
                                 Background="#0078D7"
@@ -184,12 +188,15 @@
                                   
                             <ListView.View>
                                 <GridView>
+                                    <GridViewColumn Header="STT" DisplayMemberBinding="{Binding RelativeSource=
+                                                                                   {RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}, 
+                                                                                   Converter={StaticResource IndexConverter}}"></GridViewColumn>
                                     <GridViewColumn Header="Mã PNT" 
                                                     DisplayMemberBinding="{Binding Id}"/>
                                     <GridViewColumn Header="Ngày nhập" 
                                                     DisplayMemberBinding="{Binding NgayNhap, StringFormat='dd/MM/yyyy'}"/>
                                     <GridViewColumn Header="Tổng tiền" 
-                                                    DisplayMemberBinding="{Binding TongTien}"/>
+                                                    DisplayMemberBinding="{Binding TongTien, StringFormat={}{0:N0} VNĐ}"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>
@@ -206,6 +213,9 @@
                                   ScrollViewer.VerticalScrollBarVisibility="Auto">
                             <ListView.View>
                                 <GridView>
+                                    <GridViewColumn Header="STT" DisplayMemberBinding="{Binding RelativeSource=
+                                                                                   {RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}, 
+                                                                                   Converter={StaticResource IndexConverter}}"></GridViewColumn>
                                     <GridViewColumn 
                                         Header="Mã PNT" 
                                         DisplayMemberBinding="{Binding MaPNT}"/>
@@ -220,7 +230,7 @@
                                         DisplayMemberBinding="{Binding DonGiaNhap}"/>
                                     <GridViewColumn 
                                         Header="Thành tiền"
-                                        DisplayMemberBinding="{Binding ThanhTien}"/>
+                                        DisplayMemberBinding="{Binding ThanhTien, StringFormat={}{0:N0} VNĐ}"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>

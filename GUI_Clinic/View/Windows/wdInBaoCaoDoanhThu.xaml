@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI_Clinic.View.Windows"
         mc:Ignorable="d"
+        xmlns:cvt="clr-namespace:GUI_Clinic.Converter"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -16,6 +17,9 @@
         BorderBrush="#0078D7"
         BorderThickness="2"
         Title="wdInBaoCaoDoanhThu" Height="842" Width="595" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ShowInTaskbar="False" WindowStyle="None">
+    <Window.Resources>
+        <cvt:IndexConverter x:Key="IndexConverter"/>
+    </Window.Resources>
     <Grid>
 
         <Button x:Name="btnThoat"
@@ -95,7 +99,9 @@
                       ScrollViewer.VerticalScrollBarVisibility="Auto">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="STT" Width="60" DisplayMemberBinding="{Binding DisplayName}"></GridViewColumn>
+                        <GridViewColumn Header="STT" DisplayMemberBinding="{Binding RelativeSource=
+                                                                                   {RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}, 
+                                                                                   Converter={StaticResource IndexConverter}}"></GridViewColumn>
                         <GridViewColumn Header="Ngày" Width="120" DisplayMemberBinding="{Binding Unit.DisplayName}"></GridViewColumn>
                         <GridViewColumn Header="Số bệnh nhân" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
                         <GridViewColumn Header="Doanh thu" Width="150" DisplayMemberBinding="{Binding Price}"></GridViewColumn>

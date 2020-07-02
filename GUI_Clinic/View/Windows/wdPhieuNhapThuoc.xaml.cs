@@ -1,6 +1,7 @@
 ﻿using BUS_Clinic.BUS;
 using DTO_Clinic;
 using GUI_Clinic.Command;
+using GUI_Clinic.CustomControl;
 using GUI_Clinic.View.UserControls;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Policy;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -116,7 +118,7 @@ namespace GUI_Clinic.View.Windows
                     }
                     else
                     {
-                        MessageBox.Show("Thuốc bạn chọn chưa có loại đơn vị này.");
+                        MsgBox.Show("Thuốc bạn chọn chưa có loại đơn vị này");
                     }
 
                     cbxTenThuoc.SelectedIndex = -1;
@@ -140,7 +142,7 @@ namespace GUI_Clinic.View.Windows
                     }
                     else
                     {
-                        MessageBox.Show("Thuốc với đơn vị bạn nhập đã tồn tại trong cơ sở dữ liệu");
+                        MsgBox.Show("Thuốc với đơn vị bạn nhập đã tồn tại trong cơ sở dữ liệu");
                     }
 
                     tbxTenThuocMoi.Clear();
@@ -148,7 +150,6 @@ namespace GUI_Clinic.View.Windows
                     tbxDonGia.Text = "0";
                     tbxSoLuong.Text = "0";
                     tbxCongDungThuocMoi.Clear();
-                    ckbThuocMoi.IsChecked = false;
                 }
             });
         }
@@ -181,7 +182,7 @@ namespace GUI_Clinic.View.Windows
             }
             else
             {
-                MessageBox.Show("Bạn chưa nhập thuốc.");
+                MsgBox.Show("Bạn chưa nhập thuốc");
             }
         }
 
@@ -204,6 +205,31 @@ namespace GUI_Clinic.View.Windows
             Button b = sender as Button;
             DTO_Thuoc item = b.CommandParameter as DTO_Thuoc;
             List.Remove(item);
+        }
+
+        private void tbxDonGia_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !IsTextAllowed(e.Text);
+        }
+        private static readonly Regex _regex = new Regex(@"([^0-9]+)|\s+", RegexOptions.Singleline); //regex that matches disallowed text
+        private static bool IsTextAllowed(string text)
+        {
+            return !_regex.IsMatch(text);
+        }
+        private void tbxDonGia_Pasting(object sender, DataObjectPastingEventArgs e)
+        {
+            if (e.DataObject.GetDataPresent(typeof(String)))
+            {
+                String text = (String)e.DataObject.GetData(typeof(String));
+                if (!IsTextAllowed(text))
+                {
+                    e.CancelCommand();
+                }
+            }
+            else
+            {
+                e.CancelCommand();
+            }
         }
         //private void btnThemThuoc_Click(object sender, RoutedEventArgs e)
         //{

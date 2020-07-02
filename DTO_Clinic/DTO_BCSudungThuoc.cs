@@ -20,5 +20,20 @@ namespace DTO_Clinic
         public virtual DTO_Thuoc Thuoc { get; set; }
         public string MaThuoc { get; set; }
         public bool IsDeleted { get => _isDeleted; set { _isDeleted = value; OnPropertyChanged(); } }
+
+        public DTO_BCSudungThuoc()
+        {
+            IsDeleted = false;
+        }
+
+        public DTO_BCSudungThuoc(string maThuoc, int soLuongDung, DateTime ngayDung)
+        {
+            MaThuoc = maThuoc;
+            SoLuongDung = soLuongDung;
+            Thang = ngayDung.Month;
+            Nam = ngayDung.Year;
+            SoLanDung = 0;
+            IsDeleted = false;
+        }
     }
 }

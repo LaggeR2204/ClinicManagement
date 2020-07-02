@@ -72,7 +72,7 @@ namespace DTO_Clinic
         {
             TenBenhNhan = name;
             GioiTinh = gt;
-            NgaySinh = ngSinh;
+            NgaySinh = Convert.ToDateTime(ngSinh.ToString("d"));
             DiaChi = diachi;
             SoDienThoai = sdt;
             _isDeleted = false;

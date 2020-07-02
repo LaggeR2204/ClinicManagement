@@ -15,7 +15,6 @@ namespace DTO_Clinic
         public double TienKham { get => _tienKham; set { _tienKham = value; OnPropertyChanged(); } }
         public double TienThuoc { get => _tienThuoc; set { _tienThuoc = value; OnPropertyChanged(); } }
         public double ThanhTien { get => _thanhTien; set { _thanhTien = value; OnPropertyChanged(); } }
-
         public bool IsDeleted { get => _isDeleted; set { _isDeleted = value; OnPropertyChanged(); } }
 
         private double _tienKham=10000;

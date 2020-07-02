@@ -60,7 +60,7 @@ namespace BUS_Clinic.BUS
                 kq.SoLuong -= soLuongThuocSuDung;
             }
         }
-        public bool CheckIfSoLuongThuocDu(DTO_Thuoc thuocSuDung)
+        public bool CheckIfSoLuongThuocDu(DTO_Thuoc thuocSuDung, int soLuongSuDung)
         {
             ObservableCollection<DTO_Thuoc> thuocs = DALManager.ThuocDAL.GetListThuoc();
 
@@ -68,7 +68,7 @@ namespace BUS_Clinic.BUS
 
             if (kq != null)
             {
-                if (kq.SoLuong >= thuocSuDung.SoLuong)
+                if (kq.SoLuong >= soLuongSuDung)
                     return true;
                 return false;
             }

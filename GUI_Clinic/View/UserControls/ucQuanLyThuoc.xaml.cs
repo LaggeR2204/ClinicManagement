@@ -90,10 +90,10 @@ namespace GUI_Clinic.View.UserControls
 
         private bool PNTFilter(object item)
         {
-            if (dpTimPNT.SelectedDate == null)
+            if (dpkTimPNT.SelectedDate == null)
                 return true;
             else
-                return (item as DTO_PhieuNhapThuoc).NgayNhap.Date == dpTimPNT.SelectedDate;
+                return (item as DTO_PhieuNhapThuoc).NgayNhap.Date == dpkTimPNT.SelectedDate;
         }
 
         private bool CTPNTFilter(Object item)
