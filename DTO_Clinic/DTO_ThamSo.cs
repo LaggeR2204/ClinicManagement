@@ -13,5 +13,14 @@ namespace DTO_Clinic
 
         public string TenThamSo { get => _tenThamSo; set { _tenThamSo = value; OnPropertyChanged(); } }
         public int GiaTri { get => _giaTri; set { _giaTri = value; OnPropertyChanged(); } }
+        public DTO_ThamSo(string tenThamSo, int giatri)
+        {
+            TenThamSo = tenThamSo;
+            GiaTri = giatri;
+        }
+        public DTO_ThamSo()
+        {
+
+        }
     }
 }

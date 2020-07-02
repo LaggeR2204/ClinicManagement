@@ -186,7 +186,15 @@
                 </ListView>
             </Grid>
 
-            <Button x:Name="btnSetting" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="50" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" ToolTip="Cài đặt">
+            <Button x:Name="btnSetting" 
+                    Grid.Row="2" 
+                    VerticalAlignment="Bottom" 
+                    HorizontalAlignment="Left" 
+                    Width="50" Height="50" 
+                    Background="{x:Null}" 
+                    BorderBrush="{x:Null}" 
+                    ToolTip="Cài đặt"
+                    Click="btnSetting_Click">
                 <materialDesign:PackIcon Kind="Settings"/>
             </Button>
 

@@ -21,6 +21,7 @@ namespace DAL_Clinic.DAL
         private static DAL_BCDoanhThu _bcDoanhThuDAL;
         private static DAL_CTBaoCaoDoanhThu _cTBaoCaoDoanhThuDAL;
         private static DAL_HoaDon _hoaDonDAL;
+        private static DAL_ThamSo _thamSoDAL;
 
         public static DAL_BenhNhan BenhNhanDAL 
         { 
@@ -147,6 +148,16 @@ namespace DAL_Clinic.DAL
                 if (_hoaDonDAL == null)
                     _hoaDonDAL = new DAL_HoaDon();
                 return _hoaDonDAL;
+            }
+        }
+
+        public static DAL_ThamSo ThamSoDAL 
+        { 
+            get
+            {
+                if (_thamSoDAL == null)
+                    _thamSoDAL = new DAL_ThamSo();
+                return _thamSoDAL;
             }
         }
     }
