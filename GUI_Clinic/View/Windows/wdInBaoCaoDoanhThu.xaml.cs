@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BUS_Clinic.BUS;
+using DTO_Clinic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,22 @@ namespace GUI_Clinic.View.Windows
     /// </summary>
     public partial class wdInBaoCaoDoanhThu : Window
     {
-        public wdInBaoCaoDoanhThu()
+        private ICollection<DTO_CTBaoCaoDoanhThu> ListCTBCDT { get; set; }
+        private int TongSoBenhNhan { get; set; }
+        public wdInBaoCaoDoanhThu(DTO_BCDoanhThu bCDoanhThu)
         {
             InitializeComponent();
+            this.DataContext = this;
+            TongSoBenhNhan = 0;
+            BUSManager.BCDoanhThuBUS.LoadNPCTBaoCaoDoanhThu(bCDoanhThu);
+            ListCTBCDT = bCDoanhThu.DS_CTBaoCaoDoanhThu;
+            foreach (DTO_CTBaoCaoDoanhThu item in ListCTBCDT)
+            {
+                TongSoBenhNhan += item.SoBenhNhan;
+            }
+            lvTongHop.Items.Add(new MyItem { TongBenhNhan = TongSoBenhNhan, TongDoanhThu = bCDoanhThu.TongDoanhThu});
+            lvCTBCDT.ItemsSource = ListCTBCDT;
+            tblThangNam.Text = bCDoanhThu.Thang.ToString() + "/" + bCDoanhThu.Nam.ToString();
         }
 
         private void btnThoat_Click(object sender, RoutedEventArgs e)
@@ -68,5 +83,11 @@ namespace GUI_Clinic.View.Windows
 
             return parent;
         }
+    }
+
+    public class MyItem
+    {
+        public int TongBenhNhan { get; set; }
+        public float TongDoanhThu { get; set; }
     }
 }

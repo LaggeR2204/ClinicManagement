@@ -83,7 +83,6 @@
                 <TextBlock Grid.Column="1"
                            x:Name="tblThangNam"
                            HorizontalAlignment="Left"
-                           Text="6/2020"
                            Foreground="Black"
                            FontWeight="Bold"
                            FontSize="25"

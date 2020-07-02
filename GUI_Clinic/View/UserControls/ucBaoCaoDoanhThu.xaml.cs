@@ -61,6 +61,8 @@ namespace GUI_Clinic.View.UserControls
             ListBCDT = BUSManager.BCDoanhThuBUS.GetListBCDoanhThu();
 
 
+            bCDoanhThu = null;
+            ListCTBCDT = null;
             foreach (DTO_BCDoanhThu item in ListBCDT)
             {
                 if (item.Thang == int.Parse(cbxThang.Text) && item.Nam == int.Parse(cbxNam.Text))
@@ -69,10 +71,18 @@ namespace GUI_Clinic.View.UserControls
                 }
 
             }
-            BUSManager.BCDoanhThuBUS.LoadNPCTBaoCaoDoanhThu(bCDoanhThu);
-            ListCTBCDT = bCDoanhThu.DS_CTBaoCaoDoanhThu;
-            lvCTBaoCaoDoanhThu.ItemsSource = ListCTBCDT;
-            tblTongDoanhThu.Text = bCDoanhThu.TongDoanhThu.ToString();
+            if (bCDoanhThu != null)
+            {
+                BUSManager.BCDoanhThuBUS.LoadNPCTBaoCaoDoanhThu(bCDoanhThu);
+                ListCTBCDT = bCDoanhThu.DS_CTBaoCaoDoanhThu;
+                lvCTBaoCaoDoanhThu.ItemsSource = ListCTBCDT;
+                tblTongDoanhThu.Text = bCDoanhThu.TongDoanhThu.ToString();
+            }
+            else
+            {
+                lvCTBaoCaoDoanhThu.ItemsSource = ListCTBCDT;
+                tblTongDoanhThu.Text = "0";
+            }
 
         }
 
@@ -116,15 +126,16 @@ namespace GUI_Clinic.View.UserControls
             InBaoCaoCommand = new RelayCommand<Window>((p) =>
             {
                 if (String.IsNullOrEmpty(cbxThang.Text) ||
-                    String.IsNullOrEmpty(cbxNam.Text))
+                    String.IsNullOrEmpty(cbxNam.Text) ||
+                    bCDoanhThu == null)
                 {
                     return false;
                 }
                 return true;
             }, (p) =>
             {
-                //wdInBaoCaoSuDungThuoc baoCaoSuDungThuoc = new wdInBaoCaoSuDungThuoc(BUSManager.BCSuDungThuocBUS.GetBaoCaoByMonth(cbxThang.SelectedIndex + 1, cbxNam.SelectedIndex + 1950), cbxThang.SelectedIndex + 1, cbxNam.SelectedIndex + 1950);
-                //baoCaoSuDungThuoc.ShowDialog();
+                wdInBaoCaoDoanhThu baoCaoDoanhThu = new wdInBaoCaoDoanhThu(bCDoanhThu);
+                baoCaoDoanhThu.ShowDialog();
             });
         }
 
