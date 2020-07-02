@@ -79,7 +79,7 @@
                            Foreground="Black"
                            FontWeight="Bold"
                            FontSize="25"
-                           Margin="10 10 0 10"></TextBlock>
+                           Margin="20 10 0 10"></TextBlock>
                 <TextBlock Grid.Column="1"
                            x:Name="tblThangNam"
                            HorizontalAlignment="Left"
@@ -102,8 +102,8 @@
                                                                                    Converter={StaticResource IndexConverter}}"></GridViewColumn>
                         <GridViewColumn Header="Ngày" Width="120" DisplayMemberBinding="{Binding Ngay}"></GridViewColumn>
                         <GridViewColumn Header="Số bệnh nhân" DisplayMemberBinding="{Binding SoBenhNhan}"></GridViewColumn>
-                        <GridViewColumn Header="Doanh thu" Width="150" DisplayMemberBinding="{Binding DoanhThu,StringFormat={}{0:N0} VNĐ}"></GridViewColumn>
-                        <GridViewColumn Header="Tỷ lệ" DisplayMemberBinding="{Binding TyLe}"></GridViewColumn>
+                        <GridViewColumn Header="Doanh thu" Width="150" DisplayMemberBinding="{Binding DoanhThu, StringFormat={}{0} VNĐ}"></GridViewColumn>
+                        <GridViewColumn Header="Tỷ lệ" DisplayMemberBinding="{Binding TyLe, StringFormat={}{0}%}"></GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -125,13 +125,13 @@
 
             <ListView x:Name="lvTongHop"
                       Grid.Row="4"
-                      Margin="10 0 10 20"
+                      Margin="20 0 10 20"
                       ScrollViewer.CanContentScroll="True"
                       ScrollViewer.VerticalScrollBarVisibility="Auto">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Tổng số bệnh nhân" DisplayMemberBinding="{Binding TongBenhNhan}" Width="287"></GridViewColumn>
-                        <GridViewColumn Header="Tổng doanh thu" DisplayMemberBinding="{Binding TongDoanhThu,StringFormat={}{0:N0} VNĐ}"></GridViewColumn>
+                        <GridViewColumn Header="Tổng doanh thu" DisplayMemberBinding="{Binding TongDoanhThu, StringFormat={}{0} VNĐ}"></GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>

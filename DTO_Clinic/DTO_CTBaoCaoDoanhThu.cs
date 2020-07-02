@@ -23,5 +23,20 @@ namespace DTO_Clinic
         public float TyLe { get => _tyLe; set { _tyLe = value; OnPropertyChanged(); } }
         public virtual DTO_BCDoanhThu BCDoanhThu { get; set; }
         public bool IsDeleted { get => _isDeleted; set { _isDeleted = value; OnPropertyChanged(); } }
+
+        public DTO_CTBaoCaoDoanhThu()
+        {
+            IsDeleted = false;
+        }
+        public DTO_CTBaoCaoDoanhThu(DTO_HoaDon hoaDon)
+        {
+            DateTime dateTime = DateTime.Now;
+            SoBenhNhan = 1;
+            DoanhThu = (float)hoaDon.ThanhTien;
+            Ngay = dateTime.Day;
+            Thang = dateTime.Month;
+            Nam = dateTime.Year;
+            IsDeleted = false;
+        }
     }
 }

@@ -194,6 +194,7 @@ namespace GUI_Clinic.View.UserControls
 
                     DTO_HoaDon newHoaDon = new DTO_HoaDon(newPhieuKhamBenh);
                     BUSManager.HoaDonBUS.XuatHoaDon(newHoaDon, newPhieuKhamBenh);
+                    DisablePKB();
                     wdHoaDon hoaDon = new wdHoaDon(newHoaDon);
                     hoaDon.ShowDialog();
                 }

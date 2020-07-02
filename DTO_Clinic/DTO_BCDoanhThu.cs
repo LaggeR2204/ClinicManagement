@@ -17,5 +17,17 @@ namespace DTO_Clinic
         public float TongDoanhThu { get => _tongDoanhThu; set { _tongDoanhThu = value; OnPropertyChanged(); } }
         public virtual ICollection<DTO_CTBaoCaoDoanhThu> DS_CTBaoCaoDoanhThu { get; set; }
         public bool IsDeleted { get => _isDeleted; set { _isDeleted = value; OnPropertyChanged(); } }
+
+        public DTO_BCDoanhThu()
+        {
+            IsDeleted = false;
+        }
+        public DTO_BCDoanhThu(DateTime dateTime)
+        {
+            TongDoanhThu = 0;
+            Thang = dateTime.Month;
+            Nam = dateTime.Year;
+            IsDeleted = false;
+        }
     }
 }

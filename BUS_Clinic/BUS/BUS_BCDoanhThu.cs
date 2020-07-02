@@ -15,6 +15,23 @@ namespace BUS_Clinic.BUS
         {
 
         }
+        public void AddBCDoanhThu(DTO_BCDoanhThu bCDoanhThu)
+        {
+            ObservableCollection<DTO_BCDoanhThu> ListBCDT = GetListBCDoanhThu();
+            foreach (DTO_BCDoanhThu item in ListBCDT)
+            {
+                if (bCDoanhThu.Thang == item.Thang &&
+                    bCDoanhThu.Nam == item.Nam)
+                {
+                    return;
+                }
+            }
+            DALManager.BCDoanhThuDAL.AddBCDoanhThu(bCDoanhThu);
+        }
+        public DTO_BCDoanhThu GetBCDoanhThuToday()
+        {
+            return GetListBCDoanhThu().Where(c => c.Thang == DateTime.Now.Month && c.Nam == DateTime.Now.Year).FirstOrDefault();
+        }
         public void LoadNPCTBaoCaoDoanhThu(DTO_BCDoanhThu bCDoanhThu)
         {
             DALManager.BCDoanhThuDAL.LoadNPCTBaoCaoDoanhThu(bCDoanhThu);
