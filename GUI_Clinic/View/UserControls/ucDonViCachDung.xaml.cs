@@ -77,7 +77,7 @@ namespace GUI_Clinic.View.UserControls
                 }
                 else
                 {
-                    MsgBox.Show("Tên bệnh đã tồn tại");
+                    MsgBox.Show("Tên bệnh đã tồn tại", MessageType.Error);
                     tbxTenBenh.Clear();
                 }
             });
@@ -94,7 +94,7 @@ namespace GUI_Clinic.View.UserControls
                 DTO_Benh tempBenh = ListBenh.ElementAt<DTO_Benh>(lvBenh.SelectedIndex);
                 if (!BUSManager.BenhBUS.UpdateBenh(tempBenh, TenBenhInput))
                 {
-                    MsgBox.Show("Tên bệnh mới đã tồn tại");
+                    MsgBox.Show("Tên bệnh mới đã tồn tại", MessageType.Error);
                 }    
             });
 
@@ -131,7 +131,7 @@ namespace GUI_Clinic.View.UserControls
                 }
                 else
                 {
-                    MsgBox.Show("Tên đơn vị đã tồn tại");
+                    MsgBox.Show("Tên đơn vị đã tồn tại", MessageType.Error);
                     tbxTenDonVi.Clear();
                 }
             });
@@ -148,7 +148,7 @@ namespace GUI_Clinic.View.UserControls
                 DTO_DonVi tempDonVi = ListDV.ElementAt<DTO_DonVi>(lvDonVi.SelectedIndex);
                 if (!BUSManager.DonViBUS.UpdateDonVi(tempDonVi, TenDonViInput))
                 {
-                    MsgBox.Show("Tên đơn vị mới đã tồn tại");
+                    MsgBox.Show("Tên đơn vị mới đã tồn tại", MessageType.Error);
                 }    
             });
 
@@ -186,7 +186,7 @@ namespace GUI_Clinic.View.UserControls
                 }
                 else
                 {
-                    MsgBox.Show("Tên cách dùng đã tồn tại");
+                    MsgBox.Show("Tên cách dùng đã tồn tại", MessageType.Error);
                     tbxTenCachDung.Clear();
                 }    
             });
@@ -203,7 +203,7 @@ namespace GUI_Clinic.View.UserControls
                 DTO_CachDung tempCachDung = ListCD.ElementAt<DTO_CachDung>(lvCachDung.SelectedIndex);
                 if (!BUSManager.CachDungBUS.UpdateCachDung(tempCachDung, TenCachDungInput))
                 {
-                    MsgBox.Show("Tên cách dùng mới đã tồn tại");
+                    MsgBox.Show("Tên cách dùng mới đã tồn tại", MessageType.Error);
                 }    
             });
 
@@ -285,7 +285,7 @@ namespace GUI_Clinic.View.UserControls
                 }
                 else
                 {
-                    MsgBox.Show("Tên bệnh đã tồn tại");
+                    MsgBox.Show("Tên bệnh đã tồn tại", MessageType.Error);
                     tbxTenBenh.Clear();
                 }
             }
@@ -307,7 +307,7 @@ namespace GUI_Clinic.View.UserControls
                 }
                 else
                 {
-                    MsgBox.Show("Tên đơn vị đã tồn tại");
+                    MsgBox.Show("Tên đơn vị đã tồn tại", MessageType.Error);
                     tbxTenDonVi.Clear();
                 }
             }
@@ -329,7 +329,7 @@ namespace GUI_Clinic.View.UserControls
                 }
                 else
                 {
-                    MsgBox.Show("Tên cách dùng đã tồn tại");
+                    MsgBox.Show("Tên cách dùng đã tồn tại", MessageType.Error);
                     tbxTenCachDung.Clear();
                 }
             }
