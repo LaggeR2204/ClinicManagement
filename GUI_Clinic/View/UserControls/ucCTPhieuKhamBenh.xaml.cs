@@ -189,6 +189,7 @@ namespace GUI_Clinic.View.UserControls
                         BUSManager.BCSuDungThuocBUS.AddBCSuDungThuoc(bCSudungThuoc);
                         BUSManager.CTPhieuKhamBenhBUS.AddCTPhieuKhamBenh(item);
                     }
+                    phieuKhamBenh = BUSManager.PhieuKhamBenhBUS.GetPhieuKhamBenh(newPhieuKhamBenh.Id);
                     BUSManager.PhieuKhamBenhBUS.SaveChange();
                     if (PKBAdded != null)
                         PKBAdded(newPhieuKhamBenh, new EventArgs());

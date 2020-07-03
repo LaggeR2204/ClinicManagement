@@ -27,13 +27,6 @@ namespace BUS_Clinic.BUS
             bCSudungThuoc.SoLanDung++;
             DALManager.BCSuDungThuocDAL.AddBCSuDungThuoc(bCSudungThuoc);
         }
-
-        public List<DTO_BCSudungThuoc> GetBaoCaoByMonth(int Thang, int Nam)
-        {
-            ObservableCollection<DTO_BCSudungThuoc> ListBCSDT = GetListBCSuDungThuoc();
-            List<DTO_BCSudungThuoc> kq = ListBCSDT.Where(c => (c.Thang == Thang) && (c.Nam == Nam)).ToList();
-            return kq;
-        }
         public ObservableCollection<DTO_BCSudungThuoc> GetListBCSuDungThuoc()
         {
             return DALManager.BCSuDungThuocDAL.GetListBCSuDungThuoc();

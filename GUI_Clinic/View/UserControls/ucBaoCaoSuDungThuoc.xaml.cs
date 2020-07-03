@@ -1,6 +1,7 @@
 ﻿using BUS_Clinic.BUS;
 using DTO_Clinic;
 using GUI_Clinic.Command;
+using GUI_Clinic.CustomControl;
 using GUI_Clinic.View.Windows;
 using System;
 using System.Collections.Generic;
@@ -58,20 +59,12 @@ namespace GUI_Clinic.View.UserControls
 
             ListBCSDT = BUSManager.BCSuDungThuocBUS.GetListBCSuDungThuoc();
             lvBCSDT.ItemsSource = ListBCSDT;
-            
-            //viewBC = (CollectionView)CollectionViewSource.GetDefaultView(ListBCSDT);
-            //viewBC.Filter = BCSuDungThuocFilter;
         }
 
         public void InitCommand()
         {
             FilterBaoCaoCommand = new RelayCommand<Window>((p) =>
             {
-                if (String.IsNullOrEmpty(cbxThang.Text) ||
-                    String.IsNullOrEmpty(cbxNam.Text))
-                {
-                    return false;
-                }
                 return true;
             }, (p) =>
             {
@@ -80,33 +73,20 @@ namespace GUI_Clinic.View.UserControls
             });
             InBaoCaoCommand = new RelayCommand<Window>((p) =>
             {
-                if (String.IsNullOrEmpty(cbxThang.Text) ||
-                    String.IsNullOrEmpty(cbxNam.Text))
-                {
-                    return false;
-                }
                 return true;
             }, (p) =>
             {
-                wdInBaoCaoSuDungThuoc baoCaoSuDungThuoc = new wdInBaoCaoSuDungThuoc(BUSManager.BCSuDungThuocBUS.GetBaoCaoByMonth(cbxThang.SelectedIndex + 1, cbxNam.SelectedIndex + 1950), cbxThang.SelectedIndex + 1, cbxNam.SelectedIndex + 1950);
+                wdInBaoCaoSuDungThuoc baoCaoSuDungThuoc = new wdInBaoCaoSuDungThuoc(ListBCSDT.Where(c => c.Nam == (cbxNam.SelectedIndex + 1950) && c.Thang == (cbxThang.SelectedIndex + 1)).ToList(), cbxThang.SelectedIndex + 1, cbxNam.SelectedIndex + 1950);
                 baoCaoSuDungThuoc.ShowDialog();
             });
         }
 
         private bool BCSuDungThuocFilter(Object item)
         {
-            if (String.IsNullOrEmpty(cbxThang.Text) ||
-                String.IsNullOrEmpty(cbxNam.Text))
-            {
-                return false;
-            }
-            else
-            {
-                if (ListBCSDT != null)
-                    return ((item as DTO_BCSudungThuoc).Thang == int.Parse(cbxThang.Text) &&
-                            (item as DTO_BCSudungThuoc).Nam == int.Parse(cbxNam.Text));
-                return false;
-            }
+            if (ListBCSDT != null)
+                return ((item as DTO_BCSudungThuoc).Thang == int.Parse(cbxThang.Text) &&
+                        (item as DTO_BCSudungThuoc).Nam == int.Parse(cbxNam.Text));
+            return false;
         }
     }
 }
