@@ -16,30 +16,33 @@ namespace BUS_Clinic.BUS
         {
 
         }
-        public void AddBenh(DTO_Benh benh)
+        public bool AddBenh(DTO_Benh benh)
         {
             ObservableCollection<DTO_Benh> benhs = DALManager.BenhDAL.GetListBenh();
 
-            bool flag = benhs.Any(b => b.TenBenh.Equals(benh.TenBenh, StringComparison.OrdinalIgnoreCase));
-
-            if (!flag)
+            if (benhs.Any(b => b.TenBenh.Equals(benh.TenBenh, StringComparison.OrdinalIgnoreCase)))
             {
-                benh.Id = AutoGenerateID();
-                DALManager.BenhDAL.AddBenh(benh);
+                return false;
             }
+
+            benh.Id = AutoGenerateID();
+            DALManager.BenhDAL.AddBenh(benh);
+            return true;
         }
-        public void UpdateBenh(DTO_Benh benh, string tenBenhMoi)
+        public bool UpdateBenh(DTO_Benh benh, string tenBenhMoi)
         {
             ObservableCollection<DTO_Benh> benhs = DALManager.BenhDAL.GetListBenh();
 
-            bool flag = benhs.Any(b => b.TenBenh.Equals(tenBenhMoi, StringComparison.OrdinalIgnoreCase));
-
-            if (benh.TenBenh != tenBenhMoi && !flag)
+            if (benh.TenBenh == tenBenhMoi || benhs.Any(b => b.TenBenh.Equals(tenBenhMoi, StringComparison.OrdinalIgnoreCase)))
             {
-                benh.TenBenh = tenBenhMoi;
+                return false;
             }
+
+            benh.TenBenh = tenBenhMoi;
+            return true;
+            
         }
-        public void Delbenh(DTO_Benh benh)
+        public bool Delbenh(DTO_Benh benh)
         {
             ObservableCollection<DTO_Benh> benhs = DALManager.BenhDAL.GetListBenh();
             if (benh != null)
@@ -47,8 +50,10 @@ namespace BUS_Clinic.BUS
                 if (benhs.Any(b=>b.TenBenh.Equals(benh.TenBenh, StringComparison.OrdinalIgnoreCase)))
                 {
                     DALManager.BenhDAL.DelBenh(benh);
+                    return true;
                 }
             }
+            return false;
         }
         public override void LoadLocalData()
         {
