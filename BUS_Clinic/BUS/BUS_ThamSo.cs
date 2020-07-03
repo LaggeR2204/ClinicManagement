@@ -15,13 +15,17 @@ namespace BUS_Clinic.BUS
         {
             DALManager.ThamSoDAL.LoadLocalData();
         }
-        public ObservableCollection<DTO_ThamSo> GetListThamSo()
-        {
-            return DALManager.ThamSoDAL.GetListThamSo();
-        }
         public void UpdateThamSo(int TienKham, int SoBNToiDa)
         {
             DALManager.ThamSoDAL.UpdateThamSo(TienKham, SoBNToiDa);
+        }
+        public int GetTienKham()
+        {
+            return DALManager.ThamSoDAL.GetListThamSo().Where(x => x.TenThamSo == "Tiền khám").FirstOrDefault().GiaTri;
+        }
+        public int GetSoBNToiDa()
+        {
+            return DALManager.ThamSoDAL.GetListThamSo().Where(x => x.TenThamSo == "Số bệnh nhân tối đa 1 ngày").FirstOrDefault().GiaTri;
         }
     }
 }

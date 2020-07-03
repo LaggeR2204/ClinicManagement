@@ -168,9 +168,12 @@ namespace GUI_Clinic.View.Windows
                     {
                         BUSManager.ThuocBUS.AddThuoc(item);
                     }
+                    else
+                    {
+                        BUSManager.ThuocBUS.CapNhatThuocVuaNhap(item);
+                    }    
 
                     DTO_CTPhieuNhapThuoc cTPhieuNhapThuoc = new DTO_CTPhieuNhapThuoc(tempID, item.Id, item.SoLuong, item.DonGia);
-                    BUSManager.ThuocBUS.CapNhatThuocVuaNhap(item);
                     BUSManager.CTPhieuNhapThuocBUS.AddCTPhieuNhapThuoc(cTPhieuNhapThuoc);
                 }
 

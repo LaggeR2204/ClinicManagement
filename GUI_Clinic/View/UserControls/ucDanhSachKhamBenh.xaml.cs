@@ -40,6 +40,7 @@ namespace GUI_Clinic.View.UserControls
         public List<string> MatchBNList { get; set; }
         public ObservableCollection<DTO_BenhNhan> CurSignedList { get; set; }
         public List<string> RegionIDList { get; set; }
+        public int NumPatientMax { get; set; }
         #endregion
         #region Command
         public ICommand AddPatientCommand { get; set; }
@@ -70,6 +71,7 @@ namespace GUI_Clinic.View.UserControls
             //Lọc danh sách khám theo ngày
             CollectionView viewBenhNhan = (CollectionView)CollectionViewSource.GetDefaultView(ListBN1);
             viewBenhNhan.Filter = BenhNhanFilter;
+            NumPatientMax = BUSManager.ThamSoBUS.GetSoBNToiDa();
         }
         public void InitCommand()
         {
@@ -152,14 +154,19 @@ namespace GUI_Clinic.View.UserControls
         }
         private void DangKyKham(DTO_BenhNhan bn)
         {
-            if (CurSignedList.Contains(bn))
+            if (CheckConstraintMaxPatient())
             {
-                MsgBox.Show("Bệnh nhân này đã được đăng ký", MessageType.Error);
-                return;
+                if (CurSignedList.Contains(bn))
+                {
+                    MsgBox.Show("Bệnh nhân này đã được đăng ký", MessageType.Error);
+                    return;
+                }
+                CurSignedList.Add(bn);
+                if (PatientSigned != null)
+                    PatientSigned(bn, new EventArgs());
             }
-            CurSignedList.Add(bn);
-            if (PatientSigned != null)
-                PatientSigned(bn, new EventArgs());
+            else
+                MsgBox.Show("Số lượt khám của hôm nay đã hết", MessageType.Error);
         }
 
         private void tbxSDT_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -185,6 +192,12 @@ namespace GUI_Clinic.View.UserControls
             {
                 e.CancelCommand();
             }
+        }
+        private bool CheckConstraintMaxPatient()
+        {
+            if (CurSignedList.Count < NumPatientMax)
+                return true;
+            return false;
         }
     }
 }

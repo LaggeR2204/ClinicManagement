@@ -59,7 +59,6 @@ namespace GUI_Clinic.View.UserControls
 
             ListBCDT = BUSManager.BCDoanhThuBUS.GetListBCDoanhThu();
 
-
             bCDoanhThu = null;
             ListCTBCDT = null;
             foreach (DTO_BCDoanhThu item in ListBCDT)
@@ -68,7 +67,6 @@ namespace GUI_Clinic.View.UserControls
                 {
                     bCDoanhThu = item;
                 }
-
             }
             if (bCDoanhThu != null)
             {

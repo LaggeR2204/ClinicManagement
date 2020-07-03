@@ -193,18 +193,17 @@ namespace GUI_Clinic.View.UserControls
                         PKBAdded(newPhieuKhamBenh, new EventArgs());
 
                     DTO_HoaDon newHoaDon = new DTO_HoaDon(newPhieuKhamBenh);
-                    newHoaDon = BUSManager.HoaDonBUS.XuatHoaDon(newHoaDon, newPhieuKhamBenh);
-                    BUSManager.HoaDonBUS.AddHoaDon(newHoaDon, newPhieuKhamBenh);
+                    BUSManager.HoaDonBUS.XuatHoaDon(newHoaDon, newPhieuKhamBenh);
                     DisablePKB();
                     wdHoaDon hoaDon = new wdHoaDon(newHoaDon);
                     hoaDon.ShowDialog();
-                    IsSave = true;
                 }
                 else
                 {
-                    wdHoaDon hoaDon = new wdHoaDon(BUSManager.HoaDonBUS.GetHoaDon(phieuKhamBenh));
+                    wdHoaDon hoaDon = new wdHoaDon(BUSManager.HoaDonBUS.GetHoaDonById(phieuKhamBenh.Id));
                     hoaDon.ShowDialog();
                 }
+                IsSave = true;
             });
         }
 

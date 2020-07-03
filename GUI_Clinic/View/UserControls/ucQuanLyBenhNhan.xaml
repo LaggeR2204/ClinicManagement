@@ -115,7 +115,7 @@
                                                                                    Converter={StaticResource IndexConverter}}"></GridViewColumn>
                             <GridViewColumn Header="Mã bệnh nhân"
                                             DisplayMemberBinding="{Binding Id}" />
-                            <GridViewColumn Header="Họ và Tên" 
+                            <GridViewColumn Header="Họ và tên" 
                                             DisplayMemberBinding="{Binding TenBenhNhan}"/>
                             <GridViewColumn Header="Giới tính">
                                 <GridViewColumn.CellTemplate>
@@ -139,7 +139,7 @@
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
                             <GridViewColumn Header="Ngày Sinh" 
-                                            DisplayMemberBinding="{Binding NgaySinh}"/>
+                                            DisplayMemberBinding="{Binding NgaySinh, StringFormat='dd/MM/yyyy'}"/>
                             <GridViewColumn Header="Số điện thoại"
                                             DisplayMemberBinding="{Binding SoDienThoai}" />
                             <GridViewColumn Header="Địa chỉ" 
