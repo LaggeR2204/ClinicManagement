@@ -25,6 +25,8 @@ namespace BUS_Clinic.BUS
         {
             hd.Id = pkb.Id;
             DALManager.HoaDonDAL.AddHoaDon(hd);
+            DTO_CTBaoCaoDoanhThu cTBaoCaoDoanhThu = new DTO_CTBaoCaoDoanhThu(hd);
+            BUSManager.CTBaoCaoDoanhThuBUS.AddCTBaoCaoDoanhThu(cTBaoCaoDoanhThu);
         }
         public double TinhTienThuoc(DTO_PhieuKhamBenh phieuKhamBenh)
         {
