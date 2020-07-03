@@ -99,7 +99,7 @@
                         </GridViewColumn>
                         <GridViewColumn Header="Số bệnh nhân" DisplayMemberBinding="{Binding SoBenhNhan}"></GridViewColumn>
                         <GridViewColumn Header="Doanh thu" DisplayMemberBinding="{Binding DoanhThu,StringFormat={}{0:N0} VNĐ}"></GridViewColumn>
-                        <GridViewColumn Header="Tỷ lệ" DisplayMemberBinding="{Binding TyLe, StringFormat={}{0}%}"></GridViewColumn>
+                        <GridViewColumn Header="Tỷ lệ" DisplayMemberBinding="{Binding TyLe, StringFormat={}{0:F2}%}"></GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
