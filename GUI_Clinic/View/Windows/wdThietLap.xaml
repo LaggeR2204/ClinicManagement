@@ -73,8 +73,16 @@
                      BorderThickness="2"
                      Margin="100 5 100 5"
                      FontSize="16"
-                     Text="{Binding TienKham, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                     VerticalAlignment="Center">
+                     VerticalAlignment="Center"
+                     PreviewTextInput="tbxTienKham_PreviewTextInput"
+                     DataObject.Pasting="tbxTienKham_Pasting">
+                <TextBox.Text>
+                    <Binding Path="TienKham" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <local:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
             </TextBox>
         </Grid>
         <Grid Grid.Row="4">
@@ -93,8 +101,16 @@
                      BorderThickness="2"
                      Margin="100 5 100 5"
                      FontSize="16"
-                     Text="{Binding SoBNToiDa, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                     VerticalAlignment="Center">
+                     VerticalAlignment="Center"
+                     PreviewTextInput="tbxTienKham_PreviewTextInput"
+                     DataObject.Pasting="tbxTienKham_Pasting">
+                <TextBox.Text>
+                    <Binding Path="SoBNToiDa" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <local:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
             </TextBox>
         </Grid>
         <Grid Grid.Row="6">

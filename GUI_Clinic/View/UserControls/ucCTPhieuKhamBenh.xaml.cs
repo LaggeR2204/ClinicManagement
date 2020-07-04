@@ -37,6 +37,7 @@ namespace GUI_Clinic.View.UserControls
         }
 
         #region Property
+        public int SoLuong { get; set; }
         private DTO_BenhNhan benhNhan = new DTO_BenhNhan();
         private DTO_PhieuKhamBenh phieuKhamBenh = new DTO_PhieuKhamBenh();
         public ObservableCollection<DTO_CTPhieuKhamBenh> ListCTPKB { get; set; }
@@ -114,7 +115,7 @@ namespace GUI_Clinic.View.UserControls
             ThemThuocCommand = new RelayCommand<Window>((p) =>
             {
                 if (string.IsNullOrEmpty(cbxThuoc.Text) ||
-                    string.IsNullOrEmpty(tbxSoLuong.Text) ||
+                    string.IsNullOrEmpty(tbxSoLuong.Text) || tbxSoLuong.Text == "0" ||
                     string.IsNullOrEmpty(cbxCachDung.Text) ||
                     IsSave == true)
                     return false;
@@ -122,9 +123,9 @@ namespace GUI_Clinic.View.UserControls
             }, (p) =>
             {
                 DTO_Thuoc newThuoc = cbxThuoc.SelectedItem as DTO_Thuoc;
-                if (BUSManager.ThuocBUS.CheckIfSoLuongThuocDu(newThuoc, int.Parse(tbxSoLuong.Text)))
+                if (BUSManager.ThuocBUS.CheckIfSoLuongThuocDu(newThuoc, SoLuong))
                 {
-                    DTO_CTPhieuKhamBenh cTPhieuKhamBenh = new DTO_CTPhieuKhamBenh(phieuKhamBenh.Id, newThuoc.Id, (cbxCachDung.SelectedItem as DTO_CachDung).Id, int.Parse(tbxSoLuong.Text), newThuoc.DonGia);
+                    DTO_CTPhieuKhamBenh cTPhieuKhamBenh = new DTO_CTPhieuKhamBenh(phieuKhamBenh.Id, newThuoc.Id, (cbxCachDung.SelectedItem as DTO_CachDung).Id, SoLuong, newThuoc.DonGia);
                     BUSManager.ThuocBUS.LoadNPDonVi(newThuoc);
                     cTPhieuKhamBenh.Thuoc = newThuoc;
                     cTPhieuKhamBenh.CachDung = cbxCachDung.SelectedItem as DTO_CachDung;

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -55,9 +56,11 @@ namespace GUI_Clinic.View.Windows
         {
             UpdateCommand = new RelayCommand<Window>((p) =>
             {
-                if (IsValueChanged(TienKham, SoBNToiDa))
-                    return true;
-                return false;
+                if (!IsValueChanged(TienKham, SoBNToiDa) ||
+                    string.IsNullOrEmpty(tbxTienKham.Text) || tbxTienKham.Text == "0" ||
+                    string.IsNullOrEmpty(tbxSoBNToiDa.Text) || tbxSoBNToiDa.Text == "0")
+                    return false;
+                return true;
             }, (p) =>
             {
                 BUSManager.ThamSoBUS.UpdateThamSo(TienKham, SoBNToiDa);
@@ -81,6 +84,31 @@ namespace GUI_Clinic.View.Windows
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
+        }
+
+        private void tbxTienKham_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !IsTextAllowed(e.Text);
+        }
+        private static readonly Regex _regex = new Regex(@"([^0-9]+)|\s+", RegexOptions.Singleline); //regex that matches disallowed text
+        private static bool IsTextAllowed(string text)
+        {
+            return !_regex.IsMatch(text);
+        }
+        private void tbxTienKham_Pasting(object sender, DataObjectPastingEventArgs e)
+        {
+            if (e.DataObject.GetDataPresent(typeof(String)))
+            {
+                String text = (String)e.DataObject.GetData(typeof(String));
+                if (!IsTextAllowed(text))
+                {
+                    e.CancelCommand();
+                }
+            }
+            else
+            {
+                e.CancelCommand();
+            }
         }
     }
 }
