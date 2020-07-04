@@ -114,6 +114,7 @@
     <Compile Include="View\UserControls\ucQuanLyThuoc.xaml.cs">
       <DependentUpon>ucQuanLyThuoc.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\StringToIntValidationRule.cs" />
     <Compile Include="View\Windows\wdHoaDon.xaml.cs">
       <DependentUpon>wdHoaDon.xaml</DependentUpon>
     </Compile>

@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GUI_Clinic.View.UserControls"
+             xmlns:window="clr-namespace:GUI_Clinic.View.Windows"
              xmlns:cvt="clr-namespace:GUI_Clinic.Converter"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d">
@@ -139,7 +140,15 @@
                                  materialDesign:HintAssist.Hint="Số lượng"
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
                                  DataObject.Pasting="tbxSoLuong_Pasting"
-                                 PreviewTextInput="tbxSoLuong_PreviewTextInput"/>
+                                 PreviewTextInput="tbxSoLuong_PreviewTextInput">
+                            <TextBox.Text>
+                                <Binding Path="SoLuong" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <window:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
                     </Grid>
                     <Grid Grid.Column="2">
                         <ComboBox x:Name="cbxCachDung"

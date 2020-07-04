@@ -101,22 +101,36 @@
                         </ComboBox>
                         <TextBox x:Name="tbxSoLuong" 
                                  Width="100" Height="45"
-                                 Text="{Binding SoLuong, Mode=TwoWay}" 
                                  Margin="5 5 15 5" 
                                  FontSize="16"
                                  materialDesign:HintAssist.Hint="Số lượng" 
                                  DataObject.Pasting="tbxDonGia_Pasting"
                                  PreviewTextInput="tbxDonGia_PreviewTextInput"
-                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                            <TextBox.Text>
+                                <Binding Path="SoLuong" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <local:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
                         <TextBox x:Name="tbxDonGia" 
                                  Width="150" Height="45"
-                                 Text="{Binding DonGia, Mode=TwoWay}" 
                                  Margin="5 5 15 5" 
                                  materialDesign:HintAssist.Hint="Đơn giá" 
                                  FontSize="16"
                                  DataObject.Pasting="tbxDonGia_Pasting"
                                  PreviewTextInput="tbxDonGia_PreviewTextInput"
-                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                            <TextBox.Text>
+                                <Binding Path="DonGia" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <local:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
                         <TextBox x:Name="tbxCongDungThuocMoi" 
                                  Width="150" Height="45"
                                  Margin="5 5 15 5" 
