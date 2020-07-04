@@ -41,6 +41,7 @@ namespace GUI_Clinic.View.UserControls
         public string TenBenhInput { get; set; }
         public string TenDonViInput { get; set; }
         public string TenCachDungInput { get; set; }
+        public CollectionView benhView { get; set; }
         #endregion
         #region Command
         public ICommand ThemBenhCommand { get; set; }
@@ -60,6 +61,8 @@ namespace GUI_Clinic.View.UserControls
             ListBenh = BUSManager.BenhBUS.GetListBenh();
             ListDV = BUSManager.DonViBUS.GetListDV();
             ListCD = BUSManager.CachDungBUS.GetListCD();
+            benhView = (CollectionView)CollectionViewSource.GetDefaultView(ListBenh);
+            benhView.Filter = BUSManager.BenhBUS.BenhFilter;
         }
         public void InitCommand()
         {
@@ -74,6 +77,7 @@ namespace GUI_Clinic.View.UserControls
                 if (BUSManager.BenhBUS.AddBenh(benh))
                 {
                     tbxTenBenh.Clear();
+                    benhView.Refresh();
                 }
                 else
                 {
@@ -88,6 +92,7 @@ namespace GUI_Clinic.View.UserControls
                 {
                     return false;
                 }
+                benhView.Refresh();
                 return true;
             }, (p) =>
             {
@@ -114,6 +119,7 @@ namespace GUI_Clinic.View.UserControls
                 foreach (DTO_Benh item in listBenhXoa)
                 {
                     BUSManager.BenhBUS.Delbenh(item);
+                    benhView.Refresh();
                 }
             });
 
@@ -281,6 +287,7 @@ namespace GUI_Clinic.View.UserControls
                 DTO_Benh benh = new DTO_Benh(TenBenhInput);
                 if (BUSManager.BenhBUS.AddBenh(benh))
                 {
+                    benhView.Refresh();
                     tbxTenBenh.Clear();
                 }
                 else
