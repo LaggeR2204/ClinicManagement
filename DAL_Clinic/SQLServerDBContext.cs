@@ -25,10 +25,10 @@ namespace DAL_Clinic
         }
         public SQLServerDBContext() : base("name=connectionStringPMT")
         {
-            //var initializer = new MigrateDatabaseToLatestVersion<SQLServerDBContext, Migrations.Configuration>();
-            //Database.SetInitializer(initializer);
-            var initializer = new MyInitializer();
+            var initializer = new MigrateDatabaseToLatestVersion<SQLServerDBContext, Migrations.Configuration>();
             Database.SetInitializer(initializer);
+            //var initializer = new MyInitializer();
+            //Database.SetInitializer(initializer);
             this.Configuration.LazyLoadingEnabled = false;
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
