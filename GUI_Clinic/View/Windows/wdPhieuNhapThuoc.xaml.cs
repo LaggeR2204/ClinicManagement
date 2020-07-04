@@ -234,6 +234,8 @@ namespace GUI_Clinic.View.Windows
                 e.CancelCommand();
             }
         }
+
+        
         //private void btnThemThuoc_Click(object sender, RoutedEventArgs e)
         //{
         //    DTO_Thuoc themThuoc = new DTO_Thuoc((cbxTenThuoc.SelectedItem as DTO_Thuoc).TenThuoc, (cbxDonVi.SelectedItem as DTO_DonVi).Id, DonGia, SoLuong, "");
