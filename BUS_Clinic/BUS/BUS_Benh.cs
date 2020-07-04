@@ -20,8 +20,14 @@ namespace BUS_Clinic.BUS
         {
             ObservableCollection<DTO_Benh> benhs = DALManager.BenhDAL.GetListBenh();
 
-            if (benhs.Any(b => b.TenBenh.Equals(benh.TenBenh, StringComparison.OrdinalIgnoreCase)))
+            if (benhs.Any(b => b.TenBenh.Equals(benh.TenBenh, StringComparison.OrdinalIgnoreCase) && b.IsDeleted == true))
             {
+                benhs.Where(b => b.TenBenh.Equals(benh.TenBenh, StringComparison.OrdinalIgnoreCase) && b.IsDeleted == true).FirstOrDefault().IsDeleted = false;
+                return true;
+            }
+            if (benhs.Any(b => b.TenBenh.Equals(benh.TenBenh, StringComparison.OrdinalIgnoreCase) && b.IsDeleted == false))
+            {
+
                 return false;
             }
 
@@ -71,6 +77,17 @@ namespace BUS_Clinic.BUS
         public string AutoGenerateID()
         {
             return _idPrefix + (GetBenhAmount() + 1).ToString("D5");
+        }
+
+        public bool BenhFilter(Object item)
+        {
+            var benh= item as DTO_Benh;
+            if (benh.IsDeleted)
+            {
+                return false;
+            }
+            else
+                return true;
         }
     }
 }

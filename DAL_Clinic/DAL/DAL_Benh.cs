@@ -20,7 +20,7 @@ namespace DAL_Clinic.DAL
         }
         public void DelBenh(DTO_Benh benh)
         {
-            SQLServerDBContext.Instant.Benh.Remove(benh);
+            SQLServerDBContext.Instant.Benh.Local.Where(x => x.Id == benh.Id).FirstOrDefault().IsDeleted=true;
         }
         public override void LoadLocalData()
         {
