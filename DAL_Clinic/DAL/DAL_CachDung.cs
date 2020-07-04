@@ -19,10 +19,10 @@ namespace DAL_Clinic.DAL
         {
             SQLServerDBContext.Instant.CachDung.Local.Add(cd);
         }
-        public void DelCachDung(DTO_CachDung cd)
-        {
-            SQLServerDBContext.Instant.CachDung.Local.Remove(cd);
-        }
+        //public void DelCachDung(DTO_CachDung cd)
+        //{
+        //    SQLServerDBContext.Instant.CachDung.Local.Remove(cd);
+        //}
         public override void LoadLocalData()
         {
             SQLServerDBContext.Instant.CachDung.Load();

@@ -57,14 +57,17 @@ namespace GUI_Clinic.CustomControl
                 case MessageType.Info:
                     txtTitle.Text = "Thông báo";
                     icon.Kind = MaterialDesignThemes.Wpf.PackIconKind.Information;
+                    icon.Foreground = new SolidColorBrush(Color.FromRgb(0, 120, 215));
                     break;
                 case MessageType.Warning:
                     txtTitle.Text = "Cảnh báo";
                     icon.Kind = MaterialDesignThemes.Wpf.PackIconKind.Warning;
+                    icon.Foreground = new SolidColorBrush(Colors.Yellow);
                     break;
                 case MessageType.Error:
                     txtTitle.Text = "Lỗi";
                     icon.Kind = MaterialDesignThemes.Wpf.PackIconKind.Error;
+                    icon.Foreground = new SolidColorBrush(Colors.Red);
                     break;
             }
             switch (Buttons)

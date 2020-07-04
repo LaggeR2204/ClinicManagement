@@ -128,7 +128,7 @@
                     </ListViewItem>
                     <ListViewItem x:Name="itemPatient" Height="60">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="HeartPulse"  Height="25" Width="25" Margin="5 10"/>
+                            <materialDesign:PackIcon Kind="Account" Height="25" Width="25" Margin="5 10"/>
                             <TextBlock Text="Quản lý bệnh nhân" VerticalAlignment="Center" Margin="7 10" FontFamily="Arial" FontWeight="Bold" FontSize="15"/>
                         </StackPanel>
                     </ListViewItem>

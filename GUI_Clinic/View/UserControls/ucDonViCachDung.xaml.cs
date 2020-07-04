@@ -41,18 +41,19 @@ namespace GUI_Clinic.View.UserControls
         public string TenBenhInput { get; set; }
         public string TenDonViInput { get; set; }
         public string TenCachDungInput { get; set; }
+        //public CollectionView benhView { get; set; }
         #endregion
         #region Command
         public ICommand ThemBenhCommand { get; set; }
-        public ICommand XoaBenhCommand { get; set; }
+        //public ICommand XoaBenhCommand { get; set; }
         public ICommand SuaBenhCommand { get; set; }
 
         public ICommand ThemDonViCommand { get; set; }
-        public ICommand XoaDonViCommand { get; set; }
+        //public ICommand XoaDonViCommand { get; set; }
         public ICommand SuaDonViCommand { get; set; }
 
         public ICommand ThemCachDungCommand { get; set; }
-        public ICommand XoaCachDungCommand { get; set; }
+        //public ICommand XoaCachDungCommand { get; set; }
         public ICommand SuaCachDungCommand { get; set; }
         #endregion
         public void InitData()
@@ -60,6 +61,8 @@ namespace GUI_Clinic.View.UserControls
             ListBenh = BUSManager.BenhBUS.GetListBenh();
             ListDV = BUSManager.DonViBUS.GetListDV();
             ListCD = BUSManager.CachDungBUS.GetListCD();
+            //benhView = (CollectionView)CollectionViewSource.GetDefaultView(ListBenh);
+            //benhView.Filter = BUSManager.BenhBUS.BenhFilter;
         }
         public void InitCommand()
         {
@@ -74,6 +77,7 @@ namespace GUI_Clinic.View.UserControls
                 if (BUSManager.BenhBUS.AddBenh(benh))
                 {
                     tbxTenBenh.Clear();
+                    //benhView.Refresh();
                 }
                 else
                 {
@@ -88,6 +92,7 @@ namespace GUI_Clinic.View.UserControls
                 {
                     return false;
                 }
+                //benhView.Refresh();
                 return true;
             }, (p) =>
             {
@@ -98,24 +103,25 @@ namespace GUI_Clinic.View.UserControls
                 }    
             });
 
-            XoaBenhCommand = new RelayCommand<Window>((p) =>
-            {
-                if (string.IsNullOrEmpty(TenBenhInput) || lvBenh.SelectedIndex == -1)
-                    return false;
-                return true;
-            }, (p) =>
-            {
-                ObservableCollection<DTO_Benh> listBenhXoa = new ObservableCollection<DTO_Benh>();
-                foreach (DTO_Benh item in lvBenh.SelectedItems)
-                {
-                    listBenhXoa.Add(item);
-                }
+            //XoaBenhCommand = new RelayCommand<Window>((p) =>
+            //{
+            //    if (string.IsNullOrEmpty(TenBenhInput) || lvBenh.SelectedIndex == -1)
+            //        return false;
+            //    return true;
+            //}, (p) =>
+            //{
+            //    ObservableCollection<DTO_Benh> listBenhXoa = new ObservableCollection<DTO_Benh>();
+            //    foreach (DTO_Benh item in lvBenh.SelectedItems)
+            //    {
+            //        listBenhXoa.Add(item);
+            //    }
 
-                foreach (DTO_Benh item in listBenhXoa)
-                {
-                    BUSManager.BenhBUS.Delbenh(item);
-                }
-            });
+            //    foreach (DTO_Benh item in listBenhXoa)
+            //    {
+            //        BUSManager.BenhBUS.Delbenh(item);
+            //        benhView.Refresh();
+            //    }
+            //});
 
             ThemDonViCommand = new RelayCommand<Window>((p) =>
             {
@@ -152,24 +158,24 @@ namespace GUI_Clinic.View.UserControls
                 }    
             });
 
-            XoaDonViCommand = new RelayCommand<Window>((p) =>
-            {
-                if (string.IsNullOrEmpty(TenDonViInput) || lvDonVi.SelectedIndex == -1)
-                    return false;
-                return true;
-            }, (p) =>
-            {
-                ObservableCollection<DTO_DonVi> listDonViXoa = new ObservableCollection<DTO_DonVi>();
-                foreach (DTO_DonVi item in lvDonVi.SelectedItems)
-                {
-                    listDonViXoa.Add(item);
-                }
+            //XoaDonViCommand = new RelayCommand<Window>((p) =>
+            //{
+            //    if (string.IsNullOrEmpty(TenDonViInput) || lvDonVi.SelectedIndex == -1)
+            //        return false;
+            //    return true;
+            //}, (p) =>
+            //{
+            //    ObservableCollection<DTO_DonVi> listDonViXoa = new ObservableCollection<DTO_DonVi>();
+            //    foreach (DTO_DonVi item in lvDonVi.SelectedItems)
+            //    {
+            //        listDonViXoa.Add(item);
+            //    }
 
-                foreach (DTO_DonVi item in listDonViXoa)
-                {
-                    BUSManager.DonViBUS.DelDonVi(item);
-                }
-            });
+            //    foreach (DTO_DonVi item in listDonViXoa)
+            //    {
+            //        BUSManager.DonViBUS.DelDonVi(item);
+            //    }
+            //});
 
 
             ThemCachDungCommand = new RelayCommand<Window>((p) =>
@@ -207,24 +213,24 @@ namespace GUI_Clinic.View.UserControls
                 }    
             });
 
-            XoaCachDungCommand = new RelayCommand<Window>((p) =>
-            {
-                if (string.IsNullOrEmpty(TenCachDungInput) || lvCachDung.SelectedIndex == -1)
-                    return false;
-                return true;
-            }, (p) =>
-            {
-                ObservableCollection<DTO_CachDung> listCachDungXoa = new ObservableCollection<DTO_CachDung>();
-                foreach (DTO_CachDung item in lvCachDung.SelectedItems)
-                {
-                    listCachDungXoa.Add(item);
-                }
+            //XoaCachDungCommand = new RelayCommand<Window>((p) =>
+            //{
+            //    if (string.IsNullOrEmpty(TenCachDungInput) || lvCachDung.SelectedIndex == -1)
+            //        return false;
+            //    return true;
+            //}, (p) =>
+            //{
+            //    ObservableCollection<DTO_CachDung> listCachDungXoa = new ObservableCollection<DTO_CachDung>();
+            //    foreach (DTO_CachDung item in lvCachDung.SelectedItems)
+            //    {
+            //        listCachDungXoa.Add(item);
+            //    }
 
-                foreach (DTO_CachDung item in listCachDungXoa)
-                {
-                    BUSManager.CachDungBUS.DelCachDung(item);
-                }
-            });
+            //    foreach (DTO_CachDung item in listCachDungXoa)
+            //    {
+            //        BUSManager.CachDungBUS.DelCachDung(item);
+            //    }
+            //});
         }
 
         private void lvBenh_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -281,6 +287,7 @@ namespace GUI_Clinic.View.UserControls
                 DTO_Benh benh = new DTO_Benh(TenBenhInput);
                 if (BUSManager.BenhBUS.AddBenh(benh))
                 {
+                    //benhView.Refresh();
                     tbxTenBenh.Clear();
                 }
                 else
