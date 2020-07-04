@@ -167,7 +167,7 @@
                                                                                    Converter={StaticResource IndexConverter}}"></GridViewColumn>
                                 <GridViewColumn Header="Mã phiếu khám" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
                                 <GridViewColumn Header="Ngày" DisplayMemberBinding="{Binding NgayKham}"></GridViewColumn>
-                                <GridViewColumn Header="Loại bệnh" DisplayMemberBinding="{Binding MaBenh}"></GridViewColumn>
+                                <GridViewColumn Header="Loại bệnh" DisplayMemberBinding="{Binding Benh.TenBenh}"></GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>
