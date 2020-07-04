@@ -76,6 +76,8 @@ namespace GUI_Clinic.View.UserControls
             ListDKView.Filter = BenhNhanFilterDate;
             //Load tham so
             thamSo = BUSManager.ThamSoBUS.GetThamSoSoBNToiDa();
+            //
+            cbxMaVungSDT.SelectedIndex = 223;
         }
         public void InitCommand()
         {
@@ -86,7 +88,8 @@ namespace GUI_Clinic.View.UserControls
                     string.IsNullOrEmpty(tbxSDT.Text) ||
                     cbxMaVungSDT.SelectedIndex == -1 ||
                     cbxGioiTinh.SelectedIndex == -1 ||
-                    !dpkNgaySinh.SelectedDate.HasValue)
+                    !dpkNgaySinh.SelectedDate.HasValue ||
+                    tbxSDT.Text.Length != tbxSDT.MaxLength)
                     return false;
                 return true;
             }, (p) =>
@@ -155,6 +158,7 @@ namespace GUI_Clinic.View.UserControls
             tbxDiaChi.Clear();
             dpkNgaySinh.SelectedDate = null;
             cbxGioiTinh.SelectedIndex = -1;
+            cbxMaVungSDT.SelectedIndex = 223;
         }
         private void DangKyKham(DTO_BenhNhan bn)
         {

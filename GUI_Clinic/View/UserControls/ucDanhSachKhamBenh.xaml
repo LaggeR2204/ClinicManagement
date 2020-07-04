@@ -16,7 +16,7 @@
              Background="{DynamicResource MaterialDesignPaper}"
              FontFamily="{DynamicResource MaterialDesignFont}">
     <UserControl.Resources>
-        <cvt:IndexConverter x:Key="IndexConverter"/>
+        <cvt:IndexConverter x:Key="IndexConverter" />
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -387,6 +387,7 @@
                                                      BorderThickness="2"
                                                      Margin="0 5 20 5"
                                                      FontSize="16"
+                                                     MaxLength="9"                                                     
                                                      VerticalAlignment="Center"
                                                      DataObject.Pasting="tbxSDT_Pasting"
                                                      PreviewTextInput="tbxSDT_PreviewTextInput"/>
