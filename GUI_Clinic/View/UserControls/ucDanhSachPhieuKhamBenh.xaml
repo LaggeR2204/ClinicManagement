@@ -169,7 +169,6 @@
                                         VerticalAlignment="Center"
                                         Width="100"
                                         Margin="10"
-                                        SelectedDate="{x:Static sys:DateTime.Now}"
                                         materialDesign:HintAssist.Hint="Ngày khám"
                                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDateChanged="dpkNgayKham_SelectedDateChanged" />
                         </Grid>
