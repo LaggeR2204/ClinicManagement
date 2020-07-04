@@ -212,9 +212,13 @@ namespace GUI_Clinic.View.UserControls
 
         private void RemoveCategory(object sender, RoutedEventArgs e)
         {
-            Button b = sender as Button;
-            DTO_CTPhieuKhamBenh item = b.CommandParameter as DTO_CTPhieuKhamBenh;
-            ListCTPKB.Remove(item);
+            if (IsSave == false)
+            {
+                Button b = sender as Button;
+                DTO_CTPhieuKhamBenh item = b.CommandParameter as DTO_CTPhieuKhamBenh;
+                ListCTPKB.Remove(item);
+            }
+            
         }
         private void ResetThuocInput()
         {
