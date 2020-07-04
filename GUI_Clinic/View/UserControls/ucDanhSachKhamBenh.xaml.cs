@@ -220,7 +220,7 @@ namespace GUI_Clinic.View.UserControls
 
             itemsViewOriginal.Filter = ((o) =>
             {
-                if (String.IsNullOrEmpty(Cmb.Text)) 
+                if (String.IsNullOrEmpty(Cmb.Text))
                     return true;
                 else
                 {
@@ -228,6 +228,18 @@ namespace GUI_Clinic.View.UserControls
                 }
             });
             itemsViewOriginal.Refresh();
+        }
+        public bool RemovePatientSigned(DTO_BenhNhan bn)
+        {
+            if (CurSignedList.Contains(bn))
+            {
+                return CurSignedList.Remove(bn);
+            }
+            else
+            {
+                return false;
+            }
+
         }
     }
 }

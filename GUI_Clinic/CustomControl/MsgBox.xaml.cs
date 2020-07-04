@@ -29,8 +29,9 @@ namespace GUI_Clinic.CustomControl
         public static bool Show1(string message, MessageType type, MessageButtons buttons)
         {
             msgBox = new MsgBox(message, type, buttons);
-            if (msgBox.ShowDialog().HasValue)
-                return msgBox.ShowDialog().Value;
+            var rel = msgBox.ShowDialog();
+            if (rel.HasValue)
+                return rel.Value;
             return false;
         }
         public static void Show(string message, MessageType type)

@@ -1,4 +1,5 @@
 ﻿using BUS_Clinic.BUS;
+using DTO_Clinic;
 using GUI_Clinic.View.Windows;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,12 @@ namespace GUI_Clinic.View
         {
             InitializeComponent();
             uc_DanhSachKhamBenh.PatientSigned += Uc_DanhSachKhamBenh_PatientSigned;
+            uc_DanhSachPhieuKhamBenh.WaitingPatientRemoved += Uc_DanhSachPhieuKhamBenh_WaitingPatientRemoved;
+        }
+
+        private void Uc_DanhSachPhieuKhamBenh_WaitingPatientRemoved(object sender, EventArgs e)
+        {
+            uc_DanhSachKhamBenh.RemovePatientSigned(sender as DTO_BenhNhan);
         }
 
         private void Uc_DanhSachKhamBenh_PatientSigned(object sender, EventArgs e)

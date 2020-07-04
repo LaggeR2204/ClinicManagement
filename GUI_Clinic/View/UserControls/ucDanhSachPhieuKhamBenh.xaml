@@ -139,6 +139,26 @@
                                             </GridViewColumn>
                                             <GridViewColumn Header="Ngày sinh"
                                                                 DisplayMemberBinding="{Binding NgaySinh, StringFormat='dd/MM/yyyy'}"></GridViewColumn>
+                                            <GridViewColumn Header=""
+                                                            Width="40">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <Button x:Name="btnXoa"
+                                                                CommandParameter="{Binding}"
+                                                                Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                                                                ToolTip="Xóa"
+                                                                Background="#0078D7"
+                                                                BorderBrush="#0078D7"
+                                                                Width="20"
+                                                                Height="20"
+                                                                Click="RemoveWaitingPatient">
+                                                            <materialDesign:PackIcon Kind="Minus"
+                                                                                     Height="15"
+                                                                                     Width="15" />
+                                                        </Button>
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
                                         </GridView>
                                     </ListView.View>
                                 </ListView>
