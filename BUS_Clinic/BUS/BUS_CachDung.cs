@@ -43,19 +43,19 @@ namespace BUS_Clinic.BUS
             return true;
             
         }
-        public bool DelCachDung(DTO_CachDung cachDung)
-        {
-            ObservableCollection<DTO_CachDung> cachdungs = DALManager.CachDungDAL.GetListCD();
-            if (cachDung != null)
-            {
-                if (cachdungs.Any(c => c.TenCachDung.Equals(cachDung.TenCachDung, StringComparison.OrdinalIgnoreCase)))
-                {
-                    DALManager.CachDungDAL.DelCachDung(cachDung);
-                    return true;
-                }
-            }
-            return false;
-        }
+        //public bool DelCachDung(DTO_CachDung cachDung)
+        //{
+        //    ObservableCollection<DTO_CachDung> cachdungs = DALManager.CachDungDAL.GetListCD();
+        //    if (cachDung != null)
+        //    {
+        //        if (cachdungs.Any(c => c.TenCachDung.Equals(cachDung.TenCachDung, StringComparison.OrdinalIgnoreCase)))
+        //        {
+        //            DALManager.CachDungDAL.DelCachDung(cachDung);
+        //            return true;
+        //        }
+        //    }
+        //    return false;
+        //}
         public override void LoadLocalData()
         {
             DALManager.CachDungDAL.LoadLocalData();

@@ -40,19 +40,19 @@ namespace BUS_Clinic.BUS
             donVi.TenDonVi = tenDonViMoi;
             return true;
         }
-        public bool DelDonVi(DTO_DonVi donVi)
-        {
-            ObservableCollection<DTO_DonVi> donvis = DALManager.DonViDAL.GetListDV();
-            if (donVi != null)
-            {
-                if (donvis.Any(d => d.TenDonVi.Equals(donVi.TenDonVi, StringComparison.OrdinalIgnoreCase)))
-                {
-                    DALManager.DonViDAL.DelDonVi(donVi);
-                    return true;
-                }
-            }
-            return false;
-        }
+        //public bool DelDonVi(DTO_DonVi donVi)
+        //{
+        //    ObservableCollection<DTO_DonVi> donvis = DALManager.DonViDAL.GetListDV();
+        //    if (donVi != null)
+        //    {
+        //        if (donvis.Any(d => d.TenDonVi.Equals(donVi.TenDonVi, StringComparison.OrdinalIgnoreCase)))
+        //        {
+        //            DALManager.DonViDAL.DelDonVi(donVi);
+        //            return true;
+        //        }
+        //    }
+        //    return false;
+        //}
         public DTO_DonVi GetDonViById(string maDonVi)
         {
             ObservableCollection<DTO_DonVi> donvis = DALManager.DonViDAL.GetListDV();

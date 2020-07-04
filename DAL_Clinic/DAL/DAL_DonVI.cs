@@ -19,11 +19,11 @@ namespace DAL_Clinic.DAL
         {
             SQLServerDBContext.Instant.DonVi.Local.Add(dv);
         }
-        public void DelDonVi(DTO_DonVi dv)
-        {
-            //dv.IsDeleted = true;
-            SQLServerDBContext.Instant.DonVi.Local.Remove(dv);
-        }
+        //public void DelDonVi(DTO_DonVi dv)
+        //{
+        //    //dv.IsDeleted = true;
+        //    SQLServerDBContext.Instant.DonVi.Local.Remove(dv);
+        //}
         public override void LoadLocalData()
         {
             SQLServerDBContext.Instant.DonVi.Load();

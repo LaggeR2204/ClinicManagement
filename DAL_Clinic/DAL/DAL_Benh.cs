@@ -18,10 +18,10 @@ namespace DAL_Clinic.DAL
         {
             SQLServerDBContext.Instant.Benh.Local.Add(benh);
         }
-        public void DelBenh(DTO_Benh benh)
-        {
-            SQLServerDBContext.Instant.Benh.Local.Where(x => x.Id == benh.Id).FirstOrDefault().IsDeleted=true;
-        }
+        //public void DelBenh(DTO_Benh benh)
+        //{
+        //    SQLServerDBContext.Instant.Benh.Local.Where(x => x.Id == benh.Id).FirstOrDefault().IsDeleted=true;
+        //}
         public override void LoadLocalData()
         {
             SQLServerDBContext.Instant.Benh.Load();

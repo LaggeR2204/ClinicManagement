@@ -78,7 +78,7 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
                                 <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="auto"/>
+                                <!--<ColumnDefinition Width="auto"/>-->
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0">
                                 <Button x:Name="btnThemBenh"
@@ -102,7 +102,7 @@
                                         Background="#0078D7"
                                         BorderBrush="#0078D7"/>
                             </Grid>
-                            <Grid Grid.Column="2">
+                            <!--<Grid Grid.Column="2">
                                 <Button x:Name="btnXoaBenh"
                                         Margin="5"
                                         Command="{Binding XoaBenhCommand}"
@@ -112,7 +112,7 @@
                                         VerticalAlignment="Center"
                                         Background="#0078D7"
                                         BorderBrush="#0078D7"/>
-                            </Grid>
+                            </Grid>-->
                         </Grid>
                     </Grid>
                     <Grid Grid.Column="1">
@@ -194,7 +194,7 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
                                 <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="auto"/>
+                                <!--<ColumnDefinition Width="auto"/>-->
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0">
                                 <Button x:Name="btnThemDonVi"
@@ -218,7 +218,7 @@
                                         Background="#0078D7"
                                         BorderBrush="#0078D7"/>
                             </Grid>
-                            <Grid Grid.Column="2">
+                            <!--<Grid Grid.Column="2">
                                 <Button x:Name="btnXoaDonVi"
                                         Margin="5"
                                         Command="{Binding XoaDonViCommand}"
@@ -228,7 +228,7 @@
                                         VerticalAlignment="Center"
                                         Background="#0078D7"
                                         BorderBrush="#0078D7"/>
-                            </Grid>
+                            </Grid>-->
                         </Grid>
                     </Grid>
                     <Grid Grid.Column="1">
@@ -310,7 +310,7 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
                                 <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="auto"/>
+                                <!--<ColumnDefinition Width="auto"/>-->
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0">
                                 <Button x:Name="btnThemCachDung"
@@ -334,7 +334,7 @@
                                         Background="#0078D7"
                                         BorderBrush="#0078D7"/>
                             </Grid>
-                            <Grid Grid.Column="2">
+                            <!--<Grid Grid.Column="2">
                                 <Button x:Name="btnXoaCachDung"
                                         Margin="5"
                                         Command="{Binding XoaCachDungCommand}"
@@ -344,7 +344,7 @@
                                         VerticalAlignment="Center"
                                         Background="#0078D7"
                                         BorderBrush="#0078D7"/>
-                            </Grid>
+                            </Grid>-->
                         </Grid>
                     </Grid>
                     <Grid Grid.Column="1">
