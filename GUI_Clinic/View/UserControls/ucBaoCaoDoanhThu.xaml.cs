@@ -73,10 +73,12 @@ namespace GUI_Clinic.View.UserControls
                 BUSManager.BCDoanhThuBUS.LoadNPCTBaoCaoDoanhThu(bCDoanhThu);
                 ListCTBCDT = bCDoanhThu.DS_CTBaoCaoDoanhThu;
                 lvCTBaoCaoDoanhThu.ItemsSource = ListCTBCDT;
+                crdTongDoanhThu.Visibility = Visibility.Visible;
             }
             else
             {
                 lvCTBaoCaoDoanhThu.ItemsSource = ListCTBCDT;
+                crdTongDoanhThu.Visibility = Visibility.Collapsed;
             }
 
         }
@@ -86,21 +88,20 @@ namespace GUI_Clinic.View.UserControls
             FilterBaoCaoCommand = new RelayCommand<Window>((p) =>
             {
                 if (String.IsNullOrEmpty(cbxThang.Text) ||
-                    String.IsNullOrEmpty(cbxNam.Text)
-                    )
+                    String.IsNullOrEmpty(cbxNam.Text))
                 {
-                    if (bCDoanhThu != null)
+                    return false;
+                }
+                else if (bCDoanhThu != null)
+                {
+                    if (cbxThang.Text == bCDoanhThu.Thang.ToString() && cbxNam.Text == bCDoanhThu.Nam.ToString())
                     {
-                        if (cbxThang.Text == bCDoanhThu.Thang.ToString() && cbxNam.Text == bCDoanhThu.Nam.ToString())
-                        {
-                            return false;
-                        }
+                        return false;
                     }
                 }
                 return true;
             }, (p) =>
             {
-               
                 bCDoanhThu = null;
                 ListCTBCDT = null;
                 foreach (DTO_BCDoanhThu item in ListBCDT)
@@ -116,10 +117,12 @@ namespace GUI_Clinic.View.UserControls
                     BUSManager.BCDoanhThuBUS.LoadNPCTBaoCaoDoanhThu(bCDoanhThu);
                     ListCTBCDT = bCDoanhThu.DS_CTBaoCaoDoanhThu;
                     lvCTBaoCaoDoanhThu.ItemsSource = ListCTBCDT;
+                    crdTongDoanhThu.Visibility = Visibility.Visible;
                 }
                 else
                 {
                     lvCTBaoCaoDoanhThu.ItemsSource = ListCTBCDT;
+                    crdTongDoanhThu.Visibility = Visibility.Collapsed;
                 }
                
             });
@@ -138,7 +141,5 @@ namespace GUI_Clinic.View.UserControls
                 baoCaoDoanhThu.ShowDialog();
             });
         }
-
-
     }
 }

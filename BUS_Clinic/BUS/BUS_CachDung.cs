@@ -16,30 +16,34 @@ namespace BUS_Clinic.BUS
         {
 
         }
-        public void AddCachDung(DTO_CachDung cachDung)
+        public bool AddCachDung(DTO_CachDung cachDung)
         {
             ObservableCollection<DTO_CachDung> cachdungs = DALManager.CachDungDAL.GetListCD();
 
-            bool flag = cachdungs.Any(c => c.TenCachDung.Equals(cachDung.TenCachDung, StringComparison.OrdinalIgnoreCase));
-
-            if (!flag)
+            if(cachdungs.Any(c => c.TenCachDung.Equals(cachDung.TenCachDung, StringComparison.OrdinalIgnoreCase)))
             {
-                cachDung.Id = AutoGenerateID();
-                DALManager.CachDungDAL.AddCachDung(cachDung);
+                return false;
             }
+
+            cachDung.Id = AutoGenerateID();
+            DALManager.CachDungDAL.AddCachDung(cachDung);
+            return true;
+            
         }
-        public void UpdateCachDung(DTO_CachDung cachDung, string tenCachDungMoi)
+        public bool UpdateCachDung(DTO_CachDung cachDung, string tenCachDungMoi)
         {
             ObservableCollection<DTO_CachDung> cachdungs = DALManager.CachDungDAL.GetListCD();
 
-            bool flag = cachdungs.Any(c => c.TenCachDung.Equals(tenCachDungMoi, StringComparison.OrdinalIgnoreCase));
-
-            if (cachDung.TenCachDung != tenCachDungMoi && !flag)
+            if(cachDung.TenCachDung == tenCachDungMoi || cachdungs.Any(c => c.TenCachDung.Equals(tenCachDungMoi, StringComparison.OrdinalIgnoreCase)))
             {
-                cachDung.TenCachDung = tenCachDungMoi;
+                return false;
             }
+
+            cachDung.TenCachDung = tenCachDungMoi;
+            return true;
+            
         }
-        public void DelCachDung(DTO_CachDung cachDung)
+        public bool DelCachDung(DTO_CachDung cachDung)
         {
             ObservableCollection<DTO_CachDung> cachdungs = DALManager.CachDungDAL.GetListCD();
             if (cachDung != null)
@@ -47,8 +51,10 @@ namespace BUS_Clinic.BUS
                 if (cachdungs.Any(c => c.TenCachDung.Equals(cachDung.TenCachDung, StringComparison.OrdinalIgnoreCase)))
                 {
                     DALManager.CachDungDAL.DelCachDung(cachDung);
+                    return true;
                 }
             }
+            return false;
         }
         public override void LoadLocalData()
         {

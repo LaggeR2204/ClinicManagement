@@ -158,8 +158,9 @@ namespace GUI_Clinic.View.UserControls
             {
                 if (string.IsNullOrEmpty(tbxTrieuChung.Text) ||
                     string.IsNullOrEmpty(cbxChanDoan.Text) ||
-                    lvThuoc.Items == null)
-                    return false;
+                    lvThuoc.Items == null ||
+                    IsSave == false)
+                        return false;
                 return true;
             }, (p) =>
             {
@@ -188,6 +189,7 @@ namespace GUI_Clinic.View.UserControls
                         BUSManager.BCSuDungThuocBUS.AddBCSuDungThuoc(bCSudungThuoc);
                         BUSManager.CTPhieuKhamBenhBUS.AddCTPhieuKhamBenh(item);
                     }
+                    phieuKhamBenh = BUSManager.PhieuKhamBenhBUS.GetPhieuKhamBenh(newPhieuKhamBenh.Id);
                     BUSManager.PhieuKhamBenhBUS.SaveChange();
                     if (PKBAdded != null)
                         PKBAdded(newPhieuKhamBenh, new EventArgs());

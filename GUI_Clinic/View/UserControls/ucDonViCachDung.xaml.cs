@@ -1,6 +1,7 @@
 ﻿using BUS_Clinic.BUS;
 using DTO_Clinic;
 using GUI_Clinic.Command;
+using GUI_Clinic.CustomControl;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,6 +13,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -69,9 +71,15 @@ namespace GUI_Clinic.View.UserControls
             }, (p) =>
             {
                 DTO_Benh benh = new DTO_Benh(TenBenhInput);
-                BUSManager.BenhBUS.AddBenh(benh);
-
-                tbxTenBenh.Clear();
+                if (BUSManager.BenhBUS.AddBenh(benh))
+                {
+                    tbxTenBenh.Clear();
+                }
+                else
+                {
+                    MsgBox.Show("Tên bệnh đã tồn tại", MessageType.Error);
+                    tbxTenBenh.Clear();
+                }
             });
 
             SuaBenhCommand = new RelayCommand<Window>((p) =>
@@ -84,7 +92,10 @@ namespace GUI_Clinic.View.UserControls
             }, (p) =>
             {
                 DTO_Benh tempBenh = ListBenh.ElementAt<DTO_Benh>(lvBenh.SelectedIndex);
-                BUSManager.BenhBUS.UpdateBenh(tempBenh, TenBenhInput);
+                if (!BUSManager.BenhBUS.UpdateBenh(tempBenh, TenBenhInput))
+                {
+                    MsgBox.Show("Tên bệnh mới đã tồn tại", MessageType.Error);
+                }    
             });
 
             XoaBenhCommand = new RelayCommand<Window>((p) =>
@@ -114,9 +125,15 @@ namespace GUI_Clinic.View.UserControls
             }, (p) =>
             {
                 DTO_DonVi donVi = new DTO_DonVi(TenDonViInput);
-                BUSManager.DonViBUS.AddDonVi(donVi);
-
-                tbxTenDonVi.Clear();
+                if (BUSManager.DonViBUS.AddDonVi(donVi))
+                {
+                    tbxTenDonVi.Clear();
+                }
+                else
+                {
+                    MsgBox.Show("Tên đơn vị đã tồn tại", MessageType.Error);
+                    tbxTenDonVi.Clear();
+                }
             });
 
             SuaDonViCommand = new RelayCommand<Window>((p) =>
@@ -129,7 +146,10 @@ namespace GUI_Clinic.View.UserControls
             }, (p) =>
             {
                 DTO_DonVi tempDonVi = ListDV.ElementAt<DTO_DonVi>(lvDonVi.SelectedIndex);
-                BUSManager.DonViBUS.UpdateDonVi(tempDonVi, TenDonViInput);
+                if (!BUSManager.DonViBUS.UpdateDonVi(tempDonVi, TenDonViInput))
+                {
+                    MsgBox.Show("Tên đơn vị mới đã tồn tại", MessageType.Error);
+                }    
             });
 
             XoaDonViCommand = new RelayCommand<Window>((p) =>
@@ -160,9 +180,15 @@ namespace GUI_Clinic.View.UserControls
             }, (p) =>
             {
                 DTO_CachDung cachDung = new DTO_CachDung(TenCachDungInput);
-                BUSManager.CachDungBUS.AddCachDung(cachDung);
-
-                tbxTenCachDung.Clear();
+                if (BUSManager.CachDungBUS.AddCachDung(cachDung))
+                {
+                    tbxTenCachDung.Clear();
+                }
+                else
+                {
+                    MsgBox.Show("Tên cách dùng đã tồn tại", MessageType.Error);
+                    tbxTenCachDung.Clear();
+                }    
             });
 
             SuaCachDungCommand = new RelayCommand<Window>((p) =>
@@ -175,7 +201,10 @@ namespace GUI_Clinic.View.UserControls
             }, (p) =>
             {
                 DTO_CachDung tempCachDung = ListCD.ElementAt<DTO_CachDung>(lvCachDung.SelectedIndex);
-                BUSManager.CachDungBUS.UpdateCachDung(tempCachDung, TenCachDungInput);
+                if (!BUSManager.CachDungBUS.UpdateCachDung(tempCachDung, TenCachDungInput))
+                {
+                    MsgBox.Show("Tên cách dùng mới đã tồn tại", MessageType.Error);
+                }    
             });
 
             XoaCachDungCommand = new RelayCommand<Window>((p) =>
@@ -196,6 +225,20 @@ namespace GUI_Clinic.View.UserControls
                     BUSManager.CachDungBUS.DelCachDung(item);
                 }
             });
+        }
+
+        private void lvBenh_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lvBenh.SelectedIndex != -1)
+            {
+                TenBenhInput = ListBenh.ElementAt<DTO_Benh>(lvBenh.SelectedIndex).TenBenh;
+                tbxTenBenh.Text = TenBenhInput;
+            }
+            else
+            {
+                TenBenhInput = null;
+                tbxTenBenh.Text = TenBenhInput;
+            }
         }
 
         private void lvDonVi_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -226,20 +269,6 @@ namespace GUI_Clinic.View.UserControls
             }
         }
 
-        private void lvBenh_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (lvBenh.SelectedIndex != -1)
-            {
-                TenBenhInput = ListBenh.ElementAt<DTO_Benh>(lvBenh.SelectedIndex).TenBenh;
-                tbxTenBenh.Text = TenBenhInput;
-            }
-            else
-            {
-                TenBenhInput = null;
-                tbxTenBenh.Text = TenBenhInput;
-            }
-        }
-
         private void tbxTenBenh_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
@@ -250,9 +279,15 @@ namespace GUI_Clinic.View.UserControls
                 }
 
                 DTO_Benh benh = new DTO_Benh(TenBenhInput);
-                BUSManager.BenhBUS.AddBenh(benh);
-
-                tbxTenBenh.Clear();
+                if (BUSManager.BenhBUS.AddBenh(benh))
+                {
+                    tbxTenBenh.Clear();
+                }
+                else
+                {
+                    MsgBox.Show("Tên bệnh đã tồn tại", MessageType.Error);
+                    tbxTenBenh.Clear();
+                }
             }
         }
 
@@ -266,9 +301,15 @@ namespace GUI_Clinic.View.UserControls
                 }
 
                 DTO_DonVi donVi = new DTO_DonVi(TenDonViInput);
-                BUSManager.DonViBUS.AddDonVi(donVi);
-
-                tbxTenDonVi.Clear();
+                if (BUSManager.DonViBUS.AddDonVi(donVi))
+                {
+                    tbxTenDonVi.Clear();
+                }
+                else
+                {
+                    MsgBox.Show("Tên đơn vị đã tồn tại", MessageType.Error);
+                    tbxTenDonVi.Clear();
+                }
             }
         }
 
@@ -282,9 +323,15 @@ namespace GUI_Clinic.View.UserControls
                 }
 
                 DTO_CachDung cachDung = new DTO_CachDung(TenCachDungInput);
-                BUSManager.CachDungBUS.AddCachDung(cachDung);
-
-                tbxTenCachDung.Clear();
+                if (BUSManager.CachDungBUS.AddCachDung(cachDung))
+                {
+                    tbxTenCachDung.Clear();
+                }
+                else
+                {
+                    MsgBox.Show("Tên cách dùng đã tồn tại", MessageType.Error);
+                    tbxTenCachDung.Clear();
+                }
             }
         }
     }

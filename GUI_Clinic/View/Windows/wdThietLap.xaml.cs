@@ -72,5 +72,15 @@ namespace GUI_Clinic.View.Windows
                     this.Close();
             });
         }
+
+        private void btnShutdown_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
     }
 }

@@ -100,10 +100,24 @@
                         <GridViewColumn Header="STT" DisplayMemberBinding="{Binding RelativeSource=
                                                                                    {RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}, 
                                                                                    Converter={StaticResource IndexConverter}}"></GridViewColumn>
-                        <GridViewColumn Header="Ngày" Width="120" DisplayMemberBinding="{Binding Ngay}"></GridViewColumn>
+                        <GridViewColumn Header="Ngày" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock>
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0}/{1}/{2}">
+                                                <Binding Path="Ngay" />
+                                                <Binding Path="Thang"/>
+                                                <Binding Path="Nam"/>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                         <GridViewColumn Header="Số bệnh nhân" DisplayMemberBinding="{Binding SoBenhNhan}"></GridViewColumn>
                         <GridViewColumn Header="Doanh thu" Width="150" DisplayMemberBinding="{Binding DoanhThu, StringFormat={}{0} VNĐ}"></GridViewColumn>
-                        <GridViewColumn Header="Tỷ lệ" DisplayMemberBinding="{Binding TyLe, StringFormat={}{0}%}"></GridViewColumn>
+                        <GridViewColumn Header="Tỷ lệ" DisplayMemberBinding="{Binding TyLe, StringFormat={}{0:F2}%}"></GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>

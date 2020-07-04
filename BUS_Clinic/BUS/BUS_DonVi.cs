@@ -16,30 +16,31 @@ namespace BUS_Clinic.BUS
         {
 
         }
-        public void AddDonVi(DTO_DonVi donVi)
+        public bool AddDonVi(DTO_DonVi donVi)
         {
             ObservableCollection<DTO_DonVi> donvis = DALManager.DonViDAL.GetListDV();
 
-            bool flag = donvis.Any(d => d.TenDonVi.Equals(donVi.TenDonVi, StringComparison.OrdinalIgnoreCase));
-
-            if (!flag)
+            if (donvis.Any(d => d.TenDonVi.Equals(donVi.TenDonVi, StringComparison.OrdinalIgnoreCase)))
             {
-                donVi.Id = AutoGenerateID();
-                DALManager.DonViDAL.AddDonVi(donVi);
+                return false;
             }
+            donVi.Id = AutoGenerateID();
+            DALManager.DonViDAL.AddDonVi(donVi);
+            return true;
         }
-        public void UpdateDonVi(DTO_DonVi donVi, string tenDonViMoi)
+        public bool UpdateDonVi(DTO_DonVi donVi, string tenDonViMoi)
         {
             ObservableCollection<DTO_DonVi> donvis = DALManager.DonViDAL.GetListDV();
 
-            bool flag = donvis.Any(d => d.TenDonVi.Equals(tenDonViMoi, StringComparison.OrdinalIgnoreCase));
-
-            if (donVi.TenDonVi != tenDonViMoi && !flag)
+            if (donVi.TenDonVi == tenDonViMoi || donvis.Any(d => d.TenDonVi.Equals(tenDonViMoi, StringComparison.OrdinalIgnoreCase)))
             {
-                donVi.TenDonVi = tenDonViMoi;
+                return false;
             }
+
+            donVi.TenDonVi = tenDonViMoi;
+            return true;
         }
-        public void DelDonVi(DTO_DonVi donVi)
+        public bool DelDonVi(DTO_DonVi donVi)
         {
             ObservableCollection<DTO_DonVi> donvis = DALManager.DonViDAL.GetListDV();
             if (donVi != null)
@@ -47,8 +48,10 @@ namespace BUS_Clinic.BUS
                 if (donvis.Any(d => d.TenDonVi.Equals(donVi.TenDonVi, StringComparison.OrdinalIgnoreCase)))
                 {
                     DALManager.DonViDAL.DelDonVi(donVi);
+                    return true;
                 }
             }
+            return false;
         }
         public DTO_DonVi GetDonViById(string maDonVi)
         {
