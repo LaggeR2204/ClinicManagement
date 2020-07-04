@@ -105,11 +105,11 @@
                                               SelectedItem="{Binding SlectedItem, Mode=OneWayToSource}"
                                               ScrollViewer.CanContentScroll="True"
                                               ScrollViewer.VerticalScrollBarVisibility="Auto"
-                                              Grid.ColumnSpan="2"
-                                              Margin="0,0,0,-0.4">
+                                              Grid.ColumnSpan="2">
                                         <ListView.View>
                                             <GridView>
-                                                <GridViewColumn Header="STT" DisplayMemberBinding="{Binding RelativeSource=
+                                                <GridViewColumn Header="STT"
+                                                                DisplayMemberBinding="{Binding RelativeSource=
                                                                                    {RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}, 
                                                                                    Converter={StaticResource IndexConverter}}"></GridViewColumn>
                                                 <GridViewColumn Header="Mã bệnh nhân"
@@ -143,8 +143,8 @@
                                                                 DisplayMemberBinding="{Binding DiaChi}"></GridViewColumn>
                                                 <GridViewColumn Header="Số điện thoại"
                                                                 DisplayMemberBinding="{Binding SoDienThoai}"></GridViewColumn>
-                                            </GridView>                                          
-                                        </ListView.View>                                        
+                                            </GridView>
+                                        </ListView.View>
                                     </ListView>
                                 </Grid>
                             </GroupBox>
@@ -201,10 +201,9 @@
                                                     <DataTemplate>
                                                         <TextBlock>
                                                             <TextBlock.Text>
-                                                                <MultiBinding StringFormat="{}{0} - {1} - {2}">
+                                                                <MultiBinding StringFormat="{}{0} - {1}">
                                                                     <Binding Path="Id" />
                                                                     <Binding Path="TenBenhNhan" />
-                                                                    <Binding Path="SoDienThoai" />
                                                                 </MultiBinding>
                                                             </TextBlock.Text>
                                                         </TextBlock>
@@ -243,7 +242,7 @@
                                             Value="16"></Setter>
                                 </Style>
                             </Grid.Resources>
-                            <materialDesign:Card Margin="5 5 10 5">
+                            <materialDesign:Card Margin="5 5 10 10">
                                 <Grid Margin="5">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="auto" />
@@ -286,7 +285,7 @@
                                     <Grid Grid.Row="2">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="110" />
-                                            <ColumnDefinition />                                            
+                                            <ColumnDefinition />
                                         </Grid.ColumnDefinitions>
                                         <Grid>
                                             <TextBlock Grid.Column="0"
@@ -306,8 +305,7 @@
                                                             VerticalAlignment="Center"
                                                             Width="120"
                                                             Height="30"
-                                                            FontSize="16"
-                                                            RenderTransformOrigin="0.978,0.593" />
+                                                            FontSize="16" />
                                             </Border>
                                         </Grid>
 
@@ -387,10 +385,10 @@
                                                      BorderThickness="2"
                                                      Margin="0 5 20 5"
                                                      FontSize="16"
-                                                     MaxLength="9"                                                     
+                                                     MaxLength="9"
                                                      VerticalAlignment="Center"
                                                      DataObject.Pasting="tbxSDT_Pasting"
-                                                     PreviewTextInput="tbxSDT_PreviewTextInput"/>
+                                                     PreviewTextInput="tbxSDT_PreviewTextInput" />
 
                                         </Grid>
                                     </Grid>

@@ -79,7 +79,7 @@ namespace DTO_Clinic
         }
         public override string ToString()
         {
-            return Id + " - " + TenBenhNhan + " - " + SoDienThoai;
+            return Id + " - " + TenBenhNhan;
         }
     }
 }
