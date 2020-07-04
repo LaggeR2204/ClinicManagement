@@ -110,7 +110,7 @@
                             <TextBox.Text>
                                 <Binding Path="SoLuong" UpdateSourceTrigger="PropertyChanged">
                                     <Binding.ValidationRules>
-                                        <local:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                                        <cvt:StringToIntValidationRule ValidationStep="RawProposedValue"/>
                                     </Binding.ValidationRules>
                                 </Binding>
                             </TextBox.Text>
@@ -126,7 +126,7 @@
                             <TextBox.Text>
                                 <Binding Path="DonGia" UpdateSourceTrigger="PropertyChanged">
                                     <Binding.ValidationRules>
-                                        <local:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                                        <cvt:StringToIntValidationRule ValidationStep="RawProposedValue"/>
                                     </Binding.ValidationRules>
                                 </Binding>
                             </TextBox.Text>

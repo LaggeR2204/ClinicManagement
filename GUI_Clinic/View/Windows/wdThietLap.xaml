@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI_Clinic.View.Windows"
         xmlns:uc="clr-namespace:GUI_Clinic.View.UserControls"
+        xmlns:cvt="clr-namespace:GUI_Clinic.Converter"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -79,7 +80,7 @@
                 <TextBox.Text>
                     <Binding Path="TienKham" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
-                            <local:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                            <cvt:StringToIntValidationRule ValidationStep="RawProposedValue"/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -107,7 +108,7 @@
                 <TextBox.Text>
                     <Binding Path="SoBNToiDa" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
-                            <local:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                            <cvt:StringToIntValidationRule ValidationStep="RawProposedValue"/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>

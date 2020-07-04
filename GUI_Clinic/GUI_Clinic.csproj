@@ -81,6 +81,7 @@
     </Compile>
     <Compile Include="Command\RelayCommand.cs" />
     <Compile Include="Converter\IndexConverter.cs" />
+    <Compile Include="Converter\StringToIntValidationRule.cs" />
     <Compile Include="CustomControl\MsgBox.xaml.cs">
       <DependentUpon>MsgBox.xaml</DependentUpon>
     </Compile>
@@ -114,7 +115,6 @@
     <Compile Include="View\UserControls\ucQuanLyThuoc.xaml.cs">
       <DependentUpon>ucQuanLyThuoc.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Windows\StringToIntValidationRule.cs" />
     <Compile Include="View\Windows\wdHoaDon.xaml.cs">
       <DependentUpon>wdHoaDon.xaml</DependentUpon>
     </Compile>
