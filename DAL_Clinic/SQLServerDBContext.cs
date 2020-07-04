@@ -1,4 +1,5 @@
 ﻿using DAL_Clinic.BuddyClass;
+using DAL_Clinic.Initializer;
 using DTO_Clinic;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,9 @@ namespace DAL_Clinic
         }
         public SQLServerDBContext() : base("name=connectionStringPMT")
         {
-            var initializer = new MigrateDatabaseToLatestVersion<SQLServerDBContext, Migrations.Configuration>();
+            //var initializer = new MigrateDatabaseToLatestVersion<SQLServerDBContext, Migrations.Configuration>();
+            //Database.SetInitializer(initializer);
+            var initializer = new MyInitializer();
             Database.SetInitializer(initializer);
             this.Configuration.LazyLoadingEnabled = false;
         }
