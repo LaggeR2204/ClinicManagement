@@ -25,7 +25,7 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <TextBlock x:Name="tblTitle"
+            <TextBlock x:Name="tblTieuDe"
                        Margin="20 10" 
                        HorizontalAlignment="Left" 
                        Text="Quản lý bệnh nhân"
@@ -53,7 +53,7 @@
                                              VerticalAlignment="Center"
                                              Margin="5 5 0 5"
                                              Foreground="Gray" />
-                    <ComboBox x:Name="cbxSearchType"
+                    <ComboBox x:Name="cbxLoaiTiemKiem"
                               Margin="5"
                               Foreground="Gray">
                         <ComboBoxItem IsSelected="True">
@@ -66,12 +66,12 @@
                             Số điện thoại
                         </ComboBoxItem>
                     </ComboBox>
-                    <TextBox x:Name="tbxKeyword"
+                    <TextBox x:Name="tbxTimKiem"
                              Margin="5 5 15 3"
                              materialDesign:HintAssist.Hint="Nội dung tìm kiếm"
                              VerticalAlignment="Center"
                              MinWidth="100" 
-                             TextChanged="tbxKeyword_TextChanged"/>
+                             TextChanged="tbxTimKiem_TextChanged"/>
                 </WrapPanel>
 
                 <!--<materialDesign:Chip Command="{Binding Command}"

@@ -60,23 +60,23 @@ namespace GUI_Clinic.View.UserControls
 
         private bool BenhNhanFilter(Object item)
         {
-            if (String.IsNullOrEmpty(tbxKeyword.Text))
+            if (String.IsNullOrEmpty(tbxTimKiem.Text))
             {
                 return true;
             }
             else
             {
-                if (cbxSearchType.SelectedIndex == 0)
+                if (cbxLoaiTiemKiem.SelectedIndex == 0)
                 {
-                    return ((item as DTO_BenhNhan).TenBenhNhan.IndexOf(tbxKeyword.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                    return ((item as DTO_BenhNhan).TenBenhNhan.IndexOf(tbxTimKiem.Text, StringComparison.OrdinalIgnoreCase) >= 0);
                 }
-                else if (cbxSearchType.SelectedIndex == 1)
+                else if (cbxLoaiTiemKiem.SelectedIndex == 1)
                 {
-                    return ((item as DTO_BenhNhan).DiaChi.IndexOf(tbxKeyword.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                    return ((item as DTO_BenhNhan).DiaChi.IndexOf(tbxTimKiem.Text, StringComparison.OrdinalIgnoreCase) >= 0);
                 }
-                else if (cbxSearchType.SelectedIndex == 2)
+                else if (cbxLoaiTiemKiem.SelectedIndex == 2)
                 {
-                    return ((item as DTO_BenhNhan).SoDienThoai.IndexOf(tbxKeyword.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                    return ((item as DTO_BenhNhan).SoDienThoai.IndexOf(tbxTimKiem.Text, StringComparison.OrdinalIgnoreCase) >= 0);
                 }
                 else
                 {
@@ -97,7 +97,7 @@ namespace GUI_Clinic.View.UserControls
             }
         }
 
-        private void tbxKeyword_TextChanged(object sender, TextChangedEventArgs e)
+        private void tbxTimKiem_TextChanged(object sender, TextChangedEventArgs e)
         {
             CollectionViewSource.GetDefaultView(lvBenhNhan.ItemsSource).Refresh();
         }
