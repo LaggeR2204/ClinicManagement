@@ -54,7 +54,7 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Mã phiếu khám bệnh:" FontSize="12" Margin="5"/>
-                            <TextBlock x:Name="tblMaHoaDon" Text="{Binding HoaDon.Id}"
+                            <TextBlock x:Name="tblMaPhieuKhamBenh" Text="{Binding HoaDon.Id}"
                                 FontSize="12" Margin="5" FontWeight="DemiBold"/>
                         </StackPanel>
                     </StackPanel>
