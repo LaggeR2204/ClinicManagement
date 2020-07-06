@@ -107,7 +107,8 @@
                           SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
                           ScrollViewer.CanContentScroll="True"
                           ScrollViewer.VerticalScrollBarVisibility="Auto"
-                          SelectionChanged="lvBenhNhan_SelectionChanged">
+                          SelectionChanged="lvBenhNhan_SelectionChanged"
+                          MouseDoubleClick="lvBenhNhan_MouseDoubleClick">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="STT" DisplayMemberBinding="{Binding RelativeSource=

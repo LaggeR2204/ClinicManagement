@@ -100,11 +100,20 @@ namespace GUI_Clinic.View.UserControls
                 else
                     gt = true;
                 DTO_BenhNhan benhNhan = new DTO_BenhNhan(tbxHoTen.Text, gt, dpkNgaySinh.SelectedDate.Value, tbxDiaChi.Text, cbxMaVungSDT.Text + tbxSDT.Text);
-                BUSManager.BenhNhanBUS.AddBenhNhan(benhNhan);
-                ListBN1.Add(benhNhan);
-                ListBN2.Add(benhNhan);
-                if (ckbDangKy.IsChecked.Value)
-                    DangKyKham(benhNhan);
+                if (BUSManager.BenhNhanBUS.AddBenhNhan(benhNhan))
+                {
+                    ListBN1.Add(benhNhan);
+                    ListBN2.Add(benhNhan);
+                    if (ckbDangKy.IsChecked.Value)
+                    {
+                        DangKyKham(benhNhan);
+                        MsgBox.Show("Thêm mới bệnh nhân và đăng ký khám thành công", MessageType.Info);
+                    }
+                    else
+                        MsgBox.Show("Thêm mới bệnh nhân thành công", MessageType.Info);
+                }
+                else
+                    MsgBox.Show("Thông tin bệnh nhân đã tồn tại", MessageType.Error);
                 Clear();
             });
             SignedCommand = new RelayCommand<Window>((p) =>

@@ -22,14 +22,15 @@ namespace BUS_Clinic.BUS
             var result = ListBN.Where(c => c.Id == maBenhNhan).FirstOrDefault();
             return result;
         }
-        public void AddBenhNhan(DTO_BenhNhan bn)
+        public bool AddBenhNhan(DTO_BenhNhan bn)
         {
-            ObservableCollection<DTO_BenhNhan> ListBN = GetListBN();
-            var rel = ListBN.Where(c => c.TenBenhNhan == bn.TenBenhNhan && c.SoDienThoai == bn.SoDienThoai).FirstOrDefault();
-            if (rel != null)
-                return;
-            bn.Id = AutoGenerateID();
-            DALManager.BenhNhanDAL.AddBenhNhan(bn);
+            if(IsValidInfo(bn.TenBenhNhan, bn.SoDienThoai))
+            {
+                bn.Id = AutoGenerateID();
+                DALManager.BenhNhanDAL.AddBenhNhan(bn);
+                return true;
+            }
+            return false;
         }
         public override void LoadLocalData()
         {
@@ -47,6 +48,29 @@ namespace BUS_Clinic.BUS
         public string AutoGenerateID()
         {
             return _idPrefix + (GetPatientAmount() + 1).ToString("D5");
+        }
+        public bool IsValidInfo(string ten, string sdt, string id = "")
+        {
+            var list = DALManager.BenhNhanDAL.GetListBN();
+            var item = list.Where(x => x.TenBenhNhan == ten && x.SoDienThoai == sdt).FirstOrDefault();
+            if (item != null)
+                return item.Id == id;
+            return true;
+        }
+        public bool UpdateInfoBN(DTO_BenhNhan bn, string ten, string diachi, bool gioiTinh, string sdt, DateTime ngaySinh)
+        {
+            if (IsValidInfo(ten, sdt, bn.Id))
+            {
+                bn.TenBenhNhan = ten;
+                bn.DiaChi = diachi;
+                bn.GioiTinh = gioiTinh;
+                bn.NgaySinh = ngaySinh;
+                bn.SoDienThoai = sdt;
+                return true;
+            }
+            else
+                return false;
+
         }
     }
 }

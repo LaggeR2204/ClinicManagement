@@ -115,6 +115,9 @@
     <Compile Include="View\UserControls\ucQuanLyThuoc.xaml.cs">
       <DependentUpon>ucQuanLyThuoc.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\wdBenhNhan.xaml.cs">
+      <DependentUpon>wdBenhNhan.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\wdHoaDon.xaml.cs">
       <DependentUpon>wdHoaDon.xaml</DependentUpon>
     </Compile>
@@ -132,6 +135,9 @@
     </Compile>
     <Compile Include="View\Windows\wdThietLap.xaml.cs">
       <DependentUpon>wdThietLap.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\wdThongTinThuoc.xaml.cs">
+      <DependentUpon>wdThongTinThuoc.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -219,6 +225,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Windows\wdBenhNhan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\wdHoaDon.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -240,6 +250,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\wdThietLap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\wdThongTinThuoc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

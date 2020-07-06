@@ -26,7 +26,7 @@
         </Grid.RowDefinitions>
         <!--Tieu de UC-->
         <Grid Grid.Row="0">
-            <TextBlock x:Name="tblTitle"
+            <TextBlock x:Name="tblTieuDe"
                        Margin="20 10"
                        HorizontalAlignment="Left"
                        Text="Danh sách khám bệnh"
@@ -169,6 +169,7 @@
                                     </Grid.RowDefinitions>
 
                                     <TextBlock Grid.Row="0"
+                                               x:Name="tblDangKyKham"
                                                Margin="10"
                                                HorizontalAlignment="Center"
                                                Text="Đăng ký khám"
@@ -214,6 +215,7 @@
                                     </Grid>
                                     <Grid Grid.Row="2">
                                         <Button Grid.Column="0"
+                                                x:Name="btnDangKy"
                                                 Command="{Binding SignedCommand}"
                                                 Background="#0078D7"
                                                 Content="Đăng ký"
@@ -257,6 +259,7 @@
 
                                     <TextBlock Grid.Row="0"
                                                Margin="10"
+                                               x:Name="tblNhapThongTin"
                                                HorizontalAlignment="Center"
                                                Text="Nhập thông tin bệnh nhân"
                                                VerticalAlignment="Center"

@@ -126,5 +126,16 @@ namespace GUI_Clinic.View.UserControls
                 phieuKhamBenh.ShowDialog();
             }
         }
+
+        private void lvBenhNhan_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var item = ((FrameworkElement)e.OriginalSource).DataContext as DTO_BenhNhan;
+            if (item != null)
+            {
+                //Mo thong tin benh nhan tuong ung
+                wdBenhNhan benhNhan = new wdBenhNhan(item);
+                benhNhan.ShowDialog();
+            }
+        }
     }
 }
