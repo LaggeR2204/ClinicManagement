@@ -92,5 +92,25 @@ namespace BUS_Clinic.BUS
         {
             return _idPrefix + (GetThuocAmount() + 1).ToString("D5");
         }
+        public bool UpdateInfoThuoc(DTO_Thuoc thuoc, string ten, string congDung, double donGia)
+        {
+            var list = DALManager.ThuocDAL.GetListThuoc();
+            var item = list.Where(x => x.TenThuoc == ten).FirstOrDefault();
+            bool check;
+            if (item != null)
+                check = item.Id == thuoc.Id;
+            else
+                check = true;
+            if (check)
+            {
+                thuoc.TenThuoc = ten;
+                thuoc.CongDung = congDung;
+                thuoc.DonGia = donGia;
+                return true;
+            }
+            else
+                return false;
+        }
+        
     }
 }

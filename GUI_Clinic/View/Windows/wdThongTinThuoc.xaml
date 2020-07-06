@@ -1,11 +1,10 @@
-﻿<Window x:Class="GUI_Clinic.View.Windows.wdBenhNhan"
+﻿<Window x:Class="GUI_Clinic.View.Windows.wdThongTinThuoc"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI_Clinic.View.Windows"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:cvt="clr-namespace:GUI_Clinic.Converter"
         mc:Ignorable="d"
         ResizeMode="NoResize"
         WindowStyle="None"
@@ -13,11 +12,11 @@
         BorderBrush="#0078D7"
         BorderThickness="2"
         WindowStartupLocation="CenterScreen"
-        Height="480"
+        Height="450"
         Width="400"
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
         ShowInTaskbar="False"
-        Title="wdBenhNhan">
+        Title="Thông tin thuốc">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -70,23 +69,23 @@
                        Margin="10"
                        x:Name="tblThongTin"
                        HorizontalAlignment="Center"
-                       Text="Thông tin bệnh nhân"
+                       Text="Thông tin thuốc"
                        VerticalAlignment="Center"
                        FontSize="25"
                        FontWeight="Bold"
                        Foreground="#0078D7" />
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="130" />
+                    <ColumnDefinition Width="110" />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0"
-                           Text="Mã bệnh nhân:">
+                           Text="Mã thuốc:">
                 </TextBlock>
                 <Grid Grid.Column="1">
                     <TextBlock Margin="0 5 20 5"
                                FontSize="16"
-                               Text="{Binding BenhNhan.Id, Mode=OneTime, UpdateSourceTrigger=PropertyChanged}"
+                               Text="{Binding Thuoc.Id, Mode=OneTime, UpdateSourceTrigger=PropertyChanged}"
                                VerticalAlignment="Center">
                     </TextBlock>
                 </Grid>
@@ -97,15 +96,15 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0"
-                           Text="Họ và tên:">
+                           Text="Tên thuốc:">
                 </TextBlock>
                 <Grid Grid.Column="1">
                     <TextBox BorderBrush="#0078D7"
-                             x:Name="tbxHoTen"
+                             x:Name="tbxTenThuoc"
                              BorderThickness="2"
                              Margin="0 5 20 5"
                              FontSize="16"
-                             Text="{Binding BenhNhan.TenBenhNhan, Mode=OneTime, UpdateSourceTrigger=PropertyChanged}"
+                             Text="{Binding Thuoc.TenThuoc, Mode=OneTime, UpdateSourceTrigger=PropertyChanged}"
                              VerticalAlignment="Center">
                     </TextBox>
                 </Grid>
@@ -117,25 +116,15 @@
                 </Grid.ColumnDefinitions>
                 <Grid>
                     <TextBlock Grid.Column="0"
-                               Text="Ngày sinh:">
+                               Text="Đơn vị:">
                     </TextBlock>
                 </Grid>
                 <Grid Grid.Column="1">
-                    <Border BorderThickness="2"
-                            Background="White"
-                            BorderBrush="#0078D7"
-                            Height="30"
-                            HorizontalAlignment="Left">
-                        <DatePicker Grid.Column="0"
-                                    x:Name="dpkNgaySinh"
-                                    HorizontalAlignment="Left"
-                                    VerticalContentAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Width="120"
-                                    Height="30"
-                                    FontSize="16" 
-                                    SelectedDate="{Binding BenhNhan.NgaySinh, Mode=OneTime}"/>
-                    </Border>
+                    <TextBlock Margin="0 5 20 5"
+                               FontSize="16"
+                               Text="{Binding Thuoc.DonVi.TenDonVi, Mode=OneTime, UpdateSourceTrigger=PropertyChanged}"
+                               VerticalAlignment="Center">
+                    </TextBlock>
                 </Grid>
 
             </Grid>
@@ -148,24 +137,19 @@
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
                     <TextBlock Grid.Column="0"
-                               Text="Giới tính:">
+                               Text="Công dụng:">
                     </TextBlock>
                 </Grid>
 
                 <Grid Grid.Column="1">
-                    <ComboBox BorderBrush="#0078D7"
-                              BorderThickness="2"
-                              x:Name="cbxGioiTinh"
-                              IsEditable="True"
-                              Width="70"
-                              Margin="0 5 10 5"
-                              HorizontalContentAlignment="Center"
-                              FontSize="16"
-                              VerticalAlignment="Center"
-                              HorizontalAlignment="Left">
-                        <ComboBoxItem>Nam</ComboBoxItem>
-                        <ComboBoxItem>Nữ</ComboBoxItem>
-                    </ComboBox>
+                    <TextBox BorderBrush="#0078D7"
+                             x:Name="tbxCongDung"
+                             BorderThickness="2"
+                             Margin="0 5 20 5"
+                             FontSize="16"
+                             Text="{Binding Thuoc.CongDung, Mode=OneTime}"
+                             VerticalAlignment="Center">
+                    </TextBox>
                 </Grid>
             </Grid>
             <Grid Grid.Row="5">
@@ -174,17 +158,14 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0"
-                           Text="Địa chỉ:">
+                           Text="Số lượng:">
                 </TextBlock>
                 <Grid Grid.Column="1">
-                    <TextBox BorderBrush="#0078D7"
-                             x:Name="tbxDiaChi"
-                             BorderThickness="2"
-                             Margin="0 5 20 5"
-                             FontSize="16"
-                             Text="{Binding BenhNhan.DiaChi,Mode=OneTime}"
-                             VerticalAlignment="Center">
-                    </TextBox>
+                    <TextBlock Margin="0 5 20 5"
+                               FontSize="16"
+                               Text="{Binding Thuoc.SoLuong, Mode=OneTime, UpdateSourceTrigger=PropertyChanged}"
+                               VerticalAlignment="Center">
+                    </TextBlock>
                 </Grid>
             </Grid>
             <Grid Grid.Row="6">
@@ -193,19 +174,18 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0"
-                           Text="SĐT:">
+                           Text="Đơn giá:">
                 </TextBlock>
                 <Grid Grid.Column="1">
                     <TextBox BorderBrush="#0078D7"
-                             x:Name="tbxSDT"
+                             x:Name="tbxDonGia"
                              BorderThickness="2"
                              Margin="0 5 20 5"
                              FontSize="16"
-                             MaxLength="{Binding BenhNhan.SoDienThoai.Length,Mode=OneTime}"
-                             Text="{Binding BenhNhan.SoDienThoai, Mode=OneTime}"
-                             VerticalAlignment="Center"
-                             DataObject.Pasting="tbxSDT_Pasting"
-                             PreviewTextInput="tbxSDT_PreviewTextInput" />
+                             PreviewTextInput="tbx_PreviewTextInput"
+                             DataObject.Pasting="tbx_Pasting"
+                             Text="{Binding Thuoc.DonGia, Mode=OneTime}"
+                             VerticalAlignment="Center" />
                 </Grid>
             </Grid>
             <Grid Grid.Row="7">

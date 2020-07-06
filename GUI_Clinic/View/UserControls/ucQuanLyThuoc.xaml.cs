@@ -136,5 +136,16 @@ namespace GUI_Clinic.View.UserControls
             wdPhieuNhapThuoc wd = new wdPhieuNhapThuoc();
             wd.ShowDialog();
         }
+
+        private void lvThuoc_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var item = ((FrameworkElement)e.OriginalSource).DataContext as DTO_Thuoc;
+            if (item != null)
+            {
+                //Mo Thong tin thuoc tuong ung
+                wdThongTinThuoc wdInfo = new wdThongTinThuoc(item);
+                wdInfo.ShowDialog();
+            }
+        }
     }
 }

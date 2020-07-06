@@ -132,7 +132,7 @@ namespace GUI_Clinic.View.UserControls
             var item = ((FrameworkElement)e.OriginalSource).DataContext as DTO_BenhNhan;
             if (item != null)
             {
-                //Mo PKB tuong ung
+                //Mo thong tin benh nhan tuong ung
                 wdBenhNhan benhNhan = new wdBenhNhan(item);
                 benhNhan.ShowDialog();
             }

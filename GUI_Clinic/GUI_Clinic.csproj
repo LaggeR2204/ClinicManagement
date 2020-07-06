@@ -136,6 +136,9 @@
     <Compile Include="View\Windows\wdThietLap.xaml.cs">
       <DependentUpon>wdThietLap.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\wdThongTinThuoc.xaml.cs">
+      <DependentUpon>wdThongTinThuoc.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -247,6 +250,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\wdThietLap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\wdThongTinThuoc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
