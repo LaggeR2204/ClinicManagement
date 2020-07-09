@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
         <!--Tieu de UC-->
         <Grid Grid.Row="0">
-            <TextBlock x:Name="tblTitle"
+            <TextBlock x:Name="tblTieuDe"
                        Margin="20 10"
                        HorizontalAlignment="Left"
                        Text="Quản lý phiếu khám bệnh"
@@ -43,7 +43,8 @@
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
                             <Grid>
-                                <TextBlock Grid.Row="0"
+                                <TextBlock x:Name="tblPhieuKhamBenh"
+                                           Grid.Row="0"
                                            Text="Phiếu khám bệnh"
                                            Foreground="Gray"
                                            FontWeight="Bold"
@@ -74,14 +75,14 @@
                                 </Grid.ColumnDefinitions>
                                 <Grid Grid.Column="0">
                                     <TextBlock VerticalAlignment="Center"
-                                               HorizontalAlignment="Left"
                                                FontSize="20"
-                                               Margin="10">
+                                               Margin="10,16">
                                 Số bệnh nhân đang chờ:
                                     </TextBlock>
                                 </Grid>
                                 <Grid Grid.Column="1">
-                                    <TextBlock VerticalAlignment="Center"
+                                    <TextBlock x:Name="tblSoBenhNhanDangCho"
+                                               VerticalAlignment="Center"
                                                HorizontalAlignment="Left"
                                                FontSize="30"
                                                FontWeight="Bold"
@@ -206,7 +207,7 @@
                                 <ListView x:Name="lvDSPKB"
                                           ScrollViewer.CanContentScroll="True"                                          
                                           ScrollViewer.VerticalScrollBarVisibility="Auto"
-                                          MouseDoubleClick="lvDSPKB_MouseDoubleClick">                                    
+                                          MouseDoubleClick="lvDSPKB_MouseDoubleClick">
                                     <ListView.View>
                                         <GridView>
                                             <GridViewColumn Header="STT" DisplayMemberBinding="{Binding RelativeSource=

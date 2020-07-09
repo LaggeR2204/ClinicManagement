@@ -39,7 +39,7 @@
                               />
                     <ComboBox x:Name="cbxNam" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Năm" Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                               />
-                    <Button x:Name="btnFilter"
+                    <Button x:Name="btnLocBaoCao"
                             Command="{Binding FilterBaoCaoCommand}"
                             Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
                             ToolTip="Xem báo cáo"
